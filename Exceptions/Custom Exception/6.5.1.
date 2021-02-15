@@ -1,0 +1,36 @@
+#include <iostream>
+#include <stdexcept>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::runtime_error;
+
+class DivideByZeroException : public runtime_error
+{
+public:
+   DivideByZeroException::DivideByZeroException(): runtime_error( "attempted to
+ divide by zero" ) {}
+};
+
+double quotient( int numerator, int denominator )
+{
+   throw DivideByZeroException(); // terminate function
+
+   return 0;
+}
+
+int main()
+{
+    try
+    {
+       double result = quotient( 1, 1 );
+       cout << "The quotient is: " << result << endl;
+    }
+    catch ( DivideByZeroException &divideByZeroException )
+    {
+       cout << "Exception occurred: " << divideByZeroException.what() << endl;
+
+    }
+
+    return 0;
+}
