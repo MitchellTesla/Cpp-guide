@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+   cout << "Welcome to ";
+   cout << "C++!";
+   cout << endl;   // end line stream manipulator
+
+   return 0;
+}
