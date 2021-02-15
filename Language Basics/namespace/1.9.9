@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int integer1 = 98;
+
+namespace Example
+{
+   const double PI = 3.14159;
+   void printValues();
+
+   namespace Inner
+   {
+      enum Years { FISCAL1 = 1990, FISCAL2, a };
+   }
+}
+
+namespace
+{
+   double doubleInUnnamed = 88.22;
+}
+
+int main()
+{
+   Example::printValues();
+   return 0;
+}
+void Example::printValues()
+{
+   cout << integer1 << "\n(global) integer1 = " << ::integer1
+      << "\nIinteger1 = " << Inner::a << endl;
+}
