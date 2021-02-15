@@ -1,0 +1,18 @@
+#include <iostream>
+#include <iomanip>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::setw;
+
+int main() {
+  int count = 10;
+
+  for(long n = 1, sum = 0, factorial = 1;sum += n, factorial *= n, n <= count ;
+ n++)
+    cout << setw(4) << n   << "    "
+         << setw(7) << sum << " "
+         << setw(15) << factorial
+         << endl;
+  return 0;
+}
