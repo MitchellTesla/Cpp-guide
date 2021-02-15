@@ -1,0 +1,22 @@
+#include <iostream>
+
+ void f(int, int&, int&);
+ 
+ int main()
+ {
+     int number = 2, squared, cubed;
+
+     f(number, squared, cubed);
+ 
+     std::cout << "number: " << number << "\n";
+     std::cout << "square: " << squared << "\n";
+     std::cout << "cubed: "  << cubed   << "\n";
+
+     return 0;
+ }
+ 
+ void f(int n, int &rSquared, int &rCubed)
+ {
+      rSquared = n*n;
+      rCubed = n*n*n;
+ }
