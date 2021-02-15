@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string* ptrToElement(vector<string>* const pVec, int i);
+
+int main()
+{
+    vector<string> i;
+    i.push_back("A");
+    i.push_back("B");
+    i.push_back("C");
+
+    cout << *(ptrToElement(&i, 0)) << "\n\n";
+
+    string* pStr = ptrToElement(&i, 1);
+    cout << *pStr << "\n\n";
+
+    string str = *(ptrToElement(&i, 2));
+    cout << str << "\n\n";
+
+    *pStr = "test";
+    cout << i[1] << endl;
+    return 0;
+}
+
+string* ptrToElement(vector<string>* const pVec, int i)
+{
+    return &((*pVec)[i]);
+}
