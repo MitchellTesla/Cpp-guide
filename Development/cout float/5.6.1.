@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::fixed;
+using std::scientific;
+
+int main()
+{
+   double x = 0.001234567;
+   double y = 1.946e9;
+
+   cout << "Displayed in default format:" << endl << x << '\t' << y << endl;
+
+   cout << "\nDisplayed in scientific format:" << endl << scientific << x << '\t' << y << endl;
+
+   cout << "\nDisplayed in fixed format:" << endl << fixed << x << '\t' << y << endl;
+   return 0;
+}
