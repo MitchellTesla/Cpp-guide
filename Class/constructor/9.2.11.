@@ -1,0 +1,32 @@
+#include <iostream>
+#include <new>
+using namespace std;
+
+class powers {
+  int x;
+public:
+  powers() {
+     x = 0;
+     cout << "\nno initializer\n\n";
+  }
+  powers(int n) {
+
+     x = n;
+     cout << "\n\ninitializer:" << x;
+  }
+
+  int getx() { return x; }
+  void setx(int i) { x = i; }
+};
+int main()
+{
+  powers *p;
+
+  // dynamically allocate an array
+  try { 
+    p = new powers[5]; // no initialization
+  } catch (bad_alloc xa) {
+      cout << "Allocation Failure\n";
+      return 1;
+  }
+}
