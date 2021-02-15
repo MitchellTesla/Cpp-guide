@@ -1,0 +1,16 @@
+#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+ 
+  for(int i=2; i <= 100; i++) { 
+    cout << "Factors of " << i << ": "; 
+ 
+    for(int j = 2; j < i; j++) 
+      if((ij) == 0) cout << j << " "; 
+ 
+    cout << "\n"; 
+  } 
+ 
+  return 0; 
+}
