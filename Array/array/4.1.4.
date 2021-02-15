@@ -1,0 +1,36 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <iomanip>
+using std::setw;
+
+void modifyArray( int [], int ); // appears strange
+void modifyElement( int );
+
+int main()
+{
+   const int arraySize = 5; // size of array a
+   int a[ arraySize ] = { 0, 1, 2, 3, 4 }; // initialize array a
+
+   modifyArray( a, arraySize );  
+
+   for ( int i = 0; i < arraySize; i++ )
+      cout << setw( 3 ) << a[ i ];
+
+   modifyElement( a[ 3 ] );
+   cout << a[ 3 ] << endl;
+
+   return 0;
+}
+
+void modifyArray( int b[], int sizeOfArray )
+{
+   for ( int i = 0; i < sizeOfArray; i++ )
+      b[ i ] = 200;
+}
+
+void modifyElement( int e )
+{
+   e = 200 ;
+}
