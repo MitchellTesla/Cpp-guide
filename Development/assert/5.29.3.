@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cassert>
+#include <deque>
+#include <algorithm>  // For find
+using namespace std;
+
+
+int main()
+{
+  char x[5] = {'a', 'r', 'e', 'q', 't'};
+
+  deque<char> deque1(&x[0], &x[5]);
+
+  // Search for the first occurrence of the letter e:
+  deque<char>::iterator where = find(deque1.begin(), deque1.end(), 'e');
+
+  assert (*where == 'e' );
+  cout << "Ok." << endl;
+  return 0;
+}
