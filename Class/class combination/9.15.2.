@@ -1,0 +1,33 @@
+#include <iostream>  
+using namespace std;  
+  
+class IntPair {  
+public:  
+  int a;  
+  int b;  
+  
+  IntPair(int i, int j) : a(i), b(j) { }  
+};  
+  
+class MyClass {  
+  IntPair nums;
+public:  
+   
+  MyClass(int x, int y) : nums(x,y) { }  
+  
+  int getNumA() { return nums.a; }  
+  int getNumB() { return nums.b; }  
+};  
+  
+int main()  
+{  
+  MyClass ob1(7, 9), ob2(5, 2);  
+  
+  cout << "Values in ob1 are " << ob1.getNumB() << 
+          " and " << ob1.getNumA() << endl;  
+  
+  cout << "Values in ob2 are " << ob2.getNumB() << 
+          " and " << ob2.getNumA() << endl; 
+   
+  return 0;  
+}
