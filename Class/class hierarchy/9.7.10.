@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class BaseClass
+{
+
+public:
+       void f();
+};
+
+void BaseClass::f()
+{
+  cout << "Hey this is the base class!\n";
+
+}
+
+class DerivedClass:public BaseClass
+{
+public:
+               void f();
+};
+
+void DerivedClass::f()
+{
+
+  cout << "Hey this is in the child class!!\n";
+}
+
+int main()
+{
+
+  DerivedClass myclass;
+
+  myclass.f();
+
+
+  return 0;
+}
