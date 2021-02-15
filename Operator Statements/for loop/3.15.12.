@@ -1,0 +1,18 @@
+#include <iostream>
+ 
+ int main()
+ {
+     int counter=0;      
+     int max = 3;
+     for (;;)   
+     {
+         if (counter < max) 
+         {
+             std::cout << "Hello!\n";
+             counter++;          // increment
+         }
+         else
+             break;
+     }
+     return 0;
+ }
