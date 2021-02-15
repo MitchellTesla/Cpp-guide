@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+   
+class base {
+  int i; // private to base
+public:
+  int j, k;
+  void seti(int x) { i = x; }
+  int geti() { return i; }
+};
+   
+// Inherit base as private.
+class derived: private base {
+public:
+
+  base::j; // make j public again - but not k
+  base::seti; // make seti() public
+  base::geti; // make geti() public
+   
+  int a; // public
+};
+   
+int main()
+{
+  derived ob;
+   
+  ob.j = 20; // legal because j is made public in derived
+   
+  ob.a = 40; // legal because a is public in derived
+  ob.seti(10);
+   
+  cout << ob.geti() << " " << ob.j << " " << ob.a;
+   
+  return 0;
+}
