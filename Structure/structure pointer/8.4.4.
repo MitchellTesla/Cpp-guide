@@ -1,0 +1,20 @@
+#include <ios>
+#include <iostream>
+#include <ostream>
+
+struct MyStruct {
+  int x;
+  int y;
+};
+
+int main()
+{
+  MyStruct demo[10];
+  std::cout << std::boolalpha;
+
+  std::cout << (&demo[0]   < &demo[2])   << '\n';
+  std::cout << (&demo[0]   == demo)      << '\n';
+  std::cout << (&demo[10]  > &demo[9])   << '\n';
+  std::cout << (&demo[0].x < &demo[0].y) << '\n';
+
+}
