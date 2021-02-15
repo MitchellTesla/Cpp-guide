@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+  cout << "are quite \'useful \' \a \\ in your code \\ \a \n";
+
+  return 0;
+}
