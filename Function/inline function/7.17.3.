@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+inline long squareit(int iValue) {return iValue * iValue;}
+                               
+int main()
+{
+ int iValue = 5;
+
+ cout << squareit(iValue) << endl;
+
+ return (0);
+}
