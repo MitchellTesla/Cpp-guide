@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+class ConstCastTest {
+public:
+   void setNumber( int );
+   int getNumber() const;
+   void printNumber() const;
+private:
+   int number;
+};
+
+void ConstCastTest::setNumber( int num ) { number = num; }
+
+int ConstCastTest::getNumber() const { return number; }
+
+void ConstCastTest::printNumber() const
+{
+   const_cast< ConstCastTest * >( this )->number--;
+   cout << number << endl;
+}
+
+int main()
+{
+   ConstCastTest x;
+   x.setNumber( 8 );
+   
+   cout << "Initial value of number: " << x.getNumber();
+
+   x.printNumber();
+   return 0;
+}
