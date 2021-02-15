@@ -1,0 +1,20 @@
+#include <iostream.h>
+
+struct Time
+{
+               int hh,mm,ss;
+};
+int main()
+{
+   Time t1,t2,*p;
+   t1.hh=10;
+   t1.mm=30;
+   t1.ss=0;  //10:30:0
+   t2=t1;
+   t2.hh++;                             //11:30:0
+   p = &t2;
+
+   cout << "The t2 time is " << p->hh  << ":" << t2.mm << ":"<< t1.ss << endl;
+
+   return 0;
+}
