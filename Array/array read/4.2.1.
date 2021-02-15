@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cctype>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+  int height[10]; 
+  int count = 0;  
+  char reply = 0; 
+
+  do {
+    cout << endl
+         << "Enter a height as an integral number of inches: ";
+    cin >> height[count++];
+
+    // Check if another input is required
+    cout << "Do you want to enter another (y or n)? ";
+    cin >> reply;
+  } while(count < 10 && std::tolower(reply) == 'y'); 
+
+  return 0;
+}
