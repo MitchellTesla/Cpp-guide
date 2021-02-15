@@ -1,0 +1,41 @@
+#include <iostream>  
+using namespace std;
+class Base {  
+public:  
+  virtual void who(void) {
+    cout << "Base\n";  
+  }  
+};  
+     
+class first_d : public Base {  
+public:  
+  void who(void) { // define who() relative to first_d  
+    cout << "First derivation\n";  
+  }  
+};  
+     
+class second_d : public Base {  
+public:  
+  void who(void) { // define who() relative to second_d  
+    cout << "Second derivation\n";  
+  }  
+};  
+     
+int main(void)  
+{  
+  Base base_obj;  
+  Base *p;  
+  first_d first_obj;  
+  second_d second_obj;  
+     
+  p = &base_obj;  
+  p->who();  // access Base's who  
+     
+  p = &first_obj;  
+  p->who(); // access first_d's who  
+     
+  p = &second_obj;  
+  p->who();  // access second_d's who  
+     
+  return 0;  
+}
