@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string& refToElement(vector<string>& inventory, int i);
+
+int main()
+{
+    vector<string> inventory;
+    inventory.push_back("sword");
+    inventory.push_back("armor");
+    inventory.push_back("shield");
+
+    cout << refToElement(inventory, 0) << endl;
+
+    //assigns one reference to another -- inexpensive assignment
+    string& rStr = refToElement(inventory, 1);
+    cout << rStr << endl;
+
+    //copies a string object -- expensive assignment
+    string str = refToElement(inventory, 2);
+    cout << str << endl;
+
+    //altering the string object through a returned reference
+    rStr = "Healing Potion";
+    cout << inventory[1] << endl;
+
+    return 0;
+}
+
+//returns a reference to a string
+string& refToElement(vector<string>& vec, int i)
+{
+    return vec[i];
+}
