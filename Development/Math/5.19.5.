@@ -1,0 +1,30 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main()
+{
+   int base;  
+   int exponent; 
+   int i; 
+   int power; 
+
+   i = 1; 
+   power = 1;
+
+   cout << "Enter base as an integer: ";  
+   cin >> base;
+
+   cout << "Enter exponent as an integer: "; 
+   cin >> exponent;
+
+   while ( i <= exponent ) 
+   {
+      power *= base;
+      i++;
+   } 
+
+   cout << power << endl; 
+   return 0; 
+}
