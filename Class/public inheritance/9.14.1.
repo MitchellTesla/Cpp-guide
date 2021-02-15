@@ -1,0 +1,38 @@
+#include <iostream> 
+using namespace std; 
+ 
+class BaseClass { 
+  int i, j; 
+public: 
+  void set(int a, int b) { 
+     i = a; j = b; 
+  } 
+  void show() { 
+     cout << i << " " << j << "\n"; 
+  } 
+}; 
+ 
+class DerivedClass : public BaseClass { 
+  int k; 
+public: 
+  DerivedClass(int x) { 
+     k = x; 
+  } 
+  void showDerivedClass() { 
+     cout << k << "\n"; 
+  } 
+ 
+  // i = 10; // Error! i is private to BaseClass and access is not allowed. 
+}; 
+ 
+int main() 
+{ 
+  DerivedClass ob(3); 
+ 
+  ob.set(1, 2); // access member of base class 
+  ob.show();    // access member of base class 
+ 
+  ob.showDerivedClass();   // uses member of derived class 
+ 
+  return 0; 
+}
