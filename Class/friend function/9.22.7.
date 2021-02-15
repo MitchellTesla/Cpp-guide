@@ -1,0 +1,32 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass 
+{
+   friend void setX( MyClass &, int ); // friend declaration
+public:
+   MyClass() : x( 0 )
+   { 
+   }
+   void print() const       
+   { 
+      cout << x << endl; 
+   }
+private:
+   int x;
+};
+void setX( MyClass &c, int val )
+{
+   c.x = val;
+} 
+
+int main()
+{
+   MyClass counter;
+   counter.print();
+
+   setX( counter, 8 );
+   counter.print();
+   return 0;
+}
