@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+   unsigned x = 22, *unsignedPtr;
+   void *voidPtr = &x;
+   char *charPtr = "C++";
+
+   // cast unsigned back to char *
+   cout << "\nunsigned to char * results in: " << reinterpret_cast< char * >( x ) << endl;
+
+   return 0;
+}
