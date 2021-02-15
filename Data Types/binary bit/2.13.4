@@ -1,0 +1,22 @@
+#include <iostream>
+#include <iomanip>
+using std::cout;
+using std::endl;
+using std::setfill;
+using std::setw;
+
+int main() {
+  unsigned long red = 0XFF0000UL;      // Color red
+  unsigned long white = 0XFFFFFFUL;    // Color white - RGB all maximum
+
+  cout << std::hex;                    // Set hexadecimal output format
+  cout << setfill('0');                // Set fill character for output
+
+  unsigned long mask = red ^ white;
+
+  cout << "\n        mask = red  white = " << setw(8) << mask;
+  cout << "\n                mask  red = " << setw(8) << (mask ^ red);
+  cout << "\n              mask  white = " << setw(8) << (mask ^ white);
+
+  return 0;
+}
