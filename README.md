@@ -1,3 +1,3 @@
-# C++ Programming Language 2021 
+# C++ Programming Language 2021 release
 Comprehensive Guide to C++ Programming Language 
-rev0.2 ~ Justin Mitchell 
+revision 0.4.0 ~ Justin Mitchell 
