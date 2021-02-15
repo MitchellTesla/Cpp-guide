@@ -1,0 +1,21 @@
+#include <iostream>
+#include <ostream>
+#include <typeinfo>
+
+class base {
+public:
+  virtual ~base() {}
+};
+
+class derived : public base {};
+
+
+int main()
+{
+  base* b = new derived;
+  std::cout << typeid(*b).name() << '\n';      
+  std::cout << typeid(base).name() << '\n';    
+  derived* d = new derived;
+  std::cout << typeid(*d).name() << '\n';      
+  std::cout << typeid(derived).name() << '\n'; 
+}
