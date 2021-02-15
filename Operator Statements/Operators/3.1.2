@@ -1,0 +1,38 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass
+{
+public:
+   void myFunction()
+   {
+      cout << "In myFunction function\n";
+   }
+
+   int value;
+};
+
+void f( MyClass * );
+void f2( MyClass * );
+
+int main()
+{
+   MyClass myFunction;
+   myFunction.value = 8;
+   f( &myFunction );
+   f2( &myFunction );
+   return 0;
+}
+
+void f( MyClass *myFunctionPtr )
+{
+   void ( MyClass::*memPtr )() = &MyClass::myFunction;
+   ( myFunctionPtr->*memPtr )();
+}
+
+void f2( MyClass *myFunctionPtr2 )
+{
+   int MyClass::*vPtr = &MyClass::value;
+   cout << ( *myFunctionPtr2 ).*vPtr << endl;
+}
