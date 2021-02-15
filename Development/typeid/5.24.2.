@@ -1,0 +1,30 @@
+#include <iostream> 
+#include <typeinfo> 
+using namespace std; 
+ 
+class Base { 
+}; 
+ 
+class Derived1: public Base { 
+}; 
+ 
+class Derived2: public Base { 
+}; 
+ 
+int main() 
+{ 
+  Base *p, baseob; 
+  Derived1 ob1; 
+  Derived2 ob2; 
+ 
+  p = &baseob; 
+  cout << typeid(*p).name() << endl; 
+ 
+  p = &ob1; 
+  cout << typeid(*p).name() << endl; 
+ 
+  p = &ob2; 
+  cout << typeid(*p).name() << endl; 
+ 
+  return 0; 
+}
