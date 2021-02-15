@@ -1,0 +1,29 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+public: 
+  static int num; 
+  void display() { cout << num << endl; } 
+}; 
+ 
+int MyClass::num; // define num 
+ 
+int main() 
+{ 
+  MyClass a, b; 
+ 
+  // Set num through its class name. 
+  MyClass::num = 100; 
+ 
+  a.display();
+  b.display();
+ 
+  // Set num through an object. 
+  a.num = 200; 
+ 
+  a.display();
+  b.display();
+ 
+  return 0; 
+}
