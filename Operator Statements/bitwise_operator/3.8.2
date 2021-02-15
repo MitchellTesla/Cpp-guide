@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+#include <iso646.h>
+using namespace std;
+
+int main()
+{
+   int a = 8, b = 22;
+
+   cout << boolalpha 
+        <<   "   a and b: " << ( a and b )
+        << "\n    a or b: " << ( a or b )
+        << "\n     not a: " << ( not a )
+      << "\na not_eq b: " << ( a not_eq b )
+        << "\na bitand b: " << ( a bitand b )
+        << "\na bit_or b: " << ( a bitor b )
+        << "\n   a xor b: " << ( a xor b )
+        << "\n   compl a: " << ( compl a )
+        << "\na and_eq b: " << ( a and_eq b )
+        << "\n a or_eq b: " << ( a or_eq b )
+        << "\na xor_eq b: " << ( a xor_eq b ) << endl;
+    
+   return 0;
+}
