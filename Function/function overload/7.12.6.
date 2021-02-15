@@ -1,0 +1,97 @@
+#include<iostream.h>
+#include<iomanip.h>
+
+int findmax(int intArray[]);
+float findmax(float floatArray[]);
+double findmax(double doubleArray[]);
+int findmin(int intArray[]);
+float findmin(float floatArray[]);
+double findmin(double doubleArray[]);
+
+main()
+{
+  int intArray[10]={1,8,4,2,3,0,9,3,5,7};
+  float floatArray[10]={145.15,312.3,3163.2,119.13,710.1,315.4,511.2,513.7,319.4,519.2};
+  double doubleArray[10]={15.12354323,2.41237763,63.29123876,19.67123863,
+   78.34123541,35.44123009,51.21230392,53.40123967,39.80612304,59.11111232};
+  cout<<"largest value in the intArray is "<<(findmax(intArray))<<"\n";
+  cout<<"largest value in the floatArray is "<<(findmax(floatArray))<<"\n";
+  cout<<"largest value in the doubleArray is "<<(findmax(doubleArray))<<"\n";
+  cout<<"smallest value in the intArray is "<<(findmin(intArray))<<"\n";
+  cout<<"smallest value in the floatArray is "<<(findmin(floatArray))<<"\n";
+  cout<<"smallest value in the doubleArray is "<<(findmin(doubleArray))<<"\n";
+
+  return 0;
+}
+int findmax(int intArray[])
+{
+   int max=0;
+   for(int i=0;i<10;i++)
+   {
+     if(intArray[i]>max)
+        {
+          max=intArray[i];
+        }
+   }
+   return max;
+}
+float findmax(float floatArray[])
+{
+   float max=0;
+   for(int i=0;i<10;i++)
+   {
+     if(floatArray[i]>max)
+        {
+          max=floatArray[i];
+        }
+   }
+   return max;
+}
+double findmax(double doubleArray[])
+{
+   double max=0;
+   for(int i=0;i<10;i++)
+   {
+     if(doubleArray[i]>max)
+        {
+          max=doubleArray[i];
+        }
+   }
+   return max;
+}
+int findmin(int intArray[])
+{
+   int min=999;
+   for(int i=0;i<10;i++)
+   {
+     if(intArray[i]<min)
+        {
+          min=intArray[i];
+        }
+   }
+   return min;
+}
+float findmin(float floatArray[])
+{
+   float min=9999.9;
+   for(int i=0;i<10;i++)
+   {
+     if(floatArray[i]<min)
+        {
+          min=floatArray[i];
+        }
+   }
+   return min;
+}
+double findmin(double doubleArray[])
+{
+   double min=9999.9;
+   for(int i=0;i<10;i++)
+   {
+     if(doubleArray[i]<min)
+        {
+          min=doubleArray[i];
+        }
+   }
+   return min;
+}
