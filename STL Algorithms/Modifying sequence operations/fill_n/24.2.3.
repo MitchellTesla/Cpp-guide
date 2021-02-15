@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <deque>
+#include <list>
+#include <set>
+#include <map>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <functional>
+#include <numeric>
+
+/* PRINT_ELEMENTS()
+ * - prints optional C-string optcstr followed by
+ * - all elements of the collection coll
+ * - separated by spaces
+ */
+template <class T>
+inline void PRINT_ELEMENTS (const T& coll, const char* optcstr="")
+{
+    typename T::const_iterator pos;
+
+    std::cout << optcstr;
+    for (pos=coll.begin(); pos!=coll.end(); ++pos) {
+        std::cout << *pos << ' ';
+    }
+    std::cout << std::endl;
+}
+
+/* INSERT_ELEMENTS (collection, first, last)
+ * - fill values from first to last into the collection
+ * - NOTE: NO half-open range
+ */
+template <class T>
+inline void INSERT_ELEMENTS (T& coll, int first, int last)
+{
+    for (int i=first; i<=last; ++i) {
+        coll.insert(coll.end(),i);
+    }
+}
+
+
+using namespace std;
+
+int main()
+{
+    // print ten times 7.7
+    fill_n(ostream_iterator<float>(cout, " "), // beginning of destination
+           10,                                 // count
+           7.7);                               // new value
+    cout << endl;
+
+    list<string> coll;
+
+    // insert "hello" nine times
+    fill_n(back_inserter(coll),       // beginning of destination
+           9,                         // count
+           "hello");                  // new value
+    PRINT_ELEMENTS(coll,"coll: ");
+
+}
