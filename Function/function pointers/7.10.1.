@@ -1,0 +1,66 @@
+#include <iostream>
+ 
+ void Square (int&,int&);
+ void Cube (int&, int&);
+ void Swap (int&, int &);
+ void PrintVals(int, int);
+ 
+ int main()
+ {
+     void (* pFunc) (int &, int &);
+
+     int valOne=1, valTwo=2;
+
+     PrintVals(valOne, valTwo);
+     pFunc(valOne, valTwo);
+     PrintVals(valOne, valTwo);
+
+     pFunc = Square; 
+     PrintVals(valOne, valTwo);
+     pFunc(valOne, valTwo);
+     PrintVals(valOne, valTwo);
+
+     pFunc = Cube; 
+     PrintVals(valOne, valTwo);
+     pFunc(valOne, valTwo);
+     PrintVals(valOne, valTwo);
+
+     pFunc = Swap; 
+     PrintVals(valOne, valTwo);
+     pFunc(valOne, valTwo);
+     PrintVals(valOne, valTwo);
+     
+     return 0;
+ }
+ 
+ void PrintVals(int x, int y)
+ {
+     std::cout << "x: " << x << " y: " << y << std::endl;
+ }
+ 
+ void Square (int & rX, int & rY)
+ {
+     rX *= rX;
+     rY *= rY;
+ }
+ 
+ void Cube (int & rX, int & rY)
+ {
+     int tmp;
+ 
+     tmp = rX;
+     rX *= rX;
+     rX = rX * tmp;
+ 
+     tmp = rY;
+     rY *= rY;
+     rY = rY * tmp;
+ }
+ 
+ void Swap(int & rX, int & rY)
+ {
+     int temp;
+     temp = rX;
+     rX = rY;
+     rY = temp;
+ }
