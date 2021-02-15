@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class ClassA {
+
+public:
+    void functionA();
+};
+
+void ClassA::functionA()
+{
+  cout << "This is a function in ClassA \n";
+
+}
+
+class ClassB {
+
+public:
+    void functionB();
+};
+
+void ClassB::functionB() {
+  ClassA myclass;
+  myclass.functionA();
+}
+
+int main() {
+  ClassB myclass;
+  ClassA anotherclass;
+
+  myclass.functionB();
+  anotherclass.functionA();
+
+  return 0;
+}
