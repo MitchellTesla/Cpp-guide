@@ -1,0 +1,21 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+void copy( char *, const char * );
+
+int main()
+{
+   char string1[ 10 ];
+   char string2[] = "Good Bye";
+
+   copy( string1, string2 );
+   cout << "string1 = " << string2 << endl;
+   return 0;
+}
+
+void copy( char *s1, const char *s2 )
+{
+   for ( ; ( *s1 = *s2 ) != '\0'; s1++, s2++ )
+      ;
+}
