@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string s("Hello there");
+  vector<char> vector1(s.begin(), s.end());
+
+
+  fill_n(vector1.begin() + 5, 3, 'Y');
+
+  vector<char>::iterator pos;
+
+  for (pos=vector1.begin(); pos!=vector1.end(); ++pos) {
+        cout << *pos << ' ';
+  }
+
+
+  return 0;
+}
