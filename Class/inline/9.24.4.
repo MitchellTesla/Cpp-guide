@@ -1,0 +1,20 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int i; // private by default 
+public: 
+   
+  int getInt() { return i; } 
+  void setInt(int j) { i = j; } 
+} ; 
+ 
+int main() 
+{ 
+  MyClass s; 
+ 
+  s.setInt(10); 
+  cout << s.getInt(); 
+ 
+  return 0; 
+}
