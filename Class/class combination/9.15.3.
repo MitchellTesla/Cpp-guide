@@ -1,0 +1,81 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cstring> 
+using std::strlen;
+using std::strncpy;
+
+
+
+class Date 
+{
+public:
+   Date( int = 1, int = 1, int = 1900 );
+   void print() const; 
+   ~Date(); 
+private:
+   int month; 
+   int day; 
+   int year;
+};
+
+Date::Date( int mn, int dy, int yr )
+{
+   month = mn;
+   year = yr;
+   day = dy );
+}
+void Date::print() const
+{
+   cout << month << '/' << day << '/' << year; 
+}
+Date::~Date()
+{ 
+   cout << "Date object destructor for date ";
+   cout << endl;
+}
+
+class Employee
+{
+public:
+   Employee( const char * const, const char * const, 
+      const Date &, const Date & );
+   void print() const;
+   ~Employee();
+private:
+   char firstName[ 25 ];
+   char lastName[ 25 ];
+   const Date birthDate; 
+   const Date hireDate; 
+};
+Employee::Employee( const char * const first, const char * const last,const Date &dateOfBirth, const Date &dateOfHire )
+   : birthDate( dateOfBirth ), hireDate( dateOfHire ) 
+{
+   strcpy( firstName, first);
+   strcpy( lastName, last);
+}
+void Employee::print() const
+{
+   cout << lastName << ", " << firstName << "  Hired: ";
+   hireDate.print();
+   cout << "  Birthday: ";
+   birthDate.print();
+   cout << endl;
+}
+Employee::~Employee()
+{ 
+   cout << "Employee destructor: " << lastName << ", " << firstName << endl;
+}
+
+int main()
+{
+   Date birth( 7, 24, 1949 );
+   Date hire( 3, 12, 1989 );
+   Employee manager( "A", "B", birth, hire );
+
+   cout << endl;
+   manager.print();
+
+   return 0;
+}
