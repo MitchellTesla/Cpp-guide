@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+namespace MyNamespace {
+  int i;
+}
+
+namespace MyNamespace {
+  int j;
+}
+
+int main()
+{
+  MyNamespace::i = MyNamespace::j = 10;
+
+  // refer to MyNamespace specifically
+  cout << MyNamespace::i * MyNamespace::j << "\n";
+
+  // use MyNamespace namespace
+  using namespace MyNamespace;
+
+  cout << i * j;
+
+  return 0;
+}
