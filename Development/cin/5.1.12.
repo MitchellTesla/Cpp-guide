@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main()
+{
+   int widthValue = 4;
+   char sentence[ 10 ];
+
+   cout << "Enter a sentence:" << endl;
+   cin.width( 5 );
+
+   cin >> sentence;
+   cout << sentence << endl;
+
+   return 0;
+}
