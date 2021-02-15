@@ -1,0 +1,25 @@
+#include <iostream>
+ using std::cout; // this file uses std::cout
+ 
+ int main()
+ {
+     int intValue;         // a variable
+     int * intPointer = 0;    // a pointer
+ 
+     intValue = 5;
+     intPointer = &intValue;     // assign address of intValue to intPointer
+     cout << "intValue: " << intValue << "\n";
+     cout << "*intPointer: " << *intPointer << "\n\n";
+ 
+     cout << "*intPointer = 7\n";
+     *intPointer = 7;         // sets intValue to 7
+     cout << "*intPointer: " << *intPointer << "\n";
+     cout << "intValue: " << intValue << "\n\n";
+ 
+     cout << "intValue = 9\n";
+     intValue = 9;
+     cout << "intValue: " << intValue << "\n";
+     cout << "*intPointer: " << *intPointer << "\n";
+ 
+     return 0;
+ }
