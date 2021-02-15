@@ -1,0 +1,27 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::isalnum;
+using std::isalpha;
+using std::isdigit;
+using std::isxdigit;
+
+int main()
+{
+   cout << "\nAccording to isxdigit:\n"
+      << ( isxdigit( 'F' ) ? "F is a" : "F is not a" )
+      << " hexadecimal digit\n"
+      << ( isxdigit( 'J' ) ? "J is a" : "J is not a" )
+      << " hexadecimal digit\n"
+      << ( isxdigit( '7' ) ? "7 is a" : "7 is not a" )
+      << " hexadecimal digit\n"
+      << ( isxdigit( '$' ) ? "$ is a" : "$ is not a" )
+      << " hexadecimal digit\n"
+      << ( isxdigit( 'f' ) ? "f is a" : "f is not a" )
+      << " hexadecimal digit" << endl;
+
+
+   return 0;
+}
