@@ -1,0 +1,54 @@
+#include <iostream>
+ 
+ class Animal
+ {
+ public:
+     Animal():itsAge(1) {  }
+     ~Animal() { }
+     virtual void Speak() const { std::cout << "Animal speak!\n"; }
+ protected:
+     int itsAge;
+ };
+ 
+ class Dog : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Woof!\n"; }
+ };
+ 
+ 
+ class Cat : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Meow!\n"; }
+ };
+ 
+ 
+ class Horse : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Winnie!\n"; }
+ };
+ 
+ class Pig : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Oink!\n"; }
+ };
+ 
+ int main()
+ {
+     Animal* theArray[5];
+     Animal* ptr;
+     int i;
+
+     theArray[0] = new Dog;
+     theArray[1] = new Cat;
+     theArray[2] = new Horse;
+     theArray[3] = new Pig;
+     theArray[4] = new Animal;
+     
+     for (i=0;i<5;i++)
+         theArray[i]->Speak();
+     return 0;
+ }
