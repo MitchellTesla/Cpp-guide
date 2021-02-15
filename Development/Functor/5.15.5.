@@ -1,0 +1,49 @@
+//Revised from
+//STL Tutorial and Reference Guide C++ Programming with the Standard Template L
+ibrary, 2nd Edition
+//by David R. Musser (Author), Atul Saini (Author)
+//# Publisher: Addison-Wesley Pub (Sd) (March 1996)
+//# Language: English
+//# ISBN-10: 0201633981
+//# ISBN-13: 978-0201633986
+
+
+#include <iostream>
+#include <iomanip>
+#include <cassert>
+#include <vector>
+#include <algorithm>
+#include <functional>
+using namespace std;
+
+template <typename T>
+class less_with_count : public binary_function<T, T, bool> {
+public:
+  less_with_count() { }
+  bool operator()(const T& x, const T& y) {
+        ++counter;
+        return x < y;
+  }
+  long report() const {return counter;}
+  static long counter;
+};
+
+template <typename T>
+long less_with_count<T>::counter = 0;
+
+int main() 
+{
+  const long N1 = 1000, N2 = 128000;
+  for (long N = N1; N <= N2; N *= 2) { 
+    vector<int> vector1;
+    for (int k = 0; k < N; ++k) 
+      vector1.push_back(k);
+      
+    random_shuffle(vector1.begin(), vector1.end());
+    less_with_count<int> comp_counter;
+    less_with_count<int>::counter = 0;
+    sort(vector1.begin(), vector1.end(), comp_counter);
+    cout << comp_counter.report() << endl;
+  }
+  return 0;
+}
