@@ -1,0 +1,27 @@
+#include <iostream>
+ #define DEBUG
+ 
+ #ifndef DEBUG
+ #define PRINT(x)
+ #else
+ #define PRINT(x) std::cout << #x << ":\t" << x << std::endl;
+ #endif
+ 
+ int main()
+ {
+     int x = 5;
+     long y = 78l;
+     PRINT(x);
+     
+     for (int i = 0; i < x; i++)
+     {
+         PRINT(i);
+     }
+ 
+     PRINT (y);
+     PRINT("Hi.");
+     int *px = &x;
+     PRINT(px);
+     PRINT (*px);
+     return 0;
+ }
