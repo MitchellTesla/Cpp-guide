@@ -1,0 +1,55 @@
+#include <iostream> 
+#include <cstring> 
+using namespace std; 
+ 
+class Shape { 
+  // private 
+  double width; 
+  double height; 
+public: 
+  void display() { 
+    cout << "Width and height are " << width << " and " << height << "\n"; 
+  } 
+ 
+  // accessor functons 
+  double getWidth() { return width; } 
+  double getHeight() { return height; } 
+  void setWidth(double w) { width = w; } 
+  void setHeight(double h) { height = h; } 
+}; 
+ 
+// Triangle is derived from Shape. 
+class Triangle : public Shape { 
+  char style[20]; // now private 
+public: 
+  // Constructor for Triangle. 
+  Triangle(char *str, double w, double h) { 
+    setWidth(w); 
+    setHeight(h); 
+
+    strcpy(style, str); 
+  } 
+   
+  double area() { 
+    return getWidth() * getHeight() / 2; 
+  } 
+ 
+  void showStyle() { 
+    cout << "Triangle is " << style << "\n"; 
+  } 
+}; 
+ 
+int main() { 
+  Triangle t1("isosceles", 4.0, 4.0); 
+  Triangle t2("right", 8.0, 12.0); 
+ 
+  t1.showStyle(); 
+  t1.display(); 
+  cout << "Area is " << t1.area() << "\n"; 
+ 
+  t2.showStyle(); 
+  t2.display(); 
+  cout << "Area is " << t2.area() << "\n"; 
+ 
+  return 0; 
+}
