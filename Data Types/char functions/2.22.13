@@ -1,0 +1,12 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+int main()
+{
+   char *string1 = "this is a test";
+   int c = 't';
+
+   cout << "last occurrence of character '" << (char) c
+        << "' is: \"" << strrchr( string1, c ) << '\"' << endl;
+   return 0;
+}
