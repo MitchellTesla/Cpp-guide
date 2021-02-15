@@ -1,0 +1,22 @@
+#include <iostream> 
+using namespace std; 
+ 
+void f(); 
+ 
+int main() 
+{ 
+   
+  for(int i=0; i < 3; i++) f(); 
+   
+  return 0; 
+} 
+ 
+// num is initialized each time f() is called. 
+void f() 
+{ 
+  int num = 99; 
+ 
+  cout << num << "\n"; 
+ 
+  num++; // this has no lasting effect 
+}
