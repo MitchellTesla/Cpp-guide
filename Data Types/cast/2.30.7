@@ -1,0 +1,27 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main() {
+  const long a = 3;
+  const long b = 12;
+
+  double c = 234.0;
+  long d = 0;        
+  long f = 0;         
+  long g = 0;        
+
+
+  d = static_cast<long>(c);
+  f = static_cast<long>((c - d) * a);
+  g = static_cast<long>(c * a * b)  b;
+
+  cout << c << " \n "
+       << d << " \n "
+       << f << " \n "
+       << g << " \n ";
+
+  cout << endl;
+  return 0;
+}
