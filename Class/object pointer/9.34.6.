@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+   
+class MyClass {
+public:
+  MyClass(int i) { val=i; }
+  int val;
+  int double_val() { return val+val; }
+};
+   
+int main()
+{
+  int MyClass::*data; // data member pointer
+  int (MyClass::*func)(); // function member pointer
+  MyClass ob1(1), ob2(2); // create objects
+  MyClass *p1, *p2;
+   
+  p1 = &ob1; // access objects through a pointer
+  p2 = &ob2;
+   
+  data = &MyClass::val; // get offset of val
+  func = &MyClass::double_val; // get offset of double_val()
+   
+  cout << "Here are values: ";
+  cout << p1->*data << " " << p2->*data << "\n";
+   
+  cout << "Here they are doubled: ";
+  cout << (p1->*func)() << " ";
+  cout << (p2->*func)() << "\n";
+   
+  return 0;
+}
