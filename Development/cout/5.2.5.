@@ -1,0 +1,11 @@
+#include <iostream>
+int main()
+{
+    std::cout << "test.\n";
+    std::cout << "Here is 5: " << 5 << "\n";
+    std::cout << "Here is a very big number:\t" << 70000;
+    std::cout << (float) 5/8 << std::endl;
+    std::cout << (double) 7000 * 7000 << std::endl;
+    std::cout << "a liiiiiiiiiiiiiiiiiiiiiiine\n";
+    return 0;
+}
