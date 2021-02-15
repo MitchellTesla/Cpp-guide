@@ -1,0 +1,30 @@
+#include <iostream>
+ 
+ class BaseClass
+ {
+ public:
+     void Move() const { std::cout << "BaseClass move one step\n"; }
+     void Move(int distance) const { 
+        std::cout << "BaseClass move " << distance <<" steps.\n"; 
+     }
+ protected:
+     int itsAge;
+     int itsWeight;
+ };
+ 
+ class DerivedClass : public BaseClass {
+ public:
+     void Move() const { 
+        std::cout << "DerivedClass move 5 steps.\n"; 
+     }
+ };
+ 
+ int main()
+ {
+     BaseClass baseObject;
+     DerivedClass derivedObject;
+     baseObject.Move();
+     baseObject.Move(2);
+     derivedObject.Move();
+     return 0;
+ }
