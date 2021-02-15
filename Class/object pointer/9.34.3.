@@ -1,0 +1,28 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int x; 
+public: 
+  void setX(int val) { x = val; } 
+  void display(){ cout << x << "\n"; } 
+}; 
+  
+int main() 
+{ 
+  MyClass ob[2], *p; 
+ 
+  ob[0].setX(10);  // access objects directly 
+  ob[1].setX(20); 
+ 
+  p = &ob[0];      // obtain pointer to first element 
+  p->display();    // show value of ob[0] using pointer 
+ 
+  p++;             // advance to next object 
+  p->display();    // show value of ob[1] using pointer 
+ 
+  p--;             // retreat to previous object 
+  p->display();    // again show value of ob[0] 
+ 
+  return 0; 
+}
