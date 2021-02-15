@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout;
+
+#include <ctime>
+using std::time_t;
+using std::time;
+using std::localtime;
+using std::asctime;
+
+int main()
+{
+   time_t currentTime;
+   
+   time( &currentTime );
+   
+   cout << asctime( localtime( &currentTime ) );
+   return 0;
+}
