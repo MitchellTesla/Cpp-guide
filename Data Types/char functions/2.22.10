@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::iscntrl;
+using std::isgraph;
+using std::isprint;
+using std::ispunct;
+using std::isspace;
+
+int main()
+{
+   cout << "\nAccording to ispunct:\n"
+      << ( ispunct( ';' ) ? "; is a" : "; is not a" )
+      << " punctuation character\n"
+      << ( ispunct( 'Y' ) ? "Y is a" : "Y is not a" )
+      << " punctuation character\n"
+      << ( ispunct('#') ? "# is a" : "# is not a" )
+      << " punctuation character\n";
+   return 0;
+}
