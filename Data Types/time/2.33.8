@@ -1,0 +1,24 @@
+#include <iostream>
+#include <ctime>
+#include <clocale>
+
+using namespace std;
+
+int main() {
+  char str[64];
+
+  // Set the locale to Germany.
+  setlocale(LC_ALL, "German_Germany");
+  // Get the current system time.
+  time_t t = time(NULL);
+
+  // Show standard time and date string.
+  strftime(str, 64, "%c", localtime(&t));
+  cout << "Standard format: " << str << endl;
+
+  // Show a custom time and date string.
+  strftime(str, 64, "%A, %B %Y %I:%M %p", localtime(&t));
+  cout << "Custom format: " << str << endl;
+
+  return 0;
+}
