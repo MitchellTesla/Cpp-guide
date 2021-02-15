@@ -1,0 +1,66 @@
+#include <iostream>
+ 
+ class Animal
+ {
+ public:
+     Animal():itsAge(1) {  }
+     ~Animal() { }
+     virtual void Speak() const { std::cout << "Animal speak!\n"; }
+ protected:
+     int itsAge;
+ };
+ 
+ class Dog : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Woof!\n"; }
+ };
+ 
+ class Cat : public Animal
+ {
+ public:
+     void Speak()const { std::cout << "Meow!\n"; }
+ };
+ 
+ void ValueFunction (Animal);
+ void PtrFunction   (Animal*);
+ void RefFunction   (Animal&);
+ 
+ int main()
+ {
+     Animal* ptr=0;
+     int choice;
+     ptr = new Dog;
+
+     PtrFunction(ptr);
+     RefFunction(*ptr);
+     ValueFunction(*ptr);
+
+     ptr = new Cat;
+     PtrFunction(ptr);
+     RefFunction(*ptr);
+     ValueFunction(*ptr);
+
+
+     ptr = new Animal;
+     PtrFunction(ptr);
+     RefFunction(*ptr);
+     ValueFunction(*ptr);
+
+     return 0;
+ }
+ 
+ void ValueFunction (Animal AnimalValue)
+ {
+     AnimalValue.Speak();
+ }
+ 
+ void PtrFunction (Animal * pAnimal)
+ {
+     pAnimal->Speak();
+ }
+ 
+ void RefFunction (Animal & rAnimal)
+ {
+     rAnimal.Speak();
+ }
