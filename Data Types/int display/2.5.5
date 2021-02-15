@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+
+using std::cout;
+using std::endl;
+using std::ios;
+using std::setw;
+using std::hex;
+using std::dec;
+using std::setfill;
+
+int main()
+{
+   int x = 10000;
+
+   cout.setf( ios::right, ios::adjustfield );
+   cout.fill( '*' );
+   cout << setw( 10 ) << dec << x << '\n';
+   cout.setf( ios::left, ios::adjustfield );
+   cout << setw( 10 ) << setfill( '%' ) << x << '\n';
+   cout.setf( ios::internal, ios::adjustfield );
+   cout << setw( 10 ) << setfill( '^' ) << hex << x << endl;
+   return 0;
+}
