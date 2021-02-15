@@ -1,0 +1,55 @@
+#include<iostream.h>
+#include<iomanip.h>
+class Rectangle
+{
+private:
+  float length;
+  float height;
+public:
+  Rectangle(){}
+  Rectangle(float loge,float shge)
+  {
+    length=loge;
+       height=shge;
+  }
+  void getlength()
+  {
+    cout<<"Input large edge:";
+    cin>>length;
+    cout<<"Input small edge:";
+    cin>>height;
+  }
+  void showsquare()
+  {  
+    cout<<setprecision(3) <<length*height<<endl;
+  }
+  void addsquare(Rectangle r1,Rectangle r2);
+  void addedge(Rectangle r1,Rectangle r2);
+};
+void Rectangle::addsquare(Rectangle r1,Rectangle r2)
+{
+  length=r1.length+r2.length;
+  height=r1.height+r2.height;
+  cout<<"\n Total of Rectangle square:"
+      <<r1.length*r1.height+r2.length*r2.height;
+}
+void Rectangle::addedge(Rectangle r1,Rectangle r2)
+{
+  length=r1.length+r2.length;
+  height=r1.height+r2.height;
+  cout<<"\n Toatal of Rectangle length:"
+      <<setprecision(3)<<(length+height)*2;
+}
+main()
+{
+  Rectangle room1(15.5,6.5);
+  Rectangle room2,room3;
+  room2.getlength();
+  cout<<"Square of room1 Rectangle is:";
+  room1.showsquare();
+  cout<<"square of room2 Rectangle is:";
+  room2.showsquare();
+  room3.addsquare(room1,room2);
+  room3.addedge(room1,room2);
+  return 0;
+}
