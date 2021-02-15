@@ -1,0 +1,32 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+struct math_operations {
+ double data_value;
+  
+ void set_value(double ang) {
+     data_value=ang;
+ }
+ double get_square(void) {
+     double answer;
+     answer=data_value*data_value;                          
+     return (answer);
+ }
+ double get_square_root(void) {
+     double answer;
+     answer=sqrt(data_value);
+     return (answer);
+ }
+} math;
+
+int main( )
+{
+ math.set_value(35.63);
+
+ cout << "The square of the number is: "
+      << math.get_square( ) << endl;
+ cout << "The square root of the number is: "
+      << math.get_square_root( ) << endl;
+ return (0);
+}
