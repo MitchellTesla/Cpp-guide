@@ -1,0 +1,35 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class Box {
+  public:
+    double length;
+    double width;
+    double height;
+
+    // Constructor
+    Box(double lengthValue, double widthValue, double heightValue) {
+      cout << "Box constructor called" << endl;
+      length = lengthValue;
+      width = widthValue;
+      height = heightValue;
+    }
+
+    double volume() {
+      return length * width * height;
+    }
+};
+
+int main() {
+  Box firstBox(80.0, 50.0, 40.0);
+
+  cout << "Size of first Box object is "
+       << firstBox.length  << " by "
+       << firstBox.width << " by "
+       << firstBox.height << "\n "
+       << "Volume of first Box object is " << firstBox.volume()
+       << endl;
+
+  return 0;
+}
