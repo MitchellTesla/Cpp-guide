@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+// function prototypes.
+float divide_number(float , float);
+
+int main()
+{
+      float dividend,divisor,answer;
+      try
+         {
+         dividend = 0;
+
+         divisor = 0;
+
+         answer = divide_number(dividend,divisor);
+         }
+         catch(...)
+         {
+                 cout << "oops, there is an error!";
+         }
+
+      return 1;
+}
+float divide_number(float num1, float num2)
+{
+  try
+  {
+    float answer;
+    answer = num1/num2;
+    return answer;
+  }
+  catch(...)
+  {
+         throw;
+  }
+}
