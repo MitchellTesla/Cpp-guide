@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct MyStructure
+{
+   int n;
+   float f;
+   float f2;
+};
+
+int main()
+{ 
+ MyStructure myMyStructure;
+ MyStructure *ptrMyStructure;
+
+ //set the f of the structure
+ myMyStructure.f = 1000;
+
+ //intialize the pointer
+ ptrMyStructure = &myMyStructure;
+
+ //change the pointers f
+ ptrMyStructure->f = 2000;
+
+ //print out the structures f
+ cout << myMyStructure.f << "\n";
+
+ return 0;
+}
