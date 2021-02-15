@@ -1,0 +1,16 @@
+#include <iostream>
+
+int main()
+{
+    int  intValue;
+    int &intReference = intValue;
+
+    intValue = 5;
+    std::cout << "intValue: " << intValue << std::endl;
+    std::cout << "intReference: " << intReference << std::endl;
+
+    std::cout << "&intValue: "  << &intValue << std::endl;
+    std::cout << "&intReference: " << &intReference << std::endl;
+
+    return 0;
+}
