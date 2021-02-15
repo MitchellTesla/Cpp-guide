@@ -1,4 +1,4 @@
-# C++ Programming Language (Full)
-A comprehensive guide to C++ programming language 
+# C++ Programming Language 2021 
+a comprehensive guide to C++ programming language 
 
-rev0.2 ~ Justin Mitchell 2021
+rev0.2 ~ written by Justin Mitchell 
