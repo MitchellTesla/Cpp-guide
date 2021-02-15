@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main()
+{
+   const int SIZE = 80;
+   char buffer1[ SIZE ];
+   char buffer2[ SIZE ];
+
+   cout << "Enter a sentence:" << endl;
+   cin >> buffer1;
+
+   cout << buffer1 << endl << endl;
+ 
+   cout << "Enter a sentence:" << endl;
+   cin.get( buffer2, SIZE );
+
+   cout << buffer2 << endl;
+   return 0;
+}
