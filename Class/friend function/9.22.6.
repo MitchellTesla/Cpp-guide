@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+class MyClass
+{
+    friend void Peek(const MyClass& aMyClass);
+    friend ostream& operator<<(ostream& os, const MyClass& aMyClass);
+
+public:
+    MyClass(const string& name = "");
+
+private:
+    string m_Name;
+};
+
+MyClass::MyClass(const string& name):
+    m_Name(name)
+{}
+
+void Peek(const MyClass& aMyClass);
+ostream& operator<<(ostream& os, const MyClass& aMyClass);
+
+int main()
+{
+    MyClass myObject("A");
+
+    Peek(myObject);
+
+    cout << myObject;
+
+    return 0;
+}
+
+void Peek(const MyClass& aMyClass)
+{
+    cout << aMyClass.m_Name << endl;
+}
+
+ostream& operator<<(ostream& os, const MyClass& aMyClass)   
+{
+    os << "MyClass Object - ";
+    os << "m_Name: " << aMyClass.m_Name;
+    return os;
+}
