@@ -1,0 +1,77 @@
+Manipulator            Purpose
+
+boolalpha              Turns on boolalpha flag.
+
+endl                   Outputs a newline.
+
+ends                   Outputs a null.
+
+dec                    Turns on dec flag. Turns off the hex and oct flags.
+
+fixed                  Turns on fixed flag. Turns off the scientific flag.
+
+flush                  Flushes the stream.
+
+hex                    Turns on hex flag. Turns off the dec and oct flags.
+
+internal               Turns on internal flag. Turns off the left and right flags.
+
+left                   Turns on left flag. Turns off the right and internal flags.
+
+noboolalpha            Turns off boolalpha flag.
+
+noshowbase             Turns off showbase flag.
+
+noshowpoint            Turns off showpoint flag.
+
+noshowpos              Turns off showpos flag.
+
+nounitbuf              Turns off unitbuf flag.
+
+nouppercase            Turns off uppercase flag.
+
+oct                    Turns on oct flag. Turns off the dec and hex flags.
+
+right                  Turns on right flag. Turns off the left and internal flags.
+
+scientific             Turns on scientific flag. Turns off the fixed flag.
+
+showbase               Turns on showbase flag.
+
+showpoint              Turns on showpoint flag.
+
+showpos                Turns on showpos flag.
+
+unitbuf                Turns on unitbuf flag.
+
+uppercase              Turns on uppercase flag.
+   
+
+#include <iostream>
+using namespace std; 
+void showflags(void);
+
+int main(void)
+{
+   showflags();
+   cout.setf(ios::right | ios::showpoint | ios::fixed);
+   showflags();
+}
+
+void showflags(void){
+   long flag_set, i;
+   int j;
+   char flags[15][12] = {
+      "skipws", "left", "right", "internal", "dec",
+      "oct", "hex", "showbase", "showpoint", "uppercase",
+      "showpos", "scientific", "fixed", "unitbuf",
+   };
+
+   flag_set = cout.flags();
+   for (i=1, j=0; i<0x2000; i = i<<1, j++)
+      if (i & flag_set)
+         cout << flags[j] << " is on." << endl;
+      else
+         cout << flags[j] << " is off." << endl;
+   cout << endl;
+}
