@@ -1,0 +1,40 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+typedef double NewType;
+
+NewType f(double number);
+NewType f2(double number);
+NewType f3(double number);
+
+int main()
+{
+       int menu;
+       double num;
+       NewType response;
+
+    response = f(num);
+    cout << "The answer is " << response;
+    
+    response = f2(num);
+    cout << "The answer is " << response;
+    
+    response = f3(num);
+    cout << "The answer is " << response;
+       
+       return 0;
+}
+
+NewType f(double number)
+{
+   return sqrt(number);
+}
+NewType f2(double number)
+{
+   return pow(number,.3333);
+}
+NewType f3(double number)
+{
+   return pow (number,.25);
+}
