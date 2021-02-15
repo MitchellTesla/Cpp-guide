@@ -1,0 +1,51 @@
+#include <iostream>
+ 
+ class MyType
+ {
+ public:
+     MyType();
+     ~MyType(){}
+     int getValue()const { 
+        return myValue; 
+     }
+     void setValue(int x) {
+        myValue = x; 
+     }
+     const MyType& operator++ ();      // prefix
+     const MyType operator++ (int);    // postfix
+ 
+ private:
+     int myValue;
+ };
+ 
+ MyType::MyType(): myValue(0) {}
+ 
+ const MyType& MyType::operator++()
+ {
+     ++myValue;
+     return *this;
+ }
+ 
+ const MyType MyType::operator++(int)
+ {
+     MyType temp(*this);
+     ++myValue;
+     return temp;
+ }
+ 
+ int main()
+ {
+     MyType i;
+     std::cout << "The value of i is " << i.getValue() << std::endl;
+     i++;
+     std::cout << "The value of i is " << i.getValue() << std::endl;
+     ++i;
+     std::cout << "The value of i is " << i.getValue() << std::endl;
+     MyType a = ++i;
+     std::cout << "The value of a: " << a.getValue();
+     std::cout << " and i: " << i.getValue() << std::endl;
+     a = i++;
+     std::cout << "The value of a: " << a.getValue();
+     std::cout << " and i: " << i.getValue() << std::endl;
+     return 0;
+ }
