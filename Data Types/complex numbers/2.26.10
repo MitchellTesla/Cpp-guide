@@ -1,0 +1,12 @@
+#include <iostream>
+#include <complex>
+using namespace std;
+
+main(void)
+{
+  complex<double> num(10, 1);
+
+  cout << num;
+
+  return 0;
+}
