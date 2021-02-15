@@ -1,0 +1,21 @@
+#include <iostream>
+
+float Convert(float);
+int main()
+{
+   using namespace std;
+
+   float TempFer = 100.00;
+   float TempCel;
+
+   TempCel = Convert(TempFer);
+   cout << TempCel << endl;
+   return 0;
+}
+
+float Convert(float TempFer)
+{
+   float TempCel;
+   TempCel = ((TempFer - 32) * 5) / 9;
+   return TempCel;
+}
