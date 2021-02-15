@@ -1,0 +1,55 @@
+#include <iostream>
+ 
+ class MyClass
+ {
+ public:
+     MyClass();
+     MyClass(MyClass&);
+     ~MyClass();
+ 
+     int GetAge() const { return itsAge; }
+     void SetAge(int age) { itsAge = age; }
+ 
+ private:
+     int itsAge;
+ };
+ 
+ MyClass::MyClass()
+ {
+     std::cout << "Simple Cat Constructor...\n";
+     itsAge = 1;
+ }
+ 
+ MyClass::MyClass(MyClass&)
+ {
+     std::cout << "Simple Cat Copy Constructor...\n";
+ }
+ 
+ MyClass::~MyClass()
+ {
+     std::cout << "Simple Cat Destructor...\n";
+ }
+ 
+ const MyClass & f (const MyClass & obj);
+ 
+ int main()
+ {
+     MyClass myObject;
+     std::cout << "myObject is " << myObject.GetAge() << " years old\n";
+ 
+     int age = 5;
+     myObject.SetAge(age);
+     std::cout << "myObject is " << myObject.GetAge() << " years old\n";
+ 
+     std::cout << "Calling f...\n";
+     f(myObject);
+     std::cout << "myObject is " << myObject.GetAge() << " years old\n";
+     return 0;
+ }
+ 
+ const MyClass & f (const MyClass & obj)
+ {
+     std::cout << "Function Two. Returning...\n";
+     std::cout << "myObject is now " << obj.GetAge()<< " years old \n";
+     return obj;
+ }
