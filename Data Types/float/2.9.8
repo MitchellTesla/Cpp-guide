@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+float cube_number(float num);
+
+int main()
+{
+  float number;
+  float number3;
+  cout << "Please enter a number \n";
+  cin >> number;
+  
+  number3 = cube_number(number);
+  cout << number << " cubed is " << number3;
+
+  return 1; 
+}
+
+float cube_number(float num)
+{
+  float answer;
+
+  answer = num * num * num;
+  return answer;
+}
