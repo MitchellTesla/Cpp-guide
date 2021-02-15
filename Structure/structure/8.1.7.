@@ -1,0 +1,31 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+struct Box {
+  double length;
+  double width;
+  double height;
+};
+
+int main() {
+  Box firstBox = { 80.0, 50.0, 40.0 };
+
+  cout << firstBox.length
+       << firstBox.width
+       << firstBox.height
+       << endl;
+       
+  Box secondBox = firstBox;   
+
+  secondBox.length *= 1.1;
+  secondBox.width *= 1.1;
+  secondBox.height *= 1.1;
+
+  cout << secondBox.length 
+       << secondBox.width
+       << secondBox.height
+       << endl;
+  
+  return 0;
+}
