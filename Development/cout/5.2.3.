@@ -1,0 +1,81 @@
+/*
+Manipulator                   Purpose                             Input/Output
+
+boolalpha                     Turns on boolapha flag.             Input/Output
+
+dec                           Turns on dec flag.                  Input/Output
+
+endl                          Output a newline character and flush the stream.   Output
+
+ends                          Output a null.                      Output
+
+fixed                         Turns on fixed flag.                Output
+
+flush                         Flush a stream.                     Output
+
+hex                           Turns on hex flag.                  Input/Output
+
+internal                      Turns on internal flag.             Output
+
+left                          Turns on left flag.                 Output
+
+nobooalpha                    Turns off boolalpha flag.           Input/Output
+
+noshowbase                    Turns off showbase flag.            Output
+
+noshowpoint                   Turns off showpoint flag.           Output
+
+noshowpos                     Turns off showpos flag.             Output
+
+noskipws                      Turns off skipws flag.              Input
+
+nounitbuf                     Turns off unitbuf flag.             Output
+
+nouppercase                   Turns off uppercase flag.           Output
+
+oct                           Turns on oct flag.                  Input/Output
+
+resetiosflags (fmtflags f)    Turn off the flags specified in f.  Input/Output
+
+right                         Turns on right flag.                Output
+
+scientific                    Turns on scientific flag.           Output
+
+setbase(int base)             Set the number base to base.        Input/Output
+
+setfill(int ch)               Set the fill character to ch.       Output
+
+setiosflags(fmtflags f)       Turn on the flags specified in f.   Input/output
+
+setprecision (int p)          Set the number of digits of precision. Output
+
+setw(int w)                   Set the field width to w.           Output
+
+showbase                      Turns on showbase flag.             Output
+
+showpoint                     Turns on showpoint flag.            Output
+
+showpos                       Turns on showpos flag.              Output
+
+skipws                        Turns on skipws flag.               Input
+
+unitbuf                       Turns on unitbuf flag.              Output
+
+uppercase                     Turns on uppercase flag.            Output
+
+ws                            Skip leading white space.           Input
+*/
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+   
+int main()
+{
+  cout << hex << 100 << endl;
+   
+  cout << setfill('?') << setw(10) << 2343.0;
+   
+  return 0;
+}
