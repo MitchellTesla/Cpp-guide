@@ -1,0 +1,29 @@
+#include <ios>
+#include <iostream>
+#include <ostream>
+
+void f(int i)
+{
+  std::cout << "int: " << i << '\n';
+}
+
+namespace MyNamespace {
+  void f(double d)
+  {
+    std::cout << "double: " << std::showpoint << d << '\n';
+  }
+
+  void call_f()
+  {
+    // finds MyNamespace::f(double) first.
+    f(3);
+  }
+}
+
+int main()
+{
+  MyNamespace::call_f();
+  using MyNamespace::f;
+  using ::f;
+  f(4);
+}
