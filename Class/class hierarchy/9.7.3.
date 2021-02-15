@@ -1,0 +1,146 @@
+ #include <iostream>
+ 
+ enum COLOR { Red, Green, Blue, Yellow, White, Black, Brown } ;
+ 
+ class Animal        // common base to both horse and bird
+ {
+ public:
+     Animal(int);
+     virtual ~Animal() { 
+        std::cout << "Animal destructor...\n"; 
+     }
+     virtual int GetAge() const { 
+        return itsAge; 
+     }
+     virtual void SetAge(int age) { 
+        itsAge = age; 
+     }
+     virtual void Sleep() const = 0;
+     virtual void Eat() const = 0;
+     virtual void Reproduce() const = 0;
+     virtual void Move() const = 0;
+     virtual void Speak() const = 0;
+ private:
+     int itsAge;
+ };
+ 
+ Animal::Animal(int age):itsAge(age)
+ {
+     std::cout << "Animal constructor...\n";
+ }
+ 
+ class Mammal : public Animal
+ {
+ public:
+     Mammal(int age):Animal(age) { 
+        std::cout << "Mammal constructor...\n";
+     }
+     virtual ~Mammal() { 
+        std::cout << "Mammal destructor...\n";
+     }
+     virtual void Reproduce() const { 
+        std::cout << "Mammal reproduction depicted...\n"; 
+     }
+ };
+ 
+ class Fish : public Animal
+ {
+ public:
+     Fish(int age):Animal(age) { 
+        std::cout << "Fish constructor...\n";
+     }
+     virtual ~Fish() { 
+        std::cout << "Fish destructor...\n";  
+     }
+     virtual void Sleep() const { 
+        std::cout << "fish snoring...\n"; 
+     }
+     virtual void Eat() const { 
+        std::cout << "fish feeding...\n"; 
+     }
+     virtual void Reproduce() const { 
+        std::cout << "fish laying eggs...\n"; 
+     }
+     virtual void Move() const { 
+        std::cout << "fish swimming...\n";   
+     }
+     virtual void Speak() const { }
+ };
+ 
+ class Horse : public Mammal
+ {
+ public:
+     Horse(int age, COLOR color ): Mammal(age), itsColor(color) { 
+        std::cout << "Horse constructor...\n"; 
+     }
+     virtual ~Horse() { 
+        std::cout << "Horse destructor...\n"; 
+     }
+     virtual void Speak()const { 
+        std::cout << "Whinny!... \n"; 
+     }
+     virtual COLOR GetItsColor() const 
+         { return itsColor; }
+     virtual void Sleep() const 
+         { std::cout << "Horse snoring...\n"; }
+     virtual void Eat() const 
+         { std::cout << "Horse feeding...\n"; }
+     virtual void Move() const 
+         { std::cout << "Horse running...\n";}
+ 
+ protected:
+     COLOR itsColor;
+ };
+ 
+ class Dog : public Mammal
+ {
+ public:
+     Dog(int age, COLOR color ):
+         Mammal(age), itsColor(color) 
+         { std::cout << "Dog constructor...\n"; }
+     virtual ~Dog() 
+         { std::cout << "Dog destructor...\n"; }
+     virtual void Speak()const 
+         { std::cout << "Whoof!... \n"; }
+     virtual void Sleep() const 
+         { std::cout << "Dog snoring...\n"; }
+     virtual void Eat() const 
+         { std::cout << "Dog eating...\n"; }
+     virtual void Move() const  
+         { std::cout << "Dog running...\n"; }
+     virtual void Reproduce() const 
+         { std::cout << "Dogs reproducing...\n"; }
+ 
+ protected:
+     COLOR itsColor;
+ };
+ 
+ int main()
+ {
+     Animal *pAnimal=0;
+     pAnimal = new Dog(5,Brown);
+     pAnimal->Speak();
+     pAnimal->Eat();
+     pAnimal->Reproduce();
+     pAnimal->Move();
+     pAnimal->Sleep();
+     delete pAnimal;
+
+     pAnimal = new Horse(4,Black);
+     pAnimal->Speak();
+     pAnimal->Eat();
+     pAnimal->Reproduce();
+     pAnimal->Move();
+     pAnimal->Sleep();
+     delete pAnimal;
+
+     pAnimal = new Fish (5);
+     pAnimal->Speak();
+     pAnimal->Eat();
+     pAnimal->Reproduce();
+     pAnimal->Move();
+     pAnimal->Sleep();
+     delete pAnimal;
+
+     return 0;
+ }
