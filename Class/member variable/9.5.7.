@@ -1,0 +1,43 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass 
+{
+public:
+   MyClass( int c = 0, int i = 1 );
+
+   void add() 
+   { 
+      count += increment; 
+   }
+
+   void print() const; 
+private:
+   int count;
+   const int increment; 
+};
+
+MyClass::MyClass( int c, int i ): count( c ),increment( i )
+{ 
+}
+
+void MyClass::print() const
+{
+   cout << "count = " << count << ", increment = " << increment << endl;
+}
+
+int main()
+{
+   MyClass value( 10, 5 );
+
+   value.print();
+
+   for ( int j = 1; j <= 3; j++ ) 
+   {
+      value.add();
+      value.print();
+   }
+
+   return 0;
+}
