@@ -1,0 +1,27 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass {
+public:
+   MyClass( int v )
+   {
+      value = v;
+   }
+
+   int getValue() const
+   {
+      return value++;
+   }
+private:
+   mutable int value;
+};
+
+int main()
+{
+   const MyClass test( 99 );
+
+   cout << "Initial value: " << test.getValue();
+   cout << "\nModified value: " << test.getValue() << endl;
+   return 0;
+}
