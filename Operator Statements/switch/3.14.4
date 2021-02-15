@@ -1,0 +1,27 @@
+#include <iostream> 
+using namespace std; 
+ 
+int main() { 
+  char choice; 
+ 
+  cout << "Help on:\n"; 
+  cout << "  1. if\n"; 
+  cout << "  2. switch\n"; 
+  cout << "Choose one: "; 
+  cin >> choice; 
+ 
+  cout << "\n"; 
+  
+  switch(choice) { 
+    case '1': 
+      cout << "The if:\n\n"; 
+      break; 
+    case '2': 
+      cout << "The switch:\n\n"; 
+      break; 
+    default: 
+      cout << "Selection not found.\n"; 
+  } 
+ 
+  return 0; 
+}
