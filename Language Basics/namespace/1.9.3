@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+namespace MyNamespace1 {
+  int i;
+  namespace MyNamespace2 { // a nested namespace
+    int j;
+  }
+}
+
+int main()
+{
+  MyNamespace1::i = 19;
+
+  MyNamespace1::MyNamespace2::j = 10; // this is right
+
+  cout << MyNamespace1::i << " "<<  MyNamespace1::MyNamespace2::j << "\n";
+
+  // use MyNamespace1
+  using namespace MyNamespace1;
+
+  cout << i * MyNamespace2::j;
+
+  return 0;
+}
