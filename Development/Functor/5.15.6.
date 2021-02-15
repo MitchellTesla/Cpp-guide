@@ -1,0 +1,40 @@
+//Revised from
+//STL Tutorial and Reference Guide C++ Programming with the Standard Template L
+ibrary, 2nd Edition
+//by David R. Musser (Author), Atul Saini (Author)
+//# Publisher: Addison-Wesley Pub (Sd) (March 1996)
+//# Language: English
+//# ISBN-10: 0201633981
+//# ISBN-13: 978-0201633986
+
+
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+template <typename InputIterator, typename T>
+T accumulate1(InputIterator first, InputIterator last, T init, T (*binary_funct
+ion)(T x, T y)) // New parameter
+{
+  while (first != last) {
+    init = (*binary_function)(init, *first);
+    ++first;
+  }
+  return init;
+}
+
+int multfun(int x, int y) { return x * y; }
+
+int main()
+{
+
+  int x[5] = {2, 3, 5, 7, 11};
+
+  vector<int> vector1(&x[0], &x[5]);
+
+  int product = accumulate1(vector1.begin(), vector1.end(), 1, &multfun);
+
+  cout << product << endl;
+  return 0;
+}
