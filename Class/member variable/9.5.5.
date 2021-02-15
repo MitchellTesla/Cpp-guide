@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+class MyClass{
+  int a;
+  public:
+    MyClass(int j) {a = j;}
+    int geta(void) {return a;}
+};
+
+int main(void)
+{
+  MyClass ob = 99;              
+
+  cout << ob.geta();
+}
