@@ -1,0 +1,29 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+       struct student
+       {
+               int num;
+           char name[20];
+           float score;
+       };
+       struct student stu[4];
+       struct student *p;
+       int i,temp;
+       float max;
+       for(i=0;i<=4;i++)
+               cin>>stu[i].num>>stu[i].name>>stu[i].score;
+       for(max=stu[0].score,i=1;i<4;i++){
+               if(stu[i].score>max);
+               {
+                       max=stu[i].score;temp=i;
+               }
+    }
+       p=stu+temp;
+       cout<<"maxmum score:";
+       cout<<"NO.:"<<p->num<<"NAME:"<<p->name<<"SCORE:"<<p->score<<"\n";
+}
