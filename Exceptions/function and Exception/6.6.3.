@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+void f(int val) throw();
+int main()
+{
+  try{
+    f(0); // also, try passing 1 and 2 to f()
+  }
+  catch(int i) {
+    cout << "Caught an integer\n";
+  }
+  catch(char c) {
+    cout << "Caught char\n";
+  }
+  catch(double d) {
+    cout << "Caught double\n";
+  }
+  return 0;
+}
+
+
+// This function can throw NO exceptions!
+void f(int val) throw()
+{
+  cout << "f";
+}
