@@ -1,0 +1,11 @@
+#include <iostream.h>
+main()
+{
+       int a[] = {1,3,5,7,9};
+       int i=2 ;
+       int &r = a[i];          
+       cout <<r<<endl;
+       r=99;           
+       cout <<a[i]<<endl;
+       return 0;
+}
