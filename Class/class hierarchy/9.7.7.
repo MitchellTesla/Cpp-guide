@@ -1,0 +1,20 @@
+class Base {
+    public:
+       int f(int i) { return (i*2); }
+       float f(float f) { return (f*2);}
+};
+class Derived: public Base {
+    public:
+       int f(int i, int j) { return (i +j); }
+};
+
+int main()
+{
+    Derived var;
+    float f;
+    int i;
+
+    i = var.f(3, 5);   // Works
+    //f = var.f(3.0);          // Fails
+    return (0);
+}
