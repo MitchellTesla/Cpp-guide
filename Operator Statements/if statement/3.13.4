@@ -1,0 +1,15 @@
+#include <iostream>
+ 
+ int main()
+ {
+     int x = 12;
+  
+     if (x > 10)
+     {
+         if (x > 100)
+             std::cout << "More than 100, Thanks!\n";
+     }
+     else        // now works as intended!
+         std::cout << "Less than 10, Thanks!\n";
+     return 0;
+ }
