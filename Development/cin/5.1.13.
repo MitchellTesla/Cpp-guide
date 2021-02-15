@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string.h>
+
+using std::cout;       
+using std::cin;
+
+int main() 
+{
+  char firststring[40],secondstring[40],thirdstring[40];
+  int size;
+
+  cout << "Please enter a word \n";
+  cin.getline(firststring,40); 
+
+  cout << "Please enter another word  \n";
+  cin.getline(secondstring,40);
+  size = strlen(firststring);
+
+ 
+  strcat(firststring,secondstring);
+
+  cout << "The length of the first string you entered is" << size << "\n";
+  cout << "Both strings you entered are " << thirdstring<< "\n";
+  return 0;
+}
