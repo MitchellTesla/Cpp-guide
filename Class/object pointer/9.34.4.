@@ -1,0 +1,41 @@
+#include <iostream>
+ 
+ class MyClass
+ {
+ public:
+     MyClass();
+     ~MyClass();
+     int GetAge() const { return *itsAge; }
+     void SetAge(int age) { *itsAge = age; }
+ 
+     int GetWeight() const { return *itsWeight; }
+     void setWeight (int weight) { *itsWeight = weight; }
+ 
+ private:
+     int * itsAge;
+     int * itsWeight;
+ };
+ 
+ MyClass::MyClass()
+ {
+     itsAge = new int(2);
+     itsWeight = new int(5);
+ }
+ 
+ MyClass::~MyClass()
+ {
+     delete itsAge;
+     delete itsWeight;
+ }
+ 
+ int main()
+ {
+     MyClass *objectPointer = new MyClass;
+     std::cout << "objectPointer is " << objectPointer->GetAge() << " years old\n";
+ 
+     objectPointer->SetAge(5);
+     std::cout << "objectPointer is " << objectPointer->GetAge() << " years old\n";
+ 
+     delete objectPointer;
+     return 0;
+ }
