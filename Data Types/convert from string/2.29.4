@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cstdlib>
+using std::strtod;
+
+int main()
+{
+   double d;
+   const char *string1 = "51.2 are admitted";
+   char *stringPtr;
+
+   d = strtod( string1, &stringPtr );
+
+   cout << d << endl;
+   return 0;
+}
