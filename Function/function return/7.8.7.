@@ -1,0 +1,20 @@
+#include <iostream>
+ 
+ short f(int, int*, int*);
+ 
+ int main()
+ {
+     int number = 2, squared, cubed;
+  
+ 
+     std::cout << "number: " << number << "\n";
+     std::cout << "square: " << squared << "\n";
+     std::cout << "cubed: "  << cubed   << "\n";
+     return 0;
+ }
+ 
+ short f(int n, int *pSquared, int *pCubed)
+ {
+     *pSquared = n*n;
+     *pCubed = n*n*n;
+ }
