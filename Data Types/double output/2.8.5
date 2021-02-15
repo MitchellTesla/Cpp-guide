@@ -1,0 +1,18 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+  cout << "Default format: " << 123.123456789 << endl;
+
+  cout << "Scientific format with precision of 7: ";
+  cout << scientific << 123.123456789 << endl;
+
+  cout << "Return to default format: ";
+  cout << resetiosflags(ios::floatfield) << setprecision(6)
+       << 123.123456789 << "\n\n";
+
+  return 0;
+}
