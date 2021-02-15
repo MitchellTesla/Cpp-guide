@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::showpoint;
+
+int main()
+{
+   cout << "Before using showpoint" << endl
+      << "9.9900 prints as: " << 9.9900 << endl
+      << "9.9000 prints as: " << 9.9000 << endl
+      << "9.0000 prints as: " << 9.0000 << endl << endl;
+
+   cout << showpoint  
+      << "After using showpoint" << endl
+      << "9.9900 prints as: " << 9.9900 << endl
+      << "9.9000 prints as: " << 9.9000 << endl
+      << "9.0000 prints as: " << 9.0000 << endl;
+   return 0;
+}
