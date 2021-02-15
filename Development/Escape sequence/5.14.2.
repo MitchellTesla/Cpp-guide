@@ -1,0 +1,9 @@
+#include <iostream> 
+using namespace std; 
+ 
+int main() 
+{ 
+  cout << "one\ttwo\tthree\n"; 
+ 
+  return 0; 
+}
