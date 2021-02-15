@@ -1,0 +1,36 @@
+#include <iostream> 
+using namespace std; 
+ 
+class BaseClass { 
+protected: 
+  int i, j; // private to BaseClass, but accessible to DerivedClass 
+public: 
+  void set(int a, int b) { i = a; j = b; } 
+  void show() { cout << i << " " << j << "\n"; } 
+}; 
+ 
+class DerivedClass : public BaseClass { 
+  int k; 
+public: 
+  // DerivedClass may access BaseClass's i and j 
+  void setk() { 
+     k = i*j; 
+  } 
+ 
+  void showDerivedClass() { 
+     cout << k << "\n"; 
+  } 
+}; 
+ 
+int main() 
+{ 
+  DerivedClass ob; 
+ 
+  ob.set(2, 3); // OK, set() is public in BaseClass 
+  ob.show();    // OK, show is public BaseClass 
+ 
+  ob.setk(); 
+  ob.showDerivedClass(); 
+ 
+  return 0; 
+}
