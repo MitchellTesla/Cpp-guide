@@ -1,0 +1,89 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <iomanip>
+using std::setfill;
+using std::setw;
+
+class Time 
+{
+public:
+   Time( int = 0, int = 0, int = 0 );
+
+   Time &setTime( int, int, int );
+   Time &setHour( int );
+   Time &setMinute( int );
+   Time &setSecond( int );
+
+   int getHour() const;
+   int getMinute() const;
+   int getSecond() const;
+
+   void printUniversal() const;
+private:
+   int hour;
+   int minute;
+   int second;
+};
+
+Time::Time( int hr, int min, int sec ) 
+{ 
+   setTime( hr, min, sec ); 
+}
+Time &Time::setTime( int h, int m, int s )
+{
+   setHour( h );
+   setMinute( m );
+   setSecond( s ); 
+   return *this;
+}
+Time &Time::setHour( int h )
+{
+   hour = h;
+   return *this; 
+}
+
+Time &Time::setMinute( int m )
+{
+   minute = m;
+   return *this;
+}
+
+Time &Time::setSecond( int s )
+{
+   second = s;
+   return *this;
+}
+
+int Time::getHour() const 
+{ 
+   return hour; 
+}
+
+int Time::getMinute() const 
+{ 
+   return minute; 
+}
+
+int Time::getSecond() const 
+{ 
+   return second; 
+}
+
+void Time::printUniversal() const
+{
+   cout << hour << ":" << minute << ":" << second;
+}
+
+int main()
+{
+   Time t;
+   t.setHour( 18 ).setMinute( 30 ).setSecond( 22 );
+
+   t.printUniversal();
+
+   t.setTime( 20, 20, 20 ).printUniversal();
+   cout << endl;
+   return 0;
+}
