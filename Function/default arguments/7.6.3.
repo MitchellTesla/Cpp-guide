@@ -1,0 +1,26 @@
+#include <iostream>
+ 
+ int f(int length, int width = 25, int height = 1);
+ 
+ int main()
+ {
+     int length = 100;
+     int width = 50;
+     int height = 2;
+     int area;
+ 
+     area = f(length, width, height);
+     std::cout << "First time area equals " << area << "\n";
+ 
+     area = f(length, width);
+     std::cout << "Second time area equals " << area << "\n";
+ 
+     area = f(length);
+     std::cout << "Third time area equals " << area << "\n";
+     return 0;
+ }
+ 
+ int f(int length, int width, int height)
+ {
+     return (length * width * height);
+ }
