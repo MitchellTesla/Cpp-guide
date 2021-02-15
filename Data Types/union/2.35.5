@@ -1,0 +1,35 @@
+#include <iostream.h>
+
+union unmany_types {
+ char c;
+ int ivalue;
+ double fvalue;
+ double dvalue;
+} unmy_union;
+  
+int main(void)
+{
+ unmy_union.c='b';
+ cout << unmy_union.c << "\n";
+
+ unmy_union.ivalue=1990;
+ cout << unmy_union.ivalue << "\n";
+
+ unmy_union.fvalue=19.90;
+ cout << unmy_union.fvalue << "\n";
+
+ unmy_union.dvalue=987654.32E+13;
+ cout << unmy_union.dvalue << "\n";
+
+ // invalid I/O
+  
+ cout << unmy_union.c << "\n";
+ cout << unmy_union.ivalue << "\n";
+ cout << unmy_union.fvalue << "\n";
+ cout << unmy_union.dvalue << "\n";
+
+ // union size
+ cout << "The size of this union is: " << sizeof(unmany_types) << " bytes." << "\n";
+
+ return (0);
+}
