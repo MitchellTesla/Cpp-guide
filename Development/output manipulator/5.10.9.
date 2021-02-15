@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+using namespace std; 
+ostream &sethex(ostream &stream){
+   stream.setf(ios::showbase);
+   stream.setf(ios::hex);
+   return stream;
+}
+
+int main(void){
+   cout << 256 << "   " << sethex << 256;
+}
