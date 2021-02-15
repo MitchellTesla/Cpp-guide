@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int f( int );
+
+int main()
+{
+   int a = 10; 
+
+   cout << a << " fd: " << f( a ) << endl;
+   return 0;
+} 
+
+int f( int x )
+{
+   return x * x;
+}
