@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+  cout << setiosflags(ios::showpos);
+  cout << setiosflags(ios::showbase);
+  cout << 123 << " " << hex << 123;
+
+  return 0;
+}
