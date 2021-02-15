@@ -1,0 +1,44 @@
+#include <iostream> 
+using namespace std; 
+ 
+// Declare the ThreeDimension class. 
+class ThreeDimension {  
+public: 
+  int X; 
+  int Y; 
+  int Z; 
+ 
+  int range();   
+}; 
+ 
+// Implement the range member function.  
+int ThreeDimension::range() { 
+  return Z * Y; 
+} 
+ 
+int main() {  
+  ThreeDimension aDimension; 
+  ThreeDimension bDimension; 
+ 
+  int range1, range2;  
+ 
+  // Assign values to fields in aDimension. 
+  aDimension.X = 7; 
+  aDimension.Y = 16; 
+  aDimension.Z = 21; 
+  
+  // Assign values to fields in bDimension. 
+  bDimension.X = 2; 
+  bDimension.Y = 14; 
+  bDimension.Z = 12; 
+ 
+  // Compute the ranges assuming a full tank of gas. 
+  range1 = aDimension.range(); 
+  range2 = bDimension.range(); 
+  
+  cout << range1 << "\n";  
+ 
+  cout << range2;  
+  
+  return 0; 
+}
