@@ -1,0 +1,97 @@
+#include <iostream>
+ 
+ class Shape
+ {
+ public:
+     Shape(){}
+     virtual ~Shape(){}
+     virtual long GetArea() = 0; 
+     virtual long GetPerim()= 0;
+     virtual void Draw() = 0;
+ private:
+ };
+ 
+ void Shape::Draw()
+ {
+     std::cout << "Abstract drawing mechanism!\n";
+ }
+ 
+ class Circle : public Shape
+ {
+ public:
+     Circle(int radius):itsRadius(radius){}
+     ~Circle(){}
+     long GetArea() { return 3 * itsRadius * itsRadius; }
+     long GetPerim() { return 9 * itsRadius; }
+     void Draw();
+ private:
+     int itsRadius;
+     int itsCircumference;
+ };
+ 
+ void Circle::Draw()
+ {
+     std::cout << "Circle drawing routine here!\n";
+     Shape::Draw();
+ }
+ 
+ class Rectangle : public Shape
+ {
+ public:
+     Rectangle(int len, int width):
+         itsLength(len), itsWidth(width){}
+     virtual ~Rectangle(){}
+     long GetArea() { return itsLength * itsWidth; }
+     long GetPerim() {return 2*itsLength + 2*itsWidth; }
+     virtual int GetLength() { return itsLength; }
+     virtual int GetWidth() { return itsWidth; }
+     void Draw();
+ private:
+     int itsWidth;
+     int itsLength;
+ };
+ 
+ void Rectangle::Draw()
+ {
+     for (int i = 0; i<itsLength; i++)
+     {
+         for (int j = 0; j<itsWidth; j++)
+             std::cout << "x ";
+ 
+         std::cout << "\n";
+     }
+     Shape::Draw();
+ }
+ 
+ class Square : public Rectangle
+ {
+ public:
+     Square(int len);
+     Square(int len, int width);
+     ~Square(){}
+     long GetPerim() {return 4 * GetLength();}
+ };
+ 
+ Square::Square(int len):Rectangle(len,len)
+ {}
+ 
+ Square::Square(int len, int width):Rectangle(len,width){
+     if (GetLength() != GetWidth())
+         std::cout << "Error, not a square... a Rectangle??\n";
+ }
+ 
+ int main()
+ {
+     Shape * sp;
+ 
+     sp = new Circle(5);
+     sp->Draw();
+
+     sp = new Rectangle(4,6);
+     sp->Draw();
+
+     sp = new Square (5);
+     sp->Draw();
+
+     return 0;
+ }
