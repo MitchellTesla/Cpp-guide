@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+  const char* pstar1 = "AAA";
+  const char* pstar2 = "BBBB";
+  const char* pstar3 = "CCCCC";
+  const char* pstar4 = "DDDDDD";
+  const char* pstar5 = "EEEEEEE";
+  const char* pstar6 = "FFFFFFFF";
+  const char* pstr   = "GGGGGGGGG";
+
+  cout << pstar1;
+  cout << pstar2;
+  cout << pstar3;
+  cout << pstar4;
+  cout << pstar5;
+  cout << pstar6;
+  return 0;
+}
