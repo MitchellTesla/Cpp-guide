@@ -1,0 +1,29 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::islower;
+using std::toupper;
+
+void f( char * );
+
+int main()
+{
+   char phrase[] = "characters";
+
+   f( phrase );
+   cout << phrase << endl;
+   return 0;
+}
+
+
+void f( char *sPtr )
+{
+   while ( *sPtr != '\0' )
+   {   
+      *sPtr = toupper( *sPtr ); 
+
+      sPtr++; 
+   }
+}
