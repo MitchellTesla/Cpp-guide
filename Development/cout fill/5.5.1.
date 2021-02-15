@@ -1,0 +1,13 @@
+#include <iostream.h>
+
+main(void)
+{
+  float a=100100.0, b=0.08;
+
+  cout.setf(ios::right|ios::scientific|ios::showpoint);
+  cout.width(20);   
+    cout<<(a/b)<<endl;
+  cout.fill('$');  
+  
+  return 0;
+}
