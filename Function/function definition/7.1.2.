@@ -1,0 +1,13 @@
+#include <iostream>
+ 
+ int Add (int x, int y)
+ {
+     std::cout << "In Add(), received " << x << " and " << y << "\n";
+     return (x+y);
+ }
+ 
+ int main()
+ {
+     std::cout << "The value returned is: " << Add(3,4);
+     return 0;
+ }
