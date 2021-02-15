@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+template <typename T>
+class calc_square {
+  T i;
+ public:
+  calc_square(): i(0) {}
+  T operator()() { ++i; return i * i; }
+};
+
+int main()
+{
+  vector<int> vector1(10);
+
+  generate(vector1.begin(), vector1.end(), calc_square<int>());
+
+  for (int j = 0; j < 10; ++j)
+    cout << vector1[j] << " ";
+
+  return 0;
+}
