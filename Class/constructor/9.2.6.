@@ -1,0 +1,25 @@
+#include <iostream>
+ 
+ class MyType
+ {
+ public:
+     MyType();
+     MyType(int val);
+     ~MyType(){}
+     int getValue()const { return myValue; }
+     void setValue(int x) {myValue = x; }
+ private:
+     int myValue;
+ };
+ 
+ MyType::MyType(): myValue(0) {}
+ 
+ MyType::MyType(int val): myValue(val) {}
+ 
+ int main()
+ {
+     int theShort = 5;
+     MyType theCtr = theShort;
+     std::cout << "theCtr: " << theCtr.getValue() << std::endl;
+     return 0;
+ }
