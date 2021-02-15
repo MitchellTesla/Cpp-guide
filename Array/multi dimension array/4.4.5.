@@ -1,0 +1,30 @@
+#include <iostream> 
+#include <cstdio> 
+using namespace std; 
+ 
+int main() 
+{ 
+  int i; 
+  char str[80]; 
+  char numbers[10][80] = { 
+    "A", "322", 
+    "B", "976", 
+    "C", "037", 
+    "D", "400", 
+    "E", "873" 
+  }; 
+ 
+  cout << "Enter name (A): "; 
+  cin >> str; 
+ 
+  for(i=0; i < 10; i += 2)  
+    if(!strcmp(str, numbers[i])) { 
+      cout << "Number is " << numbers[i+1] << "\n"; 
+      break; 
+    } 
+   
+  if(i == 10) cout << "Not found.\n"; 
+   
+ 
+  return 0; 
+}
