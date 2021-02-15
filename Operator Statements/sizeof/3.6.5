@@ -1,0 +1,17 @@
+#include <iostream>
+#include <ostream>
+
+class base {};
+class derived : public base {};
+
+int main()
+{
+  using namespace std;
+  cout << sizeof(base)  << '\n';      
+  cout << sizeof(derived)  << '\n';   
+  base b[3];
+  
+  cout << sizeof(b) << '\n';          
+  derived d[5];
+  cout << sizeof(d) << '\n';          
+}
