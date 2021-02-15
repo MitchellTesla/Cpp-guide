@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include <cassert> 
+#include <algorithm> // For reverse algorithm
+using namespace std;
+
+int main()
+{
+  string string1 = "abc";
+  reverse(string1.begin(), string1.end());
+  assert (string1 == "cba");
+  
+
+  return 0;
+}
