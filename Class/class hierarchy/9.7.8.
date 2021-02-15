@@ -1,0 +1,52 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class BaseClass {
+
+public:
+       void f(float);
+};
+
+void BaseClass::f(float price)
+{
+  cout << "the base class!\n";
+  cout << price * .075f;
+
+}
+
+class DerivedClass1:public BaseClass
+{
+public:
+       void f(float);
+
+};
+void DerivedClass1::f(float price)
+{
+  cout << "the child class 1\n";
+  cout << price * .010f << endl;
+}
+
+class DerivedClass2:public BaseClass
+{
+public:
+  void f(float);
+
+};
+
+void DerivedClass2::f(float price)
+{
+  cout << "the child class 2\n";
+  cout << price * .005f << endl;
+}
+
+int main()
+{
+  DerivedClass1 myclass;
+  DerivedClass2 anotherclass;
+
+  myclass.f(100);
+  anotherclass.f(100);
+
+  return 0;
+}
