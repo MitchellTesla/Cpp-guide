@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+class MyType {
+
+protected:
+       float value;
+
+public:
+         float subtract(float);
+         float add(float);
+         void display();
+         MyType(float);
+         MyType();
+};
+
+MyType::MyType(float num)
+{
+   value = num;
+}
+MyType::MyType()
+{
+   value = 1000;
+}
+
+float MyType::subtract(float amount)
+{
+
+    value -= amount;
+       return value;
+}
+float MyType::add(float amount)
+{
+    value += amount;
+       return value;
+}
+
+void MyType::display()
+{
+  cout << "Your value is " << value << endl;
+}
+
+class DerivedType:public MyType
+{
+
+public:
+       DerivedType(float);
+};
+
+DerivedType::DerivedType(float num):MyType(num)
+{
+
+}
+
+
+
+DerivedType myType(1200);
+
+int main()
+{
+
+  float amount, balance;
+
+  myType.display();
+  cout << endl;
+  cout << "Please enter the amount to deposit \n";
+  cin>> amount;
+  balance = myType.add(amount);
+  cout << "New balance is " << balance << endl;
+  cout << endl;
+
+  cout << "Please enter the amount to withdraw \n";
+  cin >> amount;
+  balance = myType.subtract(amount);
+  cout << "New balance is " << balance << endl;
+  cout << endl;
+
+  return 0;
+}
