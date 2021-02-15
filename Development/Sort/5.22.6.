@@ -1,0 +1,42 @@
+#include <iostream> 
+using std::cout; 
+using std::endl; 
+
+#include <iomanip>
+using std::setw;
+
+void selectionSort( int * const, const int );
+void swap( int * const, int * const );
+
+int main()
+{
+   const int arraySize = 10;
+   int a[ arraySize ] = { 2, 6, 4, 8, 10, 12, 9, 1, 5, 7 };
+
+   selectionSort( a, arraySize );
+   for ( int j = 0; j < arraySize; j++ )
+      cout << a[ j ];
+
+   return 0;
+}
+
+void selectionSort( int * const array, const int size )
+{
+   int smallest;
+
+   for ( int i = 0; i < size - 1; i++ )
+   {
+      smallest = i;
+
+      for ( int index = i + 1; index < size; index++ )
+         if ( array[ index ] < array[ smallest ] )
+            smallest = index;
+      swap( &array[ i ], &array[ smallest ] );
+   }
+}
+void swap( int * const element1Ptr, int * const element2Ptr )
+{
+   int hold = *element1Ptr;
+   *element1Ptr = *element2Ptr;
+   *element2Ptr = hold;
+}
