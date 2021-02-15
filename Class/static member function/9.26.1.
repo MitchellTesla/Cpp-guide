@@ -1,0 +1,39 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  static int count; 
+public: 
+ 
+  MyClass() { 
+    count++; 
+    cout << "Constructing object " << 
+             count << endl; 
+  } 
+ 
+  ~MyClass() { 
+     cout << "Destroying object " <<  
+             count << endl; 
+     count--; 
+  } 
+  
+  static int numObjects() { return count; } 
+}; 
+ 
+int MyClass::count; 
+ 
+int main() { 
+  MyClass a, b, c; 
+ 
+  cout << "There are now " << MyClass::numObjects() << " in existence.\n\n"; 
+ 
+  MyClass *p = new MyClass(); 
+ 
+  cout << "there are now " << MyClass::numObjects() << " in existence.\n\n"; 
+ 
+  delete p; 
+ 
+  cout << " there are now " << a.numObjects() << " in existence.\n\n"; 
+ 
+  return 0; 
+}
