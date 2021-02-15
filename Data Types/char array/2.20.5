@@ -1,0 +1,10 @@
+#include <iostream>
+ 
+ int main()
+ {
+     char buffer[80];
+     std::cout << "Enter the string: ";
+     std::cin.get(buffer, 79);       // get up to 79 or newline
+     std::cout << "Here's the buffer:  " << buffer << std::endl;
+     return 0;
+ }
