@@ -1,0 +1,16 @@
+#include <iostream>
+using std::ostream;
+using std::cout;
+using std::flush;
+
+ostream& tab( ostream& output )
+{
+   return output << '\t';  // issue tab
+}
+
+int main()
+{
+   cout << tab << 'b' << tab << 'c' ;
+
+   return 0;
+}
