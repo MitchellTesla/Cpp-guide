@@ -1,0 +1,36 @@
+#include <iostream>
+
+class MyClass
+{
+public:
+    MyClass();
+    ~MyClass();
+private:
+    int itsAge;
+};
+
+MyClass::MyClass()
+{
+    std::cout << "Constructor called.\n";
+    itsAge = 1;
+}
+
+MyClass::~MyClass()
+{
+    std::cout << "Destructor called.\n";
+}
+
+int main()
+{
+    std::cout << "MyClass ...\n";
+    MyClass Frisky;
+
+    std::cout << "MyClass *pRags = new MyClass...\n";
+    MyClass * pRags = new MyClass;
+
+    std::cout << "delete pRags...\n";
+    delete pRags;
+
+    std::cout << "Exiting, watch go...\n";
+    return 0;
+}
