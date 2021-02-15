@@ -1,0 +1,23 @@
+#include <iostream>
+
+int main () {
+
+  try
+
+  {
+
+      throw "Out of range";
+
+  }
+
+  catch (const char * str)
+
+  {
+
+      std::cout << "Exception: " << str << std::endl;
+
+  }
+
+  return 0;
+
+}
