@@ -1,0 +1,29 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int i; // private by default 
+public: 
+  int getInt(); 
+  void setInt(int j); 
+} ; 
+ 
+inline int MyClass::getInt() 
+{ 
+  return i; 
+} 
+ 
+inline void MyClass::setInt(int j) 
+{ 
+  i = j; 
+} 
+ 
+int main() 
+{ 
+  MyClass s; 
+ 
+  s.setInt(10); 
+  cout << s.getInt(); 
+ 
+  return 0; 
+}
