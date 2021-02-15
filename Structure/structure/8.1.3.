@@ -1,0 +1,38 @@
+#include <iostream.h>
+
+struct Time
+{
+       int hh,mm,ss;
+};
+
+void Disp1(struct Time t);
+void Disp2(const Time & t);
+
+int main()
+{
+       Time t1,t2,*p;
+       
+       t1.hh=10;
+       t1.mm=30;
+       t1.ss=0;
+       t2=t1;  
+       t2.hh++;                        
+       p = &t2;
+    
+    cout << "The t2 time is " << p->hh  << ":" << t2.mm << ":"<< t1.ss << endl;
+
+       Disp1(t2);
+       Disp2(t2);
+       
+       return 0;
+}
+
+void Disp1(struct Time t)
+{
+       cout << "The time is " << t.hh <<":" << t.mm << ":"<< t.ss << endl;
+}
+
+void Disp2(const Time & t)
+{
+       cout << "The time is " << t.hh <<":" << t.mm << ":"<< t.ss << endl;
+}
