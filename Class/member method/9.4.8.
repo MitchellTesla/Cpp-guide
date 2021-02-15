@@ -1,0 +1,63 @@
+#include <iostream>
+#include <math.h>
+#include <string>
+using namespace std;
+
+const double DEG_TO_RAD=0.0174532925;
+  
+class trigonometric {
+ double angle;
+ double answer_sine;
+ double answer_cosine;
+ double answer_tangent;
+
+public:
+ void trig_calc(double);
+ void trig_calc(char *);
+};
+
+void trigonometric::trig_calc(double degrees)
+{
+ angle=degrees;
+ answer_sine=sin(angle * DEG_TO_RAD);
+ answer_cosine=cos(angle * DEG_TO_RAD);
+ answer_tangent=tan(angle * DEG_TO_RAD);
+ cout << "\nFor an angle of " << angle << " degrees." << endl;
+ cout << "The sine is " << answer_sine << endl;
+ cout << "The cosine is " << answer_cosine << endl;
+ cout << "The tangent is " << answer_tangent << endl;
+}
+  
+void trigonometric::trig_calc(char *dat)
+{
+ char *deg,*min,*sec;
+
+ deg=strtok(dat,"d ");  
+ min=strtok(0,"m ");
+ sec=strtok(0,"s");
+ angle=atof(deg)+((atof(min))/60.0)+((atof(sec))/360.0);
+ answer_sine=sin(angle * DEG_TO_RAD);
+ answer_cosine=cos(angle * DEG_TO_RAD);
+ answer_tangent=tan(angle * DEG_TO_RAD);
+ cout << "\nFor an angle of " << angle << " degrees." << endl;
+ cout << "The sine is " << answer_sine << endl;
+ cout << "The cosine is " << answer_cosine << endl;
+ cout << "The tangent is " << answer_tangent << endl;
+}
+
+main()
+{
+ trigonometric data;
+
+ data.trig_calc(75.0);
+  
+ char str1[] = "35d 75m 20s";
+ data.trig_calc(str1);
+ 
+ data.trig_calc(145.72);
+
+ char str2[] = "65d 45m 30s";
+ data.trig_calc(str2);
+ 
+ return (0);
+}
