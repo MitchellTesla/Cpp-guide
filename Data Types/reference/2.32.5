@@ -1,0 +1,24 @@
+#include <iostream>
+ using namespace std; 
+ 
+ int main()
+ {
+     int  intValue;
+     int &intReference = intValue;
+ 
+     intValue = 5;
+     cout << "intValue:\t" << intValue << endl;
+     cout << "intReference:\t" << intReference << endl;
+     cout << "&intValue:\t"  << &intValue << endl;
+     cout << "&intReference:\t" << &intReference << endl;
+ 
+     int intTwo = 8;
+     intReference = intTwo;  // not what you think!
+     cout << "\nintValue:\t" << intValue << endl;
+     cout << "intTwo:\t" << intTwo << endl;
+     cout << "intReference:\t" << intReference << endl;
+     cout << "&intValue:\t"  << &intValue << endl;
+     cout << "&intTwo:\t"  << &intTwo << endl;
+     cout << "&intReference:\t" << &intReference << endl;
+     return 0;
+ }
