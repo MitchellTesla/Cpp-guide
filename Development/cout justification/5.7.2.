@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  // Use default width.
+  cout << "Default format.\n";
+  cout << "|";
+  cout << 123.45 << "|" << "\n\n";
+
+  // Switch to left justification.
+  cout << "Left-justify in a field width of 12.\n";
+  cout.setf(ios::left, ios::adjustfield);
+  cout << "|";
+  cout.width(12);
+  cout << 123.45 << "|" << "\n\n";
+
+  return 0;
+}
