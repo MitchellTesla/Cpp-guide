@@ -1,0 +1,51 @@
+#include <iostream>
+using std::cout;
+
+#include <iomanip>
+using std::endl;
+using std::setw;
+
+void displayBits( unsigned );
+
+int main()
+{
+   unsigned number1;
+   unsigned number2;
+   unsigned mask;
+   unsigned setBits;
+
+   number1 = 21845;
+   cout << "\nThe one's complement of\n";
+   displayBits( number1 );
+   cout << "is" << endl;
+   displayBits( ~number1 );
+
+
+   return 0;
+}
+
+//Quote from
+//C++ How to Program (5th Edition) (How to Program) (Paperback)
+//by Harvey & Paul) Deitel & Associates
+
+//Publisher: Prentice Hall; 5 edition (January 5, 2005)
+//Language: English
+//ISBN-10: 0131857576
+//ISBN-13: 978-0131857575
+
+void displayBits( unsigned value ) {
+   const int SHIFT = 8 * sizeof( unsigned ) - 1;
+   const unsigned MASK = 1 << SHIFT;
+
+   cout << setw( 10 ) << value << " = ";
+
+   for ( unsigned i = 1; i <= SHIFT + 1; i++ ) {
+      cout << ( value & MASK ? '1' : '0' );
+      value <<= 1;
+
+      if ( i  8 == 0 )
+         cout << ' ';
+   }
+
+   cout << endl;
+}
