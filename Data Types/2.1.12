@@ -1,0 +1,20 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main()
+{
+   int x = 5;
+   int product = 5;
+   int quotient = 5;
+
+   product *= x++;
+   cout << product << endl;
+   cout << x << endl << endl;
+
+   x = 5;
+   quotient /= ++x; 
+   cout << quotient << endl;
+   cout << x << endl;
+   return 0; 
+}
