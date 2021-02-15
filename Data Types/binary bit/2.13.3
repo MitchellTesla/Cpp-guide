@@ -1,0 +1,26 @@
+#include <iostream>
+#include <iomanip>
+using std::cout;
+using std::endl;
+using std::setfill;
+using std::setw;
+
+int main() {
+  unsigned long red = 0XFF0000UL;      // Color red
+  unsigned long white = 0XFFFFFFUL;    // Color white - RGB all maximum
+
+  cout << std::hex;                    // Set hexadecimal output format
+  cout << setfill('0');                // Set fill character for output
+
+  cout << "\nTry out bitwise AND and OR operators.";
+  cout << "\nInitial value  red         = " << setw(8) << red;
+  cout << "\nComplement    ~red         = " << setw(8) << ~red;
+
+  cout << "\nInitial value  white       = " << setw(8) << white;
+  cout << "\nComplement    ~white       = " << setw(8) << ~white;
+
+  cout << "\n Bitwise AND   red & white = " << setw(8) << (red & white);
+  cout << "\n Bitwise OR    red | white = " << setw(8) << (red | white);
+
+  return 0;
+}
