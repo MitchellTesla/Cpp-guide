@@ -1,0 +1,29 @@
+#include <iostream>
+#include <locale>
+
+using namespace std;
+
+int main()
+{
+  double balance = 5467.87;
+
+  locale usloc("English_US");
+  locale gloc("German_Germany");
+
+  cout << showbase;
+
+  cout.imbue(usloc);
+  const money_put<char> &us_mon = use_facet<money_put<char> >(cout.getloc());
+
+  cout << "Now show money in international German format:\n";
+  cout.imbue(gloc);
+  const money_put<char> &g_mon = use_facet<money_put<char> >(cout.getloc());
+
+  g_mon.put(cout, true, cout, ' ', 123456);
+  cout << endl;
+  g_mon.put(cout, true, cout, ' ', -299);
+  cout << endl;
+  g_mon.put(cout, true, cout, ' ', balance * 100);
+
+  return 0;
+}
