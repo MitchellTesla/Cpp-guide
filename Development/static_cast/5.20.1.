@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int i;
+
+  for(i=0; i<10; i++)
+    cout << static_cast<double> (i) / 3 << " ";
+
+  return 0;
+}
