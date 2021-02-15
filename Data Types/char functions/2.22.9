@@ -1,0 +1,20 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::iscntrl;
+using std::isgraph;
+using std::isprint;
+using std::ispunct;
+using std::isspace;
+
+int main()
+{
+   cout << "\nAccording to iscntrl:\nNewline " 
+      << ( iscntrl( '\n' ) ? "is a" : "is not a" )
+      << " control character\n"
+      << ( iscntrl( '$' ) ? "$ is a" : "$ is not a" )
+      << " control character\n";
+   return 0;
+}
