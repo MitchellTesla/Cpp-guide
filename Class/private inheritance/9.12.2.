@@ -1,0 +1,27 @@
+#include <iostream>   
+     using namespace std;
+
+  class B_class {   
+  public:   
+    int i, j;   
+  };   
+       
+  class D_class : private B_class {   
+  public:   
+    // access declaration   
+    B_class::i;  // i from B_class is now public again   
+       
+    int k;   
+  } ;   
+       
+  main(void)   
+  {   
+    D_class d;   
+       
+    d.i = 10;  // legal because i is made public in D_class   
+    d.k = 20;   
+       
+    cout << d.i * d.k;   
+       
+    return 0;   
+  }
