@@ -1,0 +1,22 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  double number, dsqrt,dpow,dlog;
+
+  cout << "Please enter a number \n";
+  cin >> number;
+
+  dsqrt =sqrt(number);
+  dpow =pow(number,5);
+  dlog =log(number);
+
+  cout << " Math Example\n";
+  cout << " Square Root is " << dsqrt << "\n";
+  cout << " Raised to the fifth power is " << dpow << "\n";
+  cout << " Log is " << dlog << "\n";
+
+  return 0;
+}
