@@ -1,0 +1,15 @@
+#include <iostream>
+using std::boolalpha;
+using std::cout;
+using std::endl;
+
+int main()
+{
+   bool a = true;
+   bool b = false;
+   cout << boolalpha;
+
+   cout << "a = " << a << "; b = " << b;
+
+   return 0;
+}
