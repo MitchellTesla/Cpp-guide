@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip>
+using std::cout;
+using std::endl;
+using std::setfill;
+using std::setw;
+
+int main() {
+  unsigned long flags = 0xFF;          // Flags variable
+  unsigned long bit1mask = 0x1;        // Selects bit 1
+  unsigned long bit6mask = 0x20;       // Selects bit 6
+  unsigned long bit20mask = 0x80000;   // Selects bit 20
+  
+  cout << "\nSelect bit 1 from flags    : " << setw(8) << (flags & bit1mask);
+  cout << "\nSelect bit 6 from flags    : " << setw(8) << (flags & bit6mask);
+  cout << "\nSwitch off bit 6 in flags  : " << setw(8) << (flags &= ~bit6mask);
+
+  cout << "\nSwitch on bit 20 in flags  : " << setw(8) << (flags |= bit20mask);
+
+  cout << endl;
+
+  return 0;
+}
