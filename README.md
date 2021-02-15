@@ -1,2 +1,2 @@
 # Run-C
-C++
+C++ programming language (full) 
