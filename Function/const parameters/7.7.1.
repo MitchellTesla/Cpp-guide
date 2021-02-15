@@ -1,0 +1,22 @@
+#include <iostream> 
+using namespace std; 
+ 
+int f(const int *val); 
+  
+int main() 
+{ 
+  int result; 
+  int v = 10; 
+ 
+  result = f(&v); 
+ 
+  cout << v << " fd is " << result; 
+  cout << "\n"; 
+ 
+  return 0; 
+} 
+ 
+int f(const int *val) 
+{ 
+  return - *val; 
+}
