@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+   
+int main()
+{
+  cout.setf(ios::hex, ios::basefield);
+   
+  cout << 100; // this displays 64
+   
+  return 0;
+}
