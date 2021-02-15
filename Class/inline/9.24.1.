@@ -1,0 +1,26 @@
+#include <iostream>
+ 
+ inline int f(int);
+ int main()
+ {
+     int target;
+ 
+     std::cout << "Enter a number to work with: ";
+     std::cin >> target;
+     std::cout << "\n";
+ 
+     target = f(target);
+     std::cout << "Target: " << target << std::endl;
+ 
+     target = f(target);
+     std::cout << "Target: " << target << std::endl;
+     
+     target = f(target);
+     std::cout << "Target: " << target << std::endl;
+     return 0;
+ }
+ 
+ int f(int target)
+ {
+     return 2*target;
+ }
