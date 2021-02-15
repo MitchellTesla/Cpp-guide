@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+class MyClass
+{
+public:
+  int who;
+  MyClass(int id);
+} global_obj1(1), global_obj2(2);
+
+MyClass::MyClass(int id)
+{
+  cout << "Initializing " << id << "\n";
+  who = id;
+}
+
+int main(void)
+{
+  MyClass local_obj(3);
+  cout << "This is NOT the first line displayed.\n";
+  MyClass local_obj2(4);
+}
