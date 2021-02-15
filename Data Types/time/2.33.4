@@ -1,0 +1,23 @@
+#include <iostream>
+#include <locale>
+#include <cstring>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+  // Obtain the current system time.
+  time_t t = time(NULL);
+  tm *cur_time = localtime(&t);
+
+  // Create US and German locales.
+  locale usloc("English_US");
+  locale gloc("German_Germany");
+
+  // %c specifies the standard time and date pattern.
+  char *std_pat = "%c";
+  char *std_pat_end = std_pat + strlen(std_pat);
+
+  return 0;
+}
