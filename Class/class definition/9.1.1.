@@ -1,0 +1,27 @@
+#include <iostream> 
+using namespace std; 
+ 
+ 
+class ThreeDimension {  
+public: 
+  int X;   
+  int Y;     
+  int Z;         
+}; 
+  
+int main() {  
+  ThreeDimension myDimension;  
+  int range;  
+ 
+  // Assign values to fields in myDimension. 
+  myDimension.X = 7; 
+  myDimension.Y = 16; 
+  myDimension.Z = 21; 
+  
+  // Compute the range assuming a full tank of gas. 
+  range = myDimension.Y * myDimension.Z; 
+  
+  cout << range;  
+ 
+  return 0; 
+}
