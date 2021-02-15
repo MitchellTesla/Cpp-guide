@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class MyClass
+{
+   public: 
+     MyClass::MyClass(void);
+     void show_MyClass(void);
+   private:
+     int a;
+     int b;
+     int c;
+};
+
+MyClass::MyClass(void) : a(1), b(2), c(3) { };
+
+void MyClass::show_MyClass(void)
+{
+   cout << "a contains: " << a << endl;
+   cout << "b contains: " << b << endl;
+   cout << "c contains: " << c << endl;
+}
+
+int main(void)
+{
+   MyClass numbers;
+
+   numbers.show_MyClass();
+}
