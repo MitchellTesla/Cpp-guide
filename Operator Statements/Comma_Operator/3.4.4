@@ -1,0 +1,32 @@
+#include <iostream>
+#include <iomanip>
+#include <cctype>
+#include <limits>
+using std::cout;
+using std::endl;
+using std::setw;
+
+int main() {
+  cout << endl
+       << setw(13) << "Character  "
+       << setw(13) << "Hexadecimal "
+       << setw(13) << "Decimal   "
+       << endl;
+
+  cout << std::uppercase;                      
+
+  unsigned char ch = 0;                        
+
+  do {
+    if(!std::isprint(ch))                      
+      continue;                                
+
+    cout << setw(7)  << ch
+         << std::hex                           
+         << setw(13) << static_cast<int>(ch)
+         << std::dec                           
+         << setw(13) << static_cast<int>(ch)
+         << endl;
+  } while(ch++ < std::numeric_limits<unsigned char>::max());
+  return 0;
+}
