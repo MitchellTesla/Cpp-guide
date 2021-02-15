@@ -1,0 +1,19 @@
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+int main()
+{
+   cout << 2002 <<endl;
+   cout << "In hex " << hex<< 2002 <<endl;
+   cout.setf(ios::scientific,ios::floatfield);
+   cout <<987.123456 <<endl;
+   cout << setprecision(3) << 987.123456 <<endl;
+   cout.fill('X');
+   cout.width(10);
+   cout << 1234 <<endl;
+   cout.setf(ios::left,ios::adjustfield);
+   cout.width(10);
+   cout << 1234 <<endl;
+   return 0;
+}
