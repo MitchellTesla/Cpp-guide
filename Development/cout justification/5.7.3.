@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  // Use default width.
+  cout << "Default format.\n";
+  cout << "|";
+  cout << 123.45 << "|" << "\n\n";
+
+  // Turn on showpos, use left-justification.
+  cout << "Turning on showpos flag.\n";
+  cout.setf(ios::showpos);
+  cout << "Left-justify set in a field width of 12 again.\n";
+  cout << "|";
+  cout.width(12);
+  cout << 123.45 << "|" << "\n\n";
+
+  return 0;
+}
