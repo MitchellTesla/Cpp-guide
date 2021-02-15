@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+     int monthlytemps[4][7];
+     cout << "Enter the temp for week 1 day 1";
+     cin >> monthlytemps[0][0];
+     cout << "Enter the temp for week 1 day 2";
+     cin >> monthlytemps[0][1];
+     cout << "Enter the temp for week 1 day 3";
+     cin >> monthlytemps[0][2];
+     cout << "Enter the temp for week 1 day 4";
+     cin >> monthlytemps[0][3];
+     cout << "Enter the temp for week 1 day 5";
+     cin >> monthlytemps[0][4];
+     cout << "Enter the temp for week 1 day 6";
+     cin >> monthlytemps[0][5];
+     cout << "Enter the temp for week 1 day 7";
+     cin >> monthlytemps[0][6];
+     cout << "Enter the temp for week 2 day 1";
+     cin >> monthlytemps[1][0];
+     cout << "Enter the temp for week 2 day 2";
+     cin >> monthlytemps[1][1];
+     cout << "Enter the temp for week 2 day 3";
+     cin >> monthlytemps[1][2];
+     cout << "Enter the temp for week 2 day 4";
+     cin >> monthlytemps[1][3];
+     cout << "Enter the temp for week 2 day 5";
+     cin >> monthlytemps[1][4];
+     cout << "Enter the temp for week 2 day 6";
+     cin >> monthlytemps[1][5];
+     cout << "Enter the temp for week 2 day 7";
+     cin >> monthlytemps[1][6];
+     cout << "Enter the temp for week 3 day 1";
+     cin >> monthlytemps[3][0];
+     cout << "Enter the temp for week 3 day 2";
+     cin >> monthlytemps[3][1];
+     cout << "Enter the temp for week 3 day 3";
+     cin >> monthlytemps[3][2];
+     cout << "Enter the temp for week 3 day 4";
+     cin >> monthlytemps[3][3];
+     cout << "Enter the temp for week 3 day 5";
+     cin >> monthlytemps[3][4];
+     cout << "Enter the temp for week 3 day 6";
+     cin >> monthlytemps[3][5];
+     cout << "Enter the temp for week 3 day 7";
+     cin >> monthlytemps[3][6];
+     
+     cout << "Enter the temp for week 4 day 1";
+     cin >> monthlytemps[4][0];
+     cout << "Enter the temp for week 4 day 2";
+     cin >> monthlytemps[4][1];
+     cout << "Enter the temp for week 4 day 3";
+     cin >> monthlytemps[4][2];
+     cout << "Enter the temp for week 4 day 4";
+     cin >> monthlytemps[4][3];
+     cout << "Enter the temp for week 4 day 5";
+     cin >> monthlytemps[4][4];
+     cout << "Enter the temp for week 4 day 6";
+     cin >> monthlytemps[4][5];
+     cout << "Enter the temp for week 4 day 7";
+     cin >> monthlytemps[4][6];
+     return 0;
+}
