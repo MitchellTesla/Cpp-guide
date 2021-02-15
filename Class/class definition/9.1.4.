@@ -1,0 +1,31 @@
+#include <iostream>
+using std::cout; 
+using std::cin;
+using std::endl;
+
+#include <string> 
+using std::string;
+using std::getline;
+
+class MyClass
+{
+public:
+   void displayMessage( string n )
+   {
+      cout << "Welcome \n" << n << "!" 
+         << endl;
+   } 
+};
+
+int main()
+{
+   string name; 
+   MyClass obj;
+   
+   cout << "Please enter the name:" << endl;
+   getline( cin, name );
+   cout << endl;
+
+   obj.displayMessage( name );
+   return 0; 
+}
