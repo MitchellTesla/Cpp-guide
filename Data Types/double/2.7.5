@@ -1,0 +1,26 @@
+#include <iostream> 
+#include <cmath> 
+using namespace std; 
+ 
+int main() {    
+  double Principal = 11.11;    
+  double IntRate = 0.075;
+  double PayPerYear = 12.0;   
+  double NumYears = 25;
+  double Payment;      
+  double numer, denom; 
+  double b, e;         
+ 
+  numer = IntRate * Principal / PayPerYear; 
+  
+  e = -(PayPerYear * NumYears); 
+  b =  (IntRate / PayPerYear) + 1; 
+ 
+  denom = 1 - pow(b, e); 
+     
+  Payment = numer / denom; 
+ 
+  cout <<  "Payment is " << Payment; 
+ 
+  return 0; 
+}
