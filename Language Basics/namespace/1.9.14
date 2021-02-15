@@ -1,0 +1,33 @@
+#include <iostream>
+#include <ostream>
+using namespace std;
+
+namespace A {
+  int x = 1;
+}
+namespace B {
+  int y = 2;
+}
+namespace C {
+  int z = 3;
+  using namespace B;
+}
+namespace D {
+  int z = 4;
+  using namespace B;
+  int y = 5;       
+}
+
+int main()
+{
+  int x = 60;
+  using namespace A;
+  using namespace C;
+  
+
+  cout << x << '\n';  
+  cout << y << '\n';  
+  cout << C::y << '\n';    
+  cout << D::y << '\n';    
+
+}
