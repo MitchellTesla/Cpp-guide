@@ -1,0 +1,82 @@
+#include <iostream> 
+#include <cstring> 
+using namespace std; 
+ 
+class Shape { 
+  // private 
+  double width; 
+  double height; 
+public: 
+ 
+  Shape() { 
+    width = height = 0.0; 
+  } 
+ 
+  Shape(double w, double h) { 
+    width = w; 
+    height = h; 
+  } 
+ 
+  Shape(double x) { 
+    width = height = x; 
+  } 
+ 
+  void display() { 
+    cout << "Width and height are " << width << " and " << height << "\n"; 
+  } 
+ 
+  double getWidth() { return width; } 
+  double getHeight() { return height; } 
+  void setWidth(double w) { width = w; } 
+  void setHeight(double h) { height = h; } 
+}; 
+ 
+class Triangle : public Shape { 
+  char style[20]; // now private 
+public: 
+ 
+  /* A default constructor. This automatically invokes 
+     the default constructor of Shape. */ 
+  Triangle() { 
+    strcpy(style, "unknown"); 
+  } 
+ 
+  Triangle(char *str, double w, double h) : Shape(w, h) { 
+    strcpy(style, str); 
+  } 
+   
+  Triangle(double x) : Shape(x) { 
+    strcpy(style, "isosceles");  
+  } 
+ 
+  double area() { 
+    return getWidth() * getHeight() / 2; 
+  } 
+ 
+  void showStyle() { 
+    cout << "Triangle is " << style << "\n"; 
+  } 
+}; 
+ 
+int main() { 
+  Triangle t1; 
+  Triangle t2("right", 8.0, 12.0); 
+  Triangle t3(4.0); 
+ 
+  t1 = t2; 
+ 
+  cout << "Info for t1: \n"; 
+  t1.showStyle(); 
+  t1.display(); 
+  cout << "Area is " << t1.area() << "\n"; 
+ 
+  t2.showStyle(); 
+  t2.display(); 
+  cout << "Area is " << t2.area() << "\n"; 
+ 
+  t3.showStyle(); 
+  t3.display(); 
+  cout << "Area is " << t3.area() << "\n"; 
+ 
+  return 0; 
+}
