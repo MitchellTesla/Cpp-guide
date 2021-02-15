@@ -1,0 +1,33 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main()
+{
+   int integerValue;
+
+   // display results of cin functions
+   cout << "Before a bad input operation:"
+      << "\ncin.rdstate(): " << cin.rdstate()
+      << "\n    cin.eof(): " << cin.eof()
+      << "\n   cin.fail(): " << cin.fail()
+      << "\n    cin.bad(): " << cin.bad()
+      << "\n   cin.good(): " << cin.good();
+
+   cin >> integerValue;
+   cout << endl;
+
+   cout << "After a bad input operation:"
+      << "\ncin.rdstate(): " << cin.rdstate()
+      << "\n    cin.eof(): " << cin.eof()
+      << "\n   cin.fail(): " << cin.fail()
+      << "\n    cin.bad(): " << cin.bad()
+      << "\n   cin.good(): " << cin.good() << endl << endl;
+
+   cin.clear();
+
+   cout << "After cin.clear()" << "\ncin.fail(): " << cin.fail()
+      << "\ncin.good(): " << cin.good() << endl;
+   return 0;
+}
