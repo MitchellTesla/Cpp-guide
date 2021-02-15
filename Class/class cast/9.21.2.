@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+class BaseClass {
+public:
+   void f( void ) const { cout << "BASE\n"; }
+};
+
+class DerivedClass: public BaseClass {
+public:
+   void f( void ) const { cout << "DERIVED\n"; }
+};
+
+void test( BaseClass * );
+
+int main()
+{
+   // use static_cast for a conversion
+   double d = 8.22;
+   int x = static_cast< int >( d );
+ 
+   cout << "d is " << d << "\nx is " << x << endl;
+
+   BaseClass base;  // instantiate base object
+   test( &base );   // call test
+
+   return 0;
+}
+ 
+void test( BaseClass *basePtr )
+{
+   DerivedClass *derivedPtr;
+
+   // cast base class pointer into derived class pointer    
+   derivedPtr = static_cast< DerivedClass * >( basePtr );
+   derivedPtr->f();   // invoke DerivedClass function f
+}
