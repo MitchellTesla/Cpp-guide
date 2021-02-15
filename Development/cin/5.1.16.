@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+
+#include <limits>
+
+template <class charT, class traits>
+inline
+std::basic_istream<charT,traits>&
+ignoreLine (std::basic_istream<charT,traits>& strm)
+{
+    // skip until end-of-line
+    strm.ignore(std::numeric_limits<int>::max(),strm.widen('\n'));
+
+    // return stream for concatenation
+    return strm;
+}
+
+
+int main()
+{
+    int i;
+    std::cout << "read int and ignore rest of the line" << std::endl;
+    std::cin >> i;
+
+    // ignore the rest of the line
+    std::cin >> ignoreLine;
+
+    std::cout << "int: " << i << std::endl;
+
+    std::cout << "read int and ignore two lines" << std::endl;
+    std::cin >> i;
+
+    // ignore two lines
+    std::cin >> ignoreLine >> ignoreLine;
+
+    std::cout << "int: " << i << std::endl;
+}
