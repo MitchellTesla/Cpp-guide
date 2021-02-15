@@ -1,0 +1,28 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <iomanip>
+using std::setw;
+
+#include <cstring>
+using std::strcmp;                                     
+using std::strncmp;                                     
+
+int main()
+{
+   char *s1 = "abc";
+   char *s2 = "abC";
+   char *s3 = "Abc";
+ 
+   cout << "s1 = " << s1 << "\ns2 = " << s2 << "\ns3 = " << s3 
+      << "\n\nstrcmp(s1, s2) = " << strcmp( s1, s2 ) 
+      << "\nstrcmp(s1, s3) = " << strcmp( s1, s3 ) 
+      << "\nstrcmp(s3, s1) = " << strcmp( s3, s1 );
+
+   cout << "\n\nstrncmp(s1, s3, 6) = "
+      << strncmp( s1, s3, 2 ) << "\nstrncmp(s1, s3, 7) = " 
+      << strncmp( s1, s3, 2 ) << "\nstrncmp(s3, s1, 7) = " 
+      << strncmp( s3, s1, 5 ) << endl;
+   return 0;
+}
