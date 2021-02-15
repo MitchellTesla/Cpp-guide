@@ -1,0 +1,15 @@
+#include <iostream>
+using std::ostream;
+using std::cout;
+using std::flush;
+
+ostream& endLine( ostream& output )
+{
+   return output << '\n' << flush; // issue endl-like end of line
+}
+
+int main()
+{
+   cout << "-----" << endLine;
+   return 0;
+}
