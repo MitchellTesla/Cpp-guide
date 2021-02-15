@@ -1,0 +1,26 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct student
+{
+       char name[20];
+       int num;
+       float score[3];
+};
+void print(struct student *p)
+{
+       cout<<p->num<<"\n"<<p->name<<"\n"<<p->score[0]<<"\n"
+               <<p->score[1]<<"\n"<<p->score[2]<<"\n";
+       cout<<" ";
+}
+int main()
+{
+       struct student stu;
+       stu.num=12345;
+       strcpy(stu.name,"li li");
+       stu.score[0]=67.5;
+       stu.score[1]=89;
+       stu.score[2]=78.6;
+       print(&stu);
+}
