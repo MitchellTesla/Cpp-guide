@@ -1,0 +1,20 @@
+#include <iostream.h>
+
+int n=0;  //Global
+
+main()
+{
+        int n = 1;
+        {
+               int n = 2 ;
+               {
+                        int n = 3;
+                        cout << "In inner  n=" <<n<<endl;
+                        cout << "Global    n=" << ::n <<endl;
+               }
+               cout << "In outter n=" <<n<<endl;
+               cout << "Global    n=" <<::n<<endl;
+        }
+        cout << "In main() n=" << n<<endl;
+        return 0 ;
+}
