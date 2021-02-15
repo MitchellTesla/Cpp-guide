@@ -1,0 +1,16 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+  cout << "Default format: " << 123.123456789 << endl;
+
+  cout << "Use a field width of 20:\n";
+  cout << "|" << setw(20) << "Testing" << "|\n\n";
+  cout << "Use a field width of 20 with left justification:\n";
+  cout << "|" << setw(20) << left << "Testing" << "|\n\n";
+
+  return 0;
+}
