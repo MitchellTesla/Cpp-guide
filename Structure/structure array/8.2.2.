@@ -1,0 +1,32 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct st
+{
+       char name[20];
+       long num;
+       int age;
+       char sex;
+       float score;
+};
+int main()
+{
+       struct st student[3],*p;
+
+       p=student;
+
+       for(int i=0;p<student+3;p++,i++)
+       {
+               cout<<"Enter all data of student :["<<i<<"]\n";
+               cin>>student[i].name;
+           cin>>p->num;
+           cin>>p->age;
+           cin>>p->sex;
+           cin>>p->score;
+       }
+       cout<<"record num name age sex score"<<"\n";
+       p=student;
+       for(int i=0;p<student+3;p++,i++)
+               cout<<i<<p->name<<p->num<<p->age<<p->sex<<p->score<<"\n";
+}
