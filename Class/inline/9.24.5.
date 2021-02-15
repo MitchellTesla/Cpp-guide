@@ -1,0 +1,43 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass {  
+  // These are now private. 
+  int a; 
+  int b;    
+  int c;        
+public: 
+  // This is a constructor for MyClass. 
+  MyClass(int p, int f, int m) { 
+    a = p; 
+    b = f; 
+    c = m; 
+  } 
+ 
+  // Compute and return the range. 
+  int range() { 
+     return c * b; 
+  } 
+ 
+  // Accessor functions. 
+  int getA() { return a; } 
+  int getB() { return b; } 
+  int getC() { return c; } 
+}; 
+ 
+int main() {  
+  // Pass values to MyClass constructor. 
+  MyClass myObject1(7, 16, 21);  
+  MyClass myObject2(2, 14, 12); 
+ 
+  int range1, range2;  
+ 
+  range1 = myObject1.range(); 
+  range2 = myObject2.range(); 
+  
+  cout << range1 << "\n";  
+ 
+  cout << range2 << "\n";  
+  
+  return 0; 
+}
