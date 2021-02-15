@@ -1,0 +1,13 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+  const char* pstars[] = {"A","BB","CCC","DDDD","EEEEE","FFFFFF"};
+
+  cout << pstars[2];
+
+  cout << endl;
+  return 0;
+}
