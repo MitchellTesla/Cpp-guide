@@ -1,0 +1,40 @@
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+class MyClass
+{
+private:
+       char msg[20];
+       int loopcounter;
+       fstream myfile;
+       
+public:
+  void display(); 
+  MyClass();
+  ~MyClass();
+};
+
+MyClass::MyClass()
+{
+       myfile.open("input.txt",ios::in);
+       myfile.getline(msg,20);
+
+}
+
+MyClass::~MyClass()
+{
+  myfile.close();
+}
+
+void MyClass::display()
+{
+         cout << msg << "\n";
+}
+
+int main() {
+
+       MyClass obj;
+       obj.display();
+       return 0;
+}
