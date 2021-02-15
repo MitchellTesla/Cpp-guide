@@ -1,0 +1,23 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::fixed;
+
+#include <iomanip>
+using std::setprecision;
+
+#include <cmath>
+using namespace std; 
+
+int main()
+{
+   cout << fixed << setprecision( 1 ); 
+
+   cout << "\npow(" << 2.0 << ", " << 7.0 << ") = " << pow( 2.0, 7.0 ) << "\npow(" << 9.0 << ", " 
+      << 0.5 << ") = " << pow( 9.0, 0.5 );
+   cout << setprecision(3) << "\nfmod("<< 13.675 << ", " << 2.333 << ") = "           << fmod( 13.675, 2.333 ) << setprecision( 1 ); 
+   cout << "\nsin(" << 0.0 << ") = " << sin( 0.0 ); 
+   cout << "\ncos(" << 0.0 << ") = " << cos( 0.0 );
+   cout << "\ntan(" << 0.0 << ") = " << tan( 0.0 ) << endl;
+   return 0;
+}
