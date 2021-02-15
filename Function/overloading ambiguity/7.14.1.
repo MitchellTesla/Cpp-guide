@@ -1,0 +1,26 @@
+#include <iostream> 
+using namespace std; 
+ 
+float f(float i); 
+double f(double i); 
+ 
+int main() 
+{ 
+  // unambiguous, calls f(double) 
+  cout << f(10.1) << " "; 
+ 
+  // ambiguous 
+  //cout << f(10); // Error! 
+ 
+  return 0; 
+} 
+ 
+float f(float i) 
+{ 
+  return i; 
+} 
+ 
+double f(double i) 
+{ 
+  return -i; 
+}
