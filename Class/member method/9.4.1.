@@ -1,0 +1,8 @@
+class ThreeDimension {  
+public: 
+  int X; 
+  int Y;    
+  int Z;        
+ 
+  int range();   // compute and return the range 
+};
