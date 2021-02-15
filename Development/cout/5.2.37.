@@ -1,0 +1,14 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::internal;
+using std::showpos;
+
+#include <iomanip>
+using std::setw;
+
+int main()
+{
+   cout << internal << showpos << setw( 10 ) << 123 << endl;
+   return 0;
+}
