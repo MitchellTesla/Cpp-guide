@@ -1,0 +1,22 @@
+#include <string>
+#include <typeinfo>
+
+class base {
+public:
+  virtual void f() throw();
+  virtual void g(); // can throw anything
+  virtual void h() throw(std::string);
+};
+
+class derived : public base {
+public:
+  virtual void f() throw();    // OK: same as base
+  virtual void g() throw(int); // OK: subset of base
+  //virtual void h() throw(int); // Error: int not in base
+};
+
+class more : public derived {
+public:
+  //virtual void f();            // Error: can throw anything
+  virtual void g() throw();    // OK
+};
