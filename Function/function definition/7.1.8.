@@ -1,0 +1,22 @@
+#include <iostream>
+#include <ostream>
+using namespace std;
+int x = 1;
+
+int f()
+{
+  x = 2;
+  std::cout << "f()";
+  return x;
+}
+
+int g()
+{
+  std::cout << "g()";
+  return x;
+}
+
+int main()
+{
+  std::cout << f() / g() << '\n';
+}
