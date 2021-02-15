@@ -1,0 +1,29 @@
+#include <iostream> 
+using namespace std; 
+ 
+void f() 
+{ 
+  try { 
+    throw "hello"; // throw a char * 
+  } 
+  catch(char *) { // catch a char * 
+    cout << "Caught char * inside f\n"; 
+    throw ; // rethrow char * out of function 
+  } 
+} 
+ 
+int main() 
+{ 
+  cout << "start\n"; 
+ 
+  try{ 
+    f(); 
+  } 
+  catch(char *) { 
+    cout << "Caught char * inside main\n"; 
+  } 
+ 
+  cout << "end"; 
+ 
+  return 0; 
+}
