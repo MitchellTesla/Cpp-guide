@@ -1,0 +1,21 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::isalnum;
+using std::isalpha;
+using std::isdigit;
+using std::isxdigit;
+
+int main()
+{
+   cout << "\nAccording to isalpha:\n"
+      << ( isalpha( 'A' ) ? "A is a" : "A is not a" ) << " letter\n"
+      << ( isalpha( 'b' ) ? "b is a" : "b is not a" ) << " letter\n"
+      << ( isalpha( '&' ) ? "& is a" : "& is not a" ) << " letter\n"
+      << ( isalpha( '4' ) ? "4 is a" : "4 is not a" ) << " letter\n";
+
+
+   return 0;
+}
