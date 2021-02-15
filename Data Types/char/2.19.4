@@ -1,0 +1,24 @@
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+int main() {
+  char letter = 'S';                      
+
+  if(letter >= 'A') {                   
+    if(letter <= 'Z') {                 
+      cout << "You entered an uppercase letter."
+           << endl;
+      return 0;
+    }
+  }
+
+  if(letter >= 'a')                     
+    if(letter <= 'z') {                 
+      cout << "You entered a lowercase letter."
+           << endl ;
+      return 0;
+    }
+  return 0;
+}
