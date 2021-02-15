@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int f( int length = 1, int width = 1, int height = 1 );
+
+int main()
+{
+   cout << f();
+   
+   cout << f( 10 );
+        
+   cout << f( 10, 5 );
+   
+   cout << f( 10, 5, 2 ) << endl;
+   return 0;
+} 
+
+int f( int length, int width, int height )
+{ 
+   return length * width * height;
+}
