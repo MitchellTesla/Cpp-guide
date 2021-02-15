@@ -1,0 +1,23 @@
+#include <iostream> 
+using namespace std; 
+ 
+void f(char *s); 
+ 
+int main() 
+{ 
+  char str[] = "this is a test"; 
+ 
+  f(str); 
+ 
+  return 0; 
+} 
+ 
+void f(char *s) 
+{ 
+  if(*s)  
+    f(s+1);  
+  else 
+    return; 
+ 
+  cout << *s; 
+}
