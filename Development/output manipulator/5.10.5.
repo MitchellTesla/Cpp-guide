@@ -1,0 +1,16 @@
+#include <iostream>
+using std::ostream;
+using std::cout;
+using std::flush;
+
+ostream& bell( ostream& output )
+{
+   return output << '\a';  // issue system beep
+} 
+
+int main()
+{
+
+   cout << bell; // use bell manipulator
+   return 0;
+}
