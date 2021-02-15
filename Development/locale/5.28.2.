@@ -1,0 +1,32 @@
+#include <iostream>
+#include <locale>
+
+using namespace std;
+
+int main()
+{
+  // Create a locale for US English.
+  locale usloc("English_US");
+
+  // Set the locale of cout to US English.
+  cout.imbue(usloc);
+
+  // Get a moneypunct facet for cout.
+  const moneypunct<char> &us_monpunct = use_facet<moneypunct<char> >(cout.getloc());
+
+  cout << "  Currency symbol: " << us_monpunct.curr_symbol() << endl;
+  cout << " Decimal point: " << us_monpunct.decimal_point() << endl;
+  cout << " Thousands separator: " << us_monpunct.thousands_sep() << endl;
+  cout << " Fraction digits: " << us_monpunct.frac_digits() << endl;
+
+  cout << " Number of grouping rules: " << us_monpunct.grouping().size() << endl;
+
+  for(unsigned i=0; i < us_monpunct.grouping().size(); ++i)
+    cout << " Size of group " << i << ": "
+         << (int)us_monpunct.grouping()[0] << endl;
+
+  cout << endl;
+
+
+  return 0;
+}
