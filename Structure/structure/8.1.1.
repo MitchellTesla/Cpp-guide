@@ -1,0 +1,32 @@
+#include <memory>
+#include <iostream>
+using namespace std;
+
+struct mystruct
+{
+       int i;
+       int x;
+       int y;
+};
+ 
+int main()
+{
+
+  mystruct source,destination;
+
+  source.i = 1;
+
+  source.x = 2;
+
+  source.y = 3;
+
+  memcpy(&destination,&source,sizeof(source));
+
+  cout << destination.i << endl;
+
+  cout << destination.x << endl;
+
+  cout << destination.y << endl;
+
+  return 0;
+}
