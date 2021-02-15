@@ -1,0 +1,57 @@
+#include <iostream>  
+  using namespace std;
+
+  class queue {  
+    int q[100];  
+    int sloc, rloc;  
+  public:  
+    void init(void);  
+    void qput(int i);  
+    int qget(void);  
+  };  
+       
+  void queue::init(void)  
+  {  
+    rloc = sloc = 0;  
+  }  
+       
+  void queue::qput(int i)  
+  {  
+    if(sloc==100) {  
+      cout << "queue is full";  
+      return;  
+    }  
+    sloc++;  
+    q[sloc] = i;  
+  }  
+       
+  int queue::qget(void)  
+  {  
+    if(rloc == sloc) {  
+      cout << "queue underflow";  
+      return 0;  
+    }  
+    rloc++;  
+    return q[rloc];  
+  }  
+       
+  main(void)  
+  {  
+    queue a, b;
+       
+    a.init();  
+    b.init();  
+       
+    a.qput(10);  
+    b.qput(19);  
+       
+    a.qput(20);  
+    b.qput(1);  
+       
+    cout << a.qget() << endl;  
+    cout << a.qget() << endl;  
+    cout << b.qget() << endl;  
+    cout << b.qget() << endl;  
+       
+    return 0;  
+  }
