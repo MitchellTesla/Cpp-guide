@@ -1,0 +1,16 @@
+#include <iostream>
+using std::ostream;
+using std::cout;
+using std::flush;
+
+
+ostream& carriageReturn( ostream& output )
+{
+   return output << '\r';  // issue carriage return
+}
+
+int main()
+{
+   cout << carriageReturn << "-----" ;
+   return 0;
+}
