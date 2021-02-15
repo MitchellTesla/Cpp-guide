@@ -1,0 +1,23 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int i; 
+public: 
+  void setI(int val) { 
+    this->i = val; 
+  }  
+  int getI() { 
+    return this->i; 
+  }  
+} ; 
+ 
+int main() 
+{ 
+  MyClass o; 
+ 
+  o.setI(100); 
+  cout << o.getI(); 
+ 
+  return 0; 
+}
