@@ -1,0 +1,158 @@
+#include <iostream>
+ 
+ const int DefaultSize = 10;
+ 
+ // define the exception classes
+ class ArrayIndexOutofBoundException {};
+ 
+ class BaseArraySizeException
+ {
+ public:
+     BaseArraySizeException(int size):itsSize(size) {}
+     ~BaseArraySizeException(){}
+     virtual int GetSize() { return itsSize; }
+     virtual void PrintError() 
+     { std::cout << "Size error. Received: " 
+         << itsSize << std::endl; }
+ protected:
+     int itsSize;
+ };
+ 
+ class ArraySizeTooBigException : public BaseArraySizeException
+ {
+ public:
+     ArraySizeTooBigException(int size):BaseArraySizeException(size){}
+     virtual void PrintError() 
+     { 
+         std::cout << "Too big! Received: ";
+         std::cout << BaseArraySizeException::itsSize << std::endl;
+     }
+ };
+ 
+ class ArraySizeTooSmallException : public BaseArraySizeException
+ {
+ public:
+     ArraySizeTooSmallException(int size):BaseArraySizeException(size){}
+     virtual void PrintError() 
+     { 
+         std::cout << "Too small! Received: ";
+         std::cout << BaseArraySizeException::itsSize << std::endl;
+     }
+ };
+ 
+ class ArraySizeZeroException  : public ArraySizeTooSmallException
+ {
+ public:
+     ArraySizeZeroException(int size):ArraySizeTooSmallException(size){}
+     virtual void PrintError() 
+     { 
+         std::cout << "Zero!!. Received: ";
+         std::cout << BaseArraySizeException::itsSize << std::endl;
+     }
+ };
+ 
+ class ArraySizeNegativeException : public BaseArraySizeException
+ {
+ public:
+     ArraySizeNegativeException(int size):BaseArraySizeException(size){}
+     virtual void PrintError() 
+     { 
+         std::cout << "Negative! Received: ";
+         std::cout << BaseArraySizeException::itsSize << std::endl;
+     }
+ };
+ 
+ class Array
+ {
+ public:
+     // constructors
+     Array(int itsSize = DefaultSize);
+     Array(const Array &rhs);
+     ~Array() { delete [] pType;}
+ 
+     // operators
+     Array& operator=(const Array&);
+     int& operator[](int offSet);
+     const int& operator[](int offSet) const;
+ 
+     // accessors
+     int GetitsSize() const { return itsSize; }
+ 
+     // friend function
+     friend std::ostream& operator<< (std::ostream&, const Array&);
+ 
+ 
+ private:
+     int *pType;
+     int  itsSize;
+ };
+ 
+ Array::Array(int size):
+ itsSize(size)
+ {
+     if (size == 0)
+         throw ArraySizeZeroException(size);
+ 
+     if (size < 0)
+         throw ArraySizeNegativeException(size);
+ 
+     if (size < 10)
+         throw ArraySizeTooSmallException(size);
+ 
+     if (size > 30000)
+         throw ArraySizeTooBigException(size);
+ 
+     pType = new int[size];
+     for (int i = 0; i<size; i++)
+         pType[i] = 0;
+ }
+ 
+ int& Array::operator[] (int offset)
+ {
+     int size = GetitsSize();
+     if (offset >= 0 && offset < GetitsSize())
+         return pType[offset];
+     throw ArrayIndexOutofBoundException();
+     return pType[offset];
+ }
+ 
+ const int& Array::operator[] (int offset) const
+ {
+     int size = GetitsSize();
+     if (offset >= 0 && offset < GetitsSize())
+         return pType[offset];
+     throw ArrayIndexOutofBoundException();
+     return pType[offset];
+ }
+ 
+ int main()
+ {
+     try
+     {
+         int choice;
+         std::cout << "Enter the array size: ";
+         std::cin >> choice;
+         Array intArray(choice);
+         for (int j = 0; j< 100; j++)
+         {
+             intArray[j] = j;
+             std::cout << "intArray[" << j << "] okay..." 
+                 << std::endl;
+         }
+     }
+     catch (ArrayIndexOutofBoundException)
+     {
+         std::cout << "Unable to process your input!\n";
+     }
+     catch (BaseArraySizeException& theException)
+     {
+         theException.PrintError();
+     }
+     catch (...)
+     {
+         std::cout << "Something went wrong,"
+             << "but I've no idea what!" << std::endl;
+     }
+     std::cout << "Done.\n";
+     return 0;
+ }
