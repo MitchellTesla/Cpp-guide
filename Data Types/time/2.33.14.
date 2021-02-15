@@ -1,0 +1,13 @@
+#include <time.h>
+#include <iostream>
+using namespace std;
+
+time_t longtime;
+
+int main( )
+{
+ time(&longtime);
+ cout << "The time and date are " <<
+         ctime(&longtime) << "\n";
+ return (0);
+}
