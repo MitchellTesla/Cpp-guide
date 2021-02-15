@@ -1,0 +1,24 @@
+#include<iostream.h>
+
+class test
+{
+  int i;
+public:
+    test()
+    {
+      i=25;
+      for(int ctr=0; ctr<10;ctr++)
+      {
+        cout<<"Counting at"<<ctr<<"\n";
+      }
+    }
+
+    ~test(){};
+};
+
+test anObject;
+
+main()
+{
+  return 0;
+}
