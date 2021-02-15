@@ -1,0 +1,40 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int i; 
+public: 
+  MyClass(int i) { 
+    i = i; 
+  } 
+ 
+  int getI() { return i; } 
+  void setI(int i) { i = i; } 
+}; 
+ 
+void display(MyClass ob) 
+{ 
+  cout << ob.getI() << '\n'; 
+} 
+ 
+void change(MyClass ob) 
+{ 
+  ob.setI(100); // no effect on argument 
+ 
+  cout << "Value of ob inside change(): "; 
+  display(ob); 
+} 
+ 
+int main() 
+{ 
+  MyClass a(10); 
+ 
+  cout << "Value of a before calling change(): "; 
+  display(a); 
+ 
+  change(a); 
+  cout << "Value of a after calling change(): "; 
+  display(a); 
+ 
+  return 0; 
+}
