@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+int *swapnumbers(int rawdata[], int lower, int upper);
+int *quicksort(int rawdata[], int first, int last);
+
+int main()
+{
+    int unsorted[10],i;
+    int *sorted;
+
+    unsorted[0] = 9;
+    unsorted[1] = 8;
+    unsorted[2] = 7;
+    unsorted[3] = 7;
+    unsorted[4] = 6;
+    unsorted[5] = 5;
+    unsorted[6] = 5;
+    unsorted[7] = 4;
+    unsorted[8] = 4;
+    unsorted[9] = 2;
+
+    sorted = quicksort(unsorted, 0, 10);
+
+    cout << "This is your array sorted:"<< endl;
+    for(i = 0; i < 10; i++)
+    {
+        cout << sorted[i] << endl;
+    }
+
+    return 0;
+}
+
+int *quicksort(int rawdata[], int first, int last)
+{
+    int lower = first+1, upper = last;
+    int bound;
+
+    rawdata = swapnumbers(rawdata, first, (first+last)/2);
+    bound = rawdata[first];
+
+    while(lower <= upper)
+    {
+        while(rawdata[lower] < bound)
+            lower++;
+
+        while(bound < rawdata[upper])
+            upper--;
+
+        if(lower < upper)
+        {
+            rawdata = swapnumbers(rawdata, lower++, upper--);
+        }
+        else
+        {
+            lower++;
+        }
+    }
+
+    rawdata = swapnumbers(rawdata, upper, first);
+
+    if(first < upper-1)
+    {
+        rawdata = quicksort(rawdata, first, upper-1);
+    }
+    if(upper+1 < last)
+    {
+        rawdata = quicksort(rawdata, upper+1, last);
+    }
+    return(rawdata);
+}
+
+
+int *swapnumbers(int rawdata[], int lower, int upper)
+{
+    int temp;
+    temp = rawdata[lower];
+    rawdata[lower] = rawdata[upper];
+    rawdata[upper] = temp;
+    return(rawdata);
+}
