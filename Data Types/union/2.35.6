@@ -1,0 +1,23 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main()
+{
+   union                                                        
+   {                                                            
+      int integer1;                                             
+      double double1;                                           
+      char *charPtr;                                            
+   };
+   integer1 = 2;
+   cout << integer1 << endl;
+
+   double1 = 4.4;
+   cout << double1 << endl;
+
+   charPtr = "union";
+   cout << charPtr << endl;
+
+   return 0;
+}
