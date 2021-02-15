@@ -1,0 +1,44 @@
+#include<iostream.h>
+#include<stdio.h>
+
+class date
+{
+  int day,month,year;
+public:
+  date(char *str);
+  date(int m,int d,int y);
+  date::date();
+  void show();
+};
+date::date(char *str)
+{
+  scanf(str,"*c*cd",&month,&day,&year);
+}
+date::date(int m,int d,int y)
+{
+  day=d;
+  month=m;
+  year=y;
+}
+date::date()
+{
+  cout<<"Enter month_day_year:";
+  cin>>day;
+  cin>>month;
+  cin>>year;
+}
+void date::show()
+{
+  cout<<month<<'/'<<day<<'/';
+  cout<<year<<'\n';
+}
+main()
+{
+  date sdate("11/1/1999");
+  date idate(12,2,1998);
+  date indate;
+  sdate.show();
+  idate.show();
+  indate.show();
+  return 0;
+}
