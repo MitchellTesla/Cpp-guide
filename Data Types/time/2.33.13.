@@ -1,0 +1,16 @@
+#include <time.h>
+#include <stdio.h>
+
+int main( )
+{
+ struct tm *date_time;
+ time_t timer;
+ char str[80];
+
+ time(&timer);
+ date_time=localtime(&timer);
+ strftime(str,80,"It is %X on %A, %x",
+          date_time);
+ printf("%s\n",str);
+ return (0);
+}
