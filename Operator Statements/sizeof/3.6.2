@@ -1,0 +1,27 @@
+#include<iostream.h>
+
+union u_tag{
+   int i;
+   double d;
+}u={88};
+struct s_tag{
+    int i;
+       double d;
+}s={66,1.234};
+
+int main()
+{
+    int size;
+       size=sizeof(union u_tag);
+    cout<<"sizeof(union u_tag)="<<size<<endl;
+    u.i=100;
+       cout<<"u.i="<<u.i<<endl;
+       u.d=1.2345;
+       cout<<"u.d="<<u.d<<endl;
+       size=sizeof(u.d);
+       cout<<"sizeof(u.d)="<<size<<endl;
+       cout<<"s.i="<<s.i<<endl;
+       cout<<"s.d="<<s.d<<endl;
+       size=sizeof(struct s_tag);
+       cout<<"sizeof(struct s_tag)="<<size<<endl;
+}
