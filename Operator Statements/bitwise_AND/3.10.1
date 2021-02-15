@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  char ch;
+
+  for(int i = 0 ; i < 10; i++)  {
+    ch = 'A' + i;
+    // This statement turns on the 6th bit.
+
+    cout << ch << " " ;
+    ch = ch | 32;
+    cout << ch << "\n";
+  }
+  return 0;
+}
