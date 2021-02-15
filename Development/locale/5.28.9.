@@ -1,0 +1,25 @@
+#include <iomanip>
+#include <iostream>
+#include <locale>
+
+using namespace std;
+
+class Separator_facet: public numpunct<char>
+{
+   public:
+   explicit Separator_facet( size_t refs = 0): numpunct<char>( refs ){}
+
+   protected:
+   virtual string do_grouping() const{ return "\3"; }
+};
+
+int main()
+{
+   const int million = 1000000;
+   const double number = 1234.56789;
+   cout << million << fixed << setprecision( 5 ) << number;
+
+   locale separator_locale( cout.getloc(), new Separator_facet );
+   cout.imbue( separator_locale );
+   cout << million << " " << number << endl;
+}
