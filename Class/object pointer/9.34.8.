@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+   
+class MyClass {
+  int id;
+public:
+  int i;
+  MyClass(int i);
+  ~MyClass();
+  void neg(MyClass &o) { o.i = -o.i; } // no temporary created
+};
+   
+MyClass::MyClass(int num)
+{
+  cout << "Constructing " << num << "\n";
+  id = num;
+}
+   
+MyClass::~MyClass()
+{
+  cout << "Destructing " << id << "\n";
+}
+   
+int main()
+{
+  MyClass o(1);
+   
+  o.i = 10;
+  o.neg(o);
+   
+  cout << o.i << "\n";
+   
+  return 0;
+}
