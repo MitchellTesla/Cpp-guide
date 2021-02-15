@@ -1,0 +1,23 @@
+#include <iostream> 
+using namespace std; 
+ 
+char f(unsigned char ch); 
+char f(char ch); 
+ 
+int main() 
+{ 
+  cout << f('c');  // this calls f(char) 
+  //cout << f(88) << " "; // Error, ambiguous! 
+ 
+  return 0; 
+} 
+ 
+char f(unsigned char ch) 
+{ 
+  return ch-1; 
+} 
+ 
+char f(char ch) 
+{ 
+  return ch+1; 
+}
