@@ -1,0 +1,30 @@
+#include <iostream>
+ 
+ int Doubler(int AmountToDouble);
+ 
+ int main()
+ {
+     int result = 0;
+     int input = 123;
+ 
+     std::cout << "\nBefore doubler is called...";
+     std::cout << "\ninput: " << input 
+               << " doubled: " << result << "\n";
+ 
+     result = Doubler(input);
+ 
+     std::cout << "\nBack from Doubler...";
+     std::cout << "\ninput: " << input 
+               << " doubled: " << result << "\n\n";
+ 
+     return 0;
+ }
+ 
+ int Doubler(int original)
+ {
+     if (original <= 10000)
+         return original * 2;
+     else
+         return -1;
+     std::cout << "You can't get here!\n";
+ }
