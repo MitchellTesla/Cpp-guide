@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip>
+#include <cctype>
+using std::cout;
+using std::endl;
+using std::setw;
+
+int main() {
+  const int table = 12;           
+  long values[table][table] = {0};
+
+  for(int i = 0; i < table ; i++)
+    for(int j = 0; j < table ; j++)
+      *(*(values + i) + j) = 0;  
+
+
+  for(int i = 0 ; i < table ; i++) {
+    for(int j = 0 ; j < table ; j++)
+      cout << " " << setw(3) << values[i][j] << " |"; 
+    cout << endl;                                     
+  }
+  return 0;
+}
