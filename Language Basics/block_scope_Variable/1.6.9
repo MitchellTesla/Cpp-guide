@@ -1,0 +1,23 @@
+#include <iostream>
+#include <ostream>
+
+namespace n {
+  struct counter {
+    static int n;
+  };
+  double n = 2.8;
+}
+
+int n::counter::n = 7; 
+
+int main()
+{
+  int counter = 0;    
+  int n = 10;         
+
+  std::cout << n::counter::n; 
+  std::cout << n::n;          
+  //std::cout << x.n;           
+  std::cout << n;             
+  std::cout << counter;       
+}
