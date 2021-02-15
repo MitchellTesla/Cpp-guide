@@ -1,0 +1,25 @@
+#include <iostream>
+#include <new>
+using namespace std;
+
+class powers {
+  int x;
+public:
+  powers() {
+     x = 0;
+     cout << "\nno initializer\n\n";
+  }
+  powers(int n) {
+
+     x = n;
+     cout << "\n\ninitializer:" << x;
+  }
+
+  int getx() { return x; }
+  void setx(int i) { x = i; }
+};
+int main()
+{
+  powers ofTwo[] = {1, 2, 4, 8, 16}; // initialized
+  powers ofThree[5];                 // uninitialized
+}
