@@ -1,0 +1,36 @@
+#include <iostream>
+ 
+ class MyType
+ {
+ public:
+     MyType();
+     MyType(int initialValue);
+     ~MyType(){}
+     int GetItsVal()const { return itsVal; }
+     void SetItsVal(int x) {itsVal = x; }
+     MyType Add(const MyType &);
+ 
+ private:
+     int itsVal;
+ 
+ };
+ 
+ MyType::MyType(int initialValue): itsVal(initialValue) {}
+ 
+ MyType::MyType(): itsVal(0) {}
+ 
+ MyType MyType::Add(const MyType & rhs)
+ {
+     return MyType(itsVal+ rhs.GetItsVal());
+ }
+ 
+ int main()
+ {
+     MyType varOne(2), varTwo(4), varThree;
+     varThree = varOne.Add(varTwo);
+     std::cout << "varOne: " << varOne.GetItsVal()<< std::endl;
+     std::cout << "varTwo: " << varTwo.GetItsVal() << std::endl;
+     std::cout << "varThree: " << varThree.GetItsVal() 
+         << std::endl;
+     return 0;
+ }
