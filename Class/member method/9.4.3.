@@ -1,0 +1,34 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass 
+{
+public: 
+   void setX( int value )
+   {
+      x = value;
+   }
+   void print() 
+   { 
+      cout << x << endl; 
+   }
+private:
+   int x;  
+};
+int main()
+{
+   MyClass obj; 
+   MyClass *objPtr = &obj;
+   MyClass &objRef = obj;
+
+   obj.setX( 1 );
+   obj.print(); 
+
+   objRef.setX( 2 );
+   objRef.print();
+
+   objPtr->setX( 3 );
+   objPtr->print();
+   return 0;  
+}
