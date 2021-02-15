@@ -1,0 +1,20 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::iscntrl;
+using std::isgraph;
+using std::isprint;
+using std::ispunct;
+using std::isspace;
+
+int main()
+{
+   cout << "\nAccording to isgraph:\n"
+      << ( isgraph( 'Q' ) ? "Q is a" : "Q is not a" )
+      << " printing character other than a space\nSpace " 
+      << ( isgraph(' ') ? "is a" : "is not a" )
+      << " printing character other than a space" << endl;
+   return 0;
+}
