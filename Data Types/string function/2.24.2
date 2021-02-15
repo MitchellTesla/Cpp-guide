@@ -1,0 +1,15 @@
+#include <iostream>
+ #include <string.h>
+ 
+ int main()
+ {
+     const int MaxLength = 80;
+     char String1[] = "test";
+     char String2[MaxLength+1];
+ 
+     strncpy(String2,String1,MaxLength);
+     String2[strlen(String1)] = '\0'; // add a null to the end
+     std::cout << "String1: " << String1 << std::endl;
+     std::cout << "String2: " << String2 << std::endl;
+     return 0;
+ }
