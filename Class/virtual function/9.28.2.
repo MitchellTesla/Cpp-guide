@@ -1,0 +1,40 @@
+#include <iostream> 
+using namespace std; 
+ 
+class BaseClass { 
+public: 
+  virtual void who() { 
+    cout << "Base\n"; 
+  } 
+}; 
+ 
+class DerivedClass1 : public BaseClass { 
+public: 
+  void who() { 
+    cout << "First derivation\n"; 
+  } 
+}; 
+ 
+class DerivedClass2 : public BaseClass { 
+// who() not defined 
+}; 
+ 
+int main() 
+{ 
+  BaseClass base_obj; 
+  BaseClass *p; 
+  DerivedClass1 DerivedClass1_obj; 
+  DerivedClass2 DerivedClass2_obj; 
+ 
+  p = &base_obj; 
+  p->who();  // access BaseClass's who() 
+ 
+  p = &DerivedClass1_obj; 
+  p->who(); // access DerivedClass1's who() 
+ 
+  p = &DerivedClass2_obj; 
+  p->who(); /* access BaseClass's who() because 
+               DerivedClass2 does not redefine it */ 
+ 
+  return 0; 
+}
