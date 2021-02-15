@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+template <class T> class MyClass {
+  T a;
+public:
+  MyClass(T i) { a = i; }
+};
+
+int main()
+{
+  MyClass<int> o1(10), o2(9);
+  MyClass<double> o3(7.2);
+
+  if(typeid(o1) == typeid(o2))
+    cout << "o1 and o2 are the same type\n";
+
+  if(typeid(o1) == typeid(o3))
+    cout << "Error\n";
+  else
+    cout << "o1 and o3 are different types\n";
+
+
+  return 0;
+}
