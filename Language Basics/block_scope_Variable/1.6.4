@@ -1,0 +1,17 @@
+#include <iostream>
+#include <ostream>
+
+int main()
+{
+  for (int i = 0; i < 10; ++i)
+  {
+    int x = 2;
+    if (x < i)
+    {
+      double x = 3.4;
+      std::cout << x; 
+    }
+    std::cout << x;   
+  }
+  //std::cout << x;     // Error: no x declared in this scope
+}
