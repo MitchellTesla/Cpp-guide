@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+int main( ) {
+  stringstream ss;
+  ss << showbase << hex << 16; // Show the base in hexadecimal
+  cout << ss.str( ) << endl;
+}
