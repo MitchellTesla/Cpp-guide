@@ -1,0 +1,23 @@
+#include <iostream>
+#include <locale>
+#include <cstring>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+  // Obtain the current system time.
+  time_t t = time(NULL);
+  tm *cur_time = localtime(&t);
+
+  // Create US and German locales.
+  locale usloc("English_US");
+  locale gloc("German_Germany");
+
+  // custom pattern displays hours and minutes followed by the date.
+  char *custom_pat = "%A %B %d, %Y %H:%M";
+  char *custom_pat_end = custom_pat + strlen(custom_pat);
+
+  return 0;
+}
