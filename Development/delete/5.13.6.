@@ -1,0 +1,46 @@
+#include <iostream.h>
+
+class Point
+{
+    int x;
+    int y;
+public:
+   Point(){ 
+      x = 0; 
+      y = 0;
+   }
+   
+   Point(int a,int b=0)  { 
+      x = a; 
+      y= b; 
+   }
+   void Set (int a,int b=0) { 
+      x = a; 
+      y = b; 
+   }
+   void Display() {
+        cout << "x = "<< x << " y = "<< y   << endl;
+   }
+   ~Point() {
+        cout << "Destruct obj.\n" ;
+   }
+};
+
+int main()
+{
+    Point *p;int i;
+    const int Length = 3;
+    p=new Point[Length];
+    
+    if(!p)
+    {  
+        cout << "allocation failure\n";  
+        return -1;  
+    }
+    for (i=0;i<Length;i++)
+        p[i].Set(i*10,-i*10);
+    for (i=0;i<Length;i++)
+        p[i].Display();
+    delete []p;
+    return 0;
+}
