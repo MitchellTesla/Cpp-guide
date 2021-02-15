@@ -1,0 +1,54 @@
+#include <iomanip>
+#include <iostream>
+
+using namespace std;
+
+int main( ){
+   const double x = .39;
+   const double y = 27;
+
+   cout<< ".39, fixed, 1 decimal place:  "
+      << fixed << setprecision( 1 ) << x << endl
+
+      << ".39, fixed, 2 decimal places: "
+      << setprecision( 2 ) << x << endl
+
+      << ".39, fixed, 3 decimal places: "
+      << setprecision( 3 ) << x << endl << endl
+
+      << ".39, scientific, 1 decimal place:  "
+      << scientific << setprecision( 1 ) << x << endl
+
+      << ".39, scientific, 2 decimal places: "
+      << setprecision( 2 ) << x << endl
+
+      << ".39, scientific, 3 decimal places: "
+      << setprecision( 3 ) << x << endl << endl
+
+      // return to default floating-point output format
+      << resetiosflags( ios::fixed | ios::scientific )
+      << setprecision( 6 )
+
+      << ".39 and 27., default: "  << x << "    " << y << endl
+
+      << ".39 and 27., default, 1 decimal place:  "
+      << setprecision( 1 ) << x << "    " << y << endl
+
+      << ".39 and 27., default, 2 decimal places: "
+      << setprecision( 2 ) << x << "    " << y << endl
+
+      << ".39 and 27., default, 3 decimal places: "
+      << setprecision( 3 ) << x << "    " << y << endl << endl
+
+      << ".39 and 27., default, decimal point: "
+      << showpoint << x << "   " << y << endl
+
+      << ".39 and 27., default, decimal point, 1 decimal place:  "
+      << setprecision( 1 ) << x << "    " << y << endl
+
+      << ".39 and 27., default, decimal point, 2 decimal places: "
+      << setprecision( 2 ) << x << "    " << y << endl
+
+      << ".39 and 27., default, decimal point, 3 decimal places: "
+      << setprecision( 3 ) << x << "   " << y << endl;
+}
