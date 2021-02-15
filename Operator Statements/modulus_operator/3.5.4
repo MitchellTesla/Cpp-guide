@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(void)
+{
+   int total, dollars, quarters, dimes, nickels, leftover;
+   cout << "Enter number of pennies to make change for: ";
+   cin >> total;
+   dollars = total / 100;
+   leftover = total % 100;
+   quarters = leftover / 25;
+   leftover %= 25;
+   dimes = leftover / 10;
+   leftover %= 10;
+   nickels = leftover / 5;
+   leftover %= 5;
+   cout << "Dollars: " << dollars << endl;
+   cout << "Quarters: " << quarters << endl;
+   cout << "Dimes: " << dimes << endl;
+   cout << "Nickels: " << nickels << endl;
+   cout << "Pennies: " << leftover << endl;
+   return 0;
+}
