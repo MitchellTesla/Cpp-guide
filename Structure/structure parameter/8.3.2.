@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+struct ResultStructure
+{
+  float base;
+  float height;
+  float area;
+};
+
+void f(struct ResultStructure &area);
+
+int main () 
+{
+       ResultStructure myResultStructure;
+
+
+    myResultStructure.base = 12;
+    myResultStructure.height = 23;
+    f(myResultStructure);
+
+    cout << "The area is " << myResultStructure.area << " \n";
+   return 0;
+}
+
+
+void f(ResultStructure &area)
+{
+   area.area = .5f * (area.base * area.height);
+}
