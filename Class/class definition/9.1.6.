@@ -1,0 +1,41 @@
+#include <iostream>
+using std::cout; 
+using std::endl;
+
+#include <string>
+using std::string;
+
+class MyClass
+{
+public:
+   MyClass( string name )
+   {
+      setName( name ); 
+   } 
+
+   void setName( string n )
+   {
+      name = n;
+   } 
+
+   string getName()
+   {
+      return name; 
+   } 
+
+   void displayMessage()
+   {
+      cout << "Welcome " << getName()  << "!" << endl;
+   }
+private:
+   string name;
+};
+
+int main()
+{
+   MyClass obj1( "A" );
+   MyClass obj2( "B" );
+
+   cout << obj1.getName()<< "\n" << obj2.getName() << endl;
+   return 0;
+}
