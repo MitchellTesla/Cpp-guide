@@ -1,0 +1,20 @@
+#include <iostream.h>
+
+long Exp(long x,long n);
+main()
+{
+   long   a,b,c;
+   cout << "Enter 2 integers:";
+   cin >> a >> b ;
+   c = Exp(a,b);
+   cout << "\nResult is:" << c << endl;
+   return 0;
+}
+
+long Exp(long x,long n)
+{
+       long res=1;
+       for (int i=1;i<=n;i++)
+          res = res*x;
+       return res;
+}
