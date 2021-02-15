@@ -1,0 +1,20 @@
+#include <iostream> 
+#include <cstdlib> 
+using namespace std; 
+
+
+void f(int i); // prototype 
+ 
+int main() 
+{ 
+  int x = 10;   
+  f(x);
+ 
+  return 0; 
+} 
+ 
+void f(int i) 
+{ 
+  i = i * i;  
+  cout << i;
+}
