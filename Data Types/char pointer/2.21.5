@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+void f( const char * );
+
+int main()
+{
+   const char phrase[] = "a string";
+
+   f( phrase );
+   return 0;
+}
+
+void f( const char *sPtr )
+{
+   for ( ; *sPtr != '\0'; sPtr++ )
+      cout << *sPtr;
+}
