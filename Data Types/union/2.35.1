@@ -1,0 +1,26 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+union Number           
+{                      
+   int integer1;       
+   double double1;     
+};
+
+int main()
+{
+   Number value;
+
+   value.integer1 = 100;
+
+   cout << value.integer1 << "\ndouble: " << value.double1
+        << endl;
+
+   value.double1 = 100.0;
+
+   cout << value.integer1 << "\ndouble: " << value.double1
+        << endl;
+
+   return 0;
+}
