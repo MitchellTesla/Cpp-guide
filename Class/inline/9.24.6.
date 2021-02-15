@@ -1,0 +1,18 @@
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+inline double cube( const double s ) { return s * s * s; }
+
+int main()
+{
+  double side;
+
+  for ( int k = 1; k < 4; k++ ) {
+      cout << "Volume of cube with side " << k << " is " << cube( k ) << endl;
+  }
+
+   return 0;
+}
