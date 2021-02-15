@@ -1,0 +1,21 @@
+#include <iostream> 
+using namespace std; 
+ 
+void f(); // f's protoype 
+ 
+int main() 
+{ 
+  cout << "In main()\n"; 
+ 
+  f(); // call f() 
+ 
+  cout << "Back in main()\n"; 
+ 
+  return 0; 
+} 
+ 
+// This if the function's definition. 
+void f() 
+{ 
+  cout << "Inside f()\n"; 
+}
