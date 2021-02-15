@@ -1,0 +1,20 @@
+#include <iomanip>
+#include <iostream>
+
+using namespace std;
+
+int main( )
+{
+   const int num_members = 6;
+   const int id[num_members] = { 6, 5, 1, 8,3, 2 };
+   const int month[num_members] = { 9, 1, 1, 12, 10, 4 };
+   const int day[num_members] = { 2, 1, 13, 30, 31, 4 };
+   const int year[num_members] = { 2000, 2003, 2004, 1998,2001, 2003 };
+
+   cout << setfill( '0' );
+   for( int i = 0; i < num_members; ++i )
+      cout << ": " << setw( 8 ) << id[i]
+         << " : " << setw( 2 ) << month[i] << "/"
+         << setw( 2 ) << day[i] << "/" << setw( 2 )
+         << year[i] % 100 << endl;
+}
