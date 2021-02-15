@@ -1,0 +1,30 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass 
+{
+public:
+   MyClass() : x( 0 )
+   { 
+   }
+   void print() const       
+   { 
+      cout << x << endl; 
+   }
+private:
+   int x;
+}; 
+
+void cannotSetX( MyClass &c, int val )
+{
+   //c.x = val; // ERROR: cannot access private member in MyClass
+}
+
+int main()
+{
+   MyClass counter;
+
+   cannotSetX( counter, 3 );
+   return 0;
+}
