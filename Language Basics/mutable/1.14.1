@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+  mutable int i;
+  int j;
+public:
+  int geti() const {
+    return i; // ok
+  }
+
+  void seti(int x) const {
+    i = x; // now, OK.
+  }
+
+/* The following function won't compile.
+  void setj(int x) const {
+    j = x; // Still Wrong!
+  }
+*/
+};
+
+int main()
+{
+  MyClass ob;
+
+  ob.seti(1900);
+  cout << ob.geti();
+
+  return 0;
+}
