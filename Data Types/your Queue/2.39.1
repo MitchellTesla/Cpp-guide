@@ -1,0 +1,87 @@
+#include <iostream> 
+using namespace std; 
+ 
+const int maxQsize = 100; 
+ 
+template <class QType> class Queue { 
+  QType q[maxQsize]; 
+  int size; 
+  int enqueueloc, dequeueloc;
+public: 
+ 
+  Queue(int len) { 
+    if(len > maxQsize) 
+       len = maxQsize; 
+    else if(len <= 0) 
+       len = 1;  
+ 
+    size = len; 
+    enqueueloc = dequeueloc = 0; 
+  } 
+ 
+  void enqueue(QType data) { 
+    if(enqueueloc == size) { 
+      cout << " -- Queue is full.\n"; 
+      return; 
+    } 
+     
+    enqueueloc++; 
+    q[enqueueloc] = data; 
+  } 
+ 
+  QType dequeue() { 
+    if(dequeueloc == enqueueloc) { 
+      cout << " -- Queue is empty.\n"; 
+      return 0;  
+    } 
+   
+    dequeueloc++; 
+    return q[dequeueloc]; 
+  } 
+}; 
+ 
+int main() 
+{ 
+  Queue<int> intQueue1(10), intQueue2(10);  // create two integer queues 
+ 
+  intQueue1.enqueue(1); 
+  intQueue1.enqueue(2); 
+  intQueue1.enqueue(3); 
+ 
+  intQueue2.enqueue(10); 
+  intQueue2.enqueue(20); 
+  intQueue2.enqueue(30); 
+ 
+  cout << "Contents of integer queue intQueue1: "; 
+  for(int i=0; i < 3; i++) 
+    cout << intQueue1.dequeue() << " "; 
+  cout << endl; 
+ 
+  cout << "Contents of integer queue intQueue2: "; 
+  for(int i=0; i < 3; i++) 
+    cout << intQueue2.dequeue() << " "; 
+  cout << endl; 
+ 
+  Queue<double> doubleQueue1(10), doubleQueue(10);  // create two double queues
+ 
+ 
+  doubleQueue1.enqueue(1.01); 
+  doubleQueue1.enqueue(2.02); 
+  doubleQueue1.enqueue(3.03); 
+ 
+  doubleQueue.enqueue(10.01); 
+  doubleQueue.enqueue(20.02); 
+  doubleQueue.enqueue(30.03); 
+ 
+  cout << "Contents of double queue doubleQueue1: "; 
+  for(int i=0; i < 3; i++) 
+    cout << doubleQueue1.dequeue() << " "; 
+  cout << endl; 
+ 
+  cout << "Contents of double queue doubleQueue: "; 
+  for(int i=0; i < 3; i++) 
+    cout << doubleQueue.dequeue() << " "; 
+  cout << endl; 
+ 
+  return 0; 
+}
