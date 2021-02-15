@@ -1,0 +1,11 @@
+#include <iostream>
+#include <ostream>
+#include <typeinfo>
+
+enum color   { red, black };
+
+int main()
+{
+  std::cout << typeid(red).name() << '\n';
+  std::cout << typeid(color).name() << '\n';
+}
