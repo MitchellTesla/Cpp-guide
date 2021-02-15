@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cstdlib> // strtoul prototype
+using std::strtoul;
+
+int main()
+{
+   unsigned long x;
+   const char *string1 = "1234567abc";
+   char *remainderPtr;
+
+    x = strtoul( string1, &remainderPtr, 0 );
+
+   cout << x << "  "<< x - 567 << endl;
+   return 0;
+}
