@@ -1,0 +1,32 @@
+#include <iostream>   
+using namespace std;   
+   
+int main()   
+{   
+  int i, avg, min_val, max_val; 
+  int nums[10];   
+   
+  nums[0] = 13;   
+  nums[1] = 18;   
+  nums[2] = 75;   
+  nums[3] = 120;   
+  nums[4] = 1321;   
+  nums[5] = 56;   
+  nums[6] = 13124;   
+  nums[7] = 12123;   
+  nums[8] = -19312;   
+  nums[9] = 88123;   
+   
+ 
+  // find minimum and maximum values      
+  min_val = max_val = nums[0];   
+  for(i=1; i<10; i++) {   
+    if(nums[i] < min_val) min_val = nums[i];  
+    if(nums[i] > max_val) max_val = nums[i];  
+  }  
+  
+  cout << "Minimum value: " << min_val << '\n';   
+  cout << "Maximum value: " <<  max_val << '\n';   
+   
+  return 0;   
+}
