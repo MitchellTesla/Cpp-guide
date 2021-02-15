@@ -1,0 +1,28 @@
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+class Trouble {
+  public:
+    Trouble(const char* pStr = "There's a problem") : pMessage(pStr) {}
+    const char* what() const {return pMessage;}
+
+  private:
+    const char* pMessage;
+};
+
+int main() {
+  for(int i = 0 ; i < 2 ; i++) {
+    try     {
+      if(i == 0)
+        throw Trouble();
+      else
+        throw Trouble("Nobody knows the trouble I've seen...");
+    }
+    catch(const Trouble& t) {
+      cout << endl << "Exception: " << t.what();
+    }
+  }
+  return 0;
+}
