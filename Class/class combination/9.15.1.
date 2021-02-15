@@ -1,0 +1,157 @@
+#include <iostream>
+
+class Point     // holds x,y coordinates
+{
+    // no constructor, use default
+public:
+    void SetX(int x) { itsX = x; }
+    void SetY(int y) { itsY = y; }
+    int GetX()const { return itsX;}
+    int GetY()const { return itsY;}
+private:
+    int itsX;
+    int itsY;
+};// end of Point class declaration
+
+
+class  Rectangle
+{
+public:
+    Rectangle (int top, int left, int bottom, int right);
+    ~Rectangle () {}
+
+    int GetTop() const { return itsTop; }
+    int GetLeft() const { return itsLeft; }
+    int GetBottom() const { return itsBottom; }
+    int GetRight() const { return itsRight; }
+
+    Point  GetUpperLeft() const { return itsUpperLeft; }
+    Point  GetLowerLeft() const { return itsLowerLeft; }
+    Point  GetUpperRight() const { return itsUpperRight; }
+    Point  GetLowerRight() const { return itsLowerRight; }
+
+    void SetUpperLeft(Point Location);
+    void SetLowerLeft(Point Location);
+    void SetUpperRight(Point Location);
+    void SetLowerRight(Point Location);
+
+    void SetTop(int top);
+    void SetLeft (int left);
+    void SetBottom (int bottom);
+    void SetRight (int right);
+
+    int GetArea() const;
+
+private:
+    Point  itsUpperLeft;
+    Point  itsUpperRight;
+    Point  itsLowerLeft;
+    Point  itsLowerRight;
+    int    itsTop;
+    int    itsLeft;
+    int    itsBottom;
+    int    itsRight;
+};
+
+
+Rectangle::Rectangle(int top, int left, int bottom, int right)
+{
+    itsTop = top;
+    itsLeft = left;
+    itsBottom = bottom;
+    itsRight = right;
+
+    itsUpperLeft.SetX(left);
+    itsUpperLeft.SetY(top);
+
+    itsUpperRight.SetX(right);
+    itsUpperRight.SetY(top);
+
+    itsLowerLeft.SetX(left);
+    itsLowerLeft.SetY(bottom);
+
+    itsLowerRight.SetX(right);
+    itsLowerRight.SetY(bottom);
+}
+
+void Rectangle::SetUpperLeft(Point Location)
+{
+    itsUpperLeft = Location; 
+    itsUpperRight.SetY(Location.GetY());
+    itsLowerLeft.SetX(Location.GetX());
+    itsTop = Location.GetY();
+    itsLeft = Location.GetX();
+}
+
+void Rectangle::SetLowerLeft(Point Location)
+{
+    itsLowerLeft = Location; 
+    itsLowerRight.SetY(Location.GetY());
+    itsUpperLeft.SetX(Location.GetX());
+    itsBottom = Location.GetY();
+    itsLeft = Location.GetX();
+}
+
+void Rectangle::SetLowerRight(Point Location)
+{
+    itsLowerRight = Location; 
+    itsLowerLeft.SetY(Location.GetY());
+    itsUpperRight.SetX(Location.GetX());
+    itsBottom = Location.GetY();
+    itsRight = Location.GetX();
+}
+
+void Rectangle::SetUpperRight(Point Location)
+{
+    itsUpperRight = Location; 
+    itsUpperLeft.SetY(Location.GetY());
+    itsLowerRight.SetX(Location.GetX());
+    itsTop = Location.GetY();
+    itsRight = Location.GetX();
+}
+
+void Rectangle::SetTop(int top)
+{
+    itsTop = top;
+    itsUpperLeft.SetY(top);
+    itsUpperRight.SetY(top);
+}
+
+void Rectangle::SetLeft(int left)
+{
+    itsLeft = left;
+    itsUpperLeft.SetX(left);
+    itsLowerLeft.SetX(left);
+}
+
+void Rectangle::SetBottom(int bottom)
+{
+    itsBottom = bottom;
+    itsLowerLeft.SetY(bottom);
+    itsLowerRight.SetY(bottom);
+}
+
+void Rectangle::SetRight(int right)
+{
+    itsRight = right;
+    itsUpperRight.SetX(right);
+    itsLowerRight.SetX(right);
+}
+
+int Rectangle::GetArea() const
+{
+    int Width = itsRight-itsLeft;
+    int Height = itsTop - itsBottom;
+    return (Width * Height);
+}
+
+int main()
+{
+    Rectangle MyRectangle (100, 20, 50, 80 );
+
+    int Area = MyRectangle.GetArea();
+
+    std::cout << "Area: " << Area << "\n";
+    std::cout << MyRectangle.GetUpperLeft().GetX();
+    return 0;
+}
