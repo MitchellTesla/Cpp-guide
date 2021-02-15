@@ -1,0 +1,24 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::islower;
+using std::isupper;
+using std::tolower;
+using std::toupper;
+
+int main()
+{
+   cout << "According to islower:\n"
+      << ( islower( 'p' ) ? "p is a" : "p is not a" )    
+      << " lowercase letter\n"
+      << ( islower( 'P' ) ? "P is a" : "P is not a" ) 
+      << " lowercase letter\n"
+      << ( islower( '5' ) ? "5 is a" : "5 is not a" ) 
+      << " lowercase letter\n"
+      << ( islower( '!' ) ? "! is a" : "! is not a" ) 
+      << " lowercase letter\n";
+
+   return 0;
+}
