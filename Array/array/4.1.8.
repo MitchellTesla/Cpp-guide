@@ -1,0 +1,15 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main() {
+  int values[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+
+  cout << endl
+       << "There are "
+       << sizeof values/sizeof values[0]
+       << " elements in the array."
+       << endl;
+
+  return 0;
+}
