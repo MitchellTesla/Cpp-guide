@@ -1,0 +1,31 @@
+#include <iostream>
+ 
+ class Animal
+ {
+ public:
+     Animal():itsAge(1) { std::cout << "Animal constructor...\n"; }
+     ~Animal() { std::cout << "Animal destructor...\n"; }
+     void Move() const { std::cout << "Animal move one step\n"; }
+     virtual void Speak() const { std::cout << "Animal speak!\n"; }
+ 
+ protected:
+     int itsAge;
+ };
+ 
+ class Dog : public Animal
+ {
+ public:
+     Dog() { std::cout << "Dog constructor...\n"; }
+     ~Dog() { std::cout << "Dog destructor...\n"; }
+     void WagTail() { std::cout << "Wagging Tail...\n"; }
+     void Speak()const { std::cout << "Woof!\n"; }
+     void Move()const { std::cout << "Dog moves 5 steps...\n"; }
+ };
+ 
+ int main()
+ {
+     Animal *pDog = new Dog;
+     pDog->Move();
+     pDog->Speak();
+     return 0;
+ }
