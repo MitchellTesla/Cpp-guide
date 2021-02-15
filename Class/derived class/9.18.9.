@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+  virtual void f() {
+     cout << "Inside Base\n";
+  }
+};
+
+class Derived : public Base {
+public:
+  void f() {
+     cout << "Inside Derived\n";
+  }
+};
+
+int main()
+{
+  Base *bp, b_ob;
+  Derived *dp, d_ob;
+
+  bp = dynamic_cast<Base *> (&d_ob);
+  if(bp) {
+    cout << "Cast from Derived * to Base * OK.\n";
+    bp->f();
+  } else
+    cout << "Error\n";
+
+
+  cout << endl;
+
+  return 0;
+}
