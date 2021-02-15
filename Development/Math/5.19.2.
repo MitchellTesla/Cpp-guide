@@ -1,0 +1,19 @@
+#include <iostream> 
+#include <cstdlib>  
+using namespace std; 
+ 
+int main() 
+{ 
+  int magic;  
+  int guess;  
+ 
+  magic = rand(); // get a random number 
+   
+  cout << "Enter your guess: "; 
+  cin >> guess; 
+ 
+  if(guess == magic) 
+     cout << "Right"; 
+ 
+  return 0; 
+}
