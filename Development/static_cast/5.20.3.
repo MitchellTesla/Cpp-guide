@@ -1,0 +1,9 @@
+#include <iostream>
+#include <ostream>
+
+enum color   { red, black };
+
+int main()
+{
+  color c = static_cast<color>(red);
+}
