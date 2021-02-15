@@ -1,0 +1,70 @@
+#include <iostream>
+ using namespace std; 
+ 
+ void Square (int&,int&);
+ void Cube (int&, int&);
+ void Swap (int&, int &);
+ void GetVals(int&, int&);
+ void PrintVals(void (*)(int&, int&),int&, int&);
+ 
+ int main()
+ {
+     int valOne=1, valTwo=2;
+     void (*pFunc)(int&, int&);
+ 
+     pFunc = GetVals; 
+     PrintVals ( pFunc, valOne, valTwo);
+
+     pFunc = Square; 
+     PrintVals ( pFunc, valOne, valTwo);
+
+     pFunc = Cube; 
+     PrintVals ( pFunc, valOne, valTwo);
+
+     pFunc = Swap; 
+     PrintVals ( pFunc, valOne, valTwo);
+ 
+     return 0;
+ }
+ 
+ void PrintVals( void (*pFunc)(int&, int&),int& x, int& y)
+ {
+     cout << "x: " << x << " y: " << y << endl;
+     pFunc(x,y);
+     cout << "x: " << x << " y: " << y << endl;
+ }
+ 
+ void Square (int & rX, int & rY)
+ {
+     rX *= rX;
+     rY *= rY;
+ }
+ 
+ void Cube (int & rX, int & rY)
+ {
+     int tmp;
+ 
+     tmp = rX;
+     rX *= rX;
+     rX = rX * tmp;
+ 
+     tmp = rY;
+     rY *= rY;
+     rY = rY * tmp;
+ }
+ 
+ void Swap(int & rX, int & rY)
+ {
+     int temp;
+     temp = rX;
+     rX = rY;
+     rY = temp;
+ }
+ 
+ void GetVals (int & rValOne, int & rValTwo)
+ {
+     cout << "New value for ValOne: ";
+     cin >> rValOne;
+     cout << "New value for ValTwo: ";
+     cin >> rValTwo;
+ }
