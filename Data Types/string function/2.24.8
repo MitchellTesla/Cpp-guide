@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cstring>
+using std::strlen;                        
+
+int main()
+{
+   char *string1 = "asdfasdfasdfasdf";
+   char *string2 = "     f    ";
+   char *string3 = "       ";
+
+   cout << "The length of \"" << string1 << "\" is " << strlen( string1 )
+      << "\nThe length of \"" << string2 << "\" is " << strlen( string2 )
+      << "\nThe length of \"" << string3 << "\" is " << strlen( string3 ) 
+      << endl;
+   return 0;
+}
