@@ -1,0 +1,16 @@
+#include <iostream> 
+using namespace std; 
+int box(int length, int width, int height); // return the volume 
+
+int main() 
+{ 
+  // use the return value of box( ) directly 
+  cout << "The volume is " <<  box(10.1, 11.2, 3.3); 
+ 
+  return 0; 
+}
+// This function returns a value.  
+int box(int length, int width, int height) 
+{ 
+  return length * width * height ; 
+}
