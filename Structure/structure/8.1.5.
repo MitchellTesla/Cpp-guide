@@ -1,0 +1,92 @@
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
+#include <iostream>
+
+struct Name {
+  char firstname[80];
+  char surname[80];
+  
+  void show();        
+};
+
+struct Date {
+  int day;
+  int month;
+  int year;
+
+  void show();        
+};
+
+struct Phone {
+  int areacode;
+  int number;
+
+  void show();        
+};
+
+struct Person {
+  Name name;
+  Date birthdate;
+  Phone number;
+
+  void show();
+  int age(Date& date);
+};
+
+void Name::show() {
+    std::cout << firstname << " " << surname << std::endl;
+}
+
+void Date::show() {
+    std::cout << month << "/" << day << "/" << year << std::endl;
+}
+
+void Phone::show() {
+    std::cout << areacode << " " << number << std::endl;
+}
+
+void Person::show() {
+    std::cout << std::endl;
+    name.show();
+    std::cout << "Brithday: ";
+    birthdate.show();
+    std::cout << "phone: ";
+    number.show(); 
+}
+
+int Person::age(Date& date) {
+    if(date.year <= birthdate.year)
+      return 0;
+
+    int years = date.year - birthdate.year;
+    
+    if((date.month>birthdate.month) || (date.month == birthdate.month && date.day>= birthdate.day))
+       return years;
+    else
+       return --years;
+}
+
+
+int main() {
+  Person her = {{ "L", "G" },      // Initializes Name member
+                {1, 4, 1976 },     // Initializes Date member
+                {999,5551234}     // Initializes Phone member
+               };
+
+  Person actress;
+  actress = her;
+  her.show();
+  Date today = { 4, 4, 2007 };
+
+  cout << endl << "Today is ";
+  today.show();
+  cout <<  endl; 
+
+  cout << "Today " << actress.name.firstname << " is " 
+       << actress.age(today) << " years old."
+       << endl;
+  return 0;
+}
