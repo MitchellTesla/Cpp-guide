@@ -1,0 +1,21 @@
+#include <algorithm>
+#include <vector>
+#include <iostream>
+using namespace std;
+int main ()
+{
+    vector <int> v (3);
+
+    v.resize (6);
+
+    // Fill the three elements starting at offset position 3 with value -9
+    fill_n (v.begin () + 3, 3, -9);
+
+    cout << "Contents of the vector are: " << endl;
+    for (size_t nIndex = 0; nIndex < v.size (); ++ nIndex){
+        cout << "Element [" << nIndex << "] = ";
+        cout << v [nIndex] << endl;
+    }
+
+    return 0;
+}
