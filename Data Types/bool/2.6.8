@@ -1,0 +1,14 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  bool myBool = true;
+
+  cout << "This is the default: " << myBool << endl;
+  cout << "This should be true: " << boolalpha << myBool << endl;
+  cout << "This should be 1: " << noboolalpha << myBool << endl;
+
+}
