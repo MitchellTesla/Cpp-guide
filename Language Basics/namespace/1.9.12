@@ -1,0 +1,23 @@
+#include <iostream>
+#include <ostream>
+
+namespace {
+  int i = 10;
+}
+
+namespace {
+  int j;          // same unnamed namespace
+  namespace X {
+    int i = 20;
+  }
+  namespace Y = X;
+  int f() { return i; }
+}
+
+
+int main()
+{
+  std::cout << ::f() << '\n';
+  std::cout << Y::i << '\n';
+  std::cout << f() << '\n';
+}
