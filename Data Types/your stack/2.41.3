@@ -1,0 +1,40 @@
+#include <assert.h>
+typedef void* generic_ptr;
+#include <iostream>
+using namespace std;
+class stack {
+public:
+   explicit stack(int size = 1000): max_len(size), top(EMPTY) { 
+      s = new generic_ptr[size]; 
+      assert(s != 0);
+   }
+   ~stack() { delete [] s; }
+   void reset() { top = EMPTY; }
+   void push(generic_ptr c) { s[++top] = c; }
+   generic_ptr pop() { return s[top--]; }
+   generic_ptr top_of() { return s[top]; }
+   bool empty()const { return top == EMPTY; }
+   bool full()const { return top == max_len - 1; }
+private:
+   enum  { EMPTY = -1};
+   generic_ptr* s;
+   int   max_len;
+   int   top;
+};
+
+
+
+char* months[12] = { "january", "february", "march",
+     "april", "may", "june", "july", "august",
+     "september", "october", "november", "december"};
+
+int main()
+{
+    stack a;
+    int i;
+
+    for (i = 0; i < 12; ++i)
+       a.push(months[i]);
+    for (i = 0; i < 12; ++i)
+       cout << reinterpret_cast<char*>(a.pop()) << endl;
+}
