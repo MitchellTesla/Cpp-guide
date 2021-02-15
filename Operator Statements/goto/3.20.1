@@ -1,0 +1,26 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <iomanip>
+using std::left;
+using std::setw;
+
+int main()
+{
+   int count = 1;
+
+   start:
+      if ( count > 5 )
+         goto end;
+
+      cout << count << "\n\n";
+      ++count;
+
+      goto start;             
+
+   end:
+      cout << endl;
+
+   return 0;
+}
