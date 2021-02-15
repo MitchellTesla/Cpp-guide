@@ -1,0 +1,18 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::isalnum;
+using std::isalpha;
+using std::isdigit;
+using std::isxdigit;
+
+int main()
+{
+   cout << "According to isdigit:\n"
+      << ( isdigit( '8' ) ? "8 is a" : "8 is not a" ) << " digit\n"
+      << ( isdigit( '#' ) ? "# is a" : "# is not a" ) << " digit\n";
+
+   return 0;
+}
