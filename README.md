@@ -1,4 +1,4 @@
-# C++ programming language (Full)
+# C++ Programming Language (Full)
 A comprehensive guide to C++ programming language 
 
 v0.2 released by Justin Mitchell 2021
