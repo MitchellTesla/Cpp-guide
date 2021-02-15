@@ -1,0 +1,30 @@
+#include <iostream> 
+#include <cstring> 
+#include <cctype>  
+using namespace std; 
+ 
+void f(char *str); 
+ 
+int main() 
+{ 
+  char str[80]; 
+ 
+  strcpy(str, "ABCD"); 
+ 
+  f(str); 
+ 
+  cout << str; 
+  return 0; 
+} 
+ 
+ 
+void f(char *str) 
+{ 
+  while(*str) { 
+    if(isupper(*str)) 
+        *str = tolower(*str);  
+    else if(islower(*str)) 
+        *str = toupper(*str); 
+    str++; 
+  } 
+}
