@@ -1,0 +1,35 @@
+#include <iostream>
+ using namespace std;// this file uses std::cout,
+                     // std::cin, std::endl, etc.
+ 
+ int main()
+ {
+     unsigned short small = 1;
+     unsigned long  large = 10;
+     unsigned long  skip = 2;
+     unsigned long target = 8;
+     const unsigned short MAXSMALL=65535;
+ 
+     
+     while (small < large && large > 0 && small < 65535)
+     {
+         small++;
+ 
+         if (small  skip == 0)// skip the decrement?
+         {
+             cout << "skipping on " << small << endl;
+             continue;
+         }
+ 
+         if (large == target)  // exact match for the target?
+         {
+             cout << "Target reached!";
+             break;
+         }
+ 
+         large-=2;
+     }
+ 
+     cout << "\nSmall: " << small << " Large: " << large << endl;
+     return 0;
+ }
