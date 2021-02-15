@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+long hex2int(const string& hexStr);
+
+int main( ) {
+  string str1 = "0x12AB";
+  cout << hex2int(str1) << endl;
+  string str2 = "12AB";
+  cout << hex2int(str2) << endl;
+}
+
+
+long hex2int(const string& hexStr) {
+  char *offset;
+
+  if (hexStr.length( ) > 2) {
+    if (hexStr[0] == '0' && hexStr[1] == 'x') {
+      return strtol(hexStr.c_str( ), &offset, 0);
+    }else{
+      cout << "hex must start with 0x";
+      return 0;
+    }
+  }
+}
