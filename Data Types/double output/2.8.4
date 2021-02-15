@@ -1,0 +1,17 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+  cout << "Default format: " << 123.123456789 << endl;
+
+  cout << "setw manipulator is useful when repeated field\n"
+       << "widths must be specified. For example:\n";
+  cout << setw(8) << "this" << endl <<  setw(8) << "is" << endl
+       << setw(8) << "a" << endl << setw(8) << "column" << endl
+       << setw(8) << "of" << endl << setw(8) << "words";
+
+  return 0;
+}
