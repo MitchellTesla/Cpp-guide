@@ -1,0 +1,23 @@
+#include <iostream>
+#include <locale>
+#include <cstring>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+  // Obtain the current system time.
+  time_t t = time(NULL);
+  tm *cur_time = localtime(&t);
+
+  // Create US and German locales.
+  locale usloc("English_US");
+  locale gloc("German_Germany");
+
+  // Set the locale to Germany and get the time_put facet for Germany.
+  cout.imbue(gloc);
+  const time_put<char> &g_time = use_facet<time_put<char> >(cout.getloc());
+
+  return 0;
+}
