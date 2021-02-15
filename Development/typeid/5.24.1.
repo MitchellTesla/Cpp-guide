@@ -1,0 +1,26 @@
+#include <iostream> 
+#include <typeinfo> 
+using namespace std; 
+ 
+class MyClass { 
+
+}; 
+ 
+int main() 
+{ 
+  int i, j; 
+  float f; 
+  MyClass ob; 
+ 
+  cout << "The type of i is: " << typeid(i).name() << endl; 
+  cout << "The type of f is: " << typeid(f).name() << endl; 
+  cout << "The type of ob is: " << typeid(ob).name() << "\n\n"; 
+ 
+  if(typeid(i) == typeid(j)) 
+    cout << "The types of i and j are the same\n"; 
+ 
+  if(typeid(i) != typeid(f)) 
+    cout << "The types of i and f are not the same\n"; 
+ 
+  return 0; 
+}
