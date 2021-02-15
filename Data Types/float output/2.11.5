@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  cout << "Hello" << endl;
+
+  cout.width(12);
+  cout.fill(' ');
+  cout.setf(ios::showpos | ios::internal);
+  cout << 765.34 << endl;
+
+  return 0;
+}
