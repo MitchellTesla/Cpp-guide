@@ -1,0 +1,34 @@
+#include <iostream>
+ class MyClass {
+ public:                     // begin public section
+     int getInt();           // accessor function
+     void setint (int age);  // accessor function
+     void display();         // general function
+ private:                    // begin private section
+     int itsAge;             // member variable
+ };
+ 
+ int MyClass::getInt()
+ {
+     return itsAge;
+ }
+ 
+ void MyClass::setint(int age)
+ {
+     itsAge = age;
+ }
+ 
+ void MyClass::display()
+ {
+     std::cout << "display.\n";
+ }
+ 
+ int main()
+ {
+     MyClass obj;
+     obj.setint(5);
+     obj.display();
+     std::cout << obj.getInt() << " years old.\n";
+     obj.display();
+     return 0;
+ }
