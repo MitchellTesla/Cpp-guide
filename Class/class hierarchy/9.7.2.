@@ -1,0 +1,87 @@
+#include <iostream> 
+#include <cstring> 
+using namespace std; 
+ 
+class Shape { 
+  // private 
+  double width; 
+  double height; 
+public: 
+  Shape() { 
+    width = height = 0.0; 
+  } 
+ 
+  Shape(double w, double h) { 
+    width = w; 
+    height = h; 
+  } 
+ 
+  Shape(double x) { 
+    width = height = x; 
+  } 
+ 
+  void display() { 
+    cout << "Width and height are " << width << " and " << height << "\n"; 
+  } 
+ 
+  double getWidth() { return width; } 
+  double getHeight() { return height; } 
+  void setWidth(double w) { width = w; } 
+  void setHeight(double h) { height = h; } 
+}; 
+ 
+class Triangle : public Shape { 
+  char style[20];
+public: 
+ 
+  /* This automatically invokes the default constructor of Shape. */ 
+  Triangle() { 
+    strcpy(style, "unknown"); 
+  } 
+ 
+  Triangle(char *str, double w, double h) : Shape(w, h) { 
+    strcpy(style, str); 
+  } 
+   
+  Triangle(double x) : Shape(x) { 
+    strcpy(style, "isosceles");  
+  } 
+ 
+  double area() { 
+    return getWidth() * getHeight() / 2; 
+  } 
+ 
+  void showStyle() { 
+    cout << "Triangle is " << style << "\n"; 
+  } 
+}; 
+ 
+class NameTriangle : public Triangle { 
+  char name[20]; 
+public: 
+  NameTriangle(char *clr, char *style, double w, double h) : Triangle(style, w,
+ h) { 
+    strcpy(name, clr); 
+  } 
+ 
+  void displayName() { 
+    cout << "Name is " << name << "\n"; 
+  } 
+}; 
+ 
+int main() { 
+  NameTriangle t1("A", "right", 8.0, 12.0); 
+  NameTriangle t2("B", "isosceles", 2.0, 2.0); 
+ 
+  t1.showStyle(); 
+  t1.display(); 
+  t1.displayName(); 
+  cout << "Area is " << t1.area() << "\n"; 
+ 
+  t2.showStyle(); 
+  t2.display(); 
+  t2.displayName(); 
+  cout << "Area is " << t2.area() << "\n"; 
+ 
+  return 0; 
+}
