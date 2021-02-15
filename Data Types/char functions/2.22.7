@@ -1,0 +1,23 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::islower;
+using std::isupper;
+using std::tolower;
+using std::toupper;
+
+int main()
+{
+   cout << "\nu converted to uppercase is " 
+      << static_cast< char >( toupper( 'u' ) )
+      << "\n7 converted to uppercase is " 
+      << static_cast< char >( toupper( '7' ) ) 
+      << "\n$ converted to uppercase is " 
+      << static_cast< char >( toupper( '$' ) ) 
+      << "\nL converted to lowercase is " 
+      << static_cast< char >( tolower( 'L' ) ) << endl;
+
+   return 0;
+}
