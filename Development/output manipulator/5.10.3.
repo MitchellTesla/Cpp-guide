@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+ostream &ra(ostream &stream)
+{
+  stream << "-------------- ";
+  return stream;
+}
+
+// Left Arrow
+ostream &la(ostream &stream)
+{
+  stream << "*************";
+  return stream;
+}
+
+int main()
+{
+  cout << ra << 1233.23 << "\n";
+  cout << ra << 567.66 << la;
+
+  return 0;
+}
