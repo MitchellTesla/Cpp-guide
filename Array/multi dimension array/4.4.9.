@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+void vdisplay_results(char carray[][3][4]);
+  
+  char cglobal_cube[5][4][5]= {
+                {
+                  {'1','1','1','1','1'},
+                  {'2','2','2','2',' '},
+                  {'3','3','3','3',' '},
+                  {'4','4','4',' ',' '},
+                },
+                {
+                  {'1','1','1','1','1'},
+                  {'2','2','2','2',' '},
+                  {'3','3','3','3',' '}
+                },
+                {
+                  {'1','1','1','1','1'},
+                  {'2','2','2','2',' '}
+                },
+                {
+                  {'1','1','1','1','1'},
+                  {'2','2','2','2',' '},
+                  {'3','3','3','3',' '},
+                  {'4','4','4',' ',' '},
+                },
+                {
+                  {'1','1','1','1','1'},
+                  {'2','2','2','2',' '},
+                  {'3','3','3','3',' '},
+                  {'4','4','4',' ',' '},
+                }
+};
+
+int imatrix[4][3]={ {1},{2},{3},{4} };
+  
+int main( )
+{
+ int irow_index, icolumn_index;
+ char clocal_cube[2][3][4];
+
+ cout << "sizeof clocal_cube         = "<< sizeof(clocal_cube)           << "\n";
+ cout << "sizeof clocal_cube[0]      = "<< sizeof(clocal_cube[0])        << "\n";
+ cout << "sizeof clocal_cube[0][0]   = "<< sizeof(clocal_cube[0][0])     << "\n";
+ cout << "sizeof clocal_cube[0][0][0]= "<< sizeof(clocal_cube[0][0][0])  << "\n";
+
+ vdisplay_results(clocal_cube);
+
+ cout << "cglobal_cube[0][1][2] is     = " << cglobal_cube[0][1][2] << "\n";
+ cout << "cglobal_cube[1][0][2] is     = " << cglobal_cube[1][0][2] << "\n";
+
+ for(irow_index=0; irow_index < 4; irow_index++) {
+   for(icolumn_index=0; icolumn_index < 5; icolumn_index++)
+     cout << cglobal_cube[0][irow_index][icolumn_index];
+   cout << "\n";
+ }
+
+
+ for(irow_index=0; irow_index < 4; irow_index++) {
+   for(icolumn_index=0; icolumn_index < 5; icolumn_index++)
+     cout << cglobal_cube[4][irow_index][icolumn_index];
+   cout << "\n";
+ }
+
+ cout << "\nprint all of imatrix\n";
+ for(irow_index=0; irow_index < 4; irow_index++) {
+   for(icolumn_index=0; icolumn_index < 3; icolumn_index++)
+     cout << imatrix[irow_index][icolumn_index];
+   cout << "\n";
+ }
+
+ return (0);
+}
+  
+void vdisplay_results(char carray[][3][4])
+{
+    cout << "sizeof carray           =" << sizeof(carray) << "\n";
+    cout << " sizeof  carray[0]      =" << sizeof(carray[0]) << "\n";
+    cout << " sizeof  cglobal_cube   =" << sizeof(cglobal_cube) << "\n";
+    cout << " sizeof cglobal_cube[0] =" << sizeof(cglobal_cube[0])
+                                        << "\n";
+}
