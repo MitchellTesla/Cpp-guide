@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+#define INUMCHARS 45
+#define INULL_CHARACTER 1
+
+int main(void)
+{
+ char pname[INUMCHARS + INULL_CHARACTER];
+
+ cout << "Please enter your first and last name: ";
+ cin.get(pname,INUMCHARS);
+ cout << "\n\nThank you, " << pname;
+}
