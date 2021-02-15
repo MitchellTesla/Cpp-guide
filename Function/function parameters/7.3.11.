@@ -1,0 +1,22 @@
+#include <iostream> 
+using namespace std; 
+ 
+double f(double x); 
+ 
+int main() 
+{ 
+  double t = 10.0; 
+ 
+  cout << "1/10.0 is " << f(t) << "\n"; 
+ 
+  cout << "Value of t is still: " << t << "\n"; 
+ 
+  return 0; 
+} 
+ 
+double f(double x) 
+{ 
+  x = 1 / x;
+  cout << "inside f " << x << "\n"; 
+  return x; 
+}
