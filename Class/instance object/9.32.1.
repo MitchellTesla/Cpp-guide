@@ -1,0 +1,24 @@
+template<typename T>
+
+struct MyType {
+  MyType() : value_(T()) {
+  }
+  explicit MyType(const T& v) : value_(v) {
+  }
+private:
+  T value_;
+};
+
+enum color { black, red, green, blue };
+
+struct point { 
+    int x, y; 
+};
+
+int main()
+{
+  MyType<int> i;    
+  MyType<color> c;  
+  MyType<bool> b;   
+  MyType<point> p;  
+}
