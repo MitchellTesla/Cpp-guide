@@ -1,0 +1,68 @@
+#include <iostream>
+ 
+ void Square (int&,int&);
+ void Cube (int&, int&);
+ void Swap (int&, int &);
+ void GetVals(int&, int&);
+ void PrintVals(int, int);
+ 
+ int main()
+ {
+     int valOne=1, valTwo=2;
+     int i;
+     const int MaxArray = 5;
+     void (*pFuncArray[MaxArray])(int&, int&);
+ 
+     pFuncArray[0] = GetVals; 
+     pFuncArray[1] = Square; 
+     pFuncArray[2] = Cube; 
+     pFuncArray[3] = Swap; 
+     pFuncArray[4] = Square; 
+ 
+     for (i=0;i<MaxArray; i++)
+     {
+         pFuncArray[i](valOne,valTwo);
+         PrintVals(valOne,valTwo);
+     }
+     return 0;
+ }
+ 
+ void PrintVals(int x, int y)
+ {
+     std::cout << "x: " << x << " y: " << y << std::endl;
+ }
+ 
+ void Square (int & rX, int & rY)
+ {
+     rX *= rX;
+     rY *= rY;
+ }
+ 
+ void Cube (int & rX, int & rY)
+ {
+     int tmp;
+ 
+     tmp = rX;
+     rX *= rX;
+     rX = rX * tmp;
+ 
+     tmp = rY;
+     rY *= rY;
+     rY = rY * tmp;
+ }
+ 
+ void Swap(int & rX, int & rY)
+ {
+     int temp;
+     temp = rX;
+     rX = rY;
+     rY = temp;
+ }
+ 
+ void GetVals (int & rValOne, int & rValTwo)
+ {
+     std::cout << "New value for ValOne: ";
+     std::cin >> rValOne;
+     std::cout << "New value for ValTwo: ";
+     std::cin >> rValTwo;
+ }
