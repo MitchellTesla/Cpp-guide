@@ -1,0 +1,31 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+struct Box {
+  double length;
+  double width;
+  double height;
+
+  double volume();
+};
+
+double Box::volume() {
+  return length * width * height;
+}
+
+
+int main() {
+  Box aBox = { 1, 2, 3 };
+  Box* pBox = &aBox;
+ 
+  Box* pBox2 = new Box;
+  pBox2->height = pBox->height+5.0;
+  pBox2->length = pBox->length+3.0;
+  pBox2->width = pBox->width+2.0;
+  cout << "Volume of Box in the free store is " << pBox2->volume() << endl;
+
+  delete pBox;
+  delete pBox2;
+  return 0;
+}
