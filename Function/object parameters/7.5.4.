@@ -1,0 +1,52 @@
+#include <iostream>
+ 
+ class MyClass
+ {
+ public:
+     MyClass ();                    // constructor
+     MyClass(MyClass&);             // copy constructor
+     ~MyClass();                    // destructor
+ };
+ 
+ MyClass::MyClass()
+ {
+     std::cout << "Constructor...\n";
+ }
+ 
+ MyClass::MyClass(MyClass&)
+ {
+     std::cout << "Copy Constructor...\n";
+ }
+ 
+ MyClass::~MyClass()
+ {
+     std::cout << "Destructor...\n";
+ }
+ 
+ MyClass FunctionOne (MyClass obj);
+ MyClass* FunctionTwo (MyClass *obj);
+ 
+ int main()
+ {
+     std::cout << "Making an object...\n";
+     MyClass myObject;
+     std::cout << "Calling FunctionOne...\n";
+     FunctionOne(myObject);
+     std::cout << "Calling FunctionTwo...\n";
+     FunctionTwo(&myObject);
+     return 0;
+ }
+ 
+ // FunctionOne, passes by value
+ MyClass FunctionOne(MyClass obj)
+ {
+     std::cout << "Function One. Returning...\n";
+     return obj;
+ }
+ 
+ // functionTwo, passes by reference
+ MyClass* FunctionTwo (MyClass  *obj)
+ {
+     std::cout << "Function Two. Returning...\n";
+     return obj;
+ }
