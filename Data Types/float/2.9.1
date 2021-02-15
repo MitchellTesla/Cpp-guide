@@ -1,0 +1,13 @@
+#include <iostream.h>
+
+const float PI = 3.1415926;
+
+inline float Area(const float r);
+main()
+{
+   float radius = 2.9;
+   cout << "The Area is " << Area(radius) << "\n";
+}
+float Area(const float r){
+    return PI * r * r;
+}
