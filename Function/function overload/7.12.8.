@@ -1,0 +1,29 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double larger(double a, double b);
+long& larger(long& a, long& b);
+
+
+int main()
+{
+  cout << larger(1.5, 2.5) << endl;
+ 
+  cout << larger(static_cast<long>(12), static_cast<long>(13))
+       << endl;
+
+  return 0;
+}
+
+double larger(double a, double b)
+{
+  cout << " double version. ";
+  return a>b ? a : b;
+}
+
+long& larger(long& a, long& b)
+{
+  cout << " long ref version. ";
+  return a>b ? a : b;
+}
