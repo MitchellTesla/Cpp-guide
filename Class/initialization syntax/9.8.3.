@@ -1,0 +1,48 @@
+#include <iostream.h>
+
+class Pointer
+{
+private:
+       long x,y;
+public:
+       Pointer(long a=0,long b=0) { 
+           x=a;
+           y=b;
+    }
+       
+       long GetX(){ 
+           return x;
+    }
+       long GetY(){ 
+           return y;
+    }
+       void Disp(){ 
+           cout << "x=" <<x<<"  y="<<y;
+    }
+};
+
+class Pointer3D : public Pointer
+{
+       long z;
+public:
+       Pointer3D(long a=0,long b=0,long c=0):Pointer(a,b){
+           z=c;
+       }
+       long GetZ(){ return z;}
+       
+       void Disp()
+       {
+               cout <<"x= "<<GetX()<<"  y="<<GetY();
+               cout << "  z="<< z <<endl;
+    }
+};
+
+main()
+{
+   Pointer3D p1;
+   Pointer3D p2(3,-4);
+   p2.Disp();
+   p2=p1;
+   p2.Disp();
+   return 0;
+}
