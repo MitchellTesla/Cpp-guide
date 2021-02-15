@@ -1,0 +1,18 @@
+#include <iostream>
+#include <ostream>
+
+class base {};
+class derived : public base {};
+class other : public base {};
+
+int main()
+{
+  base* b = new derived;
+  static_cast<derived&>(*b); 
+  static_cast<other*>(b);    
+
+  derived* d = new derived;
+  b = d;
+  b = static_cast<base*>(d); 
+
+}
