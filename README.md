@@ -1,2 +1,2 @@
-# Run-C
-C++ programming language (full) written by Justin Mitchell 
+# C++ programming language (complete)
+C++ programming language (full) guide and tutorial written by Justin Mitchell 
