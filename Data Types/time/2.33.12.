@@ -1,0 +1,14 @@
+#include <time.h>
+#include <stdio.h>
+
+int main( )
+{
+ struct tm *date_time;
+ time_t timer;
+
+ time(&timer);
+ date_time=gmtime(&timer);
+
+ printf("%.19s\n",asctime(date_time));
+ return (0);
+}
