@@ -1,0 +1,14 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main()
+{
+   int x = 321;
+   int &y = x;
+
+   cout << "x = " << x << "    y = " << y << endl;
+   y = 123;
+   cout << "x = " << x << "    y = " << y << endl;
+   return 0; 
+}
