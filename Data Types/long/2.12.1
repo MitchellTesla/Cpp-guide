@@ -1,0 +1,14 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int main() {
+  long number = 50L;
+  long* pnumber;
+  pnumber = &number;
+  cout << endl
+       << "The value stored in the variable number is "
+       << *pnumber
+       << endl;
+  return 0;
+}
