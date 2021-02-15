@@ -1,0 +1,30 @@
+#include <iostream> 
+using namespace std; 
+ 
+double &f(int i); // return a reference 
+ 
+double vals[] = { 1.1, 2.2, 3.3, 4.4, 5.5 }; 
+ 
+int main() 
+{ 
+  int i; 
+ 
+  cout << "Here are the original values: "; 
+  for(i=0; i < 5; i++) 
+    cout << vals[i] << ' '; 
+
+ 
+  f(1) = 8.23;   // change 2nd element 
+  f(3) = -8.8;   // change 4th element 
+ 
+  cout << "\nHere are the changed values: \n"; 
+  for(i=0; i < 5; i++) 
+    cout << vals[i] << ' '; 
+ 
+  return 0; 
+} 
+ 
+double &f(int i) 
+{ 
+  return vals[i]; // return a reference to the ith element 
+}
