@@ -1,0 +1,19 @@
+#include <iostream>
+#include <ostream>
+namespace original {
+  int f();
+}
+
+namespace ns = original;     
+
+int ns::f() { return 42; }   
+using ns::f;                 
+
+int g() { return f(); }
+
+int main()
+{
+  std::cout << ns::f() << '\n';
+  std::cout << original::f() << '\n';
+  std::cout << g() << '\n';
+}
