@@ -1,0 +1,35 @@
+#include <iostream> 
+using namespace std; 
+ 
+class BaseClass1 { 
+protected: 
+  int x; 
+public: 
+  void showx() { cout << x << "\n"; } 
+}; 
+ 
+class BaseClass2 { 
+protected: 
+  int y; 
+public: 
+  void showy() { cout << y << "\n"; } 
+}; 
+ 
+// Inherit multiple base classes. 
+class DerivedClass: public BaseClass1, public BaseClass2 { 
+public: 
+  /* x and y are accessible because they are 
+     protected in BaseClass1 and BaseClass2, not private. */ 
+  void set(int i, int j) { x = i; y = j; } 
+}; 
+ 
+int main() 
+{ 
+  DerivedClass ob; 
+ 
+  ob.set(10, 20); // provided by DerivedClass 
+  ob.showx();     // from BaseClass1 
+  ob.showy();     // from BaseClass2 
+ 
+  return 0; 
+}
