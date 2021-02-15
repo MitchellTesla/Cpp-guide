@@ -1,0 +1,30 @@
+#include<iostream.h>
+
+class box
+{
+   double line,width,heigth;
+   double volume;
+public:
+   box(double a,double b,double c);
+   void vol();
+};
+
+box::box(double a,double b,double c)
+{
+   line=a;
+   width=b;
+   heigth=c;
+   volume=line*heigth;
+}
+void box::vol()
+{
+   cout<<"Volume is:"<<volume<<"\n";
+}
+
+main()
+{
+   box x(3.4,4.5,8.5),y(2.0,4.0,6.0);
+   x.vol();
+   y.vol();
+   return 0;
+}
