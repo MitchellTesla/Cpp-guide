@@ -1,2 +1,2 @@
 # Run-C
-C++ programming language (full) 
+C++ programming language (full) written by Justin Mitchell 
