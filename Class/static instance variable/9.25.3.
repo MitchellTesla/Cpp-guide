@@ -1,0 +1,46 @@
+#include <iostream>
+ 
+ class MyClass
+ {
+ public:
+     MyClass(int age = 1):intValue(age){
+        InstanceCount++; 
+     }
+     virtual ~MyClass() { 
+        InstanceCount--; 
+     }
+     virtual int getValue() { 
+        return intValue; 
+     }
+     virtual void setValue(int age) { 
+        intValue = age; 
+     }
+     static int InstanceCount;
+ 
+ private:
+     int intValue;
+ 
+ };
+ 
+ int MyClass::InstanceCount = 0;
+ 
+ int main()
+ {
+     const int count = 5;
+     MyClass *MyClassHouse[count];
+     int i;
+     for (i = 0; i<count; i++)
+         MyClassHouse[i] = new MyClass(i);
+ 
+     for (i = 0; i<count; i++)
+     {
+         std::cout << "There are ";
+         std::cout << MyClass::InstanceCount;
+         std::cout << " left!\n";
+         std::cout << "Deleting the one which is ";
+         std::cout << MyClassHouse[i]->getValue();
+         delete MyClassHouse[i];
+         MyClassHouse[i] = 0;
+     }
+     return 0;
+ }
