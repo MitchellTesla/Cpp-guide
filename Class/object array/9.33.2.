@@ -1,0 +1,37 @@
+#include <iostream>
+ 
+ class MyClass
+ {
+ public:
+     MyClass() { 
+        itsAge = 1; 
+        itsWeight=5; 
+     } 
+     ~MyClass() {}                          
+     int GetAge() const { 
+         return itsAge; 
+     }
+     int GetWeight() const { 
+        return itsWeight; 
+     }
+     void SetAge(int age) { 
+        itsAge = age;
+     }
+ 
+ private:
+     int itsAge;
+     int itsWeight;
+ };
+ 
+ int main()
+ {
+     MyClass myObject[5];
+     int i;
+     for (i = 0; i < 5; i++)
+         myObject[i].SetAge(2*i +1);
+ 
+     for (i = 0; i < 5; i++)
+         std::cout << " #" << i+1<< ": " << myObject[i].GetAge() << std::endl;
+
+     return 0;
+ }
