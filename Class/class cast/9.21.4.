@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+const double PI = 3.14159;
+
+class Shape {
+   public:
+      virtual double area() const { return 0.0; }
+};
+
+class Circle: public Shape {
+public:
+   Circle( int r = 1 ) { radius = r; }
+
+   virtual double area() const 
+   { 
+      return PI * radius * radius; 
+   };
+protected:
+   int radius;
+};
+
+class Cylinder: public Circle {
+public:
+   Cylinder( int h = 1 ) { height = h; }
+
+   virtual double area() const 
+   {     
+      return 2 * PI * radius * height + 
+             2 * Circle::area();
+   }
+private:
+   int height;
+};
+
+void outputShapeArea( const Shape * );
+
+int main()
+{
+   Circle circle;
+   Cylinder cylinder;
+   Shape *ptr = 0;
+
+   outputShapeArea( &circle );    
+   outputShapeArea( &cylinder );  
+   outputShapeArea( ptr );        
+   return 0;
+}
+
+void outputShapeArea( const Shape *shapePtr )
+{
+   const Circle *circlePtr;
+   const Cylinder *cylinderPtr;
+
+   cylinderPtr = dynamic_cast< const Cylinder * >( shapePtr );
+
+   if ( cylinderPtr != 0 ) 
+      cout << "Cylinder's area: " << cylinderPtr->area();  
+   else {  
+      circlePtr = dynamic_cast< const Circle * >( shapePtr );
+
+      if ( circlePtr != 0 )
+         cout << "Circle's area: " << circlePtr->area(); 
+      else
+         cout << "Neither a Circle nor a Cylinder.";
+   }
+
+   cout << endl;
+}
