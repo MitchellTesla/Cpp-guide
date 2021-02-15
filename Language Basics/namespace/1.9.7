@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int integer1 = 98;
+
+namespace
+{
+   double doubleInUnnamed = 88.22;
+}
+
+namespace Example
+{
+   const double PI = 3.14159;
+   void printValues();
+   int integer1 = 100;
+   namespace Inner
+   {
+      int integer1 = 99;
+   }
+}
+
+int main()
+{
+   cout << "doubleInUnnamed = " << doubleInUnnamed;
+
+   cout << "\n(global) integer1 = " << integer1;
+
+   cout << Example::integer1 << "\nIinteger1 = "
+      << Example::Inner::integer1 << endl;
+
+
+   return 0;
+}
