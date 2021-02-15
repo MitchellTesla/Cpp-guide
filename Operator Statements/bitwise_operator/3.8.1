@@ -1,0 +1,28 @@
+#include <iostream>
+using std::boolalpha;
+using std::cout;
+using std::endl;
+
+int main()
+{
+   bool a = true;
+   bool b = false;
+   int c = 2;
+   int d = 3;
+
+   cout << boolalpha;
+
+   cout << "a = " << a << "; b = " << b
+      << "; c = " << c << "; d = " << d;
+
+   cout << "\n\nBitwise operator keywords:";
+   cout << "\nc bitand d: " << ( c bitand d );
+   cout << "\nc bit_or d: " << ( c bitor d );
+   cout << "\n   c xor d: " << ( c xor d );
+   cout << "\n   compl c: " << ( compl c );
+   cout << "\nc and_eq d: " << ( c and_eq d );
+   cout << "\n c or_eq d: " << ( c or_eq d );
+   cout << "\nc xor_eq d: " << ( c xor_eq d ) << endl;
+
+   return 0;
+}
