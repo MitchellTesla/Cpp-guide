@@ -1,0 +1,14 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int n = 7; 
+
+int main()
+{
+   double n = 10.5;
+
+   cout << "Local double value of n = " << n
+      << "\nGlobal int value of n = " << ::n << endl;
+   return 0;
+}
