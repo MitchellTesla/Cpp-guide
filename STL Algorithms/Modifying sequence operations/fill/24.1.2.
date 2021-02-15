@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm> // algorithm definitions
+#include <vector>    // vector class-template definition
+#include <iterator>  // ostream_iterator
+
+int main()
+{
+   std::vector< char > chars( 10 );
+   std::ostream_iterator< char > output( cout, " " );
+   std::fill( chars.begin(), chars.end(), '5' ); // fill chars with 5s
+
+   cout << "Vector chars after filling with 5s:\n";
+   std::copy( chars.begin(), chars.end(), output );
+   cout << endl;
+   return 0;
+}
