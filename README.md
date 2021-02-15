@@ -1,2 +1,2 @@
 # C++ programming language (complete)
-A comprehensive guide to the C++ programming language - by Justin Mitchell
+a comprehensive guide to the C++ programming language - Justin Mitchell
