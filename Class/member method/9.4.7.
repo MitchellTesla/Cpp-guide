@@ -1,0 +1,36 @@
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+using namespace std;
+
+
+class absolute_value {
+public:
+ int number(int);
+ double number(double);
+};
+  
+int absolute_value::number(int test_data)
+{
+ int answer;
+
+ answer=abs(test_data);
+ return (answer);
+}
+
+double absolute_value::number(double test_data)
+{
+ double answer;
+
+ answer=fabs(test_data);
+ return (answer);
+}
+
+main( )
+{
+ absolute_value neg_number;
+
+ cout << "The absolute value is "  << neg_number.number(-583) << endl;
+ cout << "The absolute value is "  << neg_number.number(-583.1749) << endl;
+ return (0);
+}
