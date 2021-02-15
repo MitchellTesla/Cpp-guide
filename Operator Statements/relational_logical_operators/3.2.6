@@ -1,0 +1,38 @@
+#include <iostream>
+int main()
+{
+   using std::cout;
+   using std::cin;
+
+   int i, i2;
+   cout << "Enter the score for the Mets: ";
+   cin >> i;
+
+   cout << "\nEnter the score for the Yankees: ";
+   cin >> i2;
+
+   if (i > i2)
+      cout << "Go i!\n";
+
+   if (i < i2)
+   {
+      cout << "Go i2!\n";
+   }
+
+   if (i == i2)
+   {
+      cout << "A tie?\n";
+      cout << "Give me the real score for the i2: ";
+      cin >> i2;
+
+      if (i > i2)
+         cout << "i";
+
+      if (i2 > i)
+         cout << "i2";
+
+      if (i2 == i)
+         cout << "tie!";
+   }
+   return 0;
+}
