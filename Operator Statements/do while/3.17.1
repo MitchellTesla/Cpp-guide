@@ -1,0 +1,15 @@
+#include <iostream>
+ 
+ int main()
+ {
+     int counter;
+     std::cout << "How many hellos? ";
+     std::cin >> counter;
+     do
+     {
+         std::cout << "Hello\n";
+         counter--;
+     } while (counter >0 );
+     std::cout << "counter is: " << counter << std::endl;
+     return 0;
+ }
