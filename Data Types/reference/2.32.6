@@ -1,0 +1,23 @@
+#include <iostream> 
+using namespace std; 
+ 
+double &f(); 
+ 
+double val = 100.0; 
+ 
+int main() 
+{ 
+  double x; 
+ 
+  cout << f() << '\n'; 
+ 
+  x = f();           // assign value of val to x 
+  cout << x << '\n'; 
+ 
+  return 0; 
+} 
+ 
+double &f() 
+{ 
+  return val; // return reference to val 
+}
