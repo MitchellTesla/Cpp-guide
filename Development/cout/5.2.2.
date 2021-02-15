@@ -1,0 +1,11 @@
+resetiosflags (ios_base::fmtflags f)       Turn off the flags specified in f.
+
+setbase(int base)                          Set the number base to base.
+
+setfill(int ch)                            Set the fill character to ch.
+
+setiosflags(ios_base::fmtflags f)          Turn on the flags specified in f.
+
+setprecision (int p)                       Set the number of digits of precision.
+
+setw(int w)                                Set the field width to w.
