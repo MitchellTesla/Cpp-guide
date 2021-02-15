@@ -1,0 +1,28 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int byValue( int ); 
+void byReference( int & ); 
+                                                   
+int main()
+{
+   int x = 2; 
+   int z = 4; 
+
+   cout << byValue( x ) << endl;  
+   cout << "x = " << x << endl;
+
+   byReference( z );
+   cout << "z = " << z << endl;
+   return 0;
+} 
+
+int byValue( int number )
+{
+   return number *= number;
+}
+void byReference( int &numberRef )
+{
+   numberRef *= numberRef; 
+}
