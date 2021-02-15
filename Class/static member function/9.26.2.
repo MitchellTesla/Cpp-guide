@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class MyClass {
+    static int a;
+    int b;
+  public:
+    void set(int i, int j){
+      a=i;
+      b=j;
+    }
+    static void show();
+};
+
+int MyClass::a;
+
+void MyClass::show(){
+  cout << "This is static a: " << a << endl;
+}
+
+int main(void) {
+  MyClass x, y;
+
+  x.set(1,1);
+  y.set(2,2);
+  MyClass::show();
+  y.show();
+  x.show();
+}
