@@ -1,0 +1,20 @@
+#include <iostream>
+ 
+ int main()
+ {
+     unsigned short small = 1;
+     unsigned long  large = 123;
+     const unsigned short MAXSMALL=65535;
+ 
+     std::cout << "small: " << small << "...";
+ 
+      // for each iteration, test three conditions
+     while (small < large && large > 0 && small < MAXSMALL)
+     {
+         std::cout << ".";
+         small++;
+         large-=2;
+     }
+     std::cout << "\nSmall: " << small << " Large: "  << large << std::endl;
+     return 0;
+ }
