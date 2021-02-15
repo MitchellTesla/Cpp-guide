@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+  cout.setf(ios::hex, ios::basefield);
+  cout << 100 << "\n";  // 100 in hex
+
+  cout.fill('?');
+  cout.width(10);
+  cout << 2343.0;
+
+  return 0;
+}
