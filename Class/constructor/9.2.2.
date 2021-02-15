@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+  int x;
+
+  MyClass(int i);  // constructor
+  ~MyClass();      // destructor
+};
+
+MyClass::MyClass(int i) {
+    x = i;
+}
+
+MyClass::~MyClass() {
+  cout << "Destructing object whose x value is " << x  <<" \n";
+}
+
+int main() {
+  MyClass ob(5) ;
+
+  cout << ob.x << "\n";
+
+  return 0;
+}
