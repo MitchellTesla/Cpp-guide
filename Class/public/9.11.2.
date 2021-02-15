@@ -1,0 +1,28 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class Box {
+  public:
+    double length;
+    double width;
+    double height;
+
+    double volume() {
+      return length * width * height;
+    }
+};
+
+int main() {
+  Box firstBox = { 80.0, 50.0, 40.0 };
+
+  double firstBoxVolume = firstBox.volume();
+  cout << firstBox.length
+       << firstBox.width
+       << firstBox.height
+       << endl;
+       
+  cout << "Volume of first Box object is " << firstBoxVolume << endl;
+
+  return 0;
+}
