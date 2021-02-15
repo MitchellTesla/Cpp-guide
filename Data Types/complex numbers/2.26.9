@@ -1,0 +1,38 @@
+#include <complex>
+#include <iomanip>
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+complex<double> parallel_RLC_impedance( double frequency, double resistance, double inductance, double capacitance );
+
+int main( )
+{
+   const double R = 1000.0;   
+   const double L = 0.2;      
+   const double C = 10.0e-9;  
+   double frequency;
+
+   frequency = 1.0 / sqrt( L * C );
+
+   complex<double> impedance = parallel_RLC_impedance( frequency, R, L, C );
+
+   cout << impedance << "   Magnitude = " << abs( impedance ) << "   Phase = " << arg( impedance ) << endl;
+
+   impedance = parallel_RLC_impedance( frequency / 10, R, L, C );
+
+   cout << impedance << "   Magnitude = " << abs( impedance ) << "   Phase = " << arg( impedance ) << endl;
+
+   impedance = parallel_RLC_impedance( frequency * 10, R, L, C );
+
+   cout << impedance << "   Magnitude = " << abs( impedance ) << "   Phase = " << arg( impedance ) << endl;
+}
+
+inline
+complex<double> parallel_RLC_impedance( double frequency,double resistance, double inductance, double capacitance )
+{
+   complex<double> impedance_inverse( 1.0 / resistance,frequency * capacitance - 1.0 / ( frequency * inductance ) );
+
+   return 1.0 / impedance_inverse;
+}
