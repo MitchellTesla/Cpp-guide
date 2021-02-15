@@ -1,0 +1,26 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::ios_base;
+using std::oct;
+using std::scientific;
+using std::showbase;
+
+int main()
+{
+   int integerValue = 1000;
+   double doubleValue = 0.0947628;
+
+   cout << cout.flags() << "\n\n" << integerValue << '\t' << doubleValue << endl << endl;
+
+   ios_base::fmtflags originalFormat = cout.flags();
+
+   cout << showbase << oct << scientific;
+
+   cout << cout.flags() << "\n\n" << integerValue << '\t' << doubleValue << endl << endl;
+
+   cout.flags( originalFormat );
+
+   cout << cout.flags() << "\n\n" << integerValue << '\t' << doubleValue << endl;
+   return 0;
+}
