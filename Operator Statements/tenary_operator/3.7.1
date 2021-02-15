@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int div_zero();
+
+int main()
+{
+  int i = 1, j = 0, result;
+
+
+  // This statement prevents a divide by zero error.
+  result = j  ?  i : j;
+
+  cout << "Result: " << result;
+
+  return 0;
+}
