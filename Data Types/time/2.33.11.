@@ -1,0 +1,15 @@
+#include <time.h>
+#include <stdio.h>
+
+struct tm *date_time;
+time_t timer;
+
+int main( )
+{
+ time(&timer);
+ date_time=localtime(&timer);
+
+ printf("The present date and time is: %s\n",
+ asctime(date_time));
+ return (0);
+}
