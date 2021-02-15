@@ -1,0 +1,24 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::islower;
+using std::isupper;
+using std::tolower;
+using std::toupper;
+
+int main()
+{
+   cout << "\nAccording to isupper:\n"
+      << ( isupper( 'D' ) ? "D is an" : "D is not an" ) 
+      << " uppercase letter\n"
+      << ( isupper( 'd' ) ? "d is an" : "d is not an" ) 
+      << " uppercase letter\n"
+      << ( isupper( '8' ) ? "8 is an" : "8 is not an" ) 
+      << " uppercase letter\n"
+      << ( isupper('$') ? "$ is an" : "$ is not an" ) 
+      << " uppercase letter\n";
+
+   return 0;
+}
