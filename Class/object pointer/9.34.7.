@@ -1,0 +1,39 @@
+#include<iostream.h>
+#include<string.h>
+
+class phone
+{
+   char name[50];
+   char tell[15];
+public:
+   void store(char *n,char *num);
+   void print();
+};
+
+void phone::store(char *n,char *num)
+{
+  strcpy(name,n);
+  strcpy(tell,num);
+}
+
+void phone::print()
+{
+  cout<<name<<":"<<tell;
+  cout<<"\n";
+}
+
+main()
+{
+   phone *p;
+   p=new phone;
+
+   if(!p)
+   {
+     cout<<"Alloction error.";
+        return 1;
+   }
+   p->store("AA","9999999999");
+   p->print();
+   delete p;
+   return 0;
+}
