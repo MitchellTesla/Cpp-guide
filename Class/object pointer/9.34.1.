@@ -1,0 +1,42 @@
+#include "iostream.h"
+
+class MyClass
+{
+private:
+  int Price;
+  int Count;
+  long Total;
+public:
+  void Input(int P,int C)
+  {
+   Price=P;
+   Count=C;
+  }
+  void MyClass::Compute()
+  {
+    Total=(long) Price*Count;
+  }
+  void MyClass::Print(){
+    cout<<"Price="<<Price<<"  Count="<<Count <<"   Total="<<Total<<"\n";
+  }
+};
+
+int main()
+{
+       MyClass  *ob;
+       
+       ob=new MyClass[6];
+       ob[0].Input(5,0);
+       ob[1].Input(3,5);
+       ob[2].Input(1,0);
+       ob[3].Input(5,20);
+       ob[4].Input(4,0);
+       ob[5].Input(8,5);
+       
+       for(int i=0;i<6;i++)
+       ob[i].Compute();
+       for(int i=0;i<6;i++)
+          ob[i].Print();
+       
+       delete ob;
+}
