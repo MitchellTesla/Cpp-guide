@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  double height = 2.2, width = 3.3, length = 4.4;
+  double perimeter = 0.0;                        
+
+  double rollwidth = 21.0;                 
+  double rolllength = 12.0*33.0;           
+
+  int strips_per_roll = 0;                       
+  int strips_reqd = 0;                           
+  int nrolls = 0;                                
+
+
+  strips_per_roll = rolllength / height;      
+  perimeter = 2.0*(length + width);           
+  strips_reqd = perimeter / rollwidth;        
+  nrolls = strips_reqd / strips_per_roll;     
+
+  cout << nrolls;
+
+  return 0;
+}
