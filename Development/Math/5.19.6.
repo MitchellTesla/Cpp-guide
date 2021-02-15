@@ -1,0 +1,23 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::fixed;
+
+#include <iomanip>
+using std::setprecision;
+
+#include <cmath>
+using namespace std; 
+
+int main()
+{
+   cout << fixed << setprecision( 1 ); 
+
+   cout << "\nlog10(" << 1.0 << ") = " << log10( 1.0 )<< "\nlog10(" << 10.0 <<) = " << log10( 10.0 ) 
+      << "\nlog10(" << 100.0 << ") = " << log10( 100.0 ) ;
+   cout << "\nfabs(" << 13.5 << ") = " << fabs( 13.5 )<< "\nfabs(" << 0.0 << ") = " << fabs( 0.0 )
+      << "\nfabs(" << -13.5 << ") = " << fabs( -13.5 );
+   cout << "\nceil(" << 9.2 << ") = " << ceil( 9.2 )<< "\nceil(" << -9.8 << ")= " << ceil( -9.8 );
+   cout << "\nfloor(" << 9.2 << ") = " << floor( 9.2 )<< "\nfloor(" << -9.8 <<) = " << floor( -9.8 );
+   return 0;
+}
