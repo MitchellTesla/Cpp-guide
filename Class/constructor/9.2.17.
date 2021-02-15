@@ -1,0 +1,23 @@
+//If no user-defined constructors exist for a class,
+//C++ system generates a default constructor.
+
+#include <iostream.h>
+class Time
+{
+               int hh,mm,ss;
+  public:
+               //Time(){hh=0;mm=0;ss=0;}
+               void Set(int h, int m, int s)   {hh = h; mm = m; ss=s;}
+               void Disp();
+};
+void Time::Disp()
+{
+               cout << "The time is " << hh << ":" << mm << ":" << ss <<endl;
+}
+int main()
+{
+               Time t1;
+               t1.Disp();
+               t1.Set(2,22,22);                t1.Disp();
+               return 0;
+}
