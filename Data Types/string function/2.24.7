@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cstring>
+using std::strtok;                        
+
+int main()
+{
+   char sentence[] = "a c d e f g e a c d e y gb ";
+   char *tokenPtr;
+
+   tokenPtr = strtok( sentence, " " );
+
+   while ( tokenPtr != NULL ) 
+   {
+      cout << tokenPtr << '\n';
+      tokenPtr = strtok( NULL, " " );
+   }
+
+   return 0;
+}
