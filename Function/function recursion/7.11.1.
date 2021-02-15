@@ -1,0 +1,23 @@
+#include <iostream> 
+using namespace std; 
+ 
+int f(int n); 
+ 
+int main() 
+{ 
+  // use recursive version 
+  cout << "4 factorial is " << f(4); 
+ 
+  return 0; 
+} 
+ 
+int f(int n)  
+{ 
+  int answer; 
+ 
+  if(n==1)  
+      return(1); 
+  
+  answer = f(n-1)*n; 
+  return(answer); 
+}
