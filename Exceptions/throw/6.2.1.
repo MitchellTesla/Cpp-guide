@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+  int answer, divisor, dividend;
+
+  try
+  {
+    divisor = 1;
+
+       dividend = 0;
+
+       if(dividend ==0)
+               throw 0;
+
+       answer = divisor/dividend;
+       cout << answer;
+
+       return 0;
+  }
+  catch (int i)
+  {
+    cout << "You cannot divide by zero";
+  }
+}
