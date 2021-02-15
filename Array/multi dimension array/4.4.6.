@@ -1,0 +1,25 @@
+#include <iostream.h>
+
+main()
+{
+       const int Length=4;
+
+       int *p = new int[Length*Length];
+       int a[Length][Length]={{16, 2, 3,13},{ 5,11,10, 8},{ 9, 7, 6,12},{ 4,14,15, 1},};
+
+       for (int i = 0;i < Length; i++)
+               for (int j = 0;j < Length; j++)
+                       p[ i * Length + j ] = a[ i ][ j ];
+
+       cout<<"display:\n";
+
+       for (int i = 0;i < Length; i++)
+       {
+               for (int j = 0;j < Length; j++)
+                       cout << p[ i * Length + j] <<"  "  ;
+               cout << endl;
+       }
+
+       delete []p;
+       return 0;
+}
