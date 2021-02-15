@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+struct account
+{
+   int accountnum;
+   float balance;
+   float interestrate;
+};
+
+int main()
+{ 
+ account myaccount;
+ account *ptraccount;
+
+ ptraccount->balance = 1000;
+       return 0;
+}
