@@ -1,0 +1,9 @@
+#include <iostream.h>
+#include <iomanip.H>
+
+main(void)
+{
+       long n = 10000;
+       cout << setbase(10) << n;
+       return 0;
+}
