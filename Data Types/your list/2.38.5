@@ -1,0 +1,89 @@
+#include <iostream>
+#include <assert.h> 
+#include <stdlib.h>
+using namespace std;
+class vect {
+public:
+   explicit vect(int n);
+   ~vect() { delete []p; }
+   int  ub() const { return (size - 1); }
+   vect& operator=(const vect& v);  
+   void print() const;
+   int&  operator[](int i) ;        
+   vect operator+(const vect& v);
+private:
+   int*  p;
+   int   size;
+};
+
+vect::vect(int n): size(n)
+{
+   if (n < 1) 
+      throw (n);
+   p = new int[n];
+   if (p == 0)
+      throw ("FREE STORE EXHAUSTED");
+}
+
+
+int& vect::operator[](int i)
+{
+   assert(i >= 0 && i < size);
+   return p[i];
+}
+
+vect& vect::operator=(const vect& v)
+{
+   int s = (size < v.size) ? size : v.size;
+
+   if (v.size != size)
+      cerr << "copying different size arrays "
+           << size << " and " << v.size << endl;
+   for (int i = 0; i < s; ++i)
+      p[i] = v.p[i];
+   return (*this);
+}
+
+
+void vect::print() const
+{
+   for (int i = 0; i <= (size-1); ++i)
+      cout << p[i] << "\t";
+   cout << endl;
+}
+
+vect vect::operator+(const vect& v)
+{
+   assert(size == v.size);
+   vect  sum(size);
+   for (int i = 0; i < size; ++i)
+      sum.p[i] = p[i] + v.p[i];
+   return sum;
+}
+
+
+
+void g (int m)
+{
+  try {
+      vect  a(m), b(m);
+  }
+  catch(int m)
+  {
+     cerr << "SIZE ERROR " << m << endl;
+     g(10);      
+  }
+  catch(const char* error)
+  {
+     cerr << error << endl;
+     abort();
+  }
+}
+
+
+int main()
+{
+   int n = -5;   
+
+   g(n);
+}
