@@ -1,0 +1,25 @@
+#define DEBUG
+ #include <iostream>
+ 
+ #ifndef DEBUG
+     #define ASSERT(x)
+ #else
+     #define ASSERT(x) \
+         if (! (x)) \
+         { \
+             std::cout << "ERROR!! Assert " << #x << " failed\n"; \
+             std::cout << " on line " << __LINE__  << "\n"; \
+             std::cout << " in file " << __FILE__ << "\n";  \
+         }
+ #endif
+ 
+ int main()
+ {
+     int x = 5;
+     std::cout << "First assert: \n";
+     ASSERT(x==5);
+     std::cout << "\nSecond assert: \n";
+     ASSERT(x != 5);
+     std::cout << "\nDone.\n";
+     return 0;
+ }
