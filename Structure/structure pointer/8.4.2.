@@ -1,0 +1,29 @@
+#include <iostream.h>
+#include <stdlib.h>
+
+struct Employee {
+  char title [50];
+  int year;
+};
+
+
+int main ()
+{
+  char buffer[50];
+
+  Employee aEmployee;
+  Employee * pEmployee;
+  pEmployee = & aEmployee;
+
+  cout << "Enter title: ";
+  cin.getline (pEmployee->title,50);
+  cout << "Enter year: ";
+  cin.getline (buffer,50);
+  pEmployee->year = atoi (buffer);
+
+  cout << "\nYou have entered:\n";
+  cout << pEmployee->title;
+  cout << " (" << pEmployee->year << ")\n";
+
+  return 0;
+}
