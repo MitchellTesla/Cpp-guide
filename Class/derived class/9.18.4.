@@ -1,0 +1,40 @@
+#include <iostream>
+ 
+ class BaseClass
+ {
+ public:
+     // constructors
+     BaseClass() { std::cout << "BaseClass constructor...\n"; }
+     ~BaseClass() { std::cout << "BaseClass destructor...\n"; }
+ 
+     //Other methods
+     void Talk()const { std::cout << "BaseClass sound!\n"; }
+     void Sleep()const { std::cout << "I'm sleeping.\n"; }
+ 
+ protected:
+     int itsAge;
+     int itsWeight;
+ };
+ 
+ class DerivedClass : public BaseClass
+ {
+ public:
+     // Constructors
+     DerivedClass(){ std::cout << "DerivedClass constructor...\n"; }
+     ~DerivedClass(){ std::cout << "DerivedClass destructor...\n"; }
+ 
+     // Other methods
+     void Walk() { std::cout << "walk...\n"; }
+     void Eat() { std::cout << "eat...\n"; }
+     void Talk()const { std::cout << "talk!\n"; }
+ 
+ };
+ 
+ int main()
+ {
+     BaseClass baseObject;
+     DerivedClass derivedObject;
+     baseObject.Talk();
+     derivedObject.Talk();
+     return 0;
+ }
