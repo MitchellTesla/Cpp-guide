@@ -1,0 +1,22 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <cctype>
+using std::iscntrl;
+using std::isgraph;
+using std::isprint;
+using std::ispunct;
+using std::isspace;
+
+int main()
+{
+   cout << "According to isspace:\nNewline " 
+      << ( isspace( '\n' ) ? "is a" : "is not a" )
+      << " whitespace character\nHorizontal tab " 
+      << ( isspace( '\t' ) ? "is a" : "is not a" )
+      << " whitespace character\n"
+      << ( isspace( ' is a" : " is not a" )
+      << " whitespace character\n";
+   return 0;
+}
