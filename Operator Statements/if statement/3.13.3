@@ -1,0 +1,23 @@
+#include <iostream>
+ 
+ int main()
+ {
+     int firstNumber =2;
+     int secondNumber = 3;
+ 
+     if (firstNumber >= secondNumber)
+     {
+         if ( (firstNumber  secondNumber) == 0) // evenly divisible?
+         {
+             if (firstNumber == secondNumber)
+                 std::cout << "They are the same!\n";
+             else
+                 std::cout << "They are evenly divisible!\n";
+         }
+         else
+             std::cout << "They are not evenly divisible!\n";
+     }
+     else
+         std::cout << "Hey! The second one is larger!\n";
+     return 0;
+ }
