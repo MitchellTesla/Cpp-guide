@@ -1,0 +1,25 @@
+#include <iostream>
+#include <locale>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+  // Use a fixed format with 2 decimal places.
+  cout << fixed << setprecision(2);
+
+  cout << "Default format: " << 12345678.12 << "\n\n";
+
+  // Set the locale to English.
+  locale eloc("English");
+  cout.imbue(eloc);
+
+  cout << "English format: " << 12345678.12 << "\n\n";
+
+  locale gloc("German");
+  cout.imbue(gloc);
+
+  cout << "German format: " << 12345678.12 << "\n\n";
+  return 0;
+}
