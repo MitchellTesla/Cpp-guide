@@ -1,0 +1,27 @@
+#include<iostream.h>
+
+class MyClass
+{
+  char ch;
+public:
+  MyClass(char c)
+  {
+    ch=c;
+       cout << "Constructing";
+       cout << ch <<"\n";
+  }
+  ~MyClass(){
+    cout << "Destructing" << ch <<"\n";
+  }
+};
+MyClass createMyClass()
+{
+  MyClass B('B');
+  return B;
+}
+main()
+{
+  MyClass A('A');
+  createMyClass();
+  return 0;
+}
