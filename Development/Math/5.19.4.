@@ -1,0 +1,22 @@
+#include <cmath>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  double angle, dsine,dcos,dtan;
+
+  cout << "Please enter an angle in radians \n";
+  cin >> angle;
+
+  dcos =cos(angle);
+  dsine =sin(angle);
+  dtan =tan(angle);
+
+  cout << " Your angles trigonometric functions are \n";
+  cout << " Sine is " << dsine << "\n";
+  cout << " Cosine is " << dcos << "\n";
+  cout << " Tangent is " << dtan << "\n";
+
+  return 0;
+}
