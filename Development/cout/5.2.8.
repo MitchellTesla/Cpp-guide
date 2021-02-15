@@ -1,0 +1,18 @@
+#include <iostream.h>
+main(void)
+{
+  cout.setf(ios::showpos);
+  cout.setf(ios::scientific);
+  cout << 123 << "  "<< 123.456 << endl;
+
+  cout.precision(3);
+  cout.width(10);
+  cout << 123 << "  "<< 123.456 << endl;;
+  cout.fill('#');
+  cout.width(10);
+  cout.unsetf(ios::scientific|ios::showpos);
+  cout.precision(5);
+  cout << 123 << "  " << 123.456;
+
+  return 0;
+}
