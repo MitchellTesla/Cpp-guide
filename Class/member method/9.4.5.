@@ -1,0 +1,55 @@
+#include <iostream>
+ 
+ 
+ class Rectangle
+ {
+ public:
+ 
+     Rectangle(int width, int height);
+     ~Rectangle(){}
+     void display(int aWidth, int aHeight, 
+     bool UseCurrentVals = false) const;
+ private:
+     int itsWidth;
+     int itsHeight;
+ };
+ 
+ 
+ Rectangle::Rectangle(int width, int height): itsWidth(width), itsHeight(height
+) {}                   
+ 
+ void Rectangle::display(int width, int height, bool UseCurrentValue) const
+ {
+     int printWidth;
+     int printHeight;
+ 
+     if (UseCurrentValue == true)
+     {
+         printWidth = itsWidth;       
+         printHeight = itsHeight;
+     }
+     else
+     {
+         printWidth = width;         
+         printHeight = height;
+     }
+ 
+     for (int i = 0; i<printHeight; i++)
+     {
+         for (int j = 0; j< printWidth; j++)
+         {
+             std::cout << "*";
+         }
+         std::cout << "\n";
+     }
+ }
+ 
+ int main()
+ {
+     Rectangle theRect(30,5);
+     std::cout << "display(0,0,true)...\n";
+     theRect.display(0,0,true);
+     std::cout <<"display(40,2)...\n";
+     theRect.display(40,2);
+     return 0;
+ }
