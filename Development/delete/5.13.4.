@@ -1,0 +1,38 @@
+#include<iostream.h>
+class MyClass
+{
+  static int total;
+public:
+  MyClass()
+  {
+    total++;
+  }
+  ~MyClass()
+  {
+    total--;
+  }
+  int gettotal()
+  {
+    return total;
+  }
+};
+int MyClass::total=0;
+
+main()
+{
+  MyClass o1,o2,o3;
+  cout<<o1.gettotal()<<" objects in existence\n";
+  MyClass *p;
+  p=new MyClass;
+  if(!p)
+  {
+    cout<<"Allocation erroe\n";
+       return 1;
+  }
+  cout<<o1.gettotal();
+  cout<<" object in existence after allocation\n";
+  delete p;
+  cout<<o1.gettotal();
+  cout<<" object in existence after deletion\n";
+  return 0;
+}
