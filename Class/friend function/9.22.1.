@@ -1,0 +1,28 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  int a, b; 
+public: 
+  MyClass(int i, int j) { a=i; b=j; } 
+  friend int friendFunction(MyClass x); // a friend function 
+}; 
+ 
+// friendFunction() is a not a member function of any class. 
+int friendFunction(MyClass x) 
+{ 
+  /* Because friendFunction() is a friend of MyClass, it can 
+     directly access a and b. */ 
+  int max = x.a < x.b ? x.a : x.b; 
+ 
+  return max; 
+} 
+ 
+int main() 
+{ 
+  MyClass n(18, 111); 
+ 
+  cout << "friendFunction(n) is " << friendFunction(n) << "\n"; 
+ 
+  return 0; 
+}
