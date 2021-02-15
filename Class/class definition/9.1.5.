@@ -1,0 +1,45 @@
+#include <iostream>
+using std::cout; 
+using std::cin;
+using std::endl;
+
+#include <string>
+using std::string;
+using std::getline;
+
+class MyClass
+{
+public:
+   void setName( string name )
+   {      
+      name = name; 
+   }
+   
+   string getName() 
+   {
+      return name; 
+   } 
+
+   void displayMessage()
+   {
+      cout << "Welcome to the grade book for\n" << getName() << "!" << endl;
+   } 
+private:
+   string name; 
+};
+
+int main()
+{
+   string n; 
+   MyClass obj;
+   
+   cout << "Initial name is: " << obj.getName() << endl;
+
+   cout << "\nPlease enter the name:" << endl;
+   getline( cin, n );
+   obj.setName( n );
+
+   cout << endl;
+   obj.displayMessage();
+   return 0;
+}
