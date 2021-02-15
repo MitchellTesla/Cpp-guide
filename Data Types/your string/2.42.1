@@ -1,0 +1,51 @@
+#include<iostream.h>
+#include<string.h>
+#include<stdlib.h>
+
+class String
+{
+  char *p;
+  int length;
+public:
+  String();
+  String(char *str,int len);
+  char *getstring(){return p;}
+  int getlength(){return length;}
+};
+String::String()
+{
+  p=new char[255];
+  if(!p)
+  {
+    cout<<"Allocation erroe\n";
+       exit(1);
+  }
+  *p='\0';
+  length=255;
+}
+String::String(char * str,int len)
+{
+  if(strlen(str)>=len)
+  {
+    cout<<"Allcation too little memory! \n";
+       exit(1);
+  }
+  p=new char[len];
+  if(!p)
+  {
+    cout<<"Allocation error\n";
+       exit(1);
+  }
+  strcpy(p,str);
+  length=len;
+}
+main()
+{
+  String ob1;
+  String ob2("This is a string.",100);
+  cout<<"ob1:"<<ob1.getstring()<<"-Allocation length:";
+  cout<<ob1.getlength()<<'\n';
+  cout<<"ob2:"<<ob2.getstring()<<"-Allocation length:";
+  cout<<ob2.getlength()<<'\n';
+  return 0;
+}
