@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+class MyClass {
+  int a;
+public:
+  MyClass(int x) { a = x; }
+  int geta() { return a; }
+};
+
+int main()
+{
+  MyClass ob(4);
+
+  cout << ob.geta();
+
+  return 0;
+}
