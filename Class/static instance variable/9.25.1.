@@ -1,0 +1,26 @@
+#include <iostream> 
+using namespace std; 
+ 
+class MyClass { 
+  static int num; 
+public: 
+  void setI(int i) { num = i; }; 
+  void display() { cout << num << " "; } 
+}; 
+ 
+int MyClass::num; // define num 
+ 
+int main() 
+{ 
+  MyClass a, b; 
+ 
+  a.display(); // prints 0 
+  b.display(); // prints 0 
+ 
+  a.setI(10); // set static num to 10 
+ 
+  a.display(); // prints 10 
+  b.display(); // also prints 10 
+ 
+  return 0; 
+}
