@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+class MyClass
+{
+public:
+   void displayMessage()
+   {
+      cout << "Welcome!" << endl;
+   } 
+};
+
+int main()
+{
+   MyClass obj; 
+   obj.displayMessage(); 
+   return 0;
+}
