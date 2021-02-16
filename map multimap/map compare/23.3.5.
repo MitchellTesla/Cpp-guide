@@ -1,0 +1,46 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+class Employee {
+   friend class EmployeeLessThan;
+public:
+   Employee(const string& first, const string& last) : lastName_(last), firstName_(first) {}
+
+   string getFirstName( ) const {return(firstName_);}
+   string getLastName( ) const {return(lastName_);}
+private:
+   string lastName_;
+   string firstName_;
+};
+
+class EmployeeLessThan {
+public:
+   bool operator( )(const Employee& emp1, const Employee& emp2) const {
+      if (emp1.lastName_ < emp2.lastName_)
+         return(true);
+      else if (emp1.lastName_ == emp2.lastName_)
+         return(emp1.firstName_ < emp2.firstName_);
+      else
+         return(false);
+   }
+};
+
+int main( ) {
+
+   map<Employee, string, EmployeeLessThan> empMap;
+
+   Employee emp1("B", "A"),emp2("J", "G"),emp3("F", "S"),emp4("G", "G");
+
+   empMap[emp1] = "tester";
+   empMap[emp2] = "coder";
+   empMap[emp3] = "programmer";
+   empMap[emp4] = "developer";
+
+   for (map<Employee, string, EmployeeLessThan>::const_iterator p =
+        empMap.begin( ); p != empMap.end( ); ++p) {
+      cout << p->first.getFirstName( ) << " " << p->first.getLastName( ) << " is " << p->second << endl;
+   }
+}
