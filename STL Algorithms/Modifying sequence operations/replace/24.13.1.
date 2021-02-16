@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string s("FERRARI");
+  vector<char> vector1(s.begin(), s.end());
+
+  
+  replace(vector1.begin(), vector1.end(), 'R', 'S');
+
+  for(int i=0;i<vector1.size();i++){
+     cout << vector1[i] << " ";
+  }
+
+  return 0;
+}
