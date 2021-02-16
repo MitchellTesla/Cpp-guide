@@ -1,0 +1,17 @@
+#include <utility>
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv){
+  pair<string, int> myPair("hello", 5), myOtherPair;
+
+  myOtherPair.first = "hello";
+  myOtherPair.second = 6;
+
+  pair<string, int> myThirdPair(myOtherPair);
+
+  pair<int, int> aPair = make_pair(5, 10);
+
+  return (0);
+}
