@@ -1,0 +1,36 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <numeric>
+#include <vector>
+#include <iterator>
+
+int calculateCube( int );
+
+int main()
+{
+
+   std::ostream_iterator< int > output( cout, " " );
+
+   int a2[ 10 ] = { 100, 2, 8, 1, 50, 3, 8, 8, 9, 10 };
+   std::vector< int > v2( a2, a2 + 10 ); // copy of a2
+   cout << "Vector v2 contains: ";
+   std::copy( v2.begin(), v2.end(), output );
+
+   std::vector< int > cubes( 10 ); // instantiate vector cubes
+
+   // calculate cube of each element in v; place results in cubes
+   std::transform( v2.begin(), v2.end(), cubes.begin(), calculateCube );
+   cout << "\n\nThe cube of every integer in Vector v is:\n";
+   std::copy( cubes.begin(), cubes.end(), output );
+
+
+   cout << endl;
+   return 0;
+}
+int calculateCube( int value )
+{
+   return value * value * value;
+}
