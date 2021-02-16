@@ -1,0 +1,27 @@
+#include <algorithm>
+#include <vector>
+#include <iostream>
+using namespace std;
+bool IsEven (const int& nNumber)
+{
+    return ((nNumber % 2) == 0);
+}
+
+int main ()
+{
+    vector <int> v;
+
+    for (int nNum = 0; nNum < 10; ++ nNum)
+        v.push_back (nNum);
+
+    // a copy of the sample vector
+    vector <int> vecCopy (v);
+
+    // use stable_partition on the vecCopy - maintains relative order
+    stable_partition (vecCopy.begin (), vecCopy.end (), IsEven);
+
+    for (size_t nItem = 0; nItem < vecCopy.size (); ++ nItem)
+        cout << vecCopy [nItem] << ' ';
+
+    return 0;
+}
