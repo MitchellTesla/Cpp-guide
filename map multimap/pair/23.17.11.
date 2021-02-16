@@ -1,0 +1,32 @@
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <string>
+#include <vector>
+#include <utility>
+
+using namespace std;
+
+typedef pair<int,string> Pair;
+
+inline bool less_than_second( const Pair& b1, const Pair& b2 ){
+   return b1.second < b2.second;
+}
+
+int main(){
+   const char* names[] = { "A","B", "C", "D","E" };
+   const int values[] = { 18, 20, 26, 30, 41 };
+   const int num_pairs = sizeof( names ) / sizeof( names[0] );
+
+   vector<Pair> pair( num_pairs );
+   transform( values, values+num_pairs, names,pair.begin(), make_pair<int,string> );
+
+   sort( pair.begin(), pair.end() );
+
+   sort( pair.begin(), pair.end(), less_than_second );
+
+   vector<Pair>::const_iterator pair_end = pair.end();
+   for( vector<Pair>::const_iterator i = pair.begin();
+      i != pair_end; ++i )
+   cout << i->second << " - $" << i->first << " values\n";
+}
