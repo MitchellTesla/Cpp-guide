@@ -1,0 +1,32 @@
+#include <map>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+typedef multimap <int, string> MULTIMAP_INT_STRING;
+
+int main ()
+{
+    MULTIMAP_INT_STRING  mmapIntToString;
+
+    mmapIntToString.insert (MULTIMAP_INT_STRING::value_type (3, "Three"));
+    mmapIntToString.insert (MULTIMAP_INT_STRING::value_type(45, "Forty Five"));
+
+    // Eraseing an element with key as -1 from the multimap
+    if (mmapIntToString.erase (-1) > 0)
+        cout << "Erased all pairs with -1 as key." << endl;
+
+    MULTIMAP_INT_STRING::const_iterator iPairLocator;
+
+    // Print the contents of the multimap to the screen
+    for ( iPairLocator = mmapIntToString.begin ()
+        ; iPairLocator != mmapIntToString.end ()
+        ; ++ iPairLocator )
+    {
+        cout << "Key: " << iPairLocator->first;
+        cout << ", Value: " << iPairLocator->second.c_str () << endl;
+    }
+
+    return 0;
+}
