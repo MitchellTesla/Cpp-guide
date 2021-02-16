@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <utility>
+
+using namespace std;
+
+void show(const char *msg, map<string, string> mp);
+
+int main() {
+  map<string, string> phonemap;
+
+  phonemap["A"] = "444-555-1234";
+  phonemap["B"] = "555-555-6576";
+  phonemap["C"] = "555-555-9843";
+
+  show("Here is the original map: ", phonemap);
+
+  return 0;
+}
+
+// Display the contents of a map<string, string> by using an iterator.
+void show(const char *msg, map<string, string> mp) {
+  map<string, string>::iterator itr;
+
+  cout << msg << endl;
+
+  for(itr=mp.begin(); itr != mp.end(); ++itr)
+   cout << " " << itr->first << ": " << itr->second << endl;
+
+  cout << endl;
+}
