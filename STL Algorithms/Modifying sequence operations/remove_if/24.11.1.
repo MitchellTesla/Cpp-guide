@@ -1,0 +1,34 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+bool greater9( int );
+
+int main()
+{
+   int a[ 10 ] = { 10, 2, 10, 4, 16, 6, 14, 8, 12, 10 };
+
+   std::ostream_iterator< int > output( cout, " " );
+
+   std::vector< int > v3( a, a + 10 ); // copy of a
+   cout << "Vector v3 before removing all elements"
+        << "\ngreater than 9:\n   ";
+   std::copy( v3.begin(), v3.end(), output );
+
+   // remove elements greater than 9 from v3
+   std::vector< int >::iterator newLastElement = std::remove_if( v3.begin(), v3.end(), greater9 );
+   cout << "\nVector v3 after removing all elements"
+      << "\ngreater than 9:\n   ";
+   std::copy( v3.begin(), newLastElement, output );
+
+   return 0;
+}
+
+bool greater9( int x )
+{
+   return x > 9;
+}
