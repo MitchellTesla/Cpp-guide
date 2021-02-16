@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  vector<int> vector1(100, 1), vector2(200, 2);
+
+  swap(vector1, vector2);
+
+
+  for(int i=0;i<vector1.size();i++){
+     cout << vector1[i] ;
+  }
+  cout << "\n\n\n\n\n";
+
+  for(int i=0;i<vector2.size();i++){
+     cout << vector2[i] ;
+  }
+  return 0;
+}
