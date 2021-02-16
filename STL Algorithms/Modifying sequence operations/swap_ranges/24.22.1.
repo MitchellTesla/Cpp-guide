@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+int main()
+{
+  string s("HELLO");
+  string s2("THERE");
+
+  vector<char> vector1(s.begin(), s.end());
+  vector<char> vector2(s2.begin(), s2.end());
+
+  // Swap the contents of vector1 and vector2:
+  swap_ranges(vector1.begin(), vector1.end(), vector2.begin());
+
+
+
+  for(int i=0;i<vector1.size();i++){
+     cout << vector1[i] ;
+  }
+  cout << "\n\n\n\n\n";
+
+  for(int i=0;i<vector2.size();i++){
+     cout << vector2[i] ;
+  }
+  return 0;
+}
