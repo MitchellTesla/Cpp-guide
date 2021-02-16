@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+using namespace std;
+
+// A function object that computes a reciprocal.
+class reciprocal : unary_function<double, double> {
+public:
+  result_type sum;
+
+result_type operator()(argument_type val) {
+    if(val == 0.0) return 0.0;
+    return 1.0 / val; // return reciprocal
+  }
+};
+
+int main(){
+  int i;
+
+  vector<double> v;
+  for(i=1; i < 10; ++i) v.push_back((double)i);
+
+  vector<double> v2(10);
+  transform(v.begin(), v.end(), v2.begin(), reciprocal());
+
+  return 0;
+}
