@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+template<class InIter>
+void show_range(const char *msg, InIter start, InIter end);
+
+int main()
+{
+  vector<char> v;
+  vector<char>::iterator itr, itr_end;
+
+  for(int i=0; i<5; i++) {
+    v.push_back('A'+i);
+  }
+  for(int i=0; i<5; i++) {
+    v.push_back('A'+i);
+  }
+
+  show_range("Original contents of v:", v.begin(), v.end());
+
+  // Remove all A's.
+  itr_end = remove(v.begin(), v.end(), 'A');
+
+  show_range("v after removing all A's:", v.begin(), itr_end);
+
+  return 0;
+}
+
+template<class InIter>
+void show_range(const char *msg, InIter start, InIter end) {
+  InIter itr;
+
+  cout << msg << endl;
+  for(itr = start; itr != end; ++itr)
+    cout << *itr << endl;
+}
