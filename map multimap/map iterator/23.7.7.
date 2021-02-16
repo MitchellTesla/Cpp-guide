@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main() {
+  map<string, int> m;
+
+  m.insert(pair<string, int>("A", 100));
+  m.insert(pair<string, int>("G", 300));
+  m.insert(pair<string, int>("B", 200));
+
+  // Declare an iterator to a map<string, int>.
+  map<string, int>::iterator itr;
+
+  // Declare a reverse iterator to a map<string, itr>.
+  map<string, int>::reverse_iterator ritr;
+
+  // show the contents of m in reverse order.
+  cout << "The contents of m in reverse:\n";
+
+  for(ritr=m.rbegin(); ritr != m.rend(); ++ritr)
+    cout << "  " << ritr->first << ", " << ritr->second << endl;
+  cout << endl;
+
+
+  return 0;
+}
