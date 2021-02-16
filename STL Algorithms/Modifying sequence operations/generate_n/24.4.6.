@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+char nextLetter();
+
+int main()
+{
+   vector< char > chars( 10 );
+
+   fill( chars.begin(), chars.end(), '5' );
+
+   fill_n( chars.begin(), 5, 'A' );
+
+   generate( chars.begin(), chars.end(), nextLetter );
+
+   generate_n( chars.begin(), 5, nextLetter );
+
+   cout << endl;
+   return 0;
+}
+
+char nextLetter()
+{
+   static char letter = 'A';
+   return letter++;
+}
