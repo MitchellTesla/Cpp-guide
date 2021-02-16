@@ -1,0 +1,30 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+char nextLetter();
+
+int main()
+{
+   std::vector< char > chars( 10 );
+   std::ostream_iterator< char > output( cout, " " );
+
+   // generate values for first five elements of chars with nextLetter
+   std::generate_n( chars.begin(), 5, nextLetter );
+
+   cout << "\n\nVector chars after generating letters A-J:\n";
+   std::copy( chars.begin(), chars.end(), output );
+
+   cout << endl;
+   return 0;
+}
+
+// generator function returns next letter (starts with A)
+char nextLetter() {
+   static char letter = 'A';
+   return letter++;
+}
