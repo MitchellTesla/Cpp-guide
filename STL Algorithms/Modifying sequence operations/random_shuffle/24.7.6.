@@ -1,0 +1,24 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main (){
+    // Initialize a sample vector with 6 elements
+    vector <int> v (6);
+
+    // fill first 3 elements with value 8
+    fill (v.begin (), v.begin () + 3, 8);
+
+    // fill last 3 elements with value 5
+    fill_n (v.begin () + 3, 3, 5);
+
+    // shuffle the container
+    random_shuffle (v.begin (), v.end ());
+
+    for (size_t nIndex = 0; nIndex < v.size (); ++ nIndex){
+        cout << "Element [" << nIndex << "] = ";
+        cout << v [nIndex] << endl;
+    }
+
+    return 0;
+}
