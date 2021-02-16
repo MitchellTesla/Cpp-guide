@@ -1,0 +1,25 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+int main()
+{
+   int a[ 10 ] = { 10, 2, 10, 4, 16, 6, 14, 8, 12, 10 };
+   std::ostream_iterator< int > output( cout, " " );
+
+   std::vector< int > v1( a, a + 10 ); // copy of a
+   cout << "Vector v1 before replacing all 10s:\n   ";
+   std::copy( v1.begin(), v1.end(), output );
+
+   // replace all 10s in v1 with 100
+   std::replace( v1.begin(), v1.end(), 10, 100 );
+   cout << "\nVector v1 after replacing 10s with 100s:\n   ";
+   std::copy( v1.begin(), v1.end(), output );
+
+   cout << endl;
+   return 0;
+}
