@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <utility>
+
+using namespace std;
+
+void show(const char *msg, map<string, string> mp);
+
+int main() {
+  map<string, string> phonemap;
+
+  phonemap["A"] = "444-555-1234";
+  phonemap["B"] = "555-555-6576";
+  phonemap["C"] = "555-555-9843";
+
+  show("Here is the original map: ", phonemap);
+  cout << endl;
+
+  // Now, change the phone number for Ken.
+  phonemap["B"] = "555 555-5555";
+  cout << "New number for Ken: " << phonemap["Ken"] << "\n\n";
+
+  // Create a pair object that will contain the result of a call to insert().
+  pair<map<string, string>::iterator, bool> result;
+
+  // Duplicate keys are not allowed, as the following proves.
+  result = phonemap.insert(pair<string, string>("B", "555-1010"));
+  if(result.second) 
+     cout << "Duplicate added! Error!";
+  else 
+     cout << "Duplicate not allowed.\n";
+  show("phonemap after attempt to add duplicate key: ", phonemap);
+
+  return 0;
+}
+
+// Display the contents of a map<string, string> by using an iterator.
+void show(const char *msg, map<string, string> mp) {
+  map<string, string>::iterator itr;
+
+  cout << msg << endl;
+
+  for(itr=mp.begin(); itr != mp.end(); ++itr)
+   cout << " " << itr->first << ": " << itr->second << endl;
+
+  cout << endl;
+}
