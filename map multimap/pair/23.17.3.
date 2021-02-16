@@ -1,0 +1,18 @@
+#include <utility>
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  pair<string, int> myPair("hello", 5), myOtherPair;
+
+  // assign directly to first and second
+  myOtherPair.first = "hello";
+  myOtherPair.second = 6;
+
+  // copy construcor
+  pair<string, int> myThirdPair(myOtherPair);
+
+  return (0);
+}
