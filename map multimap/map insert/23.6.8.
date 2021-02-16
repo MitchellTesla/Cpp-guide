@@ -1,0 +1,28 @@
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <utility>
+
+using namespace std;
+
+int main( )
+{
+   const char* word[] = { "A", "B", "C", "D","E" };
+   const char* clue[] = { "a", "b","c", "d","e" };
+
+   map<string,string> dictionary1;
+   transform( word, word+sizeof(word)/sizeof(word[0]), clue,inserter( dictionary1, dictionary1.end() ),make_pair<string,string> );
+   cout << "There are " << dictionary1.size() << " words in the dictionary\n\n";
+
+   cout << "The clue for POPS is \"" << dictionary1["POPS"] << "\"\n"
+      << "The clue for TAT is \"" << dictionary1["TAT"] << "\"\n"
+      << "The clue for ESPO0 is \"" << dictionary1["ESPO0"] << "\"\n";
+
+   cout << "\nThere are " << dictionary1.size() << " words in the dictionary\n\n";
+
+   // use subscript operator to write value
+   dictionary1["ESPO0"] = "Typo in name";
+   cout << "The clue for ESPO0 is \"" << dictionary1["ESPO0"] << "\"";
+
+ 
+}
