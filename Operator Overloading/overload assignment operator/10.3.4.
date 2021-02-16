@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+class Point {
+  int x, y;
+public:
+  Point() {} // needed to construct temporaries
+  Point(int px, int py) {
+    x = px;
+    y = py;
+  }
+
+  void show() {
+    cout << x << " ";
+    cout << y << "\n";
+  }
+
+  Point operator+(Point op2);
+  Point operator-(Point op2);
+  Point operator=(Point op2);
+  Point operator++();
+};
+
+// Overload + for Point.
+Point Point::operator+(Point op2)
+{
+  Point temp;
+
+  temp.x = op2.x + x;
+  temp.y = op2.y + y;
+
+  return temp;
+}
+
+// Overload - for Point.
+Point Point::operator-(Point op2)
+{
+  Point temp;
+
+  // notice order of operands
+  temp.x = x - op2.x;
+  temp.y = y - op2.y;
+
+  return temp;
+}
+
+// Overload asignment for Point.
+Point Point::operator=(Point op2)
+{
+  x = op2.x;
+  y = op2.y;
+
+  return *this; // i.e., return object that generated call
+}
+
+// Overload prefix ++ for Point.
+Point Point::operator++()
+{
+  x++;
+  y++;
+
+  return *this;
+}
+
+int main()
+{
+  Point ob1(10, 20), ob2( 5, 30), ob3(90, 90);
+
+  ob1.show();
+  ob2.show();
+
+  ++ob1;
+  ob1.show(); // displays 11 21
+
+  ob2 = ++ob1;
+  ob1.show(); // displays 12 22
+  ob2.show(); // displays 12 22
+
+  ob1 = ob2 = ob3; // multiple assignment
+  ob1.show(); // displays 90 90
+  ob2.show(); // displays 90 90
+
+  return 0;
+}
