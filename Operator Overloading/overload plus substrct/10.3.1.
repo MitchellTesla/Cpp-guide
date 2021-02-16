@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstring>
+using std::cout;
+using std::endl;
+using namespace std;
+
+class MyString {
+  public:
+    MyString(const char* pText) {
+      pString = new char[ strlen(pText) + 1 ];
+      std::strcpy(pString, pText);
+    }
+
+    ~MyString() {
+      cout << endl << "Destructor called." << endl;
+      delete[] pString;
+    }
+
+    MyString& operator=(const MyString& String) {
+      cout << endl << "calling =." << endl;
+      if(this == &String)
+        return *this;
+
+      delete[] pString;
+      pString = new char[ strlen(String.pString) + 1];
+
+      // Copy right operand string to left operand
+      std::strcpy(this->pString, String.pString);
+
+      return *this;
+    }
+
+
+    char* getString() const{ return pString; }
+
+  private:
+    char* pString;
+};
+
+int main() {
+  MyString warning("There is a String");
+  MyString standard("");
+
+  cout << warning.getString();
+  cout << standard.getString();
+
+  standard = warning;
+
+  cout << warning.getString();
+  cout << standard.getString();
+  cout << endl;
+
+  return 0;
+}
