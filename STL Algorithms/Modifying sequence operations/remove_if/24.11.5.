@@ -1,0 +1,38 @@
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <iostream>
+
+using namespace std;
+
+template <typename elementType>
+bool IsOdd (const elementType& number){
+    return ((number % 2) == 1);
+}
+
+int main (){
+    list <int> l;
+
+    for (int nCount = 0; nCount < 10; ++ nCount)
+        l.push_back (nCount);
+
+    list <int>::const_iterator li;
+    for ( li = l.begin (); li != l.end (); ++ li )
+        cout << *li << ' ';
+
+    vector <int> v (l.size () * 2);
+
+    vector <int>::iterator iLastPos;
+    iLastPos = copy ( l.begin (), l.end (), v.begin () );
+
+    vector <int>::iterator i;
+
+    i = remove_if (v.begin (), v.end (), IsOdd <int>);    // The predicate
+
+    v.erase (i , v.end ());
+    vector <int>::iterator vi;
+    for ( vi = v.begin (); vi != v.end (); ++ vi )
+        cout << *vi << ' ';
+
+    return 0;
+}
