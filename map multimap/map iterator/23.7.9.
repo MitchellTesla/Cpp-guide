@@ -1,0 +1,26 @@
+#include <map>
+#include <iostream>
+
+using namespace std;
+
+typedef map <int, string> MAP_INT_STRING;
+typedef multimap <int, string> MMAP_INT_STRING;
+
+int main ()
+{
+    MAP_INT_STRING mapIntToString;
+
+    mapIntToString.insert (MAP_INT_STRING::value_type (3, "Three"));
+
+    MAP_INT_STRING::const_iterator iMapPairLocator;
+
+    for ( iMapPairLocator = mapIntToString.begin (); iMapPairLocator != mapIntToString.end (); ++ iMapPairLocator )
+    {
+        cout << "Key: " << iMapPairLocator->first;
+        cout << " Value: " << iMapPairLocator->second.c_str ();
+
+        cout << endl;
+    }
+
+    return 0;
+}
