@@ -1,0 +1,28 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+int main()
+{
+   int a[ 10 ] = { 10, 2, 10, 4, 16, 6, 14, 8, 12, 10 };
+
+   std::ostream_iterator< int > output( cout, " " );
+
+   std::vector< int > v( a, a + 10 ); // copy of a
+
+   std::vector< int >::iterator newLastElement;
+
+   cout << "Vector v before removing all 10s:\n   ";
+   std::copy( v.begin(), v.end(), output );
+
+   // remove all 10s from v
+   newLastElement = std::remove( v.begin(), v.end(), 10 );
+   cout << "\nVector v after removing all 10s:\n   ";
+   std::copy( v.begin(), newLastElement, output );
+
+   return 0;
+}
