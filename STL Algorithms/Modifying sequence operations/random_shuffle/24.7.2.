@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+using namespace std;
+
+int main( ) {
+
+   vector<int> v;
+   back_insert_iterator<std::vector<int> > p = back_inserter(v);
+
+   for (int i = 0; i < 10; ++i)
+     *p = i;
+
+   for (int i = 0; i < 10; ++i){
+       cout << v[i];
+   }
+
+   cout << "\n\n\n";
+   random_shuffle(v.begin( ), v.end( ));
+
+   for (int i = 0; i < 10; ++i){
+       cout << v[i];
+   }
+
+}
