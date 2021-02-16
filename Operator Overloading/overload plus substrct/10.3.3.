@@ -1,0 +1,52 @@
+#include <iostream>
+ 
+ class MyType
+ {
+ public:
+     MyType(); 
+     int GetAge() const { return *itsAge; }
+     int GetWeight() const { return *itsWeight; }
+     void SetAge(int age) { *itsAge = age; }
+     MyType operator=(const MyType &);
+ 
+ private:
+     int *itsAge;
+     int *itsWeight;
+ };
+ 
+ MyType::MyType()
+ {
+     itsAge = new int;
+     itsWeight = new int;
+     *itsAge = 5;
+     *itsWeight = 9;
+ }
+ 
+ 
+ MyType MyType::operator=(const MyType & rhs)
+ {
+     if (this == &rhs)
+         return *this;
+     delete itsAge;
+     delete itsWeight;
+     itsAge = new int;
+     itsWeight = new int;
+     *itsAge = rhs.GetAge();
+     *itsWeight = rhs.GetWeight();
+     return *this;
+ }
+ 
+ 
+ int main()
+ {
+     MyType myObject;
+     std::cout << "myObject's age: " << myObject.GetAge() << std::endl;
+     std::cout << "Setting myObject to 6...\n";
+     myObject.SetAge(6);
+     MyType whiskers;
+     std::cout << "whiskers' age: " << whiskers.GetAge() << std::endl;
+     std::cout << "copying myObject to whiskers...\n";
+     whiskers = myObject;
+     std::cout << "whiskers' age: " << whiskers.GetAge() << std::endl;
+     return 0;
+ }
