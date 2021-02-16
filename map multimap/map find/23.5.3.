@@ -1,0 +1,33 @@
+#include <map>
+#include <iostream>
+#include <string>
+
+using namespace std;
+typedef map<int, string> INT2STRING;
+
+int main(void){
+   INT2STRING theMap;
+   INT2STRING::iterator theIterator;
+   string theString = "One, Two";
+   int index= 1;
+
+   theMap.insert(INT2STRING::value_type(0,"Zero"));
+   theMap.insert(INT2STRING::value_type(1,"One"));
+   theMap.insert(INT2STRING::value_type(2,"Two"));
+   theMap.insert(INT2STRING::value_type(3,"Three"));
+   theMap.insert(INT2STRING::value_type(4,"Four"));
+   theMap.insert(INT2STRING::value_type(5,"Five"));
+   theMap.insert(INT2STRING::value_type(6,"Six"));
+   theMap.insert(INT2STRING::value_type(7,"Seven"));
+   theMap.insert(INT2STRING::value_type(8,"Eight"));
+   theMap.insert(INT2STRING::value_type(9,"Nine"));
+
+
+   for( index = 0; index < theString.length(); index++){
+      theIterator = theMap.find(theString[index] - '0');
+      if(theIterator != theMap.end())      // is 0 - 9
+        cout << (*theIterator).second << " ";
+      else                // not 0 - 9
+        cout << "[err] ";
+   }
+ }
