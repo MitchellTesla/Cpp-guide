@@ -1,0 +1,17 @@
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <iostream>
+
+int main (){
+    using namespace std;
+
+    vector <int> v (10);
+    generate ( v.begin (), v.end () , rand );    
+
+    cout << "Elements in the vector of size " << v.size ();
+    for (size_t nCount = 0; nCount < v.size (); ++ nCount)
+        cout << v [nCount] << " ";
+
+    return 0;
+}
