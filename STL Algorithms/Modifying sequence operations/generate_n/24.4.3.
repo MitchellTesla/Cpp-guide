@@ -1,0 +1,73 @@
+#include <iostream>
+#include <list>
+#include <algorithm>
+
+using namespace std;
+
+/* PRINT_ELEMENTS()
+ * - prints optional C-string optcstr followed by
+ * - all elements of the collection coll
+ * - separated by spaces
+ */
+template <class T>
+inline void PRINT_ELEMENTS (const T& coll, const char* optcstr="")
+{
+    typename T::const_iterator pos;
+
+    std::cout << optcstr;
+    for (pos=coll.begin(); pos!=coll.end(); ++pos) {
+        std::cout << *pos << ' ';
+    }
+    std::cout << std::endl;
+}
+
+
+class IntSequence {
+  private:
+    int value;
+  public:
+    // constructor
+    IntSequence (int initialValue)
+     : value(initialValue) {
+    }
+
+    // ''function call''
+    int operator() () {
+        return value++;
+    }
+};
+
+int main()
+{
+    list<int> coll;
+    IntSequence seq(1);    // integral sequence starting with 1
+
+    // insert values from 1 to 4
+    // - pass function object by reference
+    //     so that it will continue with 5
+    generate_n<back_insert_iterator<list<int> >,
+               int, IntSequence&>(back_inserter(coll),    // start
+                                  4,      // number of elements
+                                  seq);   // generates values
+    PRINT_ELEMENTS(coll);
+
+    // insert values from 42 to 45
+    generate_n (back_inserter(coll),      // start
+                4,                        // number of elements
+                IntSequence(42));         // generates values
+    PRINT_ELEMENTS(coll);
+
+    // continue with first sequence
+    // - pass function object by value
+    //     so that it will continue with 5 again
+    generate_n (back_inserter(coll),      // start
+                4,                        // number of elements
+                seq);                     // generates values
+    PRINT_ELEMENTS(coll);
+    
+    // continue with first sequence again
+    generate_n (back_inserter(coll),      // start
+                4,                        // number of elements
+                seq);                     // generates values
+    PRINT_ELEMENTS(coll);
+}
