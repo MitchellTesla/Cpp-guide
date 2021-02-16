@@ -1,0 +1,34 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+bool greater9( int );
+
+int main()
+{
+   int a[ 10 ] = { 10, 2, 10, 4, 16, 6, 14, 8, 12, 10 };
+   std::ostream_iterator< int > output( cout, " " );
+
+   std::vector< int > v4( a, a + 10 ); // copy of a
+   std::vector< int > c2( 10 ); // instantiate vector c2
+   cout << "Vector v4 before replacing all values greater than 9 and copying:\n;
+   std::copy( v4.begin(), v4.end(), output );
+
+   // copy v4 to c2, replacing elements greater than 9 with 100
+   std::replace_copy_if(v4.begin(), v4.end(), c2.begin(), greater9, 100 );
+   cout << "\nVector c2 after replacing all values greater than 9 in v4:\n   ";
+
+   std::copy( c2.begin(), c2.end(), output );
+
+   cout << endl;
+   return 0;
+}
+
+bool greater9( int x )
+{
+   return x > 9;
+}
