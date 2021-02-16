@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+int main()
+{
+  vector<int> v, v2, result(10);
+
+  for(unsigned i=0; i < 10; ++i) v.push_back(i);
+  for(unsigned i=0; i < 10; ++i) v2.push_back(i);
+
+  transform(v.begin(), v.end(), v2.begin(), result.begin(), multiplies<int>());
+
+  return 0;
+}
