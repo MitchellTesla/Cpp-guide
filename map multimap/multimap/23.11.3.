@@ -1,0 +1,12 @@
+#include <map>
+#include <string>
+
+int main ()
+{
+    using namespace std;
+
+    map <int, string> mapIntegersToString;
+    multimap <int, string> mmapIntegersToString;
+
+    return 0;
+}
