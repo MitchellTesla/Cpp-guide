@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  int high = 250, low = 0;
+
+  swap(high, low);
+
+  cout << high << " ";
+  cout << low;
+
+
+  return 0;
+}
