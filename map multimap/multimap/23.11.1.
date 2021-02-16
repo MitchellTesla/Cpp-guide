@@ -1,0 +1,22 @@
+#include <map>
+#include <iostream>
+
+using namespace std;
+
+typedef map <int, string> MAP_INT_STRING;
+typedef multimap <int, string> MMAP_INT_STRING;
+
+int main ()
+{
+    MMAP_INT_STRING mmapIntToString;
+
+    mmapIntToString.insert (pair <int, string> (1000, "One Thousand"));
+    mmapIntToString.insert (MMAP_INT_STRING::value_type (1000, "Thousand"));
+
+    cout << endl << "The multimap contains " << mmapIntToString.size ();
+    cout << " key-value pairs." << endl;
+    cout << "The elements in the multimap are: " << endl;
+
+
+    return 0;
+}
