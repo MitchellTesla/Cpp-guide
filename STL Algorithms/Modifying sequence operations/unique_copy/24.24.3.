@@ -1,0 +1,18 @@
+#include <iostream>
+#include <list>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+int main( ) {
+   string arrStr[5] = {"A", "B", "A", "D", "E"};
+
+   list<string> lstStrDest;
+   unique_copy(&arrStr[0], &arrStr[5], back_inserter(lstStrDest));
+
+   for (list<string>::iterator p = lstStrDest.begin( );
+        p != lstStrDest.end( ); ++p) {
+      cout << *p << endl;
+   }
+}
