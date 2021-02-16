@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+class Point {
+  int x, y;
+public:
+  Point() {}
+  Point(int px, int py) {
+    x = px;
+    y = py;
+  }
+
+  void show() {
+    cout << x << " ";
+    cout << y << "\n";
+  }
+
+  friend Point operator+(Point op1, int op2);
+  friend Point operator+(int op1, Point op2);
+};
+
+// + is overloaded for Point + int.
+Point operator+(Point op1, int op2)
+{
+  Point temp;
+
+  temp.x = op1.x + op2;
+  temp.y = op1.y + op2;
+
+  return temp;
+}
+// + is overloaded for int + Point.
+Point operator+(int op1, Point op2)
+{
+  Point temp;
+
+  temp.x = op1 + op2.x;
+  temp.y = op1 + op2.y;
+
+  return temp;
+}
+
+int main()
+{
+  Point ob1(10, 20), ob2( 5, 30), ob3(7, 14);
+
+  ob1.show();
+  ob2.show();
+  ob3.show();
+
+  ob1 = ob2 + 10; // both of these
+  ob3 = 10 + ob2; // are valid
+
+  ob1.show();
+  ob3.show();
+
+  return 0;
+}
