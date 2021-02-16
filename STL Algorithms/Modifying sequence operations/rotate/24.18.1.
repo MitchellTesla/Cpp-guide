@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string s("Software Engineering ");
+  vector<char> vector1(s.begin(), s.end());
+
+  // Rotate the vector so that "Engineering " comes first:
+  rotate(vector1.begin(), vector1.begin() + 9,vector1.end());
+
+
+  for(int i=0;i<vector1.size();i++){
+     cout << vector1[i] ;
+  }
+  return 0;
+}
