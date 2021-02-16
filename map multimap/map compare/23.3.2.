@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+void show(const char *msg, map<string, int> mp);
+
+int main() {
+  map<string, int> m;
+
+  m.insert(pair<string, int>("A", 100));
+  m.insert(pair<string, int>("G", 300));
+  m.insert(pair<string, int>("B", 200));
+
+  // Create another map that is the same as the first.
+  map<string, int> m2(m);
+  show("Contents of m2: ", m2);
+
+  // Compare two maps.
+  if(m == m2) cout << "m and m2 are equivalent.\n\n";
+
+  return 0;
+}
+
+// Display the contents of a map<string, int> by using an iterator.
+void show(const char *msg, map<string, int> mp) {
+  map<string, int>::iterator itr;
+
+  cout << msg << endl;
+  for(itr=mp.begin(); itr != mp.end(); ++itr)
+    cout << "  " << itr->first << ", " << itr->second << endl;
+  cout << endl;
+}
