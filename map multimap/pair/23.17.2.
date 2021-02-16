@@ -1,0 +1,11 @@
+#include <utility>
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  pair<string, int> myPair("hello", 5), myOtherPair;
+
+  return (0);
+}
