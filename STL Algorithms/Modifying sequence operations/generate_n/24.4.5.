@@ -1,0 +1,21 @@
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <iostream>
+
+using namespace std;
+
+int main (){
+
+    list <int> l (10);
+    generate_n (l.begin (), 5, rand);
+
+    cout << "Elements in the list of size: " << l.size ();
+    list <int>::const_iterator li;
+    
+    for ( li = l.begin (); li != l.end (); ++ li )
+        cout << *li << ' ';
+
+
+    return 0;
+}
