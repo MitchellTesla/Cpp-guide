@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+// The unary predicate used by replace_if to replace even numbers
+bool IsEven (const int & nNum){
+    return ((nNum % 2) == 0);
+}
+
+int main ()
+{
+    // Initialize a sample vector with 6 elements
+    vector <int> v (6);
+
+    // fill first 3 elements with value 8
+    fill (v.begin (), v.begin () + 3, 8);
+
+    // fill last 3 elements with value 5
+    fill_n (v.begin () + 3, 3, 5);
+
+    for (size_t nIndex = 0; nIndex < v.size (); ++ nIndex){
+        cout << "Element [" << nIndex << "] = ";
+        cout << v [nIndex] << endl;
+    }
+
+    cout << endl << "Using 'std::replace' to replace value 5 by 8" << endl;
+    replace (v.begin (), v.end (), 5, 8);
+
+    for (size_t nIndex = 0; nIndex < v.size (); ++ nIndex){
+        cout << "Element [" << nIndex << "] = ";
+        cout << v [nIndex] << endl;
+    }
+
+    return 0;
+}
