@@ -1,0 +1,27 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <algorithm>
+#include <vector>
+#include <iterator>
+
+int main()
+{
+   int a1[ 5 ] = { 1, 1, 1, 7, 9 };
+
+   std::vector< int > v1( a1, a1 + 5 );
+
+   std::ostream_iterator< int > output( cout, " " );
+
+   std::copy( v1.begin(), v1.end(), output ); // display vector output
+
+   // eliminate duplicate values
+   std::vector< int >::iterator endLocation;
+   endLocation = std::unique( v1.begin(), v1.end() );
+
+   cout << endl;
+   std::copy( v1.begin(), endLocation, output );
+
+   return 0;
+}
