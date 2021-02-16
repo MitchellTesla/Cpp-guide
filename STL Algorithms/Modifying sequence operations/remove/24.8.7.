@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+bool greater9( int );
+
+int main()
+{ 
+   const int SIZE = 10;
+   int a[ SIZE ] = { 10, 2, 10, 4, 16, 6, 14, 8, 12, 10 };
+
+   // Remove 10 from v
+   vector< int > v( a, a + SIZE );
+   vector< int >::iterator newLastElement;
+   newLastElement = remove( v.begin(), v.end(), 10 );
+
+   return 0;
+}
+
+bool greater9( int x )
+{
+   return x > 9;
+}
