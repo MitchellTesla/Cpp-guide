@@ -1,0 +1,25 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <map>
+
+int main()
+{
+   std::multimap< int, double, std::less< int > > pairs; // declare the multimap pairs
+
+   // insert two value_type objects in pairs
+   pairs.insert( std::multimap< int, double, std::less< int > >::value_type( 15, 2.7 ) );
+   pairs.insert( std::multimap< int, double, std::less< int > >::value_type( 15, 99.3 ) );
+
+   cout << "Multimap pairs contains:\nKey\tValue\n";
+
+   // use const_iterator to walk through elements of pairs
+   for ( std::multimap< int, double, std::less< int > >::const_iterator iter =pairs.begin();
+      iter != pairs.end(); ++iter )
+      cout << iter->first << '\t' << iter->second << '\n';
+
+
+   cout << endl;
+   return 0;
+}
