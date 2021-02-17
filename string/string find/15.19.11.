@@ -1,0 +1,8 @@
+#include <string>
+#include <iostream>
+
+int main( ) {
+   std::string s = "Search from the beginning";
+
+   std::cout << s.find("ar") << '\n';            // Search from the beginning
+}
