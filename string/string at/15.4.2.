@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+   string s1( "cat" ), s2, s3;
+
+   s2 = s1;          
+   s3.assign( s1 );  
+   cout << "s1: " << s1 << "\ns2: " << s2 << "\ns3: "
+        << s3 << "\n\n";
+
+   // demonstrating member function at()
+   int len = s3.length();
+   for ( int x = 0; x < len; ++x ) 
+      cout << s3.at( x );
+
+   return 0;
+}
