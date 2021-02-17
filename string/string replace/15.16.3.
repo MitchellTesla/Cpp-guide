@@ -1,0 +1,14 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main( )
+{
+   string credit_card( "4578 9906 512 6661" );
+   cout << "Credit card number: " << credit_card;
+
+   // equivalent of strset()
+   credit_card.assign( credit_card.length(), '*' );
+   cout << "\nMore secure display of credit card number: " << credit_card;
+}
