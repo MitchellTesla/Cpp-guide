@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+  string str1("A");
+  string str2("B");
+  string str3("G");
+  string str4;
+
+  cout << "  str1: " << str1 << endl;
+  cout << "  str2: " << str2 << endl;
+  cout << "  str3: " << str3 << "\n\n";
+
+  // Use push_back() to add characters to str4.
+  for(char ch = 'A'; ch <= 'Z'; ++ch)
+    str4.push_back(ch);
+  cout << "str4 after calls to push_back(): " << str4 << endl;
+  cout << "Size and capacity of str4 is now " << str4.size() << " " << str4.capacity() << "\n\n";
+
+  return 0;
+}
