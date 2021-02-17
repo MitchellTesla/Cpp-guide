@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using std::cout;
+using std::endl;
+using std::string;
+
+int main() {
+  string text = "asdf asdf asdf asdf asdf";
+
+  size_t start = text.find_first_not_of("df");
+  
+  cout << start;
+  cout << string::npos;
+
+  return 0;
+}
