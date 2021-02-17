@@ -1,0 +1,13 @@
+#include <string>
+#include <algorithm>
+#include <iostream>
+using namespace std;
+int main ()
+{
+    string strSample ("Hello String! Wake up to a beautiful day!");
+
+    strSample.erase (13, 28);
+    cout << strSample;
+
+    return 0;
+}
