@@ -1,0 +1,28 @@
+#include <iostream>
+#include <set>
+#include <string>
+#include <functional>
+#include <cassert>
+
+using namespace std;
+
+struct strPtrLess {
+   bool operator( )(const string* p1,const string* p2) {
+      return(*p1 < *p2);
+   }
+};
+
+int main( ) {
+   set<string*, strPtrLess> setStrPtr;  // less-than functor
+   string s1 = "T";
+   string s2 = "D";
+   string s3 = "H";
+
+   setStrPtr.insert(&s1);
+   setStrPtr.insert(&s2);
+   setStrPtr.insert(&s3);
+
+   for (set<string*, strPtrLess>::const_iterator p = setStrPtr.begin( ); p != setStrPtr.end( ); ++p)
+      cout << **p << endl;
+
+}
