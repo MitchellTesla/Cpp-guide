@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main( ){
+   string saying1( "this is a test" );
+   string saying2( "this is another test" );
+
+   // equivalent of strcmp()
+   int result = saying1.compare( saying2 );
+   if( result < 0 )
+      cout << "\"" << saying1 << "\"\nis less than\n\"" << saying2 << "\"";
+   else if( result > 0 )
+      cout << "\"" << saying1 << "\"\nis greater than\n\"" << saying2 << "\"";
+   else
+      cout << "\"" << saying1 << "\"\nis equal to \n\"" << saying2 << "\"";
+
+   // equivalent of strcmp()
+   if( saying1 < saying2 )
+      cout << "\"" << saying1 << "\"\nis less than\n\""  << saying2 << "\"";
+   else if( saying1 > saying2 )
+      cout << "\"" << saying1 << "\"\nis greater than\n\"" << saying2 << "\"";
+   else
+      cout << "\"" << saying1 << "\"\nis equal to\n\"" << saying2 << "\"";
+}
