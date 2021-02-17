@@ -1,0 +1,25 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string s1( "AA" );
+   string s2( " AAB" );
+   string s3;
+
+   // 
+   cout << "s1 is \"" << s1 << "\"; s2 is \"" << s2
+      << "\"; s3 is \"" << s3 << '\"' 
+      << "\n\nThe results of comparing s2 and s1:"
+      << "\ns2 == s1 yields " << ( s2 == s1 ? "true" : "false" )
+      << "\ns2 != s1 yields " << ( s2 != s1 ? "true" : "false" )
+      << "\ns2 >  s1 yields " << ( s2 > s1 ? "true" : "false" ) 
+      << "\ns2 <  s1 yields " << ( s2 < s1 ? "true" : "false" )
+      << "\ns2 >= s1 yields " << ( s2 >= s1 ? "true" : "false" )
+      << "\ns2 <= s1 yields " << ( s2 <= s1 ? "true" : "false" );
+   return 0;
+}
