@@ -1,0 +1,33 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <list>      // list class-template definition
+#include <algorithm> // copy algorithm
+#include <iterator>  // ostream_iterator
+
+template < typename T > void printList( const std::list< T > &listRef );
+
+int main()
+{
+   int array[ 4 ] = { 2, 6, 4, 8 };
+   std::list< int > values;      // create list of ints
+   std::list< int > otherValues; // create list of ints
+
+   // insert items in values
+   values.push_front( 1 );
+   values.push_front( 2 );
+   values.push_back( 4 );
+   values.push_back( 3 );
+
+   cout << "values contains: ";
+   printList( values );
+   cout << endl;
+   return 0;
+}
+
+template < typename T > void printList( const std::list< T > &listRef )
+{
+    std::ostream_iterator< T > output( cout, " " );
+    std::copy( listRef.begin(), listRef.end(), output );
+}
