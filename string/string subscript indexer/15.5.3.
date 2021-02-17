@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+
+int main() {
+  string text = "asdffdsaasdf";
+
+
+  int vowels = 0;              
+  int consonants = 0;          
+  for(int i = 0 ; i < text.length() ; i++)
+    if(std::isalpha(text[i]))  
+      switch(std::tolower(text[i])) {
+        case 'a': case 'e': case 'i':
+        case 'o': case 'u':
+          vowels++;
+          break;
+        default:
+          consonants++;
+      }
+
+  cout << "Your input contained "
+       << vowels     << " vowels and "
+       << consonants << " consonants."
+       << endl;
+
+  return 0;
+}
