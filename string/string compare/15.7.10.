@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main( )
+{
+   string saying1( "this is a test" );
+   string saying2( "this is another test" );
+
+   // generalization of strncmp()
+   cout << "\n\nCOMPARE SUBSTRINGS OF DIFFERENT LENGTHS AND INDEXES\n";
+   if( saying1.substr( 2, 11 ) < saying2.substr( 14, 17 ) )
+      cout << "\"" << saying1.substr( 2, 11 ) << "\" is less than \""
+         << saying2.substr( 14, 17 ) << "\"";
+   else if( saying1.substr( 2, 11 ) > saying2.substr( 14, 17 ) )
+      cout << "\"" << saying1.substr( 2, 11 )
+         << "\" is greater than \"" << saying2.substr( 14, 17 ) << "\"";
+   else
+      cout << "\"" << saying1.substr( 2, 11 ) << "\" is equal to \""
+         << saying2.substr( 14, 17 ) << "\"";
+}
