@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string str1("String handling C++ style.");
+  string str2("STL Power");
+
+  cout << "Initial strings:\n";
+  cout << "str1: " << str1 << endl;
+  cout << "str2: " << str2 << "\n\n";
+
+  // demonstrate insert()
+  cout << "Insert str2 into str1:\n";
+  str1.insert(6, str2);
+  cout << str1 << "\n\n";
+
+  return 0;
+}
