@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+template <typename T, int VAL>
+T addValue (T const& x)
+{
+    return x + VAL;
+}
+
+
+void call_addValue()
+{
+    addValue<int,5>(42);
+}
+
+template <typename IT, typename OP>
+void transform (IT beg, IT end, IT to, OP op)
+{
+    while (beg != end) {
+        *to++ = op(*beg++);
+    }
+}
+
+int main()
+{
+    call_addValue();
+
+    int m[] = { 1, 2, 3, 4, 5, 6 };
+
+    transform (m, m+6,
+               m,
+               (int(*)(int const&))    // cast necessary
+               addValue<int,5>);
+
+    for(int i=0;i<6;i++){
+       cout << m[i] << " ";
+    }
+}
