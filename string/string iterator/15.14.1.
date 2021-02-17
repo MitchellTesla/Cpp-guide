@@ -1,0 +1,24 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string string1( "Testing iterators" );
+   string::const_iterator iterator1 = string1.begin();
+
+   cout << "string1 = " << string1
+      << "\n(Using iterator iterator1) string1 is: ";
+
+   while ( iterator1 != string1.end() ) 
+   {
+      cout << *iterator1; 
+      iterator1++;        
+   }
+
+   cout << endl;
+   return 0;
+}
