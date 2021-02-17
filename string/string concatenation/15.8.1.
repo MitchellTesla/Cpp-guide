@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string s1( "AA" );
+   string s2( " AAB" );
+   string s3;
+
+   // 
+   cout << "\n\ns1 += s2 yields s1 = ";
+   s1 += s2; // test overloaded concatenation
+   cout << s1;
+   return 0;
+}
