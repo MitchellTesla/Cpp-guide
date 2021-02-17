@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+#include <exception>
+#include <stdexcept> // out_of_range exception
+using namespace std;
+
+int main( ) {
+  char carr[] = {'a', 'b', 'c', 'd', 'e'};
+
+  vector<char> v;
+  v.push_back('a');
+  v.push_back('b');
+  v.push_back('c');
+  v.push_back('d');
+  v.push_back('e');
+
+  try {
+    cout << v.at(10000) << '\n';
+  } catch(std::out_of_range& e) {
+    cerr << e.what( ) << '\n';
+  }
+}
