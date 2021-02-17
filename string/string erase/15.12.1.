@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string str1("String handling C++ style.");
+  string str2("STL Power");
+
+  cout << "Initial strings:\n";
+  cout << "str1: " << str1 << endl;
+  cout << "str2: " << str2 << "\n\n";
+
+  // demonstrate erase()
+  cout << "Remove 9 characters from str1:\n";
+  str1.erase(6, 9);
+  cout << str1 <<"\n\n";
+
+  return 0;
+}
