@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+  string str1("A");
+  string str2("B");
+  string str3("G");
+  string str4;
+
+  cout << "  str1: " << str1 << endl;
+  cout << "  str2: " << str2 << endl;
+  cout << "  str3: " << str3 << "\n\n";
+
+
+  // Assign one string to another.
+  str4 = str1;
+  cout << "str4 after being assigned str1: " << str4 << "\n\n";
+
+  return 0;
+}
