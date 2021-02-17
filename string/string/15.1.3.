@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string s1( "AA1234567890asdfasdf" );
+   string s2( " AAB" );
+   string s3;
+
+   // test copy constructor
+   string *s4Ptr = new string( s1 );  
+   cout << "\n*s4Ptr = " << *s4Ptr << "\n\n";
+
+   return 0;
+}
