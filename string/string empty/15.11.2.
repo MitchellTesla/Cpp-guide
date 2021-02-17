@@ -1,0 +1,24 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string s1( "AA" );
+   string s2( " AAB" );
+   string s3;
+
+   // 
+   cout << "\n\nTesting s3.empty():" << endl;
+
+   if ( s3.empty() )
+   {
+      cout << "s3 is empty; assigning s1 to s3;" << endl;
+      s3 = s1;
+      cout << "s3 is \"" << s3 << "\"";
+   } 
+   return 0;
+}
