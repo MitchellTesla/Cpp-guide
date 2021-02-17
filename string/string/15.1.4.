@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+  string str1("A");
+  string str2("B");
+  string str3("G");
+  string str4;
+
+  cout << "  str1: " << str1 << endl;
+  cout << "  str2: " << str2 << endl;
+  cout << "  str3: " << str3 << "\n\n";
+
+  // Create a string object using another string object.
+  cout << "Initialize str5 with the contents of str1.\n";
+  string str5(str1);
+  cout << "str5: " << str5 << "\n\n";
+
+  return 0;
+}
