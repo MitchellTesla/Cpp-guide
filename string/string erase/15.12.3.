@@ -1,0 +1,20 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string string1( "abcedfghijklmnopqrstuvwxyz" );
+   
+   cout << "Original string:\n" << string1 << endl << endl;
+
+   string1.erase( 6 );
+
+   cout << "Original string after erase:\n" << string1
+      << "\n\nAfter first replacement:\n";
+             
+   return 0;
+}
