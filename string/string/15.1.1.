@@ -1,0 +1,12 @@
+#include <iostream>
+#include <string>
+using namespace std ;
+using std::cout;       
+using std::cin;
+
+int main()
+{
+  string s = "www.java2s.com \n";
+  cout <<s; 
+  return 0;
+}
