@@ -1,0 +1,9 @@
+#include <string>
+#include <iostream>
+
+int main( ) {
+   std::string s = "Search from the beginning";
+
+   std::cout << s.find_last_not_of("from")     // Find the first that's not in this set, starting from the end
+             << '\n';
+}
