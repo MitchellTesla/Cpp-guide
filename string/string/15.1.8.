@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+main()
+{
+   string input( "Input test 123 4.7 A" );
+   istringstream inputString( input );
+   string string1, string2;
+   int i;
+   double d;
+   char c;
+
+   inputString >> string1 >> string2 >> i >> d >> c;
+
+   cout << "The following items were extracted\n"
+        << "from the istringstream object:"
+        << "\nstring: " << string1 
+        << "\nstring: " << string2 
+        << "\n   int: " << i 
+        << "\ndouble: " << d 
+        << "\n  char: " << c;
+
+   // attempt to read from empty stream
+   long l;
+
+   if ( inputString >> l )
+      cout << "\n\nlong value is: " << l << endl;
+   else
+      cout << "\n\ninputString is empty" << endl;
+
+   return 0;
+}
