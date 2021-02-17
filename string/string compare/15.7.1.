@@ -1,0 +1,17 @@
+#include <iostream.h>
+#include <string>
+using std::string;
+
+main(void)
+{
+   string s1 = "abcdefghijk", s2 = "1234567890", s3,s4,s5;
+
+   s3=s1+s2;
+   cout << s3 <<endl;
+
+   s4=s3;
+   if (s4==s3) 
+      cout << " s4==s3 is true\n";
+
+   return(0);
+}
