@@ -1,0 +1,43 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <stack>  // stack adapter definition
+#include <vector> // vector class-template definition
+#include <list>   // list class-template definition
+
+template< typename T > void pushElements( T &stackRef );
+
+template< typename T > void popElements( T &stackRef );
+
+int main()
+{
+   std::stack< int > intDequeStack;
+
+   cout << "Pushing onto intDequeStack: ";
+   pushElements( intDequeStack );
+   cout << endl << endl;
+
+   cout << "Popping from intDequeStack: ";
+   popElements( intDequeStack );
+   cout << endl;
+   return 0;
+}
+
+template< typename T > void pushElements( T &stackRef )
+{
+   for ( int i = 0; i < 10; i++ )
+   {
+      stackRef.push( i );
+      cout << stackRef.top() << ' ';
+   }
+}
+
+template< typename T > void popElements( T &stackRef )
+{
+   while ( !stackRef.empty() )
+   {
+      cout << stackRef.top() << ' ';
+      stackRef.pop();
+   }
+}
