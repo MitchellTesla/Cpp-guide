@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string s1( "AA" );
+   string s2( " AAB" );
+   string s3;
+
+   // 
+   cout << "\n\ns1 += \" to you\" yields" << endl;
+   s1 += " to you";  
+   cout << "s1 = " << s1 << "\n\n";
+   return 0;
+}
