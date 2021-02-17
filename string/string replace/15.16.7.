@@ -1,0 +1,25 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string string1( "abc edfgh ijk lmno pqr stu vw xyz" );
+   
+   cout << "Original string:\n" << string1 << endl << endl;
+
+   int position = string1.find( " " ); // find first space
+
+   // 
+   while ( position != string::npos ) 
+   {
+      string1.replace( position, 1, "." );
+      position = string1.find( " ", position + 1 );
+   } 
+   cout << string1 << "\n\nAfter second replacement:\n";
+                
+   return 0;
+}
