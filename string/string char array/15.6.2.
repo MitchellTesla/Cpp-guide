@@ -1,0 +1,26 @@
+#include <string>
+#include <iostream>
+using namespace std;
+int main ()
+{
+    string strSample ("Good day String!");
+    // Find substring "day" in it...
+    size_t nOffset = strSample.find ("day", 0);
+
+    cout << "Locating all instances of character 'a'" << endl;
+    const char chCharToSearch = 'a';
+    size_t nCharacterOffset = strSample.find (chCharToSearch, 0);
+
+    while (nCharacterOffset != string::npos)
+    {
+        cout << "'" << chCharToSearch << "' found";
+        cout << " at position: " << nCharacterOffset << endl;
+
+       // Make the 'find' function search forward from the next character onwards
+        size_t nCharSearchOffset = nCharacterOffset + 1;
+
+        nCharacterOffset = strSample.find(chCharToSearch,nCharSearchOffset);
+    }
+
+    return 0;
+}
