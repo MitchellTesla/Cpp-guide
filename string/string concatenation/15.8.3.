@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+  string str1("A");
+  string str2("B");
+  string str3("G");
+  string str4;
+
+  cout << "  str1: " << str1 << endl;
+  cout << "  str2: " << str2 << endl;
+  cout << "  str3: " << str3 << "\n\n";
+
+  // Concatenate two strings.
+  str4 = str1 + str3;
+  cout << "str4 after begin assigned st1+str3: " << str4 << "\n\n";
+
+  return 0;
+}
