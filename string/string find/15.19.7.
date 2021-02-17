@@ -1,0 +1,19 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main()
+{
+   string string1( "This is a test string!");
+   int location;
+   
+   location = string1.find_last_of( "is" );
+   cout << "\n\n(find_last_of) found '" << string1[ location ] 
+        << " at: " << location;
+        
+
+   return 0;
+}
