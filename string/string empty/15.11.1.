@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string word1 = "Game";
+    string word2("Over");
+    string word3(3, '!');
+
+    string phrase = word1 + " " + word2 + word3;
+
+    if (phrase.empty())
+        cout << "\nThe phrase is no more.\n";
+
+ return 0;
+}
