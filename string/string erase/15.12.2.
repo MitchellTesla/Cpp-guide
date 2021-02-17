@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+  string strA("This is a test.");
+
+  // Create an iterator to a string.
+  string::iterator itr;
+
+  cout << "Remove ' larger'.\n";
+  itr = find(strA.begin(), strA.end(), 'l');
+  strA.erase(itr, itr+7);
+  cout << strA << "\n\n";
+
+  return 0;
+}
