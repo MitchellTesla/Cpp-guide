@@ -1,0 +1,41 @@
+A pointer to a pointer is a form of multiple indirection, or a chain of pointers.
+
+In the case of a normal pointer, the pointer contains the address of a value.
+
+In the case of a pointer to a pointer, the first pointer contains the address of the second pointer, which points to the location that contains the desired value.
+
+Excessive indirection is difficult to follow and prone to conceptual errors.
+
+A variable that is a pointer to a pointer must be declared by placing an additional asterisk in front of its name.
+
+For example, this declaration tells the compiler that balance is a pointer to a pointer of type int:
+
+Copy
+int **balance;
+It is important to understand that balance is not a pointer to an integer, but rather a pointer to an int pointer.
+
+When a target value is indirectly pointed to by a pointer to a pointer, accessing that value requires that the asterisk operator be applied twice, as is shown in this short example:
+
+Copy
+// Demonstrate multiple indirection.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int x, *p, **q;
+
+  x = 10;
+  p = &x;
+  q = &p;
+
+  cout << **q; // prints the value of x
+
+  return 0;
+}
+Output:
+
+
+Here, p is declared as a pointer to an integer, and q as a pointer to a pointer to an integer.
+
+The cout statement will print the number 10 on the screen.
