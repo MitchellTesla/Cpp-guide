@@ -1,0 +1,95 @@
+Pointers can be arrayed like any other data type.
+
+For example,.
+
+Copy
+int *ipa[10];
+declares ipa as an array of 10 integer pointers.
+
+Thus, each element in ipa holds a pointer to an int value.
+
+To assign the address of an int variable called var to the third element of ipa, you would write.
+
+Copy
+ipa[2] = &var;
+Remember, ipa is an array of integer pointers.
+
+The only values that its array elements can hold are the addresses of integer variables.
+
+This is why var is preceded by the & operator.
+
+Using the ipa array to assign the value of var to an int variable called x, you would write:
+
+Copy
+x = *ipa[2];
+Because the address of var is stored at ipa[2], applying the * operator to this index causes the value of var to be obtained.
+
+Like other arrays, arrays of pointers can be initialized.
+
+A common use for initialized pointer arrays is to hold pointers to strings.
+
+For example, to create a function that will output a fortune, you can define a number of different messages in a pointer array, as shown here:
+
+Copy
+char *fortunes[] = {
+   "CSS\n",
+   "HTML\n",
+   "Javascript\n",
+   "Java\n",
+   "SQL\n"
+};
+Remember, C++ stores all string literals in the string table associated with your program, so the array need only store pointers to the strings.
+
+Thus, to print the second message, use a statement like this:
+
+Copy
+cout << fortunes[1];
+Example
+An entire "fortune cookie" program is shown here.
+
+It uses rand() to generate a random number.
+
+It then uses the modulus operator to obtain a number between 0 and 4, which it uses to index the array.
+
+Copy
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+
+
+char *fortunes[] = {
+   "CSS\n",
+   "HTML\n",
+   "Javascript\n",
+   "Java\n",
+   "SQL\n"
+};
+
+int main()
+{
+   int chance;
+
+  cout << "To see your fortune, press a key: ";
+
+  // randomize the random number generator
+  while(!kbhit()) rand();
+
+  cout << '\n';
+
+  chance = rand();
+  chance = chance % 5;
+  cout << fortunes[chance];
+
+  return 0;
+}
+Output:
+
+
+Notice the while loop in the program, which calls rand() repeatedly until a key is pressed.
+
+Because the rand() function always generates the same sequence of random numbers, it is important to have some way for the program to start using this sequence at a random point.
+
+This is achieved by repeated calls to rand().
+
+When the user presses a key, the loop stops at a random point in the sequence, and the fortune is displayed on the screen.
