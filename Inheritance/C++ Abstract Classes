@@ -1,0 +1,156 @@
+A pure virtual function is a function declared in a base class that has no definition relative to the base.
+
+As a result, any derived type must define its own version-it cannot simply use the version defined in the base.
+
+To declare a pure virtual function, use this general form:
+
+Copy
+virtual type func-name(parameter-list ) = 0;
+Here, type is the return type of the function, and func-name is the name of the function.
+
+It is the = 0 that designates the virtual function as pure.
+
+For example, in the following version of figure, show_area() is a pure virtual function:
+
+Copy
+class figure {
+   double x, y;
+public:
+   void set_dim(double i, double j=0) {
+     x = i;
+     y = j;
+   }
+   virtual void show_area() = 0; // pure
+};
+By declaring a virtual function as pure, you force any derived class to define its own implementation.
+
+If a class fails to do so, the compiler will report an error.
+
+For example, try to compile this modified version of the figures program, in which the definition for show_area() has been removed from the circle class:
+
+Copy
+/*
+   This program will not compile because the class
+   circle does not override show_area().
+*//*ww w  .d  e m o2 s . c  om*/
+#include <iostream>
+using namespace std;
+
+class figure {
+protected:
+  double x, y;
+public:
+  void set_dim(double i, double j) {
+    x = i;
+    y = j;
+  }
+  virtual void show_area() = 0; // pure
+} ;
+
+class triangle : public figure {
+  public:
+    void show_area() {
+       cout << "Triangle with height ";
+       cout << x << " and base " << y;
+       cout << " has an area of ";
+       cout << x * 0.5 * y << ".\n";
+     }
+};
+
+class rectangle : public figure {
+  public:
+    void show_area() {
+       cout << "Rectangle with dimensions ";
+       cout << x << "x" << y;
+       cout << " has an area of ";
+       cout << x *  y << ".\n";
+     }
+};
+
+class circle : public figure {
+// no definition of show_area() will cause an error
+};
+
+int main()
+{
+  figure *p; // create a pointer to base type
+
+  triangle t; // create objects of derived types
+  rectangle r;
+
+  circle c; // Illegal -- can't create!
+
+  p = &t;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  p = &r;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  return 0;
+}
+If a class has at least one pure virtual function, then that class is said to be abstract.
+
+An abstract class has one important feature: There can be no objects of that class.
+
+Instead, an abstract class must be used only as a base that other classes will inherit.
+
+The reason that an abstract class cannot be used to declare an object is, of course, that one or more of its functions have no definition.
+
+However, even if the base class is abstract, you still can use it to declare pointers or references, which are needed to support run-time polymorphism.
+
+Example
+Copy
+#include <iostream>
+using namespace std;
+
+class figure {/*w  w  w.d  e  m o  2  s .  c  o m*/
+protected:
+  double x, y;
+public:
+  void set_dim(double i, double j) {
+    x = i;
+    y = j;
+  }
+  virtual void show_area() = 0; // pure
+} ;
+
+class triangle : public figure {
+  public:
+    void show_area() {
+       cout << "Triangle with height ";
+       cout << x << " and base " << y;
+       cout << " has an area of ";
+       cout << x * 0.5 * y << ".\n";
+     }
+};
+
+class rectangle : public figure {
+  public:
+    void show_area() {
+       cout << "Rectangle with dimensions ";
+       cout << x << "x" << y;
+       cout << " has an area of ";
+       cout << x *  y << ".\n";
+     }
+};
+
+
+int main()
+{
+  figure *p; // create a pointer to base type
+
+  triangle t; // create objects of derived types
+  rectangle r;
+
+  p = &t;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  p = &r;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  return 0;
+}
