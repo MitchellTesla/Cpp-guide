@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+typedef vector<int> INTVECTOR;
+const int ARRAY_SIZE = 4;
+
+int main(void)
+{
+   INTVECTOR theVector;
+
+   // Intialize the array to contain the members [100, 200, 300, 400]
+   for (int cEachItem = 0; cEachItem < ARRAY_SIZE; cEachItem++)
+      theVector.push_back((cEachItem + 1) * 100);
+
+   cout << "First element: " << theVector.front() << endl;
+   cout << "Last element: " << theVector.back() << endl;
+   cout << "Elements in vector: " << theVector.size() << endl;
+
+   cout << "Deleting last element." << endl;
+   theVector.erase(theVector.end() - 1);
+   cout << "New last element is: " << theVector.back() << endl;
+
+}
