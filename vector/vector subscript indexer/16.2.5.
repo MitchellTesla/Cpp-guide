@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+   string s( "STRINGS" );
+   const char *ptr1 = 0;
+   int len = s.length();
+   char *ptr2 = new char[ len + 1 ]; // including null
+
+   ptr1 = s.data();   
+                      
+   // copy characters out of string into allocated memory
+   s.copy( ptr2, len, 0 );
+   ptr2[ len ] = 0;  // add null terminator
+
+   cout << s.c_str() << "\nptr1 is ";
+
+   for ( int k = 0; k < len; ++k )
+      cout << *( ptr1 + k );   // use pointer arithmetic
+
+   cout << "\nptr2 is " << ptr2 << endl;
+   delete [] ptr2;
+   return 0;
+}
