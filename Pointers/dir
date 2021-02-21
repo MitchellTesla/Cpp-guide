@@ -1,0 +1,112 @@
+Objects reside in memory. We can access an object in memory through pointers.
+
+Each object in memory has its type and an address.
+
+This allows us to access the object through a pointer.
+
+The pointers are types that can hold the address of a particular object.
+
+In the following code we declare an unutilized pointer that can point to an int object:
+
+Copy
+int main()
+{
+    int* p;
+}
+We say that p is of type int*.
+
+To declare a pointer that points to a char we declare a pointer of type char*:
+
+Copy
+int main()
+{
+    char* p;
+}
+In our first example, we declared a pointer of type int*.
+
+To make it point to an existing int object in memory, we use the address-of operator &.
+
+We say that p points to x.
+
+Copy
+int main()
+{
+    int x = 123;
+    int* p = &x;
+}
+The following code declared a pointer of type char* and similarly:
+
+Copy
+int main()
+{
+    char c = 'a';
+    char* p = &c;
+}
+To initialize a pointer that does not point to any object we can use the nullptr literal:
+
+Copy
+int main()
+{
+    char* p = nullptr;
+}
+It is said that p is now a null pointer.
+
+Pointers are variables, just like any other type of object.
+
+Their value is the address of an object, a memory location where the object is stored.
+
+To access a value stored in an object pointed to by a pointer, we need to dereference a pointer.
+
+Dereferencing is done by prepending a pointer variable name with a dereferencing operator *:
+
+Copy
+int main()
+{
+    char c = 'a';
+    char* p = &c;
+    char d = *p;
+}
+To print out the value of the dereferenced pointer, we can use:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    char c = 'a';
+    char* p = &c;
+    std::cout << "The value of the dereferenced pointer is: " << *p;
+}
+Output:
+
+
+Now, the value of the dereferenced pointer *p is simply 'a'.
+
+Similarly, for an integer pointer we would have:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    int* p = &x;
+    std::cout << "The value of the dereferenced pointer is: " << *p;
+}
+Output:
+
+
+And the value of the dereferenced pointer, in this case, would be 123.
+
+We can change the value of the pointed-to object through a dereferenced pointer:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    int* p = &x;
+    *p = 456; // change the value of pointed-to object
+    std::cout << "The value of x is: " << x;
+}
