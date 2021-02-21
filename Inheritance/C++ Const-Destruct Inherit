@@ -1,0 +1,131 @@
+It is possible for a base class, a derived class, or both, to contain a constructor and/or destructor.
+
+It is important to understand the order in which these are executed when an object of a derived class comes into existence and when it goes out of existence.
+
+Examine this short program:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+public:
+   base() { cout << "Constructing base\n"; }
+   ~base() { cout << "Destructing base\n"; }
+};
+
+class derived: public base {
+public:
+   derived() { cout << "Constructing derived\n"; }
+   ~derived() { cout << "Destructing derived\n"; }
+};
+
+int main()
+{
+   derived ob;
+
+   // do nothing but construct and destruct ob
+
+   return 0;
+}
+This program simply constructs and then destroys an object called ob, which is of class derived.
+
+When executed, this program displays:
+
+Copy
+Constructing base
+Constructing derived
+Destructing derived
+Destructing base
+The constructor of base is executed, followed by the constructor of derived.
+
+Next, the destructor of derived is called, followed by that of base.
+
+When an object of a derived class is created, the base class constructor is called first, followed by the constructor for the derived class.
+
+When a derived object is destroyed, its destructor is called first, followed by the destructor for the base class.
+
+C++ constructors are executed in the order of their derivation. Destructors are executed in reverse order of derivation.
+
+More level of inheritance
+For example, this program.
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+public:
+  base() { cout << "Constructing base\n"; }
+  ~base() { cout << "Destructing base\n"; }
+
+};
+
+class derived1 : public base {
+public:
+  derived1() { cout << "Constructing derived1\n"; }
+  ~derived1() { cout << "Destructing derived1\n"; }
+};
+
+class derived2: public derived1 {
+public:
+  derived2() { cout << "Constructing derived2\n"; }
+  ~derived2() { cout << "Destructing derived2\n"; }
+};
+
+int main()
+{
+  derived2 ob;
+
+  // construct and destruct ob
+
+  return 0;
+}
+displays this output:
+
+
+The same general rule applies in situations involving multiple base classes.
+
+For example, this program.
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base1 {
+public:
+  base1() { cout << "Constructing base1\n"; }
+  ~base1() { cout << "Destructing base1\n"; }
+};
+
+class base2 {
+public:
+  base2() { cout << "Constructing base2\n"; }
+  ~base2() { cout << "Destructing base2\n"; }
+};
+
+class derived: public base1, public base2 {
+public:
+  derived() { cout << "Constructing derived\n"; }
+  ~derived() { cout << "Destructing derived\n"; }
+};
+
+int main()
+{
+  derived ob;
+
+   // construct and destruct ob
+
+  return 0;
+}
+produces this output:
+
+
+As you can see, constructors are called in order of derivation, left to right, as specified in derived's inheritance list.
+
+Destructors are called in reverse order, right to left.
+
+This means that if base2 were specified before base1 in derived's list, as shown here:
+
+Copy
+class derived: public base2, public base1 {
