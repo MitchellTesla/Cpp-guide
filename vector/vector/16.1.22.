@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+class MyClass {
+public:
+  unsigned long id;
+  MyClass() : id(0) { }
+  MyClass(unsigned long x) : id(x) { }
+
+
+};
+bool operator==(const MyClass& x, const MyClass& y) {
+  return x.id == y.id;
+}
+
+bool operator!=(const MyClass& x, const MyClass& y)
+{
+  return x.id != y.id;
+}
+
+
+int main()
+{
+  vector<MyClass> vector1, vector2(3);
+  assert (vector1.size() == 0);
+  assert (vector2.size() == 3);
+  assert (vector2[0] == MyClass() && vector2[1] == MyClass() &&vector2[2] == MyClass());
+  assert (vector2 == vector<MyClass>(3, MyClass()));
+  return 0;
+}
