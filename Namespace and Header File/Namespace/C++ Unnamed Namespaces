@@ -1,0 +1,54 @@
+There is a special type of namespace, called an unnamed namespace, that allows you to create identifiers that are unique within a file.
+
+It has this general form:
+
+Copy
+namespace {
+  // declarations
+}
+Unnamed namespaces allow you to establish unique identifiers that are known only within the scope of a single file.
+
+That is, within the file that contains the unnamed namespace, the members of that namespace may be used directly, without qualification.
+
+But outside the file, the identifiers are unknown.
+
+static
+Using static is one way to restrict the scope of a global name to the file in which it is declared.
+
+For example, consider the following two files that are part of the same program:
+
+Copy
+File One                                       File Two
+
+static int k;                                  extern int k;
+void f1() {                                   void f2() {
+ k = 99; // OK                                  k = 10; // error
+}                                              }
+Because k is defined in File One, it may be used in File One.
+
+In File Two, k is specified as extern, which means that its name and type are known, but that k itself is not actually defined.
+
+When these two files are linked, the attempt to use k within File Two results in an error because there is no definition for k.
+
+By preceding k with static in File One, its scope is restricted to that file and it is not available to File Two.
+
+Although the use of static global declarations is still allowed in C++, a better way to localize an identifier to a file is to use an unnamed namespace.
+
+For example:
+
+Copy
+File One                                       File Two
+
+namespace {                                    extern int k;
+  int k;                                        void f2() {
+}                                                k = 10; // error
+void f1() {                                   }
+  k = 99; // OK
+}
+Here, k is also restricted to File One.
+
+The use of the unnamed namespace rather than static is recommended for new code.
+
+Typically, you will not need to create namespaces for most small to medium sized programs.
+
+However, if you will be creating libraries of reusable code, or if you want to ensure the widest portability, then consider wrapping your code within a namespace.
