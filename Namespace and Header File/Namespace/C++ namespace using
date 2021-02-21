@@ -1,0 +1,97 @@
+The using statement was invented to include namespace to current scope.
+
+The using statement has these two general forms:
+
+Copy
+using namespace name;
+using name::member;
+In the first form, name specifies the name of the namespace you want to access.
+
+All of the members defined within the specified namespace are brought into view (i.e., they become part of the current namespace) and may be used without qualification.
+
+In the second form, only a specific member of the namespace is made visible.
+
+For example, the following using statements and assignments are valid:
+
+Copy
+using CounterNameSpace::lowerbound; // only lowerbound is visible
+lowerbound = 10; // OK because lowerbound is visible
+
+using namespace CounterNameSpace; // all members are visible
+upperbound = 100; // OK because all members are now visible
+The following program illustrates the using keyword:
+
+Copy
+// Demonstrate using.
+#include <iostream>
+using namespace std;
+
+namespace CounterNameSpace {
+   int upperbound;
+   int lowerbound;
+
+  class counter {
+      int count;/*from w  w w.de  m o  2  s . c om*/
+    public:
+      counter(int n) {
+        if(n <= upperbound) count = n;
+        else count = upperbound;
+      }
+
+      void reset(int n) {
+        if(n <= upperbound) count = n;
+      }
+
+      int run() {
+        if(count > lowerbound) return count--;
+        else return lowerbound;
+      }
+   };
+}
+
+int main()
+{
+   // use only upperbound from CounterNameSpace
+  using CounterNameSpace::upperbound;
+
+   // now, no qualification needed to set upperbound
+  upperbound = 100;
+
+   // qualification still needed for lowerbound, etc.
+  CounterNameSpace::lowerbound = 0;
+
+
+   CounterNameSpace::counter ob1(10);
+   int i;
+
+   do {
+     i = ob1.run();
+     cout << i << " ";
+   } while(i > CounterNameSpace::lowerbound);
+   cout << endl;
+
+   // Now, use entire CounterNameSpace
+  using namespace CounterNameSpace;
+
+   counter ob2(20);
+
+   do {
+     i = ob2.run();
+     cout << i << " ";
+   } while(i > lowerbound);
+   cout << endl;
+
+   ob2.reset(100);
+   lowerbound = 90;
+   do {
+     i = ob2.run();
+     cout << i << " ";
+   } while(i > lowerbound);
+
+   return 0;
+}
+Using one namespace does not override another.
+
+When you bring a namespace into view, it simply adds its names to whatever other namespaces are currently in effect.
+
+Thus, by the end of the program, both std and CounterNameSpace have been added to the global namespace.
