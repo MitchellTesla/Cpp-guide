@@ -1,0 +1,45 @@
+We can split our C++ code into multiple files.
+
+By convention, there are two kinds of files where we can store our C++ source: header files (headers) and source files.
+
+Header and Source Files
+Header files are source code files where we usually put various declarations.
+
+Header files usually have the.h (or.hpp) extension.
+
+Source files are files where we can store our definitions and the main program.
+
+They usually have the .cpp (or .cc) extension.
+
+#include
+Then we include the header files into our source files using the #include preprocessor directive.
+
+To include a standard library header, we use the #include statement followed by a header name without an extension, enclosed in angle brackets <headername>.
+
+Example:
+
+Copy
+#include <iostream>
+#include <string>
+// etc
+To include user-defined header files, we use the #include statement, followed by a full header name with extension enclosed in double-quotes.
+
+Example:
+
+Copy
+#include "myheader.h"
+#include "otherheader.h"
+// etc
+To include both standard-library headers and user-defined headers:
+
+Copy
+#include <iostream>
+#include "myheader.h"
+// etc
+The compiler merges the code from the header file and the source file together and produces what is called a translation unit.
+
+The compiler then uses this file to create an object file.
+
+A linker then links object files together to create a program.
+
+We should put the declarations and constants into header files and put definitions and executable code in source files
