@@ -1,0 +1,187 @@
+To obtain an object's type, use typeid.
+
+You must include the header <typeinfo> in order to use typeid.
+
+The most commonly used form of typeid is shown here:
+
+Copy
+typeid(object)
+Here, object is the object whose type you will be obtaining.
+
+It may be of any type, including the built-in types and class types that you create.
+
+typeid returns a reference to an object of type type_info that describes the type of object.
+
+The type_info class defines the following public members:
+
+Copy
+bool operator==(const type_info &ob);
+bool operator!=(const type_info &ob);
+bool before(const type_info &ob);
+const char *name();
+The overloaded == and != provide for the comparison of types.
+
+The before() function returns true if the invoking object is before ob in collation order.
+
+The name() function returns a pointer to the name of the type.
+
+Here is a simple example that uses typeid:
+
+Copy
+// A simple example that uses typeid.
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+class myclass {
+  // ...
+};
+
+int main()
+{
+  int i, j;
+
+  float f;
+  myclass ob;
+
+  cout << "The type of i is: " << typeid(i).name();
+  cout << endl;
+  cout << "The type of f is: " << typeid(f).name();
+  cout << endl;
+  cout << "The type of ob is: " << typeid(ob).name();
+  cout << "\n\n";
+
+  if(typeid(i) == typeid(j))
+    cout << "The types of i and j are the same\n";
+
+  if(typeid(i) != typeid(f))
+    cout << "The types of i and f are not the same\n";
+
+  return 0;
+}
+The output produced by this program is shown here:
+
+
+On polymorphic
+Perhaps the most important use of typeid occurs when it is applied through a pointer of a polymorphic base class.
+
+In this case, it will automatically return the type of the actual object being pointed to, which may be a base class object or an object derived from that base.
+
+Thus, by using typeid, you can determine at run time the type of the object that is being pointed to by a base class pointer.
+
+The following program demonstrates this principle:
+
+Copy
+// An example that uses typeid on a polymorphic class hierarchy.
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+
+class Base {
+  virtual void f() {}; // make Base polymorphic
+   // ...
+};
+
+class Derived1: public Base {
+   // ...
+};
+
+class Derived2: public Base {
+   // ...
+};
+
+int main()
+{
+  Base *p, baseob;
+  Derived1 ob1;
+  Derived2 ob2;
+
+  p = &baseob;
+  cout << "p is pointing to an object of type ";
+  cout << typeid(*p).name() << endl;
+
+  p = &ob1;
+  cout << "p is pointing to an object of type ";
+  cout << typeid(*p).name() << endl;
+
+  p = &ob2;
+  cout << "p is pointing to an object of type ";
+  cout << typeid(*p).name() << endl;
+
+  return 0;
+}
+The output produced by this program is shown here:
+
+
+When typeid is applied to a base class pointer of a polymorphic type, the type of object pointed to will be determined at run time, as the output produced by the program shows.
+
+In all cases, when typeid is applied to a pointer of a non-polymorphic class hierarchy, then the base type of the pointer is obtained.
+
+That is, no determination of what that pointer is actually pointing to is made.
+
+As an experiment, comment out the virtual function f() in Base and observe the results.
+
+The type of each object will be Base because that is the type of the pointer.
+
+Example
+In the following program, the function WhatType() declares a reference parameter to objects of type Base.
+
+WhatType() can be passed references to objects of type Base or any class derived from Base.
+
+When the typeid operator is applied to this parameter, it returns the actual type of the object being passed.
+
+Copy
+// Use a reference with typeid.
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+class Base {
+  virtual void f() {}; // make Base polymorphic
+   // ...
+};
+
+class Derived1: public Base {
+   // ...
+};
+
+class Derived2: public Base {
+   // ...
+};
+
+// Demonstrate typeid with a reference parameter.
+void WhatType(Base &ob)
+{
+  cout << "ob is referencing an object of type ";
+  cout << typeid(ob).name() << endl;
+}
+
+int main()
+{
+   int i;
+   Base baseob;
+   Derived1 ob1;
+
+   Derived2 ob2;
+
+   WhatType(baseob);
+   WhatType(ob1);
+   WhatType(ob2);
+
+   return 0;
+}
+The output produced by this program is shown here:
+
+
+There is a second form of typeid that takes a type name as its argument.
+
+This form is shown here:
+
+Copy
+typeid(type-name)
+For example, the following statement is perfectly acceptable:
+
+Copy
+cout << typeid(int).name();
+The main use of this form of typeid is to obtain a type_info object that describes the specified type, so that it can be used in a type-comparison statement
