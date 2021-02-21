@@ -1,0 +1,182 @@
+Question 1
+Write a program that uses a static_cast function to convert between fundamental types.
+
+
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    double d = 456.789;
+    bool b = true;
+
+    double doubleresult = static_cast<double>(x);
+    std::cout << "Int to double: " << doubleresult << '\n';
+
+    int intresult = static_cast<int>(d); // double to int
+    std::cout << "Double to int: " << intresult << '\n';
+
+    bool boolresult = static_cast<bool>(x); // int to bool
+    std::cout << "Int to bool: " << boolresult << '\n';
+}
+
+Question 2
+Write a program that defines a unique pointer to an integer value.
+
+Use the std::make_unique function to create a pointer.
+
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    std::unique_ptr<int> p = std::make_unique<int>(123);
+    std::cout << "The value of a pointed-to object is: " << *p << '\n';
+}
+
+
+
+Question 3
+Write a program that defines a class with two data members, a user-defined constructor, and one member function.
+
+Create a unique pointer to an object of a class.
+
+Use the smart pointer to access the member function.
+
+#include <iostream>
+#include <memory>
+
+class MyClass
+{
+private:
+    int x;
+    double d;
+public:
+    MyClass(int xx, double dd)
+         : x{ xx }, d{ dd }
+    {}
+    void printdata()
+    {
+        std::cout << "Data members values are: " << x << " and: " << d;
+    }
+};
+int main()
+{
+    std::unique_ptr<MyClass> p = std::make_unique<MyClass>(123, 456.789);
+    p->printdata();
+}
+
+Question 4
+Write a program that defines three shared pointers pointing at the same object of type int.
+
+Create the first pointer through an std::make_shared function.
+
+Create the remaining pointers by copying the first pointer.
+
+Access the pointed-to object through all the pointers.
+
+
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    std::shared_ptr<int> p1 = std::make_shared<int>(123);
+    std::shared_ptr<int> p2 = p1;
+    std::shared_ptr<int> p3 = p1;
+
+    std::cout << "Value accessed through a first pointer: " << *p1 << '\n';
+    std::cout << "Value accessed through a second pointer: " << *p2 << '\n';
+    std::cout << "Value accessed through a third pointer: " << *p3 << '\n';
+}
+
+
+
+
+Question 5
+Write a program that defines a base class with a pure virtual member function.
+
+Create a derived class that overrides a virtual function in the base class.
+
+Create a polymorphic object of a derived class through a unique pointer to a base class.
+
+Invoke the overridden member function through a unique pointer.
+
+#include <iostream>
+#include <memory>
+
+class BaseClass
+{
+public:
+    virtual void dowork() = 0;
+    virtual ~BaseClass() {}
+};
+
+class DerivedClass : public BaseClass
+{
+public:
+    void dowork() override
+    {
+        std::cout << "Do work from a DerivedClass." << '\n';
+    }
+};
+
+int main()
+{
+    std::unique_ptr<BaseClass> p = std::make_unique<DerivedClass>();
+    p->dowork();
+} // p1 goes out of scope here
+
+
+
+
+Here the override specifier explicitly states that the dowork() function in the derived class overrides the virtual function in the base class.
+
+Here we used the unique pointer to create and automatically destroy the object and deallocate the memory one the pointer goes out of scope in the main() function.
+
+Question 6
+Write a program that defines a base class with a pure virtual member function.
+
+Derive two classes from the base class and override the virtual function behavior.
+
+Create two unique pointers of base class type to objects of these derived classes.
+
+Use the pointers to invoke the proper polymorphic behavior.
+
+
+#include <iostream>
+#include <memory>
+
+class BaseClass
+{
+public:
+    virtual void dowork() = 0;
+    virtual ~BaseClass() {}
+};
+
+class DerivedClass : public BaseClass
+{
+public:
+    void dowork() override
+    {
+        std::cout << "Do work from a DerivedClass." << '\n';
+    }
+};
+
+class SecondDerivedClass : public BaseClass
+{
+public:
+    void dowork() override
+    {
+        std::cout << "Do work from a SecondDerivedClass." << '\n';
+    }
+};
+
+int main()
+{
+    std::unique_ptr<BaseClass> p = std::make_unique<DerivedClass>();
+    p->dowork();
+
+    std::unique_ptr<BaseClass> p2 = std::make_unique<SecondDerivedClass>();
+    p2->dowork();
+} // p1 and p2 go out of scope here
