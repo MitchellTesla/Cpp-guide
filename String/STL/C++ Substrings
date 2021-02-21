@@ -1,0 +1,29 @@
+To create a substring from a string, we use the .substr() member function.
+
+The function returns a substring that starts at a certain position in the main string and is of a certain length.
+
+The signature of the function is:
+
+Copy
+substring(starting_position, length).
+Example:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello World.";
+    std::string mysubstring = s.substr(6, 5);
+    std::cout << "The substring value is: " << mysubstring;
+}
+Output:
+
+
+In this example, we have the main string that holds the value of "Hello World."
+
+Then we create a substring that only has the "World" value.
+
+The substring starts from the sixth character of the main string, and its length is five characters.
+
