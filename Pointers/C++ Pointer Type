@@ -1,0 +1,45 @@
+Pointers are one of the most important-and troublesome-aspects of C++.
+
+A large amount of C++'s power is derived from pointers.
+
+For example, they allow C++ to support such things as linked lists and dynamic memory allocation.
+
+They allow functions to alter the contents of an argument.
+
+What Are Pointers?
+A pointer is a variable that contains a memory address.
+
+This address is the location of another variable.
+
+For example, if x contains the address of y, then x is said to "point to" y.
+
+Pointer variables must be declared as such.
+
+The general form of a pointer variable declaration is.
+
+Copy
+type *var-name;
+Here, type is the pointer's base type; it must be a valid C++ type.
+
+var-name is the name of the pointer variable.
+
+For example, to declare p to be a pointer to an integer, use this declaration:
+
+Copy
+int *p;
+For a float pointer, use.
+
+Copy
+float *p;
+In general, in a declaration statement, preceding a variable name with an * causes that variable to become a pointer.
+
+The type of data that a pointer will point to is determined by its base type.
+
+Here is an example:
+
+Copy
+int *ip; // pointer to integers
+double *dp; // pointer to doubles
+ip is a pointer to integers because its base type is int, and dp is a pointer to doubles because its base type is double.
+
+The base type is very important in pointer operations.
