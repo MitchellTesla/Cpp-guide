@@ -1,0 +1,53 @@
+The typeid operator can be applied to template classes.
+
+The type of an object that is an instance of a template class is, in part, determined by what data is used for its generic data when the object is instantiated.
+
+Two instances of the same template class that are created using different data are, therefore, different types.
+
+Copy
+// Using typeid with templates.
+#include <iostream>
+using namespace std;
+
+template <class T> class myclass {
+   T a;
+public:
+   myclass(T i) { a = i; }
+   // ...
+ };
+
+
+int main()
+{
+  myclass<int> o1(10), o2(9);
+  myclass<double> o3(7.2);
+
+  cout << "Type of o1 is ";
+  cout << typeid(o1).name() << endl;
+
+  cout << "Type of o2 is ";
+  cout << typeid(o2).name() << endl;
+
+  cout << "Type of o3 is ";
+  cout << typeid(o3).name() << endl;
+
+  cout << endl;
+
+  if(typeid(o1) == typeid(o2))
+    cout << "o1 and o2 are the same type\n";
+
+  if(typeid(o1) == typeid(o3))
+    cout << "Error\n";
+  else
+    cout << "o1 and o3 are different types\n";
+
+  return 0;
+}
+The output produced by this program is shown here:
+
+
+Even though two objects are of the same template class type, if their parameterized data does not match, they are not equivalent types.
+
+In the program, o1 is of type myclass<int> and o3 is of type myclass<double>.
+
+Thus, they are of different types.
