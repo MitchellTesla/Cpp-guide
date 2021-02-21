@@ -1,0 +1,83 @@
+Even though a generic function overloads itself as needed, you can explicitly overload one, too.
+
+This is formally called explicit specialization.
+
+If you overload a generic function, then that overloaded function overrides or hides the generic function relative to that specific version.
+
+For example, consider the following example:
+
+Copy
+// Overriding a template function.
+#include <iostream>
+using namespace std;
+template <class X> void swapargs(X &a, X &b)
+{
+  X temp;
+
+  temp = a;
+  a = b;
+  b = temp;
+  cout << "Inside template swapargs.\n";
+}
+
+// This overrides the generic version of swapargs() for ints.
+void swapargs(int &a, int &b)
+{
+
+  int temp;
+
+  temp = a;
+  a = b;
+  b = temp;
+  cout << "Inside swapargs int specialization.\n";
+}
+
+int main()
+{
+  int i=10, j=20;
+  double x=10.1, y=23.3;
+  char a='x', b='z';
+
+  cout << "Original i, j: " << i << ' ' << j << '\n';
+  cout << "Original x, y: " << x << ' ' << y << '\n';
+  cout << "Original a, b: " << a << ' ' << b << '\n';
+
+  swapargs(i, j); // calls explicitly overloaded swapargs()
+  swapargs(x, y); // calls generic swapargs()
+  swapargs(a, b); // calls generic swapargs()
+
+  cout << "Swapped i, j: " << i << ' ' << j << '\n';
+  cout << "Swapped x, y: " << x << ' ' << y << '\n';
+  cout << "Swapped a, b: " << a << ' ' << b << '\n';
+
+  return 0;
+}
+This program displays the following output:
+
+
+When swapargs(i, j) is called, it invokes the explicitly overloaded version of swapargs() defined in the program.
+
+Thus, the compiler does not generate this version of the generic swapargs() function, because the generic function is overridden by the explicit overloading.
+
+There is a newer, alternative syntax that you can use to denote the explicit specialization of a function.
+
+This modern approach uses the template keyword.
+
+For example, using the new-style specialization syntax, the overloaded swapargs() function from the preceding program looks like this:
+
+Copy
+// Use the newer-style specialization syntax.
+template<> void swapargs<int>(int &a, int &b)
+{
+  int temp;
+
+  temp = a;
+  a = b;
+  b = temp;
+  cout << "Inside swapargs int specialization.\n";
+}
+As you can see, the new-style syntax uses the template<> construct to indicate specialization.
+
+The type of data for which the specialization is being created is placed inside the angle brackets following the function name.
+
+This same syntax is used to specialize any type of generic function.
