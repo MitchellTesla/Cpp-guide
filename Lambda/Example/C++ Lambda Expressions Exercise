@@ -1,0 +1,58 @@
+Question 1
+Write a program that defines a vector of integers.
+
+Sort the vector in a descending order using the std::sort function, and a user-provided lambda function as a predicate.
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v = { 5, 10, 4, 1, 3, 15 };
+    std::sort(std::begin(v), std::end(v), [](int x, int y) {return x > y; });
+
+    for (const auto& el : v)
+    {
+        std::cout << el << '\n';
+    }
+}
+Question 2
+Write a program that defines a vector of integers.
+
+Use the std::count_if function and a user-provided lambda function to count only even numbers.
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v = { 5, 10, 4, 1, 3, 8 };
+     int mycount = std::count_if(std::begin(v), std::end(v), [](int x)
+     {return x % 2 == 0; });
+    std::cout << "The number of even numbers is: " << mycount;
+}
+Question 3
+Write a program that defines a local lambda expression that can capture and modify the variable defined inside the main() function:
+
+
+
+
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    std::cout << "The value of a local variable is: " << x << '\n';
+    auto mylambda = [&x](){ x++; };
+    mylambda();
+     std::cout << "Lambda captured and changed the local variable to: "
+     << x << '\n';
+}
