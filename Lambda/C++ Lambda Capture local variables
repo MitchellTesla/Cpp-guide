@@ -1,0 +1,64 @@
+To be able to use the variables in the scope in which the lambda was defined, we need to capture them first.
+
+The capture section marked by [] can capture local variables by copy:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    auto mylambda = [x]() { std::cout << "The value of x is: " << x; };
+    mylambda();
+}
+Output:
+
+
+Here, we captured the local variable x by value and used it inside our lambda body.
+
+Another way to capture variables is by reference, where we use the [&name] notation.
+
+Example:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    auto mylambda = [&x]() {std::cout << "The value of x is: " << ++x; };
+    mylambda();
+}
+Output:
+
+
+To capture more than one variable, we use the comma operator in the capture list: [var1, var2].
+
+For example, to capture two local variables by value, we use:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    int y = 456;
+    auto mylambda = [x, y]() {std::cout << "X is: " << x << ", y is:" << y; };
+    mylambda();
+}
+Output:
+
+
+To capture both local variables by reference, we use:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    int y = 456;
+     auto mylambda = [&x, &y]() {std::cout << "X is: " << ++x << ", y is: "
+     << ++y; };
+    mylambda();
+}
