@@ -1,0 +1,85 @@
+The following code declares an arbitrary function in a header file.
+
+The header file is called myheader.h.
+
+It defines this function inside the main program source file called source.cpp.
+
+The main function is also located inside a source.cpp file.
+
+Include the header into our source file and invoke the function.
+
+Here is the myheader.h:
+
+Copy
+void myfunction();  //function declaration
+source.cpp file:
+
+Copy
+#include "myheader.h" //include the header
+#include <iostream>
+
+int main()
+{
+    myfunction();
+}
+
+// function definition
+void myfunction()
+{
+    std::cout << "Hello World from multiple files.";
+}
+Example 2
+The following program declares an arbitrary function in a header file.
+
+The header file is called mylibrary.h which defines a function inside the source file called mylibrary.cpp.
+
+The main function is inside a second source file called source.cpp file.
+
+Include the header in both source files and invoke the function.
+
+mylibrary.h:
+
+Copy
+void myfunction();  //function declaration
+mylibrary.cpp:
+
+Copy
+#include "mylibrary.h"
+#include <iostream>
+
+// function definition
+void myfunction()
+{
+    std::cout << "Hello World from multiple files.";
+}
+source.cpp:
+
+Copy
+#include "mylibrary.h"
+
+int main()
+{
+    myfunction();
+}
+Note
+This program has three files:
+
+A header file called mylibrary.h where we put our function declaration.
+A source file called mylibrary.cpp where we put our function definition. We include the header file mylibrary.h into mylibrary.cpp source file.
+A source file called source.cpp where the main program is. We also include *the mylibrary.h* header file into this source file.
+Since our header file is included in multiple source files, we should put header guard macros into it.
+
+The mylibrary.h file now looks like:
+
+Copy
+#ifndef MY_LIBRARY_H
+#define MY_LIBRARY_H
+
+void myfunction();
+
+#endif // !MY_LIBRARY_H
+To compile a program that has multiple source files, with g++ we use:
+
+Copy
+g++ source.cpp mylibrary.cpp
+Visual Studio IDE automatically handles the multiple file compilation.
