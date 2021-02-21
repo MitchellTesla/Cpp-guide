@@ -1,0 +1,122 @@
+The foundation of run-time polymorphism is the base class pointer.
+
+In C++, a base class pointer may also be used to point to an object of any class derived from that base.
+
+For example, assume that you have a base class called Base_Class and a class called Derived_Class, which is derived from Base_Class.
+
+In C++, any pointer declared as a pointer to Base_Class can also be a pointer to Derived_Class.
+
+Therefore, given.
+
+Copy
+Base_Class *p;   // pointer to object of type Base_Class
+Base_Class B_ob; // object of type Base_Class
+Derived_Class D_ob; // object of type Derived_Class
+both of the following statements are perfectly valid:
+
+Copy
+p = &B_ob; // p points to object of type Base_Class
+p = &D_ob; /* p points to object of type Derived_Class,
+which is an object derived from Base_Class. */
+In this example, p can be used to access all elements of D_ob inherited from B_ob.
+
+However, elements specific to D_ob cannot be referenced with p.
+
+For a more concrete example, consider the following short program, which defines a base class called Base_Class and a derived class called Derived_Class.
+
+This program uses a simple class hierarchy to store authors and titles.
+
+Copy
+// Using base pointers on derived class objects.
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Base_Class {
+  char author[80];
+public:// w  w w .  de mo 2 s .com
+  void put_author(char *s) { strcpy(author, s); }
+  void show_author() { cout << author << "\n"; }
+} ;
+
+class Derived_Class : public Base_Class {
+  char title[80];
+public:
+  void put_title(char *num) {
+    strcpy(title, num);
+  }
+  void show_title() {
+    cout << "Title: ";
+    cout <<  title << "\n";
+  }
+};
+
+int main()
+{
+  Base_Class *p;
+  Base_Class B_ob;
+
+  Derived_Class *dp;
+  Derived_Class D_ob;
+
+  p = &B_ob;  // address of base
+
+  // Access Base_Class via pointer.
+  p->put_author("A");
+
+  // Access Derived_Class via base pointer.
+  p = &D_ob;
+  p->put_author("B");
+
+  // Show that each author went into proper object.
+  B_ob.show_author();
+  D_ob.show_author();
+  cout << "\n";
+
+  /* Since put_title() and show_title() are not part
+     of the base class, they are not accessible via
+     the base pointer p and must be accessed either
+     directly, or, as shown here, through a pointer to the
+     derived type.
+  */
+  dp = &D_ob;
+  dp->put_title("C++");
+  p->show_author(); // either p or dp can be used here.
+  dp->show_title();
+
+  return 0;
+}
+This program displays the following:
+
+
+In this example, the pointer p is defined as a pointer to Base_Class.
+
+However, it can point to an object of the derived class Derived_Class and can be used to access those elements of the derived class that are inherited from the base class.
+
+But remember, a base pointer cannot access those elements specific to the derived class.
+
+This is why show_title() is accessed with the dp pointer, which is a pointer to the derived class.
+
+If you want to access elements defined by a derived class by using a base class pointer, you must cast it into a pointer of the derived type.
+
+For example, this line of code will properly call the show_title() function of D_ob:
+
+Copy
+((Derived_Class *)p)->show_title();
+The outer set of parentheses is necessary for associating the cast with p and not with the return type of show_title().
+
+While there is technically nothing wrong with casting a pointer in this manner, it is probably best avoided, because it simply adds confusion to your code.
+
+while a base pointer can be used to point to any type of derived object, the reverse is not true.
+
+You cannot access an object of the base type by using a pointer to a derived class.
+
+A pointer is incremented and decremented relative to its base type.
+
+Therefore, when a base class pointer is pointing at a derived object, incrementing or decrementing it will not make it point to the next object of the derived class.
+
+The fact that a pointer to a base type can be used to point to any object derived from that base is extremely important, and fundamental to C++.
+
+This flexibility is crucial to the way C++ implements run-time polymorphism.
+
+A base class reference parameter can receive objects of the base class as well as any other type derived from that base.
