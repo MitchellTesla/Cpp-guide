@@ -1,0 +1,39 @@
+It is possible to access an array by using pointer arithmetic.
+
+The reverse is also true. In C++, it is possible to index a pointer as if it were an array.
+
+Here is an example that indexes a pointer.
+
+Copy
+// Indexing a pointer like an array.
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+   char str[20] = "hello test";
+   char *p;
+
+  int i;
+
+  p = str; // put address of str into p
+
+  // now, index p like an array
+  for(i=0; p[i]; i++)
+      p[i] = toupper(p[i]);
+
+  cout << p; // display the string
+
+  return 0;
+}
+The program displays.
+
+
+First the program loads the string str with "hello test".
+
+It then assigns the address of the beginning of str to p.
+
+Next, using toupper(), it converts each character in the string to uppercase by indexing p.
+
+Remember, the expression p[i] is functionally identical to *(p+i).
