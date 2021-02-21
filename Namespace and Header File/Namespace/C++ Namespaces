@@ -1,0 +1,114 @@
+We can group our C++ code into separate files called headers and source files.
+
+We can logically group our C++ into namespaces.
+
+A namespace is a scope with a name.
+
+To declare a namespace, we write:
+
+Copy
+namespace MyNameSpace
+{
+
+}
+To declare objects in a namespace, we use:
+
+Copy
+namespace MyNameSpace
+{
+    int x;
+    double d;
+}
+To refer to these objects outside the namespace, we use their fully qualified names.
+
+This means we use the namespace_name::our_object notation.
+
+An example where we define the objects outside the namespace they were declared in:
+
+Copy
+namespace MyNameSpace
+{
+    int x;
+    double d;
+}
+
+int main()
+{
+    MyNameSpace::x = 123;
+    MyNameSpace::d = 456.789;
+}
+To introduce an entire namespace into the current scope, we can use the using-directive:
+
+Copy
+namespace MyNameSpace
+{
+    int x;
+    double d;
+}
+
+using namespace MyNameSpace;
+
+int main()
+{
+    x = 123;
+    d = 456.789;
+}
+If we have several separate namespaces with the same name in our code, this means we are extending that namespace.
+
+Example:
+
+Copy
+namespace MyNameSpace
+{
+    int x;
+    double d;
+}
+
+namespace MyNameSpace
+{
+    char c;
+    bool b;
+}
+
+int main()
+{
+    MyNameSpace::x = 123;
+    MyNameSpace::d = 456.789;
+    MyNameSpace::c = 'a';
+    MyNameSpace::b = true;
+}
+We now have x, d, c, and b inside our MyNameSpace namespace.
+
+We are extending the MyNameSpace, not redefining it.
+
+A namespace can be spread across multiple files, both headers and source files.
+
+We will often see production code wrapped into namespaces.
+
+It is an excellent mechanism to group the code into namespaces logically.
+
+Two namespaces with different names can hold an object with the same name.
+
+Since every namespace is a different scope, they now declare two different unrelated objects with the same name.
+
+It prevents name clashes:
+
+Copy
+#include <iostream>
+
+namespace MyNameSpace
+{
+    int x;
+}
+namespace MySecondNameSpace
+{
+    int x;
+}
+
+int main()
+{
+    MyNameSpace::x = 123;
+    MySecondNameSpace::x = 456;
+     std::cout << "1st x: " << MyNameSpace::x << ", 2nd x: " <<
+     MySecondNameSpace::x;
+}
