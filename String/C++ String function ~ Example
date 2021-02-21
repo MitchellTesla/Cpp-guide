@@ -1,0 +1,39 @@
+The following program illustrates the use of all four basic string functions:
+
+Copy
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+  char s1[80], s2[80];
+
+  cout << "Enter two strings: ";
+
+  gets(s1);
+  gets(s2);
+
+  cout << "lengths: " << strlen(s1);
+  cout << ' ' << strlen(s2) << '\n';
+
+  if(!strcmp(s1, s2))
+     cout << "The strings are equal\n";
+  else cout << "not equal\n";
+
+  strcat(s1, s2);
+  cout << s1 << '\n';
+
+  strcpy(s1, s2);
+  cout << s1 << " and " << s2 << ' ';
+  cout << "are now the same\n";
+
+  return 0;
+}
+If this program is run and the strings "hello" and "there" are entered, then the output 5 will be.
+
+
+Remember that strcmp() returns false if the strings are equal.
+
+This is why you must use the ! operator to reverse the condition, as shown in the preceding example, if you are testing for equality.
