@@ -1,0 +1,22 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main( )
+{
+   // make a big vector and then deallocate all its memory
+   const int big_size = 10000;
+   vector<double> v( big_size );
+   cout << "Before clearing, the capacity of the vector is "
+      << v.capacity() << " and its size is " << v.size();
+   v.clear();
+   cout << "\nAfter clearing, the capacity of the vector is "
+      << v.capacity() << " and its size is " << v.size();
+   vector<double>().swap( v );
+
+   cout << "\nAfter swapping, the capacity of the vector is "
+      << v.capacity() << " and its size is " << v.size();
+
+}
