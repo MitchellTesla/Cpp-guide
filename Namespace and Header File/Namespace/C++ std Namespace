@@ -1,0 +1,58 @@
+Standard C++ defines its entire library in its own namespace, called std.
+
+This is the reason that most of the programs have included the following statement:
+
+Copy
+using namespace std;
+This causes the std namespace to be brought into the current namespace, which gives you direct access to the names of the functions and classes defined within the library, without having to qualify each one with std::
+
+Of course, you can explicitly qualify each name with std::, if you like.
+
+For example, the following program does not bring the library into the global namespace:
+
+Copy
+// Use explicit std:: qualification.
+#include <iostream>
+int main()
+{
+  double val;
+
+  std::cout << "Enter a number: ";
+
+  std::cin >> val;
+
+  std::cout << "This is your number: ";
+  std::cout << val;
+
+  return 0;
+}
+Here, cout and cin are both explicitly qualified by their namespace.
+
+That is, to write to standard output, you must specify std::cout, and to read from standard input, you must use std::cin.
+
+You may not want to bring the standard C++ library into the global namespace if your program will be making only limited use of it.
+
+Bring only a few names into the global namespace.
+
+For example:
+
+Copy
+#include <iostream>
+
+// gain access to cout and cin
+using std::cout;
+using std::cin;
+
+
+int main()
+{
+  double val;
+
+  cout << "Enter a number: ";
+
+  cin >> val;
+  cout << "This is your number: ";
+  cout << val;
+   return 0;
+ }
+Here, cin and cout may be used directly, but the rest of the std namespace has not been brought into view.
