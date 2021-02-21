@@ -1,0 +1,44 @@
+What is a shared pointer?
+We can have multiple pointers point to a single object.
+
+The object has shared ownership among the pointers.
+
+And only when last of those pointers get destroyed, our pointed to object gets deleted.
+
+This is what a shared pointer is for.
+
+Multiple pointers pointing to a single object, and when all of them get out of scope, the object gets destroyed.
+
+Shared pointer is defined as std::shared_ptr<some_type>.
+
+It can be initialized using the std::make_shared<some_type>(some_value) function.
+
+Shared pointers can be copied.
+
+To have three shared pointers pointing at the same object we can write:
+
+Copy
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    std::shared_ptr<int> p1 = std::make_shared<int>(123);
+    std::shared_ptr<int> p2 = p1;
+    std::shared_ptr<int> p3 = p1;
+}
+When all pointers get out of scope, the pointed-to object gets destroyed, and the memory for it gets deallocated.
+
+unique vs shared
+The main differences between unique and shared pointers are:
+
+With unique pointers, we have one pointer pointing at and owning a single object.
+With shared pointers we have multiple pointers pointing at and owning a single object.
+Unique pointers can not be copied, whereas shared pointers can.
+Most of the time we will use the unique pointer.
+
+Smart pointers are class templates themselves, and they have member functions.
+
+Notice that with smart pointers, we do not need to specify the <some_type*>, we just need to specify the <some_type>.
+
+With smart pointers, we do not have to worry if we properly matched calls to new with calls to delete as we do not need them.
