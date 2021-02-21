@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  char name[] = "abcedfghijklmn";
+  vector<char> George(name, name + 6);
+
+  vector<char> son1(George); // Uses copy constructor
+  assert (son1 == George);
+
+  return 0;
+}
