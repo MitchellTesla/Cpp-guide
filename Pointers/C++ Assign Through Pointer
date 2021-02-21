@@ -1,0 +1,35 @@
+You can use a pointer on the left side of an assignment statement to assign a value to the location pointed to by the pointer.
+
+Assuming that p is an integer pointer, this assigns the value 101 to the location pointed to by p:
+
+Copy
+*p = 101;
+The above statement is saying: "at the location pointed to by p, assign the value 101."
+
+To increment or decrement the value at the location pointed to by a pointer, you can use a statement like this:
+
+Copy
+(*p)++;
+The parentheses are necessary because the * operator has lower precedence than the ++ operator.
+
+The following program demonstrates assignment using a pointer.
+
+Copy
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int *p, num;
+
+  p = &num;
+
+  *p = 100;
+  cout << num << ' ';
+  (*p)++;
+  cout << num << ' ';
+  (*p)--;
+  cout << num << '\n';
+
+  return 0;
+}
