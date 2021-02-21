@@ -1,0 +1,22 @@
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main( )
+{
+   vector<bool> shots( 5 ); // true if pet has shot
+
+   // give shots to two pets
+   shots[1] = true;
+   shots[4].flip();
+
+
+   // delete the first element because that pet was adopted
+   shots.erase( shots.begin() );
+
+
+   // flip bits to show pets needing shots
+   shots.flip();
+
+}
