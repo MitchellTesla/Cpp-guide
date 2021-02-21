@@ -1,0 +1,29 @@
+A pointer of any type can be converted to void* type.
+
+The following example shows where we convert an integer pointer to void pointer:
+
+Copy
+int main()
+{
+    int x = 123;
+    int* pint = &x;
+    void* pvoid = pint;
+}
+While we can convert any data pointer to a void pointer, we can not dereference the void pointer.
+
+To be able to access the object pointed to by a void pointer, we need to cast the void pointer to some other pointer type first.
+
+To do that, we can use the explicit cast function static_cast:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int x = 123;
+    int* pint = &x;
+    void* pvoid = pint; // convert from int pointer
+     int* pint2 = static_cast<int*>(pvoid); // cast a void pointer to int
+     // pointer
+    std::cout << *pint2; // dereference a pointer
+}
