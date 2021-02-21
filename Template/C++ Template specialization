@@ -1,0 +1,62 @@
+If we want our template to behave differently for a specific type, we provide the template specialization.
+
+In case the argument is of a certain type, we sometimes want a different code.
+
+To do that, we prepend our function or a class with :
+
+Copy
+template <>
+// the rest of our code
+To specialize our template function for type int, we write:
+
+Copy
+#include <iostream>
+template <typename T>
+void myfunction(T arg)
+{
+    std::cout << "The value of an argument is: " << arg << '\n';
+}
+
+template <>
+// the rest of our code
+void myfunction(int arg)
+{
+     std::cout << "This is a specialization int. The value is: " << arg <<
+     '\n';
+}
+
+int main()
+{
+    myfunction<char>('A');
+    myfunction<double>(345.678);
+    myfunction<int>(123); // invokes specialization
+}
+Output:
+
+
+Example
+The following program contains the generic version of myabs().
+
+The generic version has shorter source code and is more flexible.
+
+Copy
+// A generic version of myabs().
+#include <iostream>
+using namespace std;
+template <class X> X myabs(X val)
+{
+  return val < 0 ? -val : val;
+}
+
+int main()
+{
+  cout << myabs(-10) << '\n';    // integer abs
+
+  cout << myabs(-10.0) << '\n';  // double abs
+
+  cout << myabs(-10L) << '\n';   // long abs
+
+  cout << myabs(-10.0F) << '\n'; // float abs
+
+  return 0;
+}
