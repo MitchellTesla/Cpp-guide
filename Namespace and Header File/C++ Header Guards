@@ -1,0 +1,17 @@
+Multiple source files might include the same header file.
+
+To ensure that our header is included only once in the compilation process, we use the mechanism called header guards.
+
+It ensures that our header content is included only once in the compilation process.
+
+We surround the code in our header file with the following macros:
+
+Copy
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// header file source code
+// goes here
+
+#endif
+This approach ensures the code inside a header file is included only once during the compilation phase.
