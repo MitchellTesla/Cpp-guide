@@ -1,0 +1,22 @@
+We can read a string from the standard input via the std::getline() function which takes std::cin and our string as parameters:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s;
+    std::cout << "Please enter a string: ";
+    std::getline(std::cin, s);
+    std::cout << "You entered: " << s;
+}
+We use the std::getline because our string can contain white spaces.
+
+And if we used the std::cin function alone, it would accept only a part of the string.
+
+The std::getline function has the following signature:
+
+Copy
+std::getline(read_from, into);
+The function reads a line of text from the standard input (std::cin) into a string variable.
