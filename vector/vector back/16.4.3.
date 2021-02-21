@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main()
+{
+  string s("abcdefghij");
+
+  vector<char> vector1(s.begin(), s.end());
+
+  while (vector1.size() > 0) {
+    cout << vector1.back();
+    vector1.pop_back();
+  }
+  cout << endl;
+  return 0;
+}
