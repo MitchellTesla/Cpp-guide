@@ -1,0 +1,22 @@
+Templates can have more than one parameter.
+
+We simply list the template parameters and separate them using a comma.
+
+Example of a function template that accepts two template parameters:
+
+Copy
+#include <iostream>
+
+template <typename T, typename U>
+void myfunction(T t, U u)
+{
+    std::cout << "\nThe first parameter is: " << t << '\n';
+    std::cout << "\nThe second parameter is: " << u << '\n';
+}
+
+int main()
+{
+    int x = 123;
+    double d = 456.789;
+    myfunction<int, double>(x, d);
+}
