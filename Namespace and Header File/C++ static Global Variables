@@ -1,0 +1,76 @@
+When the static specifier is applied to a global variable, it creates a global variable that is known only to the file where the static global variable is declared.
+
+Even though the variable is global, other functions in other files have no knowledge of it.
+
+You can create a small file that contains only the functions that need the global static variable, separately compile that file.
+
+Example
+Here is an example that calculates running-average program.
+
+It consists of two files and uses global static variables to hold the running average and the count.
+
+First File
+
+Copy
+#include <iostream>
+using namespace std;
+
+int r_avg(int i);
+void reset();
+
+int main()
+ {
+   int num;
+
+   do {
+     cout << "Enter numbers (-1 to quit, -2 to reset): ";
+
+     cin >> num;
+     if(num==-2) {
+       reset();
+       continue;
+     }
+     if(num != -1)
+       cout << "Running average is: " << r_avg(num);
+     cout << '\n';
+  } while(num != -1);
+
+  return 0;
+}
+Second File
+
+Copy
+static int sum=0, count=0;
+
+int r_avg(int i)
+{
+  sum = sum + i;
+
+  count++;
+
+  return sum / count;
+}
+
+void reset()
+{
+  sum = 0;
+  count = 0;
+}
+In this program, the variables sum and count are global statics that are restricted to the second file.
+
+Thus, they may be accessed by both r_avg() and reset(), both in the second file.
+
+This allows them to be reset so that a second set of numbers can be averaged.
+
+However, no functions outside the second file can access those variables.
+
+When you run this program, you can reset the average by entering -2.
+
+This causes a call to reset().
+
+Review
+The name of a local static variable is known only to the function or block of code in which it is declared, and the name of a global static variable is known only to the file in which it resides.
+
+Although global static variables are still valid and widely used in C++ code, Standard C++ deprecates their use.
+
+It recommends to control access to global variables using namespaces.
