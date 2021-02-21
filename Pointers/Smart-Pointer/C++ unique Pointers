@@ -1,0 +1,106 @@
+Smart pointers are pointers that own the object they point to and automatically destroy the object they point to and deallocate the memory once the pointers go out of scope.
+
+We do not have to manually delete the object like it was the case with the new and delete operators.
+
+Smart pointers are declared in the <memory> header.
+
+Unique Pointer
+A unique pointer called std::unique_ptr is a pointer that owns an object it points to.
+
+The pointer can not be copied.
+
+Unique pointer deletes the object and deallocates memory for it, once it goes out of scope.
+
+To declare a unique pointer to a simple int object, we write:
+
+Copy
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    std::unique_ptr<int> p(new int{ 123 });
+    std::cout << *p;
+}
+This example creates a pointer to an object of type int and assigns a value of 123 to the object.
+
+A unique pointer can be dereferenced in the same way we as a regular pointer using the *p notation.
+
+The object gets deleted once p goes out of scope, which in this case, is at the closing brace }.
+
+No explicit use of delete operator is required.
+
+A better way to initialize a unique pointer is through an std::make_unique<some_type>(some_value) function, where we specify the type for the object in angle brackets and the value for the object pointer points at in parentheses:
+
+Copy
+#include <iostream>
+#include <memory>
+
+int main()
+{
+    std::unique_ptr<int> p = std::make_unique<int>(123);
+    std::cout << *p;
+}
+We can create a unique pointer that points to an object of a class and then use its -> operator to access object members:
+
+Copy
+#include <iostream>
+#include <memory>
+
+class MyClass
+{
+public:
+    void printmessage()
+    {
+        std::cout << "Hello from a class.";
+    }
+};
+
+int main()
+{
+    std::unique_ptr<MyClass> p = std::make_unique<MyClass>();
+    p->printmessage();
+}
+Output:
+
+
+The object gets destroyed once p goes out of scope.
+
+We should use a unique pointer and avoid raw pointer and their new-delete mechanism.
+
+Once p goes out of scope, the pointed-to object of a class gets destroyed.
+
+Polymorphic
+We can utilize polymorphic classes using a unique pointer:
+
+Copy
+#include <iostream>
+#include <memory>
+
+class MyBaseClass
+{
+public:
+    virtual void printmessage()
+    {
+        std::cout << "Hello from a base class.";
+    }
+};
+
+class MyderivedClass: public MyBaseClass
+{
+public:
+    void printmessage()
+    {
+        std::cout << "Hello from a derived class.";
+    }
+};
+
+int main()
+{
+    std::unique_ptr<MyBaseClass> p = std::make_unique<MyderivedClass>();
+    p->printmessage();
+}
+Output:
+
+
+No need to explicitly delete the allocated memory, the smart pointer does it for us.
