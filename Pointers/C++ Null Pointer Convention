@@ -1,0 +1,19 @@
+By convention, if a pointer contains the null (zero) value, it is assumed to point to nothing.
+
+Thus, if all unused pointers are given the null value and you avoid the use of a null pointer, you can avoid the accidental misuse of an uninitialized pointer.
+
+This is a good practice to follow.
+
+Any type of pointer can be initialized to null when it is declared.
+
+For example, the following initializes p to null:
+
+Copy
+float *p = 0; // p is now a null pointer
+To check for a null pointer, use an if statement, like one of these:
+
+Copy
+if(p) // succeeds if p is not null
+
+if(!p) // succeeds if p is null
+If you follow the null pointer convention, you will avoid many problems when using pointers.
