@@ -1,0 +1,67 @@
+The following incorrect program inputs a string entered from the keyboard and then displays the ASCII code for each character in the string.
+
+Notice that it uses a cast to cause the ASCII codes to be displayed.
+
+However, this program has a serious bug.
+
+Copy
+// This program is wrong.
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+   char s[80];
+   char *p1;
+
+   p1 = s;
+
+   do {
+     cout << "Enter a string: ";
+     gets(p1); // read a string
+     // print the ASCII values of each character
+     while(*p1) cout << (int) *p1++ << ' ';
+     cout << '\n';
+   } while(strcmp(s, "done"));
+
+
+  return 0;
+}
+The pointer p1 is assigned the address of s once.
+
+This assignment is made outside of the loop.
+
+The first time through the loop, p1 does point to the first character in s.
+
+However, the second time through, it continues on from where it left off, because it has not been reset to the start of the array s.
+
+This will eventually cause s to be overrun.
+
+The proper way to write this program is shown here:
+
+Copy
+// This program is correct.
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+int main()
+{
+  char s[80];
+  char *p1;
+
+  do {
+     p1 = s; // reset p1 each time through the loop
+
+     cout << "Enter a string: ";
+     gets(p1); // read a string
+     // print the ASCII values of each character
+     while(*p1) cout << (int) *p1++ << ' ';
+     cout << '\n';
+   } while(strcmp(s, "done"));
+
+  return 0;
+}
+Here, each time the loop iterates, p1 is set to the beginning of the string.
