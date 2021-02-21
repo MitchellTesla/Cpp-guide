@@ -1,0 +1,87 @@
+A template class can have a default argument associated with a generic type.
+
+For example:
+
+Copy
+template <class X=int> class myclass { //...
+Here, the type int will be used if no other type is specified when an object of type myclass is instantiated.
+
+It is also permissible for non-type arguments to take default arguments.
+
+The default value is used when no explicit value is specified when the class is instantiated.
+
+Default arguments for non-type parameters are specified by using the same syntax as default arguments for function parameters.
+
+The following code uses default arguments for both the type of data and the size of the array:
+
+Copy
+// Demonstrate default template arguments.
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+// Here, AType defaults to int and size defaults to 10.
+template <class AType=int, int size=10> class atype {
+  AType a[size]; // size of array is passed in size
+public://from   w w w . de mo  2  s. c  om
+  atype() {
+     register int i;
+     for(i=0; i<size; i++) a[i] = i;
+   }
+
+  AType &operator[](int i);
+};
+
+
+// Provide range checking for atype.
+template <class AType, int size>
+AType &atype<AType, size>::operator[](int i)
+{
+  if(i<0 || i> size-1) {
+     cout << "\nIndex value of ";
+     cout << i << " is out-of-bounds.\n";
+     exit(1);
+  }
+  return a[i];
+}
+
+int main()
+{
+  atype<int, 100> intarray;  // integer array, size 100
+  atype<double> doublearray; // double array, default size
+  atype<> defarray;          // default to int array of size 10
+
+  int i;
+
+  cout << "int array: ";
+  for(i=0; i<100; i++) intarray[i] = i;
+  for(i=0; i<100; i++) cout << intarray[i] << "  ";
+  cout << '\n';
+
+  cout << "double array: ";
+  for(i=0; i<10; i++) doublearray[i] = (double) i/3;
+  for(i=0; i<10; i++) cout << doublearray[i] << "  ";
+  cout << '\n';
+
+  cout << "defarray array: ";
+  for(i=0; i<10; i++) defarray[i] = i;
+  for(i=0; i<10; i++) cout << defarray[i] << "  ";
+  cout << '\n';
+
+  return 0;
+}
+Pay close attention to this line:
+
+Copy
+template <class AType=int, int size=10> class atype {
+Here, AType defaults to type int, and size defaults to 10.
+
+As the program illustrates, atype objects can be created three ways:
+
+By explicitly specifying both the type and size of the array
+By explicitly specifying the type, but letting the size default to 10
+By letting the type default to int and the size default to 10
+The use of default arguments-especially default types-adds versatility to your template classes.
+
+You can provide a default for the type of data most commonly used, while still allowing the user of your classes to specialize them as needed.
