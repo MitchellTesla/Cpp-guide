@@ -1,0 +1,22 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   vector<int> coll;
+
+   // insert elements from -3 to 9
+   for (int i=-3; i<=9; ++i) {
+       coll.push_back (i);
+   }
+
+   /* print all elements
+    * - NOTE: uses operator < instead of operator !=
+    */
+   vector<int>::iterator pos;
+   for (pos=coll.begin(); pos<coll.end(); ++pos) {
+       cout << *pos << ' ';
+   }
+   cout << endl;
+}
