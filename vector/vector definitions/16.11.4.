@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+typedef vector<int> INTVECTOR;
+
+int main(void)
+{
+   // Dynamically allocated vector begins with 0 elements.
+   INTVECTOR theVector;
+
+   theVector.push_back(42);
+
+   // Show statistics about vector.
+   cout << "theVector's size is: " << theVector.size() << endl;
+   cout << "theVector's maximum size is: " << theVector.max_size()<< endl;
+   cout << "theVector's capacity is: " << theVector.capacity() << endl;
+
+}
