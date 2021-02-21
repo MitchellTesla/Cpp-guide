@@ -1,2 +1,2 @@
 # C++ Programming Language Guide 2021  pre-release
-(WIP) a reference guide to C++ Programming Language - Justin Mitchell 
+(WIP) a reference guide to C++ Programming Language - PyTorch - TorchScript 
