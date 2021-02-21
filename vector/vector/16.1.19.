@@ -1,0 +1,17 @@
+#include <vector>
+
+int main ()
+{
+   std::vector <int> v;
+
+   // Instantiate a vector with 10 elements (it can grow larger)
+   std::vector <int> v1 (10);
+
+   // Instantiate a vector with 10 elements, each initialized to 90
+   std::vector <int> v2 (10, 90);
+
+   // Instantiate one vector and initialize it to the contents of another
+   std::vector <int> v3 (v2);
+
+   return 0;
+}
