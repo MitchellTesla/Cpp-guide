@@ -1,0 +1,30 @@
+Lambda expressions, or lambdas for short, are the anonymous function objects.
+
+Lambda expressions are anonymous/unnamed function objects.
+
+Lambda expression signature is:
+
+Copy
+[captures](parameters){lambda_body};
+To define and invoke a simple lambda, we use:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    auto mylambda = []() {std::cout << "Hello from a lambda"; };
+    mylambda();
+}
+Output:
+
+
+Here, we assign the result of a lambda expression:
+
+Copy
+[]() {std::cout << "Hello from a lambda"; }
+to a variable mylambda.
+
+Then we invoke this lambda by using the function call operator ().
+
+Since lambdas are unnamed functions, here we gave it the name of mylambda, to be able to invoke the code from the lambda expression itself.
