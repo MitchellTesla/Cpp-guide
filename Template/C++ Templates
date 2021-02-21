@@ -1,0 +1,64 @@
+Templates are mechanisms to support the generic programming.
+
+Generic means we can define a function or a class without worrying about what types it accepts.
+
+We define those functions and classes using some generic type.
+
+And when we instantiate them, we use a concrete type.
+
+We can use templates when we want to define a class or a function that can accept almost any type.
+
+We define a template by typing:
+
+Copy
+template <typename T>
+// the rest of our function or class code
+Which is the same as if we used:
+
+Copy
+template <class T>
+// the rest of our function or class code
+T here stands for a type name. It can be any type.
+
+Here T means, for all types T.
+
+Let us create a function that can accept any type of argument:
+
+Copy
+#include <iostream>
+
+template <typename T>
+void myfunction(T param)
+{
+    std::cout << "The value of a parameter is: " << param;
+}
+
+int main()
+{
+
+}
+To instantiate a function template, we call a function by supplying a specific type name, surrounded by angle brackets:
+
+Copy
+#include <iostream>
+
+template <typename T>
+void myfunction(T param)
+{
+    std::cout << "\nThe value of a parameter is: " << param;
+}
+
+int main()
+{
+    myfunction<int>(123);
+    myfunction<double>(123.456);
+    myfunction<char>('A');
+}
+Output:
+
+
+We can think of T as a placeholder for a specific type, the one we supply when we instantiate a template.
+
+So, in place of T, we now put our specific type.
+
+This way, we can utilize the same code for different types.
