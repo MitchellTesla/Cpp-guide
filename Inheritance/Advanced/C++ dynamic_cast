@@ -1,0 +1,97 @@
+The dynamic_cast function converts pointers of base class to pointers to derived class and vice versa up the inheritance chain.
+
+Example:
+
+Copy
+#include <iostream>
+
+class MyBaseClass {
+public:
+    virtual ~MyBaseClass() {}
+};
+class MyDerivedClass : public MyBaseClass {};
+
+int main()
+{
+    MyBaseClass* base = new MyDerivedClass;
+    MyDerivedClass* derived = new MyDerivedClass;
+
+    // base to derived
+    if (dynamic_cast<MyDerivedClass*>(base))
+    {
+        std::cout << "OK.\n";
+    }
+    else
+    {
+        std::cout << "Not convertible.\n";
+    }
+
+    // derived to base
+    if (dynamic_cast<MyBaseClass*>(derived))
+    {
+        std::cout << "OK.\n";
+    }
+    else
+    {
+        std::cout << "Not convertible.\n";
+    }
+
+    delete base;
+    delete derived;
+}
+Output:
+
+
+If the conversion succeeds, the result is a pointer to a base or derived class, depending on our use-case.
+
+If the conversion cannot be done, the result is a pointer of value nullptr.
+
+To use this function, our class must be polymorphic, which means our base class should have at least one virtual function.
+
+The following code tries to convert some unrelated class to one of our classes in the inheritance chain we would use:
+
+Copy
+#include <iostream>
+
+class MyBaseClass {
+public:
+    virtual ~MyBaseClass() {}
+};
+class MyDerivedClass : public MyBaseClass {};
+class MyUnrelatedClass {};
+
+int main()
+{
+    MyBaseClass* base = new MyDerivedClass;
+    MyDerivedClass* derived = new MyDerivedClass;
+    MyUnrelatedClass* unrelated = new MyUnrelatedClass;
+
+    // base to derived
+    if (dynamic_cast<MyUnrelatedClass*>(base))
+    {
+        std::cout << "OK.\n";
+    }
+    else
+    {
+        std::cout << "Not convertible.\n";
+    }
+    // derived to base
+    if (dynamic_cast<MyUnrelatedClass*>(derived))
+    {
+        std::cout << "OK.\n";
+    }
+    else
+    {
+        std::cout << "Not convertible.\n";
+    }
+
+    delete base;
+    delete derived;
+    delete unrelated;
+}
+Output:
+
+
+This would fail as the dynamic_cast can only convert between related classes inside the inheritance chain.
+
+The static_cast function is probably the only cast we will be using most of the time.
