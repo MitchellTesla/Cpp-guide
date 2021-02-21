@@ -1,0 +1,154 @@
+C++ supports inheritance by allowing one class to incorporate another class into its declaration.
+
+The following class, called Vehicle, very broadly defines vehicles that travel on the road.
+
+It stores the number of wheels a vehicle has and the number of passengers it can carry.
+
+Copy
+class Vehicle {
+  int wheels;
+  int passengers;
+public:
+  void set_wheels(int num) { wheels = num; }
+  int get_wheels() { return wheels; }
+  void set_pass(int num) { passengers = num; }
+  int get_pass() { return passengers; }
+};
+You can use this broad definition of a road vehicle to help define specific types of vehicles.
+
+For example, the fragment shown here inherits Vehicle to create a class called truck.
+
+Copy
+class truck : public Vehicle {
+  int cargo;
+public:
+  void set_cargo(int size) { cargo = size; }
+  int get_cargo() { return cargo; }
+  void show();
+};
+Because truck inherits Vehicle, truck includes all of Vehicle.
+
+It then adds cargo to it, along with the supporting member functions.
+
+Notice how Vehicle is inherited.
+
+The general form for inheritance is shown here:
+
+Copy
+class derived-class : access base-class {
+  body of new class
+}
+Here, access is optional.
+
+However, if present, it must be either public, private, or protected.
+
+For now, all inherited classes will use public.
+
+Using public means that all the public members of the base class will also be public members of the derived class.
+
+Therefore, in the preceding example, members of truck have access to the public member functions of Vehicle, just as if they had been declared inside truck.
+
+However, truck does not have access to the private members of Vehicle.
+
+For example, truck does not have access to wheels.
+
+Here is a program that uses inheritance to create two subclasses of Vehicle.
+
+One is truck and the other is automobile.
+
+Copy
+// Demonstrate inheritance.
+#include <iostream>
+using namespace std;
+
+
+// Define a base class for vehicles.
+class Vehicle {/*  ww w  .  d  e mo2s . c o  m*/
+  int wheels;
+  int passengers;
+public:
+  void set_wheels(int num) { wheels = num; }
+  int get_wheels() { return wheels; }
+  void set_pass(int num) { passengers = num; }
+  int get_pass() { return passengers; }
+};
+
+// Define a truck.
+class truck : public Vehicle {
+  int cargo;
+public:
+  void set_cargo(int size) { cargo = size; }
+  int get_cargo() { return cargo; }
+  void show();
+};
+
+enum type {car, van, wagon};
+
+// Define an automoble.
+class automobile : public Vehicle {
+  enum type car_type;
+public:
+  void set_type(type t) { car_type = t; }
+  enum type get_type() { return car_type; }
+  void show();
+};
+
+void truck::show()
+{
+  cout << "wheels: " << get_wheels() << "\n";
+  cout << "passengers: " << get_pass() << "\n";
+  cout << "cargo capacity in cubic feet: " << cargo << "\n";
+}
+
+void automobile::show()
+{
+  cout << "wheels: " << get_wheels() << "\n";
+  cout << "passengers: " << get_pass() << "\n";
+  cout << "type: ";
+  switch(get_type()) {
+    case van: cout << "van\n";
+      break;
+    case car: cout << "car\n";
+      break;
+    case wagon: cout << "wagon\n";
+  }
+}
+
+int main()
+{
+  truck t1, t2;
+  automobile c;
+
+  t1.set_wheels(18);
+  t1.set_pass(2);
+  t1.set_cargo(3200);
+
+  t2.set_wheels(6);
+  t2.set_pass(3);
+  t2.set_cargo(1200);
+
+  t1.show();
+  cout << "\n";
+  t2.show();
+  cout << "\n";
+
+  c.set_wheels(4);
+  c.set_pass(6);
+  c.set_type(van);
+
+  c.show();
+
+  return 0;
+}
+The output from this program is shown here:
+
+
+The major advantage of inheritance is that it lets you create a base class that can be incorporated into more specific classes.
+
+In this way, each derived class can be precisely tailored to its own needs while still being part of a general classification.
+
+Notice that both truck and automobile include a member function called show(), which displays information about each object.
+
+This illustrates another aspect of polymorphism.
+
+Since each show() is linked with its own class, the compiler can easily tell which one to call for any given object.
