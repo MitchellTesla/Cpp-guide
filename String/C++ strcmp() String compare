@@ -1,0 +1,73 @@
+A call to strcmp() takes this general form:
+
+Copy
+strcmp(s1, s2);
+The strcmp() function compares two strings and returns 0 if they are equal.
+
+If s1 is greater than s2 lexicographically (i.e., according to dictionary order), then a positive number is returned; if it is less than s2, a negative number is returned.
+
+The password() function, shown in the following program, is a password-verification routine.
+
+It uses strcmp() to check a user's input against a password.
+
+Copy
+#include <iostream>
+#include <cstring>
+#include <cstdio>
+using namespace std;
+
+bool password();
+
+int main()
+{
+  if(password())
+     cout << "Logged on.\n";
+  else
+     cout << "Access denied.\n";
+
+  return 0;
+}
+
+// Return true if password accepted; false otherwise.
+bool password()
+{
+  char s[80];
+
+  cout << "Enter password: ";
+  gets(s);
+
+  if(strcmp(s, "password")) {  // strings differ
+     cout << "Invalid password.\n";
+     return false;
+  }
+
+  // strings compared the same
+  return true;
+}
+Output:
+
+
+The key to using strcmp() is to remember that it returns false when the strings match.
+
+Therefore, you will need to use the ! (NOT) operator if you want something to occur when the strings are equal.
+
+For example, the following program continues to request input until the user types the word "quit":
+
+Copy
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+  char s[80];
+
+  for(;;) {
+    cout << "Enter a string: ";
+    gets(s);
+    if(!strcmp("quit", s)) break;
+  }
+
+  return 0;
+}
