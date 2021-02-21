@@ -1,0 +1,39 @@
+You can mix standard parameters with generic type parameters in a template function.
+
+These non-generic parameters work just like they do with any other function.
+
+For example:
+
+Copy
+// Using standard parameters in a template function.
+#include <iostream>
+using namespace std;
+
+// Display data specified number of times.
+template<class X> void repeat(X data, int times)
+{
+  do {
+     cout << data << "\n";
+     times--;
+  } while(times);
+}
+
+int main()
+{
+  repeat("This is a test", 3);
+  repeat(100, 5);
+  repeat(99.0/2, 4);
+
+  return 0;
+}
+Here is the output produced by this program:
+
+
+In the program, the function repeat() displays its first argument the number of times requested by its second argument.
+
+Since the first argument is a generic type, repeat() can be used to display any type of data.
+
+The times parameter is a standard, call-by-value parameter.
+
+The mixing of generic and non-generic parameters causes no trouble and, indeed, is common.
+
