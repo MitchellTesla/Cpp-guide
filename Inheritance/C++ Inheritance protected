@@ -1,0 +1,122 @@
+The following example introduces the new access specifier called protected:
+
+The derived class itself can access protected members of a base class.
+
+The protected access specifier allows access to the base class and derived class, but not to objects:
+
+Copy
+class MyBaseClass
+{
+protected:
+    char c;
+    int x;
+};
+class MyDerivedClass : public MyBaseClass
+{
+    // c and x also accessible here
+};
+
+int main()
+{
+    MyDerivedClass o;
+    o.c = 'a';    // Error, not accessible to object
+    o.x = 123;    // error, not accessible to object
+}
+The derived class cannot access private members of a base class:
+
+Copy
+class MyBaseClass
+{
+private:
+    char c;
+    int x;
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+    // c and x NOT accessible here
+};
+
+int main()
+{
+    MyDerivedClass o;
+    o.c = 'a';    // Error, not accessible to object
+    o.x = 123;    // error, not accessible to object
+}
+The derived class inherits public and protected members of a base class and can introduce its own members.
+
+A simple example:
+
+Copy
+class MyBaseClass
+{
+public:
+    char c;
+    int x;
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+public:
+    double d;
+};
+
+int main()
+{
+    MyDerivedClass o;
+    o.c = 'a';
+    o.x = 123;
+    o.d = 456.789;
+}
+Here we inherited everything from the MyBaseClass class and introduced a new member field in MyDerivedClass called d.
+
+So, with MyDerivedClass, we are extending the capability of MyBaseClass.
+
+The field d only exists in MyDerivedClass and is accessible to derived class and its objects.
+
+It is not accessible to MyBaseClass class as it does not exist there.
+
+Please note that there are other ways of inheriting a class such as through protected and private inheritance, but the public inheritance such as class MyDerivedClass: public MyBaseClass is the most widely used, and we will stick to that one for now.
+
+A derived class itself can be a base class.
+
+Example:
+
+Copy
+class MyBaseClass
+{
+public:
+    char c;
+    int x;
+};
+class MyDerivedClass : public MyBaseClass
+{
+public:
+    double d;
+};
+
+class MySecondDerivedClass : public MyDerivedClass
+{
+public:
+    bool b;
+};
+
+int main()
+{
+    MySecondDerivedClass o;
+    o.c = 'a';
+    o.x = 123;
+    o.d = 456.789;
+    o.b = true;
+}
+Now our class has everything MyDerivedClass has, which includes everything MyBaseClass has, plus an additional bool field.
+
+The inheritance produces a particular hierarchy of classes.
+
+The inheritance is widely used when we want to extend the functionality of our classes.
+
+The derived class is compatible with a base class.
+
+A pointer to a derived class is compatible with a pointer to a base class.
+
+This allows us to utilize polymorphism.
