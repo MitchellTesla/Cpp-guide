@@ -1,0 +1,104 @@
+When a base class is inherited as private, all members of that class (public, protected, or private) become private members of the derived class.
+
+However, in certain circumstances, you may want to restore one or more inherited members to their original access specification.
+
+You have two ways to accomplish this.
+
+First, you may use a using declaration within the derived class.
+
+This is the method recommended by Standard C++ for use in new code.
+
+The second way to adjust access to an inherited member is to employ an access declaration.
+
+Access declarations are still supported by Standard C++, but they have recently been deprecated, which means that they should not be used for new code.
+
+An access declaration takes this general form:
+
+Copy
+base-class::member;
+The access declaration is put under the appropriate access heading in the derived class.
+
+Notice that no type declaration is allowed in an access declaration.
+
+To see how an access declaration works, let's begin with this short fragment:
+
+Copy
+class base {
+public:
+   int j;  // public in base
+};
+
+// Inherit base as private.
+class derived: private base {
+public:
+
+   // here is access declaration
+   base::j; // make j public again
+   // ...
+};
+Because base is inherited as private by derived, the public variable j is made a private variable of derived.
+
+However, the inclusion of this access declaration.
+
+Copy
+base::j;
+under derived's public heading restores j to its public status.
+
+You can use an access declaration to restore the access rights of public and protected members.
+
+However, you cannot use an access declaration to raise or lower a member's access status.
+
+For example, a member declared as private within a base class cannot be made public by a derived class.
+
+The following program illustrates the use of access declarations:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+   int i;  // private to base
+public:
+   int j, k;
+  void seti(int x) { i = x; }
+   int geti() { return i; }
+};
+
+// Inherit base as private.
+class derived: private base {
+public:
+   /* The next three statements override
+     base's inheritance as private
+     and restore j, seti() and geti() to
+     public access. */
+   base::j;    // make j public again - but not k
+   base::seti; // make seti() public
+   base::geti; // make geti() public
+
+//  base::i;  // illegal, you cannot elevate access
+
+   int a; // public
+};
+
+int main()
+{
+   derived ob;
+
+   //ob.i = 10;  // illegal because i is private in derived
+
+   ob.j = 20;  // legal because j is made public in derived
+   //ob.k = 30;  // illegal because k is private in derived
+
+   ob.a = 40;  // legal because a is public in derived
+   ob.seti(10);
+
+   cout << ob.geti() << " " << ob.j << " " << ob.a;
+
+   return 0;
+}
+Output:
+
+
+Notice how this program uses access declarations to restore j, seti(), and geti() to public status.
+
+C++ provides the ability to adjust access to inherited members to accommodate those special situations in which most of an inherited class is intended to be made private, but a few members are to retain their public or protected status.
