@@ -1,0 +1,47 @@
+A reference type is an alias to an existing object in memory.
+
+References must be initialized.
+
+We describe a reference type as type_name followed by an ampersand &.
+
+Example:
+
+Copy
+int main()
+{
+    int x = 123;
+    int& y = x;
+}
+Now we have two different names that refer to the same int object in memory.
+
+If we assign a different value to either one of them, they both change as we have one object in memory, but we are using two different names:
+
+Copy
+int main()
+{
+    int x = 123;
+    int& y = x;
+    x = 456;
+    // both x and y now hold the value of 456
+    y = 789;
+    // both x and y now hold the value of 789
+}
+Another concept is a const-reference, which is a read-only alias to some object.
+
+Example:
+
+Copy
+int main()
+{
+    int x = 123;
+    const int& y = x; // const reference
+    x = 456;
+    // both x and y now hold the value of 456
+}
+Restrictions
+There are some restrictions that apply to reference variables:
+
+You cannot reference a reference variable.
+You cannot create arrays of references.
+You cannot create a pointer to a reference. That is, you cannot apply the & operator to a reference.
+References are not allowed on bit-fields.
