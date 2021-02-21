@@ -1,0 +1,58 @@
+The fact that all strings are null-terminated can often be used to simplify various operations on strings.
+
+For example, look at how little code is required to uppercase every character in a string:
+
+Copy
+// Convert a string to uppercase.
+#include <iostream>
+#include <cstring>
+#include <cctype>
+using namespace std;
+
+int main()
+{
+    char str[80];
+    int i;
+
+    strcpy(str, "this is a test");
+
+    for(i=0; str[i]; i++)
+        str[i] = toupper(str[i]);
+
+    cout << str;
+
+    return 0;
+}
+
+
+
+This program will print
+
+Output:
+
+
+It uses the library function toupper(), which returns the uppercase equivalent of its character argument, to convert each character in the string.
+
+The toupper() function uses the header <cctype>.
+
+Notice that the test condition of the for loop is simply the array indexed by the control variable.
+
+This works because a true value is any non-zero value.
+
+Remember, all printable characters are represented by values that are non-zero, but the null terminating the string is zero.
+
+Therefore, the loop runs until it encounters the null terminator, which causes str[i] to become zero.
+
+Since the null terminator marks the end of the string, the loop stops precisely where it is supposed to.
+
+Tip
+In addition to toupper(), the C++ standard library contains several other character-manipulation functions.
+
+For example, the complement to toupper() is tolower(), which returns the lowercase equivalent of its character argument.
+
+Other character functions include isalpha(), isdigit(), isspace(), and ispunct().
+
+These functions each take a character argument and determine if it belongs to that category.
+
+For example, isalpha() returns true if its argument is a letter of the alphabet.
+
