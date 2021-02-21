@@ -1,0 +1,139 @@
+Generic classes are useful when a class uses logic that can be generalized.
+
+The general form of a generic class declaration is shown here:
+
+Copy
+template <class Ttype> class class-name {
+  .
+  .
+  .
+}
+Here, Ttype is the placeholder type name, which will be specified when a class is instantiated.
+
+If necessary, you can define more than one generic data type by using a comma-separated list.
+
+Once you have created a generic class, you create a specific instance of that class by using the following general form:
+
+Copy
+class-name <type> ob;
+Here, type is the type name of the data that the class will be operating upon.
+
+Member functions of a generic class are, themselves, automatically generic.
+
+In the following program creates a generic queue class.
+
+It can be used to queue objects of any type.
+
+In this example, a character queue and a floating-point queue are created, but any data type can be used.
+
+Copy
+// Demonstrate a generic queue class.
+#include <iostream>
+using namespace std;
+
+const int SIZE=100;
+// This creates the generic class queue.
+template <class QType> class queue {
+  QType q[SIZE];/* w  ww  .d  em  o  2s.c om*/
+  int sloc, rloc;
+public:
+  queue() { sloc = rloc = 0; }
+  void qput(QType i);
+  QType qget();
+};
+
+// Put an object into the queue.
+template <class QType> void queue<QType>::qput(QType i)
+{
+  if(sloc==SIZE) {
+    cout << "Queue is full.\n";
+    return;
+  }
+  sloc++;
+  q[sloc] = i;
+}
+
+// Get an object from the queue.
+template <class QType> QType queue<QType>::qget()
+{
+  if(rloc == sloc) {
+    cout << "Queue Underflow.\n";
+    return 0;
+  }
+  rloc++;
+
+   return q[rloc];
+}
+
+int main()
+{
+   queue<int> a, b;  // create two integer queues
+
+   a.qput(10);
+   b.qput(19);
+   a.qput(20);
+   b.qput(1);
+
+   cout << a.qget() << " ";
+   cout << a.qget() << " ";
+   cout << b.qget() << " ";
+   cout << b.qget() << "\n";
+
+   queue<double> c, d;  // create two double queues
+
+   c.qput(10.12);
+   d.qput(19.45);
+   c.qput(-20.0);
+   d.qput(0.123);
+
+   cout << c.qget() << " ";
+   cout << c.qget() << " ";
+   cout << d.qget() << " ";
+   cout << d.qget() << "\n";
+
+   return 0;
+}
+The output is shown here.
+
+
+In the program, the declaration of a generic class is similar to that of a generic function.
+
+The actual type of data stored by the queue is generic in the class declaration.
+
+It is not until an object of the queue is declared that the actual data type is determined.
+
+When a specific instance of queue is declared, the compiler automatically generates all the functions and variables necessary for handling the actual data.
+
+In this example, two different types of queues are declared.
+
+Two are integer queues. Two are queues of doubles.
+
+Pay special attention to these declarations:
+
+Copy
+queue<int> a, b;
+queue<double> c, d;
+Notice how the desired data type is passed inside the angle brackets.
+
+By changing the type of data specified when queue objects are created, you can change the type of data stored in that queue.
+
+For example, by using the following declaration, you can create another queue that stores character pointers:
+
+Copy
+queue<char *> chrptrQ;
+You can also create queues to store data types that you create.
+
+For example, if you want to use the following structure to store address information,.
+
+Copy
+struct addr {
+   char name[40];
+   char street[40];
+   char city[30];
+   char state[3];
+   char zip[12];
+};
+then to use queue to generate a queue that will store objects of type addr, use a declaration like this:
+
+Copy
+queue<addr> obj;
