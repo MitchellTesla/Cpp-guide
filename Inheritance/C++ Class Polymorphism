@@ -1,0 +1,108 @@
+What is Polymorphism
+One of the three major facets of object-oriented programming is polymorphism.
+
+C++ polymorphism describes the process by which different implementations of a function can be accessed via the same name.
+
+The polymorphism is sometimes characterized by the phrase "one interface, multiple methods."
+
+In C++, polymorphism is supported both at run time and at compile time.
+
+Operator and function overloading are examples of compile-time polymorphism.
+
+C++ allows run-time polymorphism through the use of derived classes and virtual functions.
+
+Example
+It is said that the derived class is a base class.
+
+Its type is compatible with the base class type.
+
+Also, a pointer to a derived class is compatible with a pointer to the base class.
+
+Together with inheritance, this is used to achieve the functionality known as polymorphism.
+
+Polymorphism means the object can morph into different types.
+
+Polymorphism in C++ is achieved through an interface known as virtual functions.
+
+A virtual function is a function whose behavior can be overridden in subsequent derived classes.
+
+And our pointer/object morphs into different types to invoke the appropriate function.
+
+Example:
+
+Copy
+#include <iostream>
+
+class MyBaseClass
+{
+public:
+    virtual void dowork()
+    {
+        std::cout << "Hello from a base class." << '\n';
+    }
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+public:
+    void dowork()
+    {
+        std::cout << "Hello from a derived class." << '\n';
+    }
+};
+
+int main()
+{
+    MyBaseClass* o = new MyDerivedClass;
+    o->dowork();
+    delete o;
+}
+Output:
+
+
+Virtual
+In this example, we have a simple inheritance where MyDerivedClass is derived from MyBaseClass.
+
+The MyBaseClass class has a function called dowork() with a virtual specifier.
+
+Virtual means this function can be overridden/redefined in subsequent derived classes, and the appropriate version will be invoked through a polymorphic object.
+
+The derived class has a function with the same name and same type of arguments (none in our case) in the derived class.
+
+In our main program, we create an instance of a MyDerivedClass class through a base class pointer.
+
+Polymorphism
+Using the arrow operator -> we invoke the appropriate version of the function.
+
+Here the o object morphs into different types to invoke the appropriate function.
+
+Here it invokes the derived version.
+
+That is why the concept is called polymorphism.
+
+If there were no dowork() function in the derived class, it would invoke the base class version:
+
+Copy
+#include <iostream>
+
+class MyBaseClass
+{
+public:
+    virtual void dowork()
+    {
+        std::cout << "Hello from a base class." << '\n';
+    }
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+public:
+
+};
+
+int main()
+{
+    MyBaseClass* o = new MyDerivedClass;
+    o->dowork();
+delete o;
+}
