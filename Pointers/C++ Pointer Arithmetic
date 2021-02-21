@@ -1,0 +1,76 @@
+There are only four arithmetic operators that can be used on pointers: ++, --, +, and -.
+
+To understand what occurs in pointer arithmetic, let p1 be an integer pointer with a current value of 2,000. That is, it contains the address 2,000.
+
+Assuming 32-bit integers, after the expression.
+
+Copy
+p1++;
+the contents of p1 will be 2,004, not 2,001! Each time p1 is incremented, it will point to the next integer.
+
+The same is true of decrements.
+
+For example,.
+
+Copy
+p1--;
+will cause p1 to have the value 1,996, assuming that it previously was 2,000.
+
+Each time that a pointer is incremented, it will point to the memory location of the next element of its base type.
+
+Each time it is decremented, it will point to the location of the previous element of its base type.
+
+In the case of character pointers, an increment or decrement will appear as "normal" arithmetic because characters are one byte long.
+
+However, every other type of pointer will increase or decrease by the length of its base type.
+
+You can also add or subtract integers to or from pointers.
+
+The expression.
+
+Copy
+p1 = p1 + 9;
+makes p1 point to the ninth element of p1's base type, beyond the one to which it is currently pointing.
+
+While you cannot add pointers, you can subtract one pointer from another provided they are both of the same base type.
+
+The remainder will be the number of elements of the base type that separate the two pointers.
+
+Other than addition and subtraction of a pointer and an integer, or the subtraction of two pointers, no other arithmetic operations can be performed on pointers.
+
+For example, you cannot add or subtract float or double values to or from pointers.
+
+Example
+To see the effects of pointer arithmetic, execute the next short program.
+
+It prints the actual physical addresses to which an integer pointer (i) and a floating-point pointer (f) are pointing.
+
+Observe how each changes, relative to its base type, each time the loop is repeated.
+
+For most 32-bit compilers, i will increase by 4s and f will increase by 8s.
+
+Notice that when using a pointer in a cout statement, its address is automatically displayed in the addressing format applicable to the current processor and environment.
+
+Copy
+// Demonstrate pointer arithmetic.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int *i, j[10];
+  double *f, g[10];
+  int x;
+
+  i = j;
+  f = g;
+
+  for(x=0; x<10; x++)
+    cout << i+x << ' ' << f+x << '\n';
+
+  return 0;
+}
+Here is sample output.
+
+
+REMEMBER:All pointer arithmetic is performed relative to the base type of the pointer.
