@@ -1,0 +1,50 @@
+A special form of a two-dimensional array is an array of strings.
+
+It is not uncommon in programming to use an array of strings.
+
+To create an array of strings, a two-dimensional character array is used, with the size of the left index determining the number of strings, and the size of the right index specifying the maximum length of each string.
+
+For example, the following declares an array of 30 strings, each having a maximum length of 80 characters:
+
+Copy
+char str_array[30][80];
+To access an individual string: You specify only the left index.
+
+For example, the following statement calls gets() with the third string in str_array:
+
+Copy
+gets(str_array[2]);
+The following program accepts lines of text entered at the keyboard and redisplays them after a blank line is entered.
+
+Copy
+// Enter and display strings.
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+
+    int t, i;
+    char text[100][80];
+
+    for(t=0; t<100; t++) {
+       cout << t << ": ";
+       gets(text[t]);
+       if(!text[t][0]) break; // quit on blank line
+    }
+
+
+    // redisplay the strings
+    for(i=0; i<t; i++)
+       cout << text[i] << '\n';
+
+    return 0;
+}
+Notice how the program checks for the entry of a blank line.
+
+The gets() function returns a zero-length string if the only key you press is ENTER.
+
+This means that the first byte in that string will be the null character.
+
+A null value is always false, thus allowing the conditional expression to be true.
