@@ -1,0 +1,56 @@
+The variables in C++ can be stored in memory through the use of C++'s dynamic allocation system.
+
+The storage for data is allocated as needed from the free memory area called the heap.
+
+Dynamically allocated storage is obtained at run time.
+
+C++ contains two operators, new and delete, that perform the functions of allocating and freeing memory.
+
+Their general forms are shown here:
+
+Copy
+pointer_var = new var_type;
+
+delete pointer_var ;
+Here, pointer_var is a pointer of type var_type.
+
+The new operator allocates sufficient memory to hold a value of type var_type and returns a pointer to it.
+
+Any valid data type can be allocated using new.
+
+The delete operator frees the memory pointed to by pointer_var.
+
+Once freed, this memory can be reallocated to different purposes by a subsequent new allocation request.
+
+Since the heap is finite, it can become exhausted.
+
+If there is insufficient available memory to fill an allocation request, then new will fail and an exception will be generated.
+
+In general, your program should handle this exception and take appropriate action, if possible.
+
+Here is a simple example illustrating the use of new and delete:
+
+Copy
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int *p;
+
+   p = new int; // allocate memory for int
+
+   *p = 20; // assign that memory the value 20
+   cout << *p; // prove that it works by displaying value
+
+   delete p; // free the memory
+
+   return 0;
+}
+This program assigns to p an address in the heap that is large enough to hold an integer.
+
+It then assigns that memory the value 20, and displays the contents of the memory on the screen.
+
+Finally, it frees the dynamically allocated memory.
+
+Because of the way dynamic allocation is managed, you must only use delete with a pointer to memory that has been allocated using new.
