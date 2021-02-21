@@ -1,0 +1,59 @@
+Question 1
+Write a program that declares a function inside a namespace and defines the function outside the namespace.
+
+Invoke the function in the main program.
+
+Namespace and function names are arbitrary.
+
+
+
+#include <iostream>
+
+namespace MyNameSpace
+{
+    void myfunction();
+}
+
+void MyNameSpace::myfunction()
+{
+    std::cout << "Hello World from a function inside a namespace.";
+}
+
+int main()
+{
+    MyNameSpace::myfunction();
+}
+
+Question 2
+Write a program that defines a namespace called A, and another namespace called B, nested inside the namespace A.
+
+Declare a function inside a namespace B and define the function outside both namespaces.
+
+Invoke the function in the main program.
+
+Then, introduce the entire namespace B to the current scope and invoke the function.
+
+
+
+#include <iostream>
+
+namespace A
+{
+    namespace B
+    {
+        void myfunction();
+    }
+}
+
+void A::B::myfunction()
+{
+     std::cout << "Hello World from a function inside a nested namespace."
+     << '\n';
+}
+
+int main()
+{
+    A::B::myfunction();
+    using namespace A::B;
+    myfunction();
+}
