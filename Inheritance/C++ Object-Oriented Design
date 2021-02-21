@@ -1,0 +1,14 @@
+The three pillars of object-oriented programming are:
+
+Encapsulation
+Inheritance
+Polymorphism
+Encapsulation is grouping the fields into different visibility zones, hiding implementation from the user, and exposing the interface, for example.
+
+Inheritance is a mechanism where we can create classes by inheriting from a base class.
+
+Inheritance creates a certain class hierarchy and relationship between them.
+
+Polymorphism is an ability of an object to morph into different types during runtime, ensuring the proper function is invoked.
+
+This is achieved through inheritance, virtual and overridden functions, and base and derived class pointers.
