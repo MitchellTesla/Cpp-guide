@@ -1,0 +1,31 @@
+According to the formal C++ syntax, neither the & nor the * is distributive over a list of variables, and this can lead to confusing declarations.
+
+For example, the following declaration creates one, not two, integer pointers.
+
+Copy
+int* a, b;
+Here, b is declared as an integer (not an integer pointer) because, as specified by the C++ syntax, when used in a declaration, an * or an & is linked to the individual variable that it precedes, not to the type that it follows.
+
+If you prefer to associate the * or & with the type rather than the variable, feel free to do so.
+
+To avoid confusion, we should associate the * and the & with the variable name that each modifies, rather than the type name.
+
+Copy
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+  int* a, b;
+
+  b = 100;
+
+  cout << b;
+
+  a = &b;
+
+  cout <<"\n"<< a;
+
+  return 0;
+}
