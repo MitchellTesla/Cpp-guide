@@ -1,0 +1,22 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <class T>
+void print(T& c){
+   for( typename T::iterator i = c.begin(); i != c.end(); i++ ){
+      std::cout << *i << endl;
+   }
+}
+
+int main( )
+{
+   vector<double> v( 5, 2.78 );
+   v[2] = 0.0;
+
+   // make the vector as large as possible without reallocating
+   v.resize( v.capacity(), 2.78 );
+
+}
