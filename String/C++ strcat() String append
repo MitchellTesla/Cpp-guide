@@ -1,0 +1,26 @@
+A call to strcat() takes this form:
+
+Copy
+strcat(s1, s2);
+The strcat() function appends s2 to the end of s1; s2 is unchanged.
+
+Both strings must be null-terminated, and the result is null-terminated.
+
+For example, the following program will print hello there on the screen:
+
+Copy
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+  char s1[20], s2[10];
+
+  strcpy(s1, "hello");
+  strcpy(s2, " there");
+  strcat(s1, s2);
+  cout << s1;
+
+  return 0;
+}
