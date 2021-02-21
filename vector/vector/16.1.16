@@ -1,0 +1,24 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  const long N = 600000; // Length of tuples x and y
+  const long S = 10;     // Sparseness factor
+
+  vector<double> x(N), y(N);
+
+
+  for (long k = 0; 3 * k * S < N; ++k)
+    x[3 * k * S] = 1.0;
+  for (long k = 0; 5 * k * S < N; ++k)
+    y[5 * k * S] = 1.0;
+
+  double sum = 0.0;
+  for (long k = 0; k < N; ++k)
+    sum += x[k] * y[k];
+
+  cout << sum << endl;
+  return 0;
+}
