@@ -1,0 +1,91 @@
+When one class inherits another, the members of the base class become members of the derived class.
+
+The access status of the base class members inside the derived class is determined by the access specifier used for inheriting the base class.
+
+The base class access specifier must be public, private, or protected.
+
+If the access specifier is not used, then it is private by default if the derived class is a class.
+
+If the derived class is a struct, then public is the default in the absence of an explicit access specifier.
+
+public
+When a base class is inherited as public, all public members of the base class become public members of the derived class.
+
+In all cases, the private elements of the base class remain private to that class, and are not accessible by members of the derived class.
+
+For example, in the following program, the public members of base become public members of derived.
+
+Thus, they are accessible by other parts of the program.
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+class derived : public base {
+  int k;
+public:
+  derived(int x) { k = x; }
+  void showk() { cout << k << "\n"; }
+};
+
+int main()
+{
+  derived ob(3);
+  ob.set(1, 2); // access member of base
+  ob.show();    // access member of base
+
+  ob.showk();   // uses member of derived class
+
+  return 0;
+}
+Since set() and show() are inherited as public, they can be called on an object of type derived from within main().
+
+Since i and j are specified as private, they remain private to base.
+
+Private
+The opposite of public inheritance is private inheritance.
+
+When the base class is inherited as private, then all public members of the base class become private members of the derived class.
+
+For example, the program shown next will not compile, because both set() and show() are now private members of derived, and thus cannot be called from main().
+
+Copy
+// This program won't compile.
+#include <iostream>
+using namespace std;
+
+
+class base {
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+// Public elements of base are private in derived.
+class derived : private base {
+  int k;
+public:
+  derived(int x) { k = x; }
+  void showk() { cout << k << "\n"; }
+};
+
+int main()
+{
+  derived ob(3);
+
+  ob.set(1, 2); // Error, can't access set()
+  ob.show();    // Error, can't access show()
+
+  return 0;
+}
+When a base class is inherited as private, public members of the base class become private members of the derived class.
+
+This means that they are still accessible by members of the derived class, but cannot be accessed by other parts of your program.
