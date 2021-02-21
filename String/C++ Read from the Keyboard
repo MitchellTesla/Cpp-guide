@@ -1,0 +1,77 @@
+We can read a string entered from the keyboard by make the array that will receive the string as the target of a cin statement.
+
+For example, the following program reads a string entered by the user:
+
+Copy
+// Using cin to read a string from the keyboard.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char str[80];
+
+    cout << "Enter a string: ";
+    cin >> str; // read string from keyboard
+    cout << "Here is your string: ";
+    cout << str;
+
+    return 0;
+}
+Although this program is technically correct, there is still a problem.
+
+To see what it is,examine the following sample run.
+
+
+As you can see, when the program redisplays the string, it shows only the word "This", not the entire sentence that was entered.
+
+The reason for this is that the >> operator stops reading a string when the first whitespace character is encountered.
+
+Whitespace characters include spaces, tabs, and newlines.
+
+One way to solve the whitespace problem is to use another of C++'s library functions, gets().
+
+The general form of a gets() call is:
+
+Copy
+gets(array-name);
+If you need your program to read a string, call gets() with the name of the array, without any index, as its argument.
+
+Upon return from gets(), the array will hold the string input from the keyboard.
+
+The gets() function will continue to read characters until you press ENTER.
+
+The header used by gets() is <cstdio>.
+
+This version of the preceding program uses gets() to allow the entry of strings containing spaces.
+
+Copy
+// Using gets() to read a string from the keyboard.
+
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+   char str[80];
+
+   cout << "Enter a string: ";
+   gets(str); // read a string from the keyboard
+   cout << "Here is your string: ";
+   cout << str;
+
+   return 0;
+}
+Now, when you run the program and enter the string "This is a test", the entire sentence is read and then displayed, as this sample run shows.
+
+
+Notice that in the cout statement, str is used directly.
+
+The name of a character array that holds a string can be used any place that a string literal can be used.
+
+Keep in mind that neither >> nor gets() performs any bounds checking on the array.
+
+Therefore, if the user enters a string longer than the size of the array, the array will be overwritten.
+
+This makes both methods of reading a string potentially dangerous.
