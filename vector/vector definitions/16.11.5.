@@ -1,0 +1,34 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+#include <iomanip>
+using std::setw;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+   vector< int > integers1( 7 ); // 7-element vector< int >
+   vector< int > integers2( 10 ); // 10-element vector< int >
+
+   size_t i;
+   
+   for ( i = 0; i < integers1.size(); i++ ){
+      cout << integers1[ i ];
+   }
+   for ( i = 0; i < integers2.size(); i++ ){
+      cout << integers2[ i ];
+   }
+
+   vector< int > integers3( integers1 ); // copy constructor
+
+   cout << integers3.size() << endl;
+   for ( i = 0; i < integers3.size(); i++ ){
+      cout << integers3[ i ];
+   }
+
+   return 0;
+}
