@@ -1,0 +1,30 @@
+In C++, a string is defined as a character array that is terminated by a null.
+
+A null character is specified using '\0', and is zero.
+
+Because of the null terminator, we need to declare a character array to be one character longer than the largest string that it will hold.
+
+For example, if you want to declare an array str that could hold a 10-character string, you would write:
+
+Copy
+char str[11];
+Specifying the size as 11 makes room for the null at the end of the string.
+
+C++ allows you to define a string literal.
+
+A string literal is a list of characters enclosed in double quotes.
+
+Here are some examples:
+
+Copy
+"hello there"
+"I like C++"
+"#$%@@#$"
+""
+The last string shown is "". This is called a null string.
+
+It contains only the null terminator, and no other characters.
+
+Null strings are useful because they represent the empty string.
+
+It is not necessary to manually add the null onto the end of string constants; the C++ compiler does this for you automatically.
