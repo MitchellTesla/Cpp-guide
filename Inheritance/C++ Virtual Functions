@@ -1,0 +1,125 @@
+Run-time polymorphism is achieved through a combination of two features: inheritance and virtual functions.
+
+A virtual function is a function that is declared as virtual in a base class and redefined in one or more derived classes.
+
+Thus, each derived class can have its own version of a virtual function.
+
+When one is called through a base class pointer or reference, C++ determines which version of the function to call based upon the type of the object pointed to by the pointer.
+
+And, this determination is made at run time.
+
+Thus, when different objects are pointed to, different versions of the virtual function are executed.
+
+It is the type of the object being pointed to, not the type of the pointer, that determines which version of the virtual function will be executed.
+
+Therefore, if a base class contains a virtual function, and if two or more different classes are derived from that base class, then when different types of objects are pointed to through a base class pointer, different versions of the virtual function are executed.
+
+The same thing occurs when using a base class reference.
+
+virtual
+You declare a function as virtual inside the base class by preceding its declaration with the keyword virtual.
+
+When a virtual function is redefined by a derived class, the keyword virtual need not be repeated.
+
+A class that includes a virtual function is called a polymorphic class.
+
+This term also applies to a class that inherits a base class containing a virtual function.
+
+Example
+A short example that uses virtual functions.
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+public:
+  virtual void who() { // specify a virtual
+     cout << "Base\n";
+   }
+};
+
+class Derived_Class1 : public base {
+public:
+  void who() { // redefine who() relative to Derived_Class1
+     cout << "First derivation\n";
+   }
+};
+
+class Derived_Class2 : public base {
+public:
+  void who() { // redefine who() relative to Derived_Class2
+     cout << "Second derivation\n";
+   }
+};
+
+int main()
+{
+
+  base base_obj;
+  base *p;
+  Derived_Class1 first_obj;
+  Derived_Class2 second_obj;
+
+  p = &base_obj;
+  p->who();  // access base's who
+
+  p = &first_obj;
+  p->who(); // access Derived_Class1's who
+
+  p = &second_obj;
+  p->who();  // access Derived_Class2's who
+
+  return 0;
+}
+This program produces the following output:
+
+
+In base, the function who() is declared as virtual.
+
+This means that the function can be redefined by a derived class.
+
+Inside both Derived_Class1 and Derived_Class2, who() is redefined relative to each class.
+
+Inside main(), four variables are declared: base_obj, which is an object of type base; p, which is a pointer to base objects; and first_obj and second_obj, which are objects of the two derived classes.
+
+Next, p is assigned the address of base_obj, and the who() function is called.
+
+Since who() is declared as virtual, C++ determines, at run time, which version of who() is referred to by the type of object pointed to by p.
+
+In this case, p points to an object of type base, so it is the version of who() declared in base that is executed.
+
+Next, p is assigned the address of first_obj.
+
+A base class pointer can refer to an object of any derived class.
+
+Now, when who() is called, C++ again checks to see what type of object is pointed to by p and, based on that type, determines which version of who() to call.
+
+Since p points to an object of type Derived_Class1, that version of who() is used.
+
+Likewise, when p is assigned the address of second_obj, the version of who() declared inside Derived_Class2 is executed.
+
+It is determined at run time which version of a virtual function actually gets called.
+
+This determination is based solely upon the type of the object that is being pointed to by a base class pointer.
+
+A virtual function can be called normally, with the standard object, dot-operator syntax.
+
+This means that in the preceding example, it would not be syntactically incorrect to access who() by using this statement:
+
+Copy
+first_obj.who();
+However, calling a virtual function in this manner ignores its polymorphic attributes.
+
+It is only when a virtual function is accessed through a base class pointer that run-time polymorphism is achieved.
+
+Note
+The prototypes for a virtual function and its redefinitions must be exactly the same.
+
+If the prototypes differ, then the function is simply considered to be overloaded, and its virtual nature is lost.
+
+A virtual function must be a member, not a friend, of the class for which it is defined.
+
+However, a virtual function can be a friend of another class.
+
+It is permissible for destructor functions to be virtual, but this is not so for constructors.
