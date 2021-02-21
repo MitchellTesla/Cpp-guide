@@ -1,0 +1,87 @@
+The base type of the pointer determines the type of data that the compiler assumes the pointer is pointing to.
+
+Consider the following code:
+
+Copy
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+  int balance;
+  int *int_ptr;
+  int value;
+
+  balance = 3200;
+  int_ptr = &balance;
+  value = *int_ptr;
+  cout << "balance is: " << value << '\n';
+
+  return 0;
+}
+In this case, because int_ptr is an integer pointer, C++ copies four bytes of information (assuming 32-bit integers) into value from the address pointed to by int_ptr.
+
+However, if it had been a double pointer, for example, then eight bytes would have been copied.
+
+Your pointer variables must always point to the correct type of data.
+
+For example, when you declare a pointer to be of type int, the compiler assumes that anything it points to will be an integer value.
+
+Generally, you won't need to worry about this because C++ will not allow you to assign one type of pointer to another unless the two types of pointers are compatible (i.e., essentially, the same).
+
+For example, the following fragment is incorrect:
+
+Copy
+int *p;
+double f;
+// ...
+p = &f; // ERROR
+This fragment is invalid because you cannot assign a double pointer to an integer pointer.
+
+That is, &f generates a pointer to a double, but p is a pointer to an int.
+
+These two types are not compatible.
+
+In fact, the compiler would flag an error at this point and not compile your program.
+
+Although two pointers must have compatible types in order for one to be assigned to another, you can override this restriction by using a cast.
+
+For example, the following fragment is now technically correct:
+
+Copy
+int *p ;
+double f;
+// ...
+p = (int *) &f; // Now technically OK
+The cast to int * causes the double pointer to be converted to an integer pointer.
+
+However, to use a cast for this purpose is questionable, because the base type of a pointer determines how the compiler treats the data it points to.
+
+In this case, even though p is actually pointing to a floating-point value, the compiler still "thinks" that p is pointing to an integer because p is an integer pointer.
+
+The following code shows why using a cast to assign one type of pointer to another is not usually a good idea, consider the following short program:
+
+Copy
+// This program will not work right.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  double x, y;
+  int *p;
+
+  x = 123.23;
+  p = (int *) &x; // use cast to assign double * to int *
+
+  y = *p; // What will this do?
+  cout << y; // What will this print?
+
+  return 0;
+}
+As you can see, p which is an integer pointer has been assigned the address of x which is a double.
+
+Thus, when y is assigned the value pointed to by p, y receives only four bytes of data and not the eight required for a double value, because p is an integer pointer.
+
+Therefore, the cout statement displays not 123.23, but a garbage value instead.
