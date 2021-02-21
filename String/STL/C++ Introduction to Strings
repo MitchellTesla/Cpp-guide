@@ -1,0 +1,27 @@
+We can store String value inside std::string type.
+
+C++ standard library offers a type called string or std::string as it is part of the std namespace.
+
+We use it for storing and manipulating strings.
+
+Defining a String
+To use the std::string type, we need to include the <string> header in our program:
+
+Copy
+#include <string>
+
+int main()
+{
+    std::string s = "Hello World.";
+}
+To print out this string on the standard output we use:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello World.";
+    std::cout << s;
+}
