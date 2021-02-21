@@ -1,0 +1,18 @@
+When a class member is declared as public, it can be accessed by any other part of a program.
+
+When a member is declared as private, it can be accessed only by members of its class.
+
+Further, derived classes do not have access to private base class members.
+
+When a member is declared as protected, it can be accessed only by members of its class, or by derived classes.
+
+protected allows a member to be inherited, but to remain private within a class hierarchy.
+
+When a base class is inherited by use of public, its public members become public members of the derived class, and its protected members become protected members of the derived class.
+
+When a base class is inherited by use of protected, its public and protected members become protected members of the derived class.
+
+When a base class is inherited by use of private, its public and protected members become private members of the derived class.
+
+In all cases, private members of a base class remain private to the base class, and are not inherited.
+
