@@ -1,0 +1,92 @@
+A function object, or a functor, is an object of a class that can be called as a function.
+
+To be able to call an object like a function, we must overload the function call operator () for our class:
+
+Copy
+#include <iostream>
+
+class MyClass
+{
+public:
+    void operator()()
+    {
+        std::cout << "Function object called." << '\n';
+    }
+};
+
+int main()
+{
+    MyClass myobject;
+    myobject(); // invoke the function object
+}
+Output:
+
+
+The function object can have one or more parameters; in this case, there is one parameter called x:
+
+Copy
+#include <iostream>
+
+class MyClass
+{
+public:
+    void operator()(int x)
+    {
+         std::cout << "Function object with a parameter " << x << " called.";
+    }
+};
+
+int main()
+{
+    MyClass myobject;
+    myobject(123); // invoke the function object
+}
+Output:
+
+
+The function object can also return a value.
+
+For example, the following function object checks if the parameter is even number:
+
+Copy
+#include <iostream>
+
+class MyClass
+{
+public:
+    bool operator()(int x)
+    {
+        if (x % 2 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+};
+
+int main()
+{
+    MyClass myobject;
+    bool isEven = myobject(123);
+    if (isEven)
+    {
+        std::cout << "The number is even." << '\n';
+    }
+    else
+    {
+        std::cout << "The number is odd." << '\n';
+    }
+}
+Output:
+
+
+The function objects carry their values.
+
+Since they are objects of a class, they can have data members they carry with them.
+
+This separates them from regular functions.
+
+Overloading operator () and writing the entire class can be somewhat cumbersome if all we want is a simple function object.
