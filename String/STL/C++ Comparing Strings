@@ -1,0 +1,38 @@
+A string can be compared to string literals and other strings using the equality == operator.
+
+Comparing a string to a string literal:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s1 = "Hello";
+    if (s1 == "Hello")
+    {
+        std::cout << "The string is equal to \"Hello\"";
+    }
+}
+Output:
+
+
+Comparing a string to another string is done using the equality operator ==:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s1 = "Hello";
+    std::string s2 = "World.";
+    if (s1 == s2)
+    {
+        std::cout << "The strings are equal.";
+    }
+    else
+    {
+        std::cout << "The strings are not equal.";
+    }
+}
