@@ -1,0 +1,16 @@
+C++ supports one other type of literal in addition to those of the predefined data types: the string.
+
+A string is a set of characters enclosed by double quotes.
+
+For example, "this is a test" is a string.
+
+Although C++ allows you to define a string literal, it does not have a built-in string data type.
+
+The strings are supported in C++ as character arrays.
+
+Standard C++ does provide a string type in its class library.
+
+char vs string
+A single character literal is enclosed by single quotes, as with 'a', is a char literal.
+
+However, "a" is a string containing only one letter.
