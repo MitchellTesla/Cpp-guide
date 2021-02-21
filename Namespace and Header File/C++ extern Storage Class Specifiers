@@ -1,0 +1,76 @@
+Usage 1
+In reality, computer programs tend to be much larger.
+
+You should break your program into two or more separate files.
+
+The extern keyword helps support this approach.
+
+In programs that consist of two or more files, each file must know the names and types of the global variables used by the program.
+
+However, you cannot simply declare copies of the global variables in each file.
+
+In C++, your program can include only one copy of each global variable.
+
+Therefore, if you try to declare the global variables needed by your program in each file, when the linker tries to link together the files, it will find the duplicated global variables, and will not link your program.
+
+The solution to this problem is to declare all of the global variables in one file and use extern declarations in the others.
+
+cpp-extern-file.png
+
+File One declares and defines x, y, and ch.
+
+In File Two, the global variable list is copied from File One, and the extern specifier is added to the declarations.
+
+The extern specifier allows a variable to be made known to a module, but does not actually create that variable.
+
+extern informs the compiler that the types and names are for these global variables, without actually creating storage for them again.
+
+When the linker links the two modules together, all references to the external variables are resolved.
+
+Usage 2
+If a function uses a global variable that is defined later in the file, the global variable can be declared as extern inside the function.
+
+Later, when the variable's definition is encountered, references to the variable are resolved.
+
+Consider the following example.
+
+Notice that the global variables first and last are declared after main().
+
+Copy
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   extern int first, last; // use global vars
+
+   cout << first << " " << last << "\n";
+
+   return 0;
+}
+
+// global definition of first and last
+int first = 10, last = 20;
+Output:
+
+
+This programs outputs 10 20 because the global variables first and last used by the cout statement are initialized to these values.
+
+Because the extern declaration inside main() tells the compiler that first and last are declared elsewhere. In this case, later in the same file, the program can be compiled without error even though first and last are used prior to their definition.
+
+The extern variable declarations as shown in the preceding program are necessary only because first and last had not yet been defined prior to their use in main().
+
+Had their definitions occurred prior to main(), then there would have been no need for the extern statement.
+
+Note
+Remember, if the compiler finds a variable that has not been declared within the current block, it checks if the variable matches any of the variables declared within enclosing blocks.
+
+If it does not, the compiler then checks the previously defined global variables.
+
+If a match is found, the compiler assumes that it is the variable being referenced.
+
+The extern specifier is needed only when you want to use a variable that is declared later in the file, or in another file.
+
+If, in an extern declaration, you initialize the variable, then the extern declaration becomes a definition.
+
+This is important because an object can have multiple declarations, but only one definition.
