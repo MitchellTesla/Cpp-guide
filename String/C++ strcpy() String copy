@@ -1,0 +1,38 @@
+C++ supports a wide range of string-manipulation functions.
+
+The most common are.
+
+Copy
+strcpy()
+strcat()
+strlen()
+strcmp()
+The string functions all use the same header, <cstring>.
+
+strcpy
+A call to strcpy() takes this general form:
+
+Copy
+strcpy(to, from);
+The strcpy() function copies the contents of the string from into to.
+
+Remember, the array that forms to must be large enough to hold the string contained in from.
+
+If it isn't, the to array will be overrun, which will probably crash your program.
+
+The following program will copy "hello" into string str:
+
+Copy
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+  char str[80];
+
+  strcpy(str, "hello");
+  cout << str;
+
+  return 0;
+}
