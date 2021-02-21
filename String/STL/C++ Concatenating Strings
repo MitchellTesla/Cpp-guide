@@ -1,0 +1,46 @@
+We can add a string literal to our string using the compound operator +=:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello ";
+    s += "World.";
+    std::cout << s;
+}
+Output:
+
+
+We can add a character to our string using the += operator:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello";
+    char c = '!';
+    s += c;
+    std::cout << s;
+}
+Output:
+
+
+We can add another string to our string using the + operator.
+
+We say we concatenate the strings:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s1 = "Hello ";
+    std::string s2 = "World.";
+    std::string s3 = s1 + s2;
+    std::cout << s3;
+}
