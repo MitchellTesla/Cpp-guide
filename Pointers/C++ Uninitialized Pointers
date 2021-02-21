@@ -1,0 +1,20 @@
+The classic example of a pointer error is the uninitialized pointer.
+
+Consider this example:
+
+Copy
+// This program is wrong.
+
+int main(){
+  int x, *p;
+
+  x = 10;
+  *p = x; // where does p point?
+
+  return 0;
+}
+Here, p contains an unknown address because it has never been defined.
+
+You will have no way of knowing where the value of x has been written.
+
+Note: make sure that a pointer is pointing to something valid before using it!.
