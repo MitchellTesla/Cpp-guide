@@ -1,0 +1,162 @@
+The following short program creates a base class called Shape.
+
+This class stores the dimensions of various two-dimensional objects and computes their areas.
+
+The function set_dim() is a standard member function because this operation will be common to all derived classes.
+
+However, show_area() is declared as virtual because the method of computing the area of each object will vary.
+
+The program uses Shape to derive two specific classes called rectangle and triangle.
+
+Copy
+#include <iostream>
+using namespace std;
+
+class Shape {/*from   www  . d e  m o  2 s. com*/
+protected:
+   double x, y;
+public:
+
+    void set_dim(double i, double j) {
+      x = i;
+      y = j;
+    }
+    virtual void show_area() {
+         cout << "No area computation defined ";
+         cout << "for this class.\n";
+    }
+};
+
+
+class triangle : public Shape {
+   public:
+     void show_area() {
+        cout << "Triangle with height ";
+        cout << x << " and base " << y;
+        cout << " has an area of ";
+        cout << x * 0.5 * y << ".\n";
+     }
+ };
+
+class rectangle : public Shape {
+   public:
+     void show_area() {
+        cout << "Rectangle with dimensions ";
+        cout << x << " x " << y;
+        cout << " has an area of ";
+        cout << x *  y << ".\n";
+     }
+};
+
+
+int main()
+{
+  Shape *p; // create a pointer to base type
+
+  triangle t; // create objects of derived types
+  rectangle r;
+
+  p = &t;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  p = &r;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  return 0;
+}
+The output is shown here.
+
+
+In the program, notice that the interface to both rectangle and triangle is the same, even though both provide their own methods for computing the area of each of their objects.
+
+With virtual functions you can easily derive a new type that will still share a common interface with other related objects.
+
+For example, here is one way to do it:
+
+Copy
+class circle : public Shape {
+  public:
+     void show_area() {
+       cout << "Circle with radius ";
+       cout << x;
+       cout << " has an area of ";
+       cout <<  3.14 * x * x;
+     }
+};
+The definition for show_area() for circle uses only the value of x, which is assumed to hold the radius.
+
+Full Source
+The expanded program, which uses this method, is shown here:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class Shape {/* w  ww  .  d e m o2 s.  c o  m*/
+protected:
+  double x, y;
+public:
+  void set_dim(double i, double j=0) {
+     x = i;
+     y = j;
+  }
+  virtual void show_area() {
+     cout << "No area computation defined ";
+     cout << "for this class.\n";
+  }
+} ;
+
+class triangle : public Shape {
+  public:
+    void show_area() {
+      cout << "Triangle with height ";
+      cout << x << " and base " << y;
+      cout << " has an area of ";
+      cout << x * 0.5 * y << ".\n";
+    }
+};
+
+class rectangle : public Shape {
+  public:
+    void show_area() {
+      cout << "Rectangle with dimensions ";
+      cout << x << " x " << y;
+      cout << " has an area of ";
+      cout << x *  y << ".\n";
+    }
+};
+
+class circle : public Shape {
+  public:
+    void show_area() {
+      cout << "Circle with radius ";
+      cout << x;
+      cout << " has an area of ";
+      cout << 3.14 * x * x << ".\n";
+    }
+} ;
+
+int main()
+{
+  Shape *p; // create a pointer to base type
+
+  triangle t; // create objects of derived types
+  rectangle r;
+  circle c;
+
+  p = &t;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  p = &r;
+  p->set_dim(10.0, 5.0);
+  p->show_area();
+
+  p = &c;
+  p->set_dim(9.0);
+  p->show_area();
+
+  return 0;
+}
