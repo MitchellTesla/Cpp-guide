@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+#include <algorithm>  // For find
+using namespace std;
+
+
+int main()
+{
+  int x[5] = {2, 4, 6, 8, 10};
+
+  vector<int> vector1(&x[0], &x[5]);
+
+  // Search for the first occurrence
+  vector<int>::iterator where = find(vector1.begin(), vector1.end(), 4);
+
+
+  cout << *where  << endl;
+  return 0;
+}
