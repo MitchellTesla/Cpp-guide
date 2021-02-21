@@ -1,0 +1,87 @@
+In the template specification for a generic class, you may also specify non-type arguments.
+
+In a template specification, you can specify what you would normally think of as a standard argument, such as an integer or a pointer.
+
+For example, here is the code to include both generic type and non generic type:
+
+Copy
+// Demonstrate non-type template arguments.
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+// Here, int size is a non-type argument.
+
+template <class AType, int size> class atype {
+  AType a[size]; // length of array is passed in size
+public:
+  atype() {
+     register int i;
+     for(i=0; i<size; i++) a[i] = i;
+   }
+  AType &operator[](int i);
+};
+
+// Provide range checking for atype.
+template <class AType, int size>
+AType &atype<AType, size>::operator[](int i)
+{
+  if(i<0 || i> size-1) {
+     cout << "\nIndex value of ";
+     cout << i << " is out-of-bounds.\n";
+     exit(1);
+   }
+  return a[i];
+}
+
+
+int main()
+{
+  atype<int, 10> intob;       // integer array of size 10
+  atype<double, 15> doubleob; // double array of size 15
+
+  int i;
+
+  cout << "Integer array: ";
+  for(i=0; i<10; i++) intob[i] = i;
+  for(i=0; i<10; i++) cout << intob[i] << "  ";
+  cout << '\n';
+
+  cout << "Double array: ";
+  for(i=0; i<15; i++) doubleob[i] = (double) i/3;
+  for(i=0; i<15; i++) cout << doubleob[i] << "  ";
+  cout << '\n';
+
+  intob[12] = 100; // generates runtime error
+
+  return 0;
+}
+Output:
+
+
+Note that size is declared as an int.
+
+This parameter is then used within atype to declare the size of the array a.
+
+Even though size is depicted as a "variable" in the source code, its value is known at compile time.
+
+This allows it to be used to set the size of the array.
+
+size is also used in the bounds checking within the operator[]() function.
+
+Within main(), notice how the integer and floating-point arrays are created.
+
+The second parameter specifies the size of each array.
+
+Non-type parameters are restricted to integers, pointers, or references.
+
+Other types, such as float, are not allowed.
+
+The arguments that you pass to a non-type parameter must consist of either an integer constant, or a pointer or reference to a global function 16 or object.
+
+Thus, non-type parameters should, themselves, be thought of as constants, since their values cannot be changed.
+
+For example, inside operator[](), the following statement is not allowed:
+
+Copy
+size = 10; // Error
+Since non-type parameters are treated as constants, they can be used to set the dimension of an array, which is a significant, practical benefit.
