@@ -1,0 +1,51 @@
+Functions can be pure virtual by specifying the = 0; at the end of the function declaration.
+
+Pure virtual functions do not have definitions and are also called interfaces.
+
+Pure virtual functions must be re-defined in the derived class.
+
+Classes having at least one pure virtual function are called abstract classes and cannot be instantiated.
+
+They can only be used as base classes.
+
+Example:
+
+Copy
+#include <iostream>
+
+class MyAbstractClass
+{
+public:
+    virtual void dowork() = 0;
+};
+
+class MyDerivedClass : public MyAbstractClass
+{
+public:
+    void dowork()
+    {
+        std::cout << "Hello from a derived class." << '\n';
+    }
+};
+
+int main()
+{
+    MyAbstractClass* o = new MyDerivedClass;
+    o->dowork();
+    delete o;
+}
+Output:
+
+
+A base class must have a virtual destructor if it is to be used in a polymorphic scenario.
+
+This ensures the proper deallocation of objects accessed through a base class pointer via the inheritance chain:
+
+Copy
+class MyBaseClass
+{
+public:
+    virtual void dowork() = 0;
+    virtual ~MyBaseClass() {};
+};
+Please remember that the use of operator new and raw pointers is discouraged in modern C++.
