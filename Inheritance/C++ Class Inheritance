@@ -1,0 +1,75 @@
+Inheritance is one of the cornerstones of OOP because it allows the creation of hierarchical classifications.
+
+With inheritance, it is possible to create a general class that defines traits common to a set of related items.
+
+This class may then be inherited by other, more specific classes, each adding only those things that are unique to the inheriting class.
+
+In standard C++ terminology, a class that is inherited is referred to as a base class.
+
+The class that does the inheriting is called the derived class.
+
+Further, a derived class can be used as a base class for another derived class.
+
+In this way, a multilayered class hierarchy can be achieved.
+
+Example
+We can build a class from an existing class.
+
+A class can be derived from an existing class.
+
+This is known as inheritance and is one of the pillars of object-oriented programming, abbreviated as OOP.
+
+To derive a class from an existing class, we write:
+
+Copy
+class MyDerivedClass : public MyBaseClass {};
+A simple example would be:
+
+Copy
+class MyBaseClass
+{
+
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+
+};
+
+int main()
+{
+
+}
+In this example, MyDerivedClass inherits the MyBaseClass.
+
+Let us get the terminology out of the way.
+
+It is said that MyDerivedClass is derived from MyBaseClass, or MyBaseClass is a base class for MyDerivedClass.
+
+It is also said that MyDerivedClass is MyBaseClass.
+
+Now the two classes have some sort of relationship.
+
+This relationship can be expressed through different naming conventions, but the most important one is inheritance.
+
+Derived class and objects of a derived class can access public members of a base class:
+
+Copy
+class MyBaseClass
+{
+public:
+    char c;
+    int x;
+};
+
+class MyDerivedClass : public MyBaseClass
+{
+    // c and x also accessible here
+};
+
+int main()
+{
+    MyDerivedClass o;
+    o.c = 'a';
+    o.x = 123;
+}
