@@ -1,0 +1,12 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  vector<char> vector1;
+  cout << vector1.size();
+
+  return 0;
+}
