@@ -1,0 +1,46 @@
+To find a substring in a string, we use the .find() member function.
+
+It searches for the substring in a string.
+
+If the substring is found, the function returns the position of the first found substring.
+
+This position is the position of a character where the substring starts in the main string.
+
+If the substring is not found, the function returns a value that is std::string::npos.
+
+The function itself is of type std::string::size_type.
+
+To find a substring "Hello" inside the "This is a Hello World string" string, we write:
+
+Copy
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "This is a Hello World string.";
+    std::string stringtofind = "Hello";
+    std::string::size_type found = s.find(stringtofind);
+    if (found != std::string::npos)
+    {
+        std::cout << "Substring found at position: " << found;
+    }
+    else
+    {
+        std::cout << "The substring is not found.";
+    }
+}
+Output:
+
+
+Here we have the main string and a substring we want to find.
+
+We supply the substring to the .find() function as an argument.
+
+We store the function's return value to a variable found.
+
+Then we check the value of this variable.
+
+If the value is not equal to std::string::npos, the substring was found.
+
+We print the message and the position of a character in the main string, where our substring was found.
