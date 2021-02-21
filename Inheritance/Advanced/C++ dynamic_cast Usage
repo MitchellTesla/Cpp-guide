@@ -1,0 +1,144 @@
+The dynamic_cast performs a run-time cast that verifies the validity of a cast.
+
+If at the time dynamic_cast is executed, the cast is invalid, then the cast fails.
+
+The general form of dynamic_cast is shown here:
+
+Copy
+dynamic_cast<target-type> (expr)
+Here, target-type specifies the target type of the cast, and expr is the expression being cast into the new type.
+
+The target type must be a pointer or reference type, and the expression being cast must evaluate to a pointer or reference.
+
+Thus, dynamic_cast may be used to cast one type of pointer into another, or one type of reference into another.
+
+The purpose of dynamic_cast is to perform casts on polymorphic types.
+
+For example, given two polymorphic classes B and D, with D derived from B, a dynamic_cast can always cast a D* pointer into a B* pointer.
+
+This is because a base pointer can always point to a derived object.
+
+But, a dynamic_cast can cast a B* pointer into a D* pointer only if the object being pointed to actually is a D object.
+
+In general, dynamic_cast will succeed if the pointer or reference being cast is a pointer or reference to either an object of the target type or an object derived from the target type.
+
+Otherwise, the cast will fail.
+
+If the cast fails, then dynamic_cast evaluates to null if the cast involves pointers.
+
+If a dynamic_cast on reference types fails, a bad_cast exception is thrown.
+
+Example
+Assume that Base is a polymorphic class and that Derived is derived from Base.
+
+Copy
+Base *bp, b_ob;
+Derived *dp, d_ob;
+
+bp = &d_ob; // base pointer points to Derived object
+dp = dynamic_cast<Derived *> (bp); // cast to derived pointer OK
+if(dp) cout << "Cast OK";
+Here, the cast from the base pointer bp to the derived pointer dp works because bp is actually pointing to a Derived object.
+
+Thus, this fragment displays Cast OK.
+
+But in the next fragment, the cast fails because bp is pointing to a Base object, and it is illegal to cast a base pointer into a derived pointer unless the object being pointed to actually is a derived object.
+
+Copy
+bp = &b_ob; // base pointer points to Base object
+dp = dynamic_cast<Derived *> (bp); // error
+if(!dp) cout << "Cast Fails";
+Because the cast fails, this fragment displays Cast Fails.
+
+The following program demonstrates the various situations that dynamic_cast can handle:
+
+Copy
+// Demonstrate dynamic_cast.
+#include <iostream>
+using namespace std;
+
+class Base {//w w  w. de mo2  s. c o  m
+public:
+  virtual void f() { cout << "Inside Base\n"; }
+  // ...
+};
+
+class Derived : public Base {
+public:
+  void f() { cout << "Inside Derived\n"; }
+};
+
+int main()
+{
+  Base *bp, b_ob;
+  Derived *dp, d_ob;
+
+  dp = dynamic_cast<Derived *> (&d_ob);
+  if(dp) {
+    cout << "Cast from Derived * to Derived * OK.\n";
+    dp->f();
+  } else
+    cout << "Error\n";
+
+  cout << endl;
+
+  bp = dynamic_cast<Base *> (&d_ob);
+  if(bp) {
+    cout << "Cast from Derived * to Base * OK.\n";
+    bp->f();
+  } else
+    cout << "Error\n";
+
+  cout << endl;
+
+  bp = dynamic_cast<Base *> (&b_ob);
+  if(bp) {
+    cout << "Cast from Base * to Base * OK.\n";
+    bp->f();
+  } else
+    cout << "Error\n";
+
+  cout << endl;
+
+  dp = dynamic_cast<Derived *> (&b_ob);
+  if(dp)
+    cout << "Error\n";
+  else
+    cout << "Cast from Base * to Derived * not OK.\n";
+
+  cout << endl;
+
+  bp = &d_ob; // bp points to Derived object
+  dp = dynamic_cast<Derived *> (bp);
+  if(dp) {
+    cout << "Casting bp to a Derived * OK\n" <<
+      "because bp is really pointing\n" <<
+      "to a Derived object.\n";
+    dp->f();
+  } else
+    cout << "Error\n";
+
+  cout << endl;
+
+  bp = &b_ob; // bp points to Base object
+  dp = dynamic_cast<Derived *> (bp);
+  if(dp)
+    cout << "Error";
+  else {
+    cout << "Now casting bp to a Derived *\n" <<
+      "is not OK because bp is really \n" <<
+      "pointing to a Base object.\n";
+  }
+
+  cout << endl;
+
+  dp = &d_ob; // dp points to Derived object
+  bp = dynamic_cast<Base *> (dp);
+  if(bp) {
+    cout << "Casting dp to a Base * is OK.\n";
+    bp->f();
+  } else
+    cout << "Error\n";
+
+  return 0;
+}
