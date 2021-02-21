@@ -1,0 +1,56 @@
+In order for a pointer comparison to be meaningful, the two pointers must have some relationship to each other.
+
+For example, given two pointers, A and B, that both point into the same array, if A is less than B then A points to an element at a smaller index than the element pointed to by B.
+
+Such comparisons are especially useful for determining boundary conditions.
+
+Example
+The following program demonstrates a pointer comparison.
+
+The program creates two pointer variables.
+
+One, called start, initially points to the beginning of an array, and the other, called end, points to the end of the array.
+
+As the user enters numbers, the array is filled sequentially from the beginning to the end.
+
+Each time a number is entered into the array, start is incremented.
+
+To determine if the array is full, the program simply compares start with end.
+
+When start is greater than end, the array has been filled.
+
+Once the array is full, the contents of the array are displayed.
+
+Copy
+// A pointer comparison example.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int num[10];
+  int *start, *end;
+
+  start = num;
+  end = &num[9];
+
+  // enter the values
+  while(start <= end) {
+     cout << "Enter a number: ";
+     cin >> *start;
+     start++;
+  }
+
+  start = num;  // reset the starting pointer
+
+  // display the values
+  while(start <= end) {
+     cout << *start << ' ';
+     start++;
+  }
+
+  return 0;
+}
+As this program illustrates, because start and end both point to a common object, in this case the array num, they can be meaningfully compared.
+
+This type of pointer comparison is used frequently in professionally written C++ code.
