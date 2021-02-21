@@ -1,0 +1,124 @@
+To define a class template, we use:
+
+Copy
+#include <iostream>
+
+template <typename T>
+class MyClass {
+private:
+    T x;
+public:
+    MyClass(T xx)
+         :x{ xx }
+    {
+    }
+
+    T getvalue()
+    {
+        return x;
+    }
+};
+
+int main()
+{
+    MyClass<int> o{ 123 };
+    std::cout << "The value of x is: " << o.getvalue() << '\n';
+
+    MyClass<double> o2{ 456.789 };
+    std::cout << "The value of x is: " << o2.getvalue() << '\n';
+}
+Output:
+
+
+Here, we defined a simple class template.
+
+The class accepts types T.
+
+We use those types wherever we find appropriate in our class.
+
+In our main function, we instantiate those classes with concrete types int and double.
+
+Instead of having to write the same code for two or more different types, we simply use a template.
+
+To define a class template member functions outside the class, we need to make them templates themselves by prepending the member function definition with the appropriate template declaration.
+
+In such definitions, a class name must be called with a template argument.
+
+Simple example:
+
+Copy
+#include <iostream>
+
+template <typename T>
+class MyClass {
+private:
+    T x;
+public:
+    MyClass(T xx);
+};
+
+template <typename T>
+MyClass<T>::MyClass(T xx)
+     : x{xx}
+{
+    std::cout << "Constructor invoked. The value of x is: " << x << '\n';
+}
+
+int main()
+{
+    MyClass<int> o{ 123 };
+    MyClass<double> o2{ 456.789 };
+}
+Output:
+
+
+Examples
+If we had a class template with a single void member function, we would write:
+
+Copy
+template <typename T>
+class MyClass {
+public:
+    void somefunction();
+};
+
+template <typename T>
+void MyClass<T>::somefunction()
+{
+    // the rest of the code
+}
+If we had a class template with a single member function of type T, we would use:
+
+Copy
+template <typename T>
+class MyClass {
+public:
+    T genericfunction();
+};
+
+template <typename T>
+T MyClass<T>::genericfunction()
+{
+    // the rest of the code
+}
+Now, if we had both of them in a single class and we want to define both of them outside the class scope, we would use:
+
+Copy
+template <typename T>
+class MyClass {
+public:
+    void somefunction();
+    T genericfunction();
+};
+
+template <typename T>
+void MyClass<T>::somefunction()
+{
+    // the rest of the code
+}
+
+template <typename T>
+T MyClass<T>::genericfunction()
+{
+    // the rest of the code
+}
