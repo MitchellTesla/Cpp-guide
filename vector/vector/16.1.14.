@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class MyClass {
+};
+
+int main( ) {
+
+   vector<MyClass*> vec;
+
+   MyClass* p = NULL;
+
+   for (int i = 0; i < 10; i++) {
+      p = new MyClass( );
+      vec.push_back(p);
+   }
+   for (vector<MyClass*>::iterator pObj = vec.begin( );
+        pObj != vec.end( ); ++pObj) {
+      delete *pObj;
+   }
+
+   vec.clear( );
+}
