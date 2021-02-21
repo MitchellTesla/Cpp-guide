@@ -1,0 +1,103 @@
+Once a function is declared as virtual, it stays virtual no matter how many layers of derived classes it may pass through.
+
+When a derived class does not override a virtual function, then the function, as defined in the base class, is used.
+
+For example, try this version of the preceding program in which Derived_Class2 doesn't override who().
+
+Copy
+#include <iostream>
+using namespace std;
+
+
+class base {
+public:
+  virtual void who() {
+     cout << "Base\n";
+  }
+};
+
+class Derived_Class1 : public base {
+public:
+  void who() {
+
+     cout << "First derivation\n";
+   }
+};
+
+class Derived_Class2 : public base {
+// who() not defined
+};
+
+int main()
+{
+  base base_obj;
+  base *p;
+  Derived_Class1 first_obj;
+  Derived_Class2 second_obj;
+
+  p = &base_obj;
+  p->who();  // access base's who()
+
+  p = &first_obj;
+  p->who(); // access Derived_Class1's who()
+
+  p = &second_obj;
+  p->who(); /* access base's who() because
+                  Derived_Class2 does not redefine it */
+
+  return 0;
+}
+The program now outputs the following:
+
+Copy
+Base
+First derivation
+Base
+As the output confirms, because who() is not overridden by Derived_Class2, when p points to second_obj, it is the version of who() in base that is executed.
+
+Another Example
+Derived_Class2 now uses Derived_Class1's version of who() because that version is closest in the inheritance chain.
+
+Copy
+#include <iostream>
+using namespace std;
+class base {
+public:
+  virtual void who() {
+     cout << "Base\n";
+   }
+
+};
+
+
+class Derived_Class1 : public base {
+public:
+  void who() {
+     cout << "First derivation\n";
+   }
+};
+
+// Derived_Class2 now inherited Derived_Class1 -- not base.
+class Derived_Class2 : public Derived_Class1 {
+// who() not defined
+};
+
+int main()
+{
+  base base_obj;
+  base *p;
+  Derived_Class1 first_obj;
+  Derived_Class2 second_obj;
+
+  p = &base_obj;
+  p->who();  // access base's who()
+
+  p = &first_obj;
+  p->who(); // access Derived_Class1's who()
+
+  p = &second_obj;
+  p->who(); /* access Derived_Class1's who() because
+                  Derived_Class2 does not redefine it */
+
+  return 0;
+}
