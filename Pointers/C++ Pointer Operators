@@ -1,0 +1,64 @@
+There are two special operators that are used with pointers: * and &.
+
+Address operator
+The & is a unary operator that returns the memory address of its operand.
+
+For example,.
+
+Copy
+int_ptr = &balance;
+puts into int_ptr the memory address of the variable balance.
+
+This address is the location of the variable in the computer's internal memory.
+
+The operation of & can be remembered as returning "the address of" the variable it precedes.
+
+Therefore, the above assignment statement is int_ptr receives the address of balance.
+
+Assume that the variable balance is located at address 100.
+
+Then, after the assignment takes place, int_ptr has the value 100.
+
+Dereference operator
+The second operator is *, and it is the complement of &.
+
+It is a unary operator that returns the value of the variable located at the address specified by its operand.
+
+If int_ptr contains the memory address of the variable balance, then.
+
+Copy
+value = *int_ptr;
+will place the value of balance into value.
+
+For example, if balance originally had the value 3,200, then value will have the value 3,200, because that is the value stored at location 100, the memory address that was assigned to int_ptr.
+
+The operation of * can be remembered as "at address."
+
+In this case, then, the statement could be read as "value receives the value at address int_ptr."
+
+The following program executes the sequence of operations:
+
+Copy
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+  int balance;
+  int *int_ptr;
+  int value;
+
+  balance = 3200;
+  int_ptr = &balance;
+  value = *int_ptr;
+  cout << "balance is: " << value << '\n';
+
+  return 0;
+}
+The output is shown here.
+
+
+Keep in mind that both & and * have a higher precedence than any of the arithmetic operators except the unary minus, with which they are equal.
+
+The act of using a pointer is often called indirection, because you are accessing one variable indirectly through another variable.
