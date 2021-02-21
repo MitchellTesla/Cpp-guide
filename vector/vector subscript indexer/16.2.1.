@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <deque>
+using namespace std;
+
+int main()
+{
+  vector<int> vector1(20);
+
+  for (int i = 0; i < 20; ++i)
+    vector1[i] = i;
+
+  vector<int>::iterator pos;
+
+  for (pos=vector1.begin(); pos!=vector1.end(); ++pos) {
+        cout << *pos << ' ';
+  }
+
+  return 0;
+}
