@@ -1,0 +1,43 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+#include <iomanip>
+using std::setw;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+   vector< int > integers1( 7 ); // 7-element vector< int >
+   vector< int > integers2( 10 ); // 10-element vector< int >
+
+   size_t i;
+   
+   cout << integers1.size() << endl;
+   for ( i = 0; i < integers1.size(); i++ ){
+      cout << integers1[ i ];
+   }
+   cout << integers2.size() << endl;
+   for ( i = 0; i < integers2.size(); i++ ){
+      cout << integers2[ i ];
+   }
+
+   for ( size_t i = 0; i < integers1.size(); i++ )
+      integers1[ i ] = i;
+
+   for ( size_t i = 0; i < integers2.size(); i++ )
+      integers2[ i ] = i;
+
+   for ( i = 0; i < integers1.size(); i++ ){
+      cout << integers1[ i ];
+   }
+   for ( i = 0; i < integers2.size(); i++ ){
+      cout << integers2[ i ];
+   }
+
+
+   return 0;
+}
