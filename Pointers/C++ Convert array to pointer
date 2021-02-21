@@ -1,0 +1,63 @@
+Arrays are implicitly convertible to pointers.
+
+When we assign an array name to the pointer, the pointer points at the first element in an array.
+
+Example:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    int arr[5] = { 1, 2, 3, 4, 5 };
+    int* p = arr; // pointer to the first array element
+    std::cout << *p;
+}
+In this case, we have an implicit conversion of type int[] to type int*.
+
+When used as function arguments, the array gets converted to a pointer.
+
+It gets converted to a pointer to the first element in an array.
+
+In such cases, the array loses its dimension, and it is said it decays to a pointer.
+
+Example:
+
+Copy
+#include <iostream>
+
+void myfunction(int arg[])
+{
+    std::cout << arg;
+}
+int main()
+{
+    int arr[5] = { 1, 2, 3, 4, 5 };
+    myfunction(arr);
+}
+Output:
+
+
+Here, the arr argument gets converted to a pointer to the first element in an array.
+
+Since arg is now a pointer, printing it outputs a pointer value similar to the 0x22fe30.
+
+To output the value it points to we need to dereference the pointer:
+
+Copy
+#include <iostream>
+
+void myfunction(int arg[])
+{
+    std::cout << *arg;
+}
+
+int main()
+{
+    int arr[5] = { 1, 2, 3, 4, 5 };
+    myfunction(arr);
+}
+Output:
+
+
+We should use std:vector and std::array containers instead of basic arrays and pointers.
