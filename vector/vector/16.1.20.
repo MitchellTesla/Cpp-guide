@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+class MyClass {
+public:
+  unsigned long id;
+  unsigned long generation;
+  static unsigned long total_copies;
+
+  MyClass() : id(0), generation(0) { }
+
+  MyClass(unsigned long n) : id(n), generation(0) { }
+
+  MyClass(const MyClass& z) : id(z.id), generation(z.generation + 1) {
+    ++total_copies;
+  }
+};
+
+bool operator==(const MyClass& x, const MyClass& y)
+{
+  return x.id == y.id;
+}
+
+bool operator!=(const MyClass& x, const MyClass& y)
+{
+  return x.id != y.id;
+}
+
+unsigned long MyClass::total_copies = 0;
+
+int main()
+{
+  vector<MyClass> vector1, vector2(3);
+
+  assert (vector1.size() == 0);
+  assert (vector2.size() == 3);
+
+  assert (vector2[0] == MyClass() && vector2[1] == MyClass() &&
+          vector2[2] == MyClass());
+
+  for (int i = 0; i != 3; ++i)
+    cout << "vector2[" << i << "].generation: " << vector2[i].generation << endl;
+
+  cout << "Total copies: " << MyClass::total_copies << endl;
+  return 0;
+}
