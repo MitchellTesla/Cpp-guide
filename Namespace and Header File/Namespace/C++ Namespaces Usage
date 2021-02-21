@@ -1,0 +1,173 @@
+Namespaces localizes the names of identifiers to avoid name collisions.
+
+For example, if your program defined a function called toupper(), it could override the standard library function toupper(), because both names would be stored in the global namespace.
+
+Name collisions happens when two or more third-party libraries were used by the same program.
+
+The creation of the namespace keyword was a response to these problems.
+
+Because it localizes the visibility of names declared within it, a namespace allows the same name to be used in different contexts, without conflicts arising.
+
+With the addition of namespace, the C++ library is now defined within its own namespace, called std, which reduces the chance of name collisions.
+
+You can also create your own namespaces within your program to localize the visibility of any names that you think may cause conflicts.
+
+Namespace Fundamentals
+The namespace keyword allows you to partition the global namespace by creating a declarative region.
+
+In essence, a namespace defines a scope.
+
+The general form of namespace is shown here:
+
+Copy
+namespace name {
+  // declarations
+}
+Anything defined within a namespace statement is within the scope of that namespace.
+
+The following program is an example of a namespace.
+
+It localizes the names used to implement a simple countdown counter class.
+
+In the namespace are defined the counter class, which implements the counter, and the variables upperbound and lowerbound, which contain the upper and lower bounds that apply to all counters.
+
+Copy
+namespace CounterNameSpace {
+   int upperbound;
+   int lowerbound;
+
+   class counter {
+      int count;
+    public:
+      counter(int n) {
+         if(n <= upperbound) count = n;
+         else count = upperbound;
+      }
+
+      void reset(int n) {
+         if(n <= upperbound) count = n;
+      }
+
+      int run() {
+         if(count > lowerbound) return count--;
+         else return lowerbound;
+      }
+   };
+}
+Here, upperbound, lowerbound, and the class counter are part of the scope defined by the CounterNameSpace namespace.
+
+Inside a namespace, identifiers that are declared within that namespace can be referred to directly, without any namespace qualification.
+
+For example, within CounterNameSpace, the run() function can refer directly to lowerbound in the statement:
+
+Copy
+if(count > lowerbound)
+   return count--;
+However, since namespace defines a scope, you need to use the scope resolution operator to refer to objects declared within a namespace from outside that namespace.
+
+For example, to assign the value 10 to upperbound from code outside CounterNameSpace, you must use this statement:
+
+Copy
+CounterNameSpace::upperbound = 10;
+Or, to declare an object of type counter from outside CounterNameSpace, you use a statement like this:
+
+Copy
+CounterNameSpace::counter ob;
+In general, to access a member of a namespace from outside its namespace, precede the member's name with the name of the namespace, followed by the scope resolution operator.
+
+Here is a program that demonstrates the use of the CounterNamespace:
+
+Copy
+// Demonstrate a namespace.
+#include <iostream>
+using namespace std;
+
+namespace CounterNameSpace {
+  int upperbound;
+  int lowerbound;
+
+  class counter {
+     int count;//  w  ww.  demo  2s.c o m
+   public:
+     counter(int n) {
+       if(n <= upperbound) count = n;
+       else count = upperbound;
+     }
+
+     void reset(int n) {
+       if(n <= upperbound) count = n;
+     }
+
+     int run() {
+       if(count > lowerbound) return count--;
+       else return lowerbound;
+     }
+  };
+}
+
+int main()
+{
+  CounterNameSpace::upperbound = 100;
+  CounterNameSpace::lowerbound = 0;
+
+  CounterNameSpace::counter ob1(10);
+  int i;
+
+  do {
+    i = ob1.run();
+    cout << i << " ";
+  } while(i > CounterNameSpace::lowerbound);
+  cout << endl;
+
+  CounterNameSpace::counter ob2(20);
+
+  do {
+    i = ob2.run();
+    cout << i << " ";
+  } while(i > CounterNameSpace::lowerbound);
+  cout << endl;
+
+  ob2.reset(100);
+  CounterNameSpace::lowerbound = 90;
+
+  do {
+     i = ob2.run();
+     cout << i << " ";
+  } while(i > CounterNameSpace::lowerbound);
+
+  return 0;
+}
+Output:
+
+
+Notice that the declaration of a counter object and the references to upperbound and lowerbound are qualified by CounterNameSpace.
+
+However, once an object of type counter has been declared, it is not necessary to further qualify it or any of its members.
+
+Thus, ob1.run() can be called directly; the namespace has already been resolved.
+
+There may be more than one namespace declaration of the same name.
+
+This allows a namespace to be split over several files, or even to be separated within the same file.
+
+For example:
+
+Copy
+namespace NS {
+  int i;
+}
+
+// ...
+
+namespace NS {
+  int j;
+}
+Here, NS is split into two pieces.
+
+However, the contents of each piece are still within the same namespace, i.e., NS.
+
+A namespace must be declared outside of all other scopes.
+
+This means that you cannot declare namespaces that are localized to a function, for example.
+
+However, one namespace can be nested within another.
