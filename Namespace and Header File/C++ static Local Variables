@@ -1,0 +1,76 @@
+When the static modifier is applied to a local variable, permanent storage for the variable is allocated in much the same way that it is for a global variable.
+
+This allows a static variable to maintain its value between function calls.
+
+Its value is not lost when the function returns, unlike the value of a normal local variable.
+
+The difference between a static local variable and a global variable is that the static local variable is known only to the block in which it is declared.
+
+A static local variable is, more or less, a global variable that has restricted scope.
+
+To declare a static variable, precede its type with the word static.
+
+For example, this statement declares count as a static variable:
+
+Copy
+static int count;
+A static variable may be given an initial value.
+
+For example, this statement gives count an initial value of 200:
+
+Copy
+static int count = 200;
+Local static variables are initialized only once, when program execution begins, not each time the function in which they are declared is entered.
+
+Example
+Here is an example of a static variable.
+
+It keeps a running average of the numbers entered by the user.
+
+Copy
+/* Compute a running average of numbers entered by
+the user.
+*/
+#include <iostream>
+using namespace std;
+
+int r_avg(int i);
+
+int main()
+{
+
+  int num;
+
+  do {
+     cout << "Enter numbers (-1 to quit): ";
+     cin >> num;
+     if(num != -1)
+       cout << "Running average is: " << r_avg(num);
+     cout << '\n';
+  } while(num > -1);
+
+  return 0;
+
+}
+
+// Compute a running average.
+int r_avg(int i)
+{
+   static int sum=0, count=0;
+
+   sum = sum + i;
+
+   count++;
+
+   return sum / count;
+}
+Output:
+
+
+Here, the local variables sum and count are both declared as static and initialized to 0.
+
+For static variables, the initialization occurs only once-not each time the function is entered.
+
+The program uses r_avg() to compute and report the current average of the numbers entered by the user.
+
+Because both sum and count are static, they will maintain their values between calls, causing the program to work properly.
