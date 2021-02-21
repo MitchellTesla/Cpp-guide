@@ -1,0 +1,88 @@
+The dynamic_cast operator can sometimes be used instead of typeid.
+
+For example, again assuming that Base is a polymorphic base class for Derived, the following fragment will assign dp the address of the object pointed to by bp if, and only if, the object really is a Derived object:
+
+Copy
+Base *bp;
+Derived *dp;
+// ...
+if(typeid(*bp) == typeid(Derived)) dp = (Derived *) bp;
+In this case, a traditional-style cast is used to actually perform the cast.
+
+This is safe because the if statement checks the legality of the cast by using typeid before the cast actually occurs.
+
+However, a better way to accomplish this is to replace the typeid operators and the if statement with this dynamic_cast:
+
+Copy
+dp = dynamic_cast<Derived *> (bp);
+Since dynamic_cast succeeds only if the object being cast is either already an object of the target type or an object derived from the target type, after this statement executes, dp will contain either a null or a pointer to an object of type Derived.
+
+Since dynamic_cast succeeds only if the cast is legal, it can simplify the logic in certain situations.
+
+The following program illustrates how a dynamic_cast can be used to replace typeid.
+
+It performs the same set of operations twice: first with typeid, then using dynamic_cast.
+
+Copy
+// Use dynamic_cast to replace typeid.
+#include <iostream>
+#include <typeinfo>
+using namespace std;
+
+class Base {//from   ww w . de  m  o  2 s. com
+public:
+  virtual void f() {}
+ };
+
+class Derived : public Base {
+public:
+  void derivedOnly() {
+    cout << "Is a Derived Object\n";
+   }
+ };
+
+
+int main()
+{
+ Base *bp, b_ob;
+ Derived *dp, d_ob;
+
+  // ************************************
+  // use typeid
+  // ************************************
+ bp = &b_ob;
+ if(typeid(*bp) == typeid(Derived)) {
+   dp = (Derived *) bp;
+   dp->derivedOnly();
+  }
+ else
+   cout << "Cast from Base to Derived failed.\n";
+
+ bp = &d_ob;
+ if(typeid(*bp) == typeid(Derived)) {
+   dp = (Derived *) bp;
+   dp->derivedOnly();
+  }
+ else
+   cout << "Error, cast should work!\n";
+
+  // ************************************
+  // use dynamic_cast
+  // ************************************
+ bp = &b_ob;
+ dp = dynamic_cast<Derived *> (bp);
+ if(dp) dp->derivedOnly();
+ else
+   cout << "Cast from Base to Derived failed.\n";
+
+ bp = &d_ob;
+ dp = dynamic_cast<Derived *> (bp);
+ if(dp)
+    dp->derivedOnly();
+ else
+
+    cout << "Error, cast should work!\n";
+
+  return 0;
+}
+As you can see, the use of dynamic_cast simplifies the logic required to cast a base pointer into a derived pointer.
