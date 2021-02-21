@@ -1,0 +1,94 @@
+In the program, the function called factory() creates an instance of a circle, triangle, or rectangle, and returns a pointer to it.
+
+The specific type of object created is determined by the outcome of a call to rand(), C++'s random-number generator.
+
+There is no way to know in advance what type of object will be generated.
+
+The program creates ten objects and counts the number of each type of Shape.
+
+The program relies upon typeid to determine which type of object has actually been made.
+
+Copy
+// Demonstrating run-time type id.
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class Shape {//from w  ww. demo  2s. c om
+protected:
+   double x, y;
+public:
+   Shape(double i, double j) {
+     x = i;
+     y = j;
+   }
+   virtual double area() = 0;
+ } ;
+
+
+class triangle : public Shape {
+  public:
+    triangle(double i, double j) : Shape(i, j) {}
+    double area() {
+      return x * 0.5 * y;
+    }
+};
+
+class rectangle : public Shape {
+  public:
+    rectangle(double i, double j) : Shape(i, j) {}
+    double area() {
+      return x * y;
+    }
+};
+
+class circle : public Shape {
+  public:
+    circle(double i, double j=0) : Shape(i, j) {}
+    double area() {
+      return 3.14 * x * x;
+    }
+} ;
+
+
+ // A factory for objects derived from Shape.
+ Shape *factory()
+ {
+   switch(rand() % 3 ) {
+     case 0: return new circle(10.0);
+     case 1: return new triangle(10.1, 5.3);
+     case 2: return new rectangle(4.3, 5.7);
+   }
+   return 0;
+ }
+
+ int main()
+ {
+   Shape *p; // pointer to base class
+   int i;
+
+   int t=0, r=0, c=0;
+
+   // generate and count objects
+   for(i=0; i<10; i++) {
+     p = factory(); // generate an object
+     cout << "Object is " << typeid(*p).name();
+     cout << ".  ";
+
+     // count it
+     if(typeid(*p) == typeid(triangle)) t++;
+     if(typeid(*p) == typeid(rectangle)) r++;
+     if(typeid(*p) == typeid(circle)) c++;
+
+     // display its area
+     cout << "Area is " << p->area() << endl;
+  }
+
+  cout << endl;
+  cout << "Objects generated:\n";
+  cout << "  Triangles: " << t << endl;
+  cout << "  Rectangles: " << r << endl;
+  cout << "  Circles: " << c << endl;
+
+  return 0;
+}
