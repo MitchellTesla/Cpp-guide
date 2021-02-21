@@ -1,0 +1,31 @@
+A pointer that points to the beginning of an array can access that array by using either pointer arithmetic or array-style indexing.
+
+However, pointers and arrays are not completely interchangeable.
+
+For example, consider this fragment:
+
+Copy
+int num[10];
+int i;
+
+for(i=0; i<10; i++) {
+
+  *num = i; // this is OK
+  num++; // ERROR -- cannot modify num
+}
+Here, num is an array of integers.
+
+While it is perfectly acceptable to apply the * operator to num, which is a pointer operation, it is illegal to modify num's value.
+
+num is a constant that points to the beginning of an array.
+
+Thus, you cannot increment it.
+
+While an array name without an index does generate a pointer to the beginning of an array, it cannot be changed.
+
+An array name generates a pointer constant, and it can take part in pointer-style expressions, as long as it is not modified.
+
+For example, the following is a valid statement that assigns num[3] the value 100:
+
+Copy
+*(num+3) = 100; // This is OK because num is not changed
