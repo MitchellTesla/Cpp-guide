@@ -1,0 +1,169 @@
+When only the constructor of the derived class requires one or more arguments, you use the standard parameterized constructor syntax.
+
+To pass arguments to a constructor in a base class, use an expanded form of the derived class' constructor declaration, which passes arguments along to one or more base class constructors.
+
+The general form of this expanded declaration is shown here:
+
+Copy
+derived-constructor(arg-list) : base1(arg-list),
+                               base2(arg-list), ...
+                               baseN(arg-list);
+{
+  body of derived constructor
+}
+Here, base1 through baseN are the names of the base classes inherited by the derived class.
+
+Notice that a colon separates the constructor declaration of the derived class from the base classes, and that the base classes are separated from each other by commas, in the case of multiple base classes.
+
+Consider this sample program:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+protected:
+  int i;
+public:
+  base(int x) { i = x; cout << "Constructing base\n"; }
+  ~base() { cout << "Destructing base\n"; }
+};
+
+class derived: public base {
+  int j;
+public:
+  // derived uses x; y is passed along to base.
+  derived(int x, int y): base(y)
+     { j = x; cout << "Constructing derived\n"; }
+
+  ~derived() { cout << "Destructing derived\n"; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+int main()
+{
+  derived ob(3, 4);
+
+  ob.show();  // displays 4 3
+
+  return 0;
+}
+Here, derived's constructor is declared as taking two parameters, x and y.
+
+However, derived() uses only x; y is passed along to base().
+
+In general, the constructor of the derived class must declare the parameter(s) that its class requires, as well as any required by the base class.
+
+As the preceding example illustrates, any parameters required by the base class are passed to it in the base class' argument list, specified after the colon.
+
+Here is a sample program that uses multiple base classes:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base1 {
+protected:
+  int i;
+public:
+  base1(int x) { i = x; cout << "Constructing base1\n"; }
+  ~base1() { cout << "Destructing base1\n"; }
+};
+
+class base2 {
+protected:
+  int k;
+public:
+  base2(int x) { k = x; cout << "Constructing base2\n"; }
+  ~base2() { cout << "Destructing base2\n"; }
+};
+
+class derived: public base1, public base2 {
+  int j;
+public:
+  derived(int x, int y, int z): base1(y), base2(z)
+     { j = x; cout << "Constructing derived\n"; }
+
+  ~derived() { cout << "Destructing derived\n"; }
+  void show() { cout << i << " " << j << " " << k << "\n"; }
+};
+
+int main()
+{
+  derived ob(3, 4, 5);
+
+  ob.show();  // displays 4 3 5
+
+  return 0;
+}
+Output:
+
+
+The arguments to a base class constructor are passed via arguments to the derived class' constructor.
+
+Therefore, even if a derived class' constructor does not use any arguments, it still must declare one or more arguments if the base class takes one or more arguments.
+
+In this situation, the arguments passed to the derived class are simply passed along to the base.
+
+For example, in the following program, the constructor of derived takes no arguments, but base1() and base2() do:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base1 {
+protected:
+  int i;
+public:
+  base1(int x) { i=x; cout << "Constructing base1\n"; }
+  ~base1() { cout << "Destructing base1\n"; }
+};
+
+
+class base2 {
+protected:
+   int k;
+public:
+   base2(int x) { k = x; cout << "Constructing base2\n"; }
+   ~base2() { cout << "Destructing base2\n"; }
+};
+
+
+class derived: public base1, public base2 {
+public:
+   /* Derived constructor uses no parameters,
+      but still must be declared as taking them to
+      pass them along to base classes.
+   */
+   derived(int x, int y): base1(x), base2(y)
+     { cout << "Constructing derived\n"; }
+
+   ~derived() { cout << "Destructing derived\n"; }
+   void show() { cout << i << " " << k << "\n"; }
+};
+
+
+int main()
+{
+  derived ob(3, 4);
+
+  ob.show();  // displays 3 4
+
+  return 0;
+}
+Output:
+
+
+The constructor of a derived class is free to use any and all parameters that it is declared as taking, whether or not one or more are passed along to a base class.
+
+For example, this fragment is perfectly valid:
+
+Copy
+class derived: public base {
+   int j;
+public:
+   // derived uses both x and y, and also passes them to base.
+   derived(int x, int y): base(x, y)
+     { j = x*y; cout << "Constructing derived\n"; }
+// ...
+An argument being passed can consist of any expression valid at the time, including function calls and variables.
