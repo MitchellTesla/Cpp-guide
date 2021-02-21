@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+using namespace std;
+
+int main()
+{
+  int N = 10000; // size of vectors
+
+  vector<int> vector1, vector2;
+
+  for (int k = 0; k != N; ++k) {
+    vector<int>::size_type cap = vector1.capacity();
+    vector1.push_back(k);
+    if (vector1.capacity() != cap)
+      cout << "k: " << k << ", new capacity: " << vector1.capacity() << endl;
+  }
+
+  return 0;
+}
