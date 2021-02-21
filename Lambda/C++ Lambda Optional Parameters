@@ -1,0 +1,52 @@
+Lambdas can have optional parameters inside the parenthesis: [](param1, param2){}.
+
+Example:
+
+Copy
+#include <iostream>
+
+int main()
+{
+    auto mylambda = [](int x, int y)
+    {
+        std::cout << "The value of x is: " << x << ", y is: " << y;
+    };
+    mylambda(123, 456);
+}
+Output:
+
+
+Lambdas are most often used as predicates inside the standard-library algorithm functions.
+
+For example, if we want to count the number of even elements in the container, we would supply a lambda to a std::count_if function.
+
+Example:
+
+Copy
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> v = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30 };
+    auto counteven = std::count_if(std::begin(v), std::end(v),
+        [](int x) {return x % 2 == 0; });
+    std::cout << "The number of even vector elements is: " << counteven;
+}
+Output:
+
+
+Here we have a lambda function that checks if an argument is an even number and returns true if it is.
+
+This lambda is then used as a predicate inside the std::count_if function.
+
+This function only counts the numbers for which the predicate (our lambda expression) returns true.
+
+The std::count_if function iterates through all the vector elements, and each element becomes a lambda argument.
+
+We can use lambdas in other standard-library algorithm functions accepting expressions named callables.
+
+Examples of callables are lambdas and function objects.
+
+By using lambdas, we can more clearly express ourselves, and we do not have to write the verbose class function objects.
