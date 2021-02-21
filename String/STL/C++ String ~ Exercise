@@ -1,0 +1,122 @@
+Question 1
+Write a program that defines two strings.
+
+Join them together and assign the result to a third-string.
+
+Print out the value of the resulting string.
+
+
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s1 = "Hello";
+    std::string s2 = " World!";
+    std::string s3 = s1 + s2;
+    std::cout << "The resulting string is: " << s3;
+}
+Question 2
+Write a program that accepts the first and the last name from the standard input using the std::getline() function.
+
+Store the input in a single string called fullname.
+
+Print out the string.
+
+
+
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string fullname;
+    std::cout << "Please enter the first and the last name: ";
+    std::getline(std::cin, fullname);
+    std::cout << "Your name is: " << fullname;
+}
+
+Question 3
+Write a program that creates two substrings from the main string.
+
+The main string is made up of first and last names and is equal to "John Doe."
+
+The first substring is the first name.
+
+The second substring is the last name.
+
+Print the main string and two substrings afterward.
+
+
+
+
+#include <iostream>
+#include <iostream>
+
+int main()
+{
+    std::string fullname = "John Doe";
+    std::string firstname = fullname.substr(0, 4);
+    std::string lastname = fullname.substr(5, 3);
+    std::cout << "The full name is: " << fullname << '\n';
+    std::cout << "The first name is: " << firstname << '\n';
+    std::cout << "The last name is: " << lastname << '\n';
+}
+Question 4
+Write a program that defines the main string with a value of "Hello C++ World." and checks if a single character 'C' is found in the main string.
+
+
+
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello C++ World.";
+    char c = 'C';
+    auto characterfound = s.find(c);
+    if (characterfound != std::string::npos)
+    {
+         std::cout << "Character found at position: " << characterfound <<
+          '\n';
+    }
+    else
+    {
+        std::cout << "Character was not found." << '\n';
+    }
+}
+Question 5
+Write a program that defines the main string with a value of "Hello C++ World." and checks if a substring "C++" is found in the main string.
+
+
+
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s = "Hello C++ World.";
+    std::string mysubstring = "C++";
+    auto mysubstringfound = s.find(mysubstring);
+
+    if (mysubstringfound != std::string::npos)
+    {
+         std::cout << "Substring found at position: " << mysubstringfound <<
+          '\n';
+    }
+    else
+    {
+        std::cout << "Substring was not found." << '\n';
+    }
+}
+
+
+Both the 'C' character and the "C++" substring start at the same position in our main string.
+
+That is why both examples yield a value of 6.
+
+Instead of typing the lengthy std::string::size_type type for our characterfound and mysubstringfound variables, we used the auto specifier to deduce the type for us automatically.
