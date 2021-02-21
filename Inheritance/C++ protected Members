@@ -1,0 +1,192 @@
+In addition to public and private, a class member can be declared as protected.
+
+Further, a base class can be inherited as protected.
+
+Both of these actions are accomplished by using the protected access specifier.
+
+The protected keyword is included in C++ to provide greater flexibility for the inheritance mechanism.
+
+When a member of a class is declared as protected, that member is not accessible to other, non-member elements of the program.
+
+With one important exception, access to a protected member is the same as access to a private member; it can be accessed only by other members of the class of which it is a part.
+
+The sole exception to this rule is when a protected member is inherited.
+
+A private member of a base class is not accessible by any other part of your program, including any derived class.
+
+When a base class is inherited as public, protected members in the base class become protected members of the derived class, and are accessible to the derived class.
+
+Therefore, by using protected, you can create class members that are private to their class, but that can still be inherited and accessed by a derived class.
+
+Consider this sample program:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+protected:
+  int i, j; // private to base, but accessible to derived
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+class derived : public base {
+  int k;
+public:
+  // derived may access base's i and j
+  void setk() { k = i*j; }
+
+  void showk() { cout << k << "\n"; }
+};
+
+
+int main()
+{
+   derived ob;
+
+  ob.set(2, 3); // OK, known to derived
+  ob.show();    // OK, known to derived
+  ob.setk();
+  ob.showk();
+
+  return 0;
+}
+Here, because base is inherited by derived as public, and because i and j are declared as protected, derived's function setk() may access them.
+
+If i and j were declared as private by base, then derived would not have access to them, and the program would not compile.
+
+The protected specifier allows you to create a class member that is accessible within a class hierarchy, but is otherwise private.
+
+When a derived class is used as a base class for another derived class, then any protected member of the initial base class that is inherited as public by the first derived class can be inherited again, as a protected member, by a second derived class.
+
+For example, the following program is correct, and My_Sub_Class2 does, indeed, have access to i and j:
+
+Copy
+#include <iostream>
+using namespace std;
+
+class base {
+protected:
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+// i and j inherited as protected.
+class My_Sub_Class1 : public base {
+  int k;
+public:
+  void setk() { k = i*j; } // legal
+  void showk() { cout << k << "\n"; }
+};
+
+// i and j inherited indirectly through My_Sub_Class1.
+class My_Sub_Class2 : public My_Sub_Class1 {
+  int m;
+public:
+  void setm() { m = i-j; } // legal
+  void showm() { cout << m << "\n"; }
+};
+
+int main()
+{
+  My_Sub_Class1 ob1;
+  My_Sub_Class2 ob2;
+
+  ob1.set(2, 3);
+  ob1.show();
+  ob1.setk();
+  ob1.showk();
+
+  ob2.set(3, 4);
+  ob2.show();
+  ob2.setk();
+  ob2.setm();
+  ob2.showk();
+  ob2.showm();
+
+  return 0;
+}
+When a base class is inherited as private, protected members of the base class become private members of the derived class.
+
+Therefore, in the preceding example, if base were inherited as private, then all members of base would become private members of My_Sub_Class1, meaning that they would not be accessible to My_Sub_Class2.
+
+This situation is illustrated by the following program, which is in error (and won't compile).
+
+The comments describe each error.
+
+Copy
+// This program won't compile.
+#include <iostream>
+using namespace std;
+
+class base {
+protected:
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout << i << " " << j << "\n"; }
+};
+
+// Now, all elements of base are private in My_Sub_Class1.
+class My_Sub_Class1 : private base {
+  int k;
+public:
+   // This is legal because i and j are private to My_Sub_Class1.
+  void setk() { k = i*j; }  // OK
+  void showk() { cout << k << "\n"; }
+};
+
+
+// Access to i, j, set(), and show() not inherited.
+class My_Sub_Class2 : public My_Sub_Class1 {
+  int m;
+public:
+   // Illegal because i and j are private to My_Sub_Class1.
+
+  void setm() { m = i-j; }  // error
+  void showm() { cout << m << "\n"; }
+};
+
+
+int main()
+{
+  My_Sub_Class1 ob1;
+  My_Sub_Class2 ob2;
+
+  ob1.set(1, 2); // Error, can't use set()
+  ob1.show();    // Error, can't use show()
+
+  ob2.set(3, 4); // Error, can't use set()
+  ob2.show();    // Error, can't use show()
+
+  return 0;
+}
+Even though base is inherited as private by My_Sub_Class1, My_Sub_Class1 still has access to the public and protected elements of base.
+
+However, it cannot pass this privilege along.
+
+This is the reason that protected is part of the C++ language.
+
+It provides a means of protecting certain members from being modified by non-member functions, but allows them to be inherited.
+
+The protected specifier can also be used with structures.
+
+It cannot be used with a union, however, because a union cannot inherit another class or be inherited.
+
+The protected access specifier may occur anywhere in a class declaration, although typically it occurs after the private members are declared, and before the public members.
+
+Thus, the most common full form of a class declaration is.
+
+Copy
+class class-name {
+  private members
+protected:
+  protected members
+public:
+  public members
+};
+Of course, the protected category is optional.
