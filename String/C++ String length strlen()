@@ -1,0 +1,63 @@
+The general form of a call to strlen() is.
+
+Copy
+strlen(s);
+where s is a string.
+
+The strlen() function returns the length of the string pointed to by s.
+
+The following program will print the length of a string entered from the keyboard:
+
+Copy
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+
+{
+  char str[80];
+
+  cout << "Enter a string: ";
+
+  gets(str);
+  cout << "Length is: " <<  strlen(str);
+
+
+  return 0;
+}
+Output:
+
+
+If the user enters the string "Hi there", this program will display 8.
+
+The null terminator is not counted by strlen().
+
+When the following program is run, the string entered at the keyboard is printed in reverse.
+
+For example, "hello" will be displayed as olleh.
+
+Remember that strings are simply character arrays; thus each character can be referenced individually.
+
+Copy
+// Print a string backwards.
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+  char str[80];
+  int i;
+
+  cout << "Enter a string: ";
+  gets(str);
+
+  // Print the string in reverse.
+  for(i=strlen(str)-1; i>=0; i--)
+     cout << str[i];
+
+  return 0;
+}
